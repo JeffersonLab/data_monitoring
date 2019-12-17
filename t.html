@@ -57,7 +57,7 @@
     <div>
         Select Run Period: <select id="RunPeriod" name="RunPeriod" onChange="PopulateVersionSelector();SetRunRange();ShowPlots()"></select>
         Select Version: <select id="Version" name="Version" onChange="PopulateImagesSelector();first_showing=true;ShowPlots()"></select><br>
-        Plot to Display: <select id="Plot" name="Plot" onChange="ShowPlots()"></select>Toggle plot order<input type="button" onclick="toggleDisplayOrder();"/>    columns: <select id="Columns" name="Columns" onChange="ShowPlots()"></select><br>
+        Plot to Display: <select id="Plot" name="Plot" onChange="ShowPlots()"></select>Togggle plot order<input type="button" onclick="toggleDisplayOrder();"/>    columns: <select id="Columns" name="Columns" onChange="ShowPlots()"></select><br>
         Run Range: <input type="number" id="minRunNum" name="minRunNum" size="20" onChange="ShowPlots()"/>-<input type="number" id="maxRunNum" name="maxRunNum" size="20" onChange="ShowPlots()"/><br>
         Query: <input type="text" id="rcdb_query" name="rcdb_query" size="40" />
         <input type="button" value="Query" onclick="ShowWaitIcon();DoQuery();">  <img id="wait_icon" name="wait_icon" src="./hourglass.png">
@@ -315,8 +315,8 @@ function QueryFiles() {
     }
   };
 
-  console.log("js_utilities/rcdb_browser.php");
-  xmlhttp.open("GET", "js_utilities/rcdb_browser.php", true);
+  console.log("js_utilities/t.php");
+  xmlhttp.open("GET", "js_utilities/t.php", true);
   xmlhttp.send();
 }
 
