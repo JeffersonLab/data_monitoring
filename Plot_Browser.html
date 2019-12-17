@@ -410,7 +410,7 @@ function PopulateRunPeriodSelector() {
     newoption.id = fileResult[i]["RunPeriod"];
     document.getElementById("RunPeriod").add(newoption);
     if (i == fileResult.length - 1) {
-      newoption.selected=true;
+      newoption.selected = true;
     }
     // console.log(fileResult[i]["RunPeriod"]);
   }
@@ -419,25 +419,25 @@ function PopulateRunPeriodSelector() {
 function PopulateVersionSelector() {
   removeOptions(document.getElementById("Version"));
 
-  var RunPSelector=document.getElementById("RunPeriod");
-  var SelectedRunP=RunPSelector.options[RunPSelector.selectedIndex].value;
-  var SelectedRunOBJ=fileResult[RunPSelector.selectedIndex];
+  var RunPSelector = document.getElementById("RunPeriod");
+  var SelectedRunP = RunPSelector.options[RunPSelector.selectedIndex].value;
+  var SelectedRunOBJ = fileResult[RunPSelector.selectedIndex];
   // console.log(SelectedRunOBJ)
 
-  if(SelectedRunOBJ["Versions"].length==0) {
+  if (SelectedRunOBJ["Versions"].length == 0) {
     var newoption = document.createElement("option");
-    newoption.text = "Rootspy ver00";//SelectedRunOBJ["Versions"][i]["Version"];
-    newoption.value= "rawdata_ver00";//SelectedRunOBJ["Versions"][i]["Version"];
+    newoption.text = "Rootspy ver00";   // SelectedRunOBJ["Versions"][i]["Version"];
+    newoption.value = "rawdata_ver00";  // SelectedRunOBJ["Versions"][i]["Version"];
     document.getElementById("Version").add(newoption);
 
     newoption = document.createElement("option");
-    newoption.text = "Incoming Data ver01";//SelectedRunOBJ["Versions"][i]["Version"];
-    newoption.value= "mon_ver01";//SelectedRunOBJ["Versions"][i]["Version"];
-    newoption.id=newoption.value;
-    newoption.selected=true;
+    newoption.text = "Incoming Data ver01";  // SelectedRunOBJ["Versions"][i]["Version"];
+    newoption.value = "mon_ver01";           // SelectedRunOBJ["Versions"][i]["Version"];
+    newoption.id = newoption.value;
+    newoption.selected = true;
     document.getElementById("Version").add(newoption);
   } else {
-    for(var i=0;i<SelectedRunOBJ["Versions"].length;i++ ) {
+    for (var i = 0; i < SelectedRunOBJ["Versions"].length; i++) {
       // || SelectedRunOBJ["Versions"][i]["Version"].split("_")[0] == "mc"
       if (SelectedRunOBJ["Versions"][i]["Version"].split("_")[0] == "analysis" || SelectedRunOBJ["Versions"][i]["Version"] == "recon_tests" || SelectedRunOBJ["Versions"][i]["Version"].split("_")[1] == "ver99") {
         continue;
@@ -447,15 +447,15 @@ function PopulateVersionSelector() {
       // console.log(SelectedRunOBJ["Versions"][i]["Version"])
       var text = "";
       var splitName = SelectedRunOBJ["Versions"][i]["Version"].split("_");
-      if(splitName[0] == "rawdata") {
+      if (splitName[0] == "rawdata") {
         text += "Rootspy "
-      } else if(splitName[0] == "recon" ) {
+      } else if (splitName[0] == "recon") {
         text += "Reconstruction Launch "
-      } else if(splitName[0] == "mon" && splitName[1] != "ver01" ) {
+      } else if (splitName[0] == "mon" && splitName[1] != "ver01") {
         text += "Monitoring Launch "
-      } else if(splitName[0] == "mon" && splitName[1] == "ver01" ) {
+      } else if (splitName[0] == "mon" && splitName[1] == "ver01") {
         text += "Incoming Data "
-      } else if(splitName[0] == "mc") {
+      } else if (splitName[0] == "mc") {
         text += "Monte Carlo "
       }
 
@@ -492,7 +492,7 @@ function PopulateImagesSelector() {
     } else if(Ver_prefix == "mon") {
       if (SelectedVer == "mon_ver01" && bitmask[1] == "0") {
         continue;
-      } else if(bitmask[2] == "0" ) {
+      } else if(bitmask[2] == "0") {
         continue;
       }
     } else if (Ver_prefix == "recon" && bitmask[3] == "0") {
@@ -538,15 +538,16 @@ function removeOptions(selectbox) {
 function QueryXref() {
   // console.log(SelectedRunListOBJ);
   // console.log(query_result);
-  /* descend = false;
-  if (toDisplay.length > 1) {
-    first = parseInt(toDisplay[0].substring(3))
-    last = parseInt(toDisplay[1].substring(3))
-    console.log(first + ">" + last)
-    if (first > last) {
-      descend=true;
-    }
-  } */
+
+  // descend = false;
+  // if (toDisplay.length > 1) {
+  //   first = parseInt(toDisplay[0].substring(3))
+  //   last = parseInt(toDisplay[1].substring(3))
+  //   console.log(first + ">" + last)
+  //   if (first > last) {
+  //     descend=true;
+  //   }
+  // }
 
   var to_return = SelectedRunListOBJ;
   var to_return2 = to_return;
