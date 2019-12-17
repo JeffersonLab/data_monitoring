@@ -34,23 +34,29 @@ foreach ($RunPeriods as &$runp) {
       }
       // echo "       " . $run . "<br>";
     }
-    $RunNumVer = array('Version'=>$ver, 'Runs'=>$runList);
+    $RunNumVer = array(
+      'Version' => $ver,
+      'Runs'=>$runList
+    );
     $runpData[] = $RunNumVer;
     // $runpData[] = json_encode($RunNumVer);
   }
   // echo "===================<br>";
-  $path_parse = array('RunPeriod'=>$runp, 'Versions'=>$runpData);
+  $path_parse = array(
+    'RunPeriod' => $runp,
+    'Versions' => $runpData
+  );
   // echo json_encode($path_parse);
   // echo '<br>';
   // $data[] = json_encode($path_parse);
   $data[] = $path_parse;
 }
 
-echo json_encode($data,JSON_PRETTY_PRINT);
-/* foreach ($data as $datum) {
-  echo json_encode($datum);
-  echo '<br>';
-} */
+echo json_encode($data, JSON_PRETTY_PRINT);
+// foreach ($data as $datum) {
+//   echo json_encode($datum);
+//   echo '<br>';
+// }
 
 return json_encode($data);
 // clean dirs
