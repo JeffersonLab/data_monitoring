@@ -291,45 +291,42 @@ function ShowPlots()
     
 }
 
-    
-  function QueryFiles()
-  {
-      var qresult= new Array;
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                result=JSON.parse(this.responseText);
-                fileResult=result;
-                console.log("rcdb_browser");
-                console.log(result);
-                for(var i=0;i<result.length;i++)
-                {
-                    if ( result[i].RunPeriod === "calibrations") {
-                        result.splice(i, 1);
-                        break 
-                    }
-                }
-                PopulateRunPeriodSelector();
-                PopulateVersionSelector();
-                PopulateImagesSelector();
-                SetRunRange();
-                SetOptionsFromURL();
-                if(document.getElementById("rcdb_query").value=="")
-                    ShowPlots();
-                
-            }
-        };
-        
-        console.log("js_utilities/rcdb_browser.php");
-        xmlhttp.open("GET","js_utilities/rcdb_browser.php",true);
-        xmlhttp.send();
+function QueryFiles() {
+  var qresult = new Array;
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp = new XMLHttpRequest();
+  } else {
+    // code for IE6, IE5
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
   }
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      result = JSON.parse(this.responseText);
+      fileResult = result;
+      console.log("rcdb_browser");  // added on 17-Dec-2019
+      console.log(result);
+      for (var i = 0; i < result.length; i++) {
+        if (result[i].RunPeriod === "calibrations") {
+          result.splice(i, 1);
+          break
+        }
+      }
+      PopulateRunPeriodSelector();
+      PopulateVersionSelector();
+      PopulateImagesSelector();
+      SetRunRange();
+      SetOptionsFromURL();
+      if (document.getElementById("rcdb_query").value == "") {
+        ShowPlots();
+      }
+    }
+  };
+
+  console.log("js_utilities/rcdb_browser.php");
+  xmlhttp.open("GET", "js_utilities/rcdb_browser.php", true);
+  xmlhttp.send();
+}
 
 function SetRunListOBJ()
 {
