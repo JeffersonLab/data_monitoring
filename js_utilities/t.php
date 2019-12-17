@@ -3,6 +3,7 @@
 $data = array();
 
 $RunPeriods = scandir("/work/halld2/data_monitoring/");
+file_put_contents("/u/group/halld/www/halldweb/html/data_monitoring/debug.txt", "test\n");
 
 array_shift($RunPeriods);
 array_shift($RunPeriods);
