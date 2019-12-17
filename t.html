@@ -296,8 +296,9 @@ function QueryFiles() {
     if (this.readyState == 4 && this.status == 200) {
       result = JSON.parse(this.responseText);
       fileResult = result;
-      console.log("rcdb_browser");  // added on 17-Dec-2019
+      console.log("rcdb_browser 0");  // added on 17-Dec-2019
       console.log(result);
+      console.log("rcdb_browser 1");  // added on 17-Dec-2019
       for (var i = 0; i < result.length; i++) {
         if (result[i].RunPeriod === "calibrations") {
           result.splice(i, 1);
