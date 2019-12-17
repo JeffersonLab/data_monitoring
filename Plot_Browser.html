@@ -70,50 +70,52 @@
 
 <script>
 
-    Array.prototype.max = function() {
-      return Math.max.apply(null, this);
-    };
+  Array.prototype.max = function() {
+    return Math.max.apply(null, this);
+  };
 
-    Array.prototype.min = function() {
-      return Math.min.apply(null, this);
-    };
+  Array.prototype.min = function() {
+    return Math.min.apply(null, this);
+  };
 
-    //https://halldweb.jlab.org/data_monitoring/Plot_Browser.html?minRunNum=40000&maxRunNum=51000&RunPeriod=RunPeriod-2018-01&Version=rawdata_ver00&Plot=CDC_occupancy&rcdb_query=@is_2018production
-    var fileResult;
-    var imgArray;
-    var query_result = [];
-    var SelectedRunListOBJ = [];
-    var toDisplay = [];
-    var first_showing = true;
+  //https://halldweb.jlab.org/data_monitoring/Plot_Browser.html?minRunNum=40000&maxRunNum=51000&RunPeriod=RunPeriod-2018-01&Version=rawdata_ver00&Plot=CDC_occupancy&rcdb_query=@is_2018production
+  var fileResult;
+  var imgArray;
+  var query_result = [];
+  var SelectedRunListOBJ = [];
+  var toDisplay = [];
+  var first_showing = true;
 
-    $(document).ready(function(){PopulateColumnsSelector();QueryFiles();readTextFile("./textdata/figure_titles");});
+  $(document).ready(function() {
+    PopulateColumnsSelector();
+    QueryFiles();
+    readTextFile("./textdata/figure_titles");
+  });
 
-    //$(document).ready(connectToDB());
+  // $(document).ready(connectToDB());
 
-function toggleDisplayOrder()
-{
-    //console.log("TOGGLE")
-    //console.log(toDisplay)
-    SelectedRunListOBJ=destructuringSwapHalf(SelectedRunListOBJ);
-    //toDisplay=destructuringSwapHalf(toDisplay);
-    //console.log(toDisplay)
-    ShowPlots();
+function toggleDisplayOrder() {
+  // console.log("TOGGLE")
+  // console.log(toDisplay)
+  SelectedRunListOBJ = destructuringSwapHalf(SelectedRunListOBJ);
+  // toDisplay = destructuringSwapHalf(toDisplay);
+  // console.log(toDisplay)
+  ShowPlots();
 }
-function destructuringSwapHalf(array)
-{
-    var left = null;
-    var right = null;
-    var length = array.length;
-    for (left = 0; left < length / 2; left += 1)
-    {
-        right = length - 1 - left;
-        [array[left], array[right]] = [array[right], array[left]];
-    }
-    return array;
+
+function destructuringSwapHalf(array) {
+  var left = null;
+  var right = null;
+  var length = array.length;
+  for (left = 0; left < length / 2; left += 1) {
+    right = length - 1 - left;
+    [array[left], array[right]] = [array[right], array[left]];
+  }
+  return array;
 }
-function ShowWaitIcon()
-{
-    document.getElementById("wait_icon").style.visibility="visible";
+
+function ShowWaitIcon() {
+  document.getElementById("wait_icon").style.visibility="visible";
 }
 function HideWaitIcon()
 {
