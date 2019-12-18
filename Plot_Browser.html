@@ -78,7 +78,7 @@
     return Math.min.apply(null, this);
   };
 
-  //https://halldweb.jlab.org/data_monitoring/Plot_Browser.html?minRunNum=40000&maxRunNum=51000&RunPeriod=RunPeriod-2018-01&Version=rawdata_ver00&Plot=CDC_occupancy&rcdb_query=@is_2018production
+  // https://halldweb.jlab.org/data_monitoring/Plot_Browser.html?minRunNum=40000&maxRunNum=51000&RunPeriod=RunPeriod-2018-01&Version=rawdata_ver00&Plot=CDC_occupancy&rcdb_query=@is_2018production
   var fileResult;
   var imgArray;
   var query_result = [];
@@ -115,11 +115,11 @@ function destructuringSwapHalf(array) {
 }
 
 function ShowWaitIcon() {
-  document.getElementById("wait_icon").style.visibility="visible";
+  document.getElementById("wait_icon").style.visibility = "visible";
 }
-function HideWaitIcon()
-{
-    document.getElementById("wait_icon").style.visibility="hidden";
+
+function HideWaitIcon() {
+  document.getElementById("wait_icon").style.visibility = "hidden";
 }
 
 function PopulateColumnsSelector() {
@@ -303,7 +303,7 @@ function QueryFiles() {
     }
   };
 
-  console.log("js_utilities/t.php");
+  console.log("js_utilities/rcdb_browser.php");
   xmlhttp.open("GET", "js_utilities/t.php", true);
   xmlhttp.send();
 }
@@ -461,7 +461,7 @@ function PopulateVersionSelector() {
 
       text += splitName[1];
 
-      newoption.text = text;//SelectedRunOBJ["Versions"][i]["Version"];
+      newoption.text = text;  // SelectedRunOBJ["Versions"][i]["Version"];
       newoption.value = SelectedRunOBJ["Versions"][i]["Version"];
       newoption.id = newoption.value;
       document.getElementById("Version").add(newoption);
@@ -518,7 +518,7 @@ function PopulateImagesSelector() {
 function readTextFile(file) {
   var rawFile = new XMLHttpRequest();
   rawFile.open("GET", file, false);
-  rawFile.onreadystatechange = function () {
+  rawFile.onreadystatechange = function() {
     if (rawFile.readyState === 4) {
       if (rawFile.status === 200 || rawFile.status == 0) {
         var allText = rawFile.responseText;
@@ -553,15 +553,13 @@ function QueryXref() {
   var to_return2 = to_return;
 
   if (query_result.length != 0) {
-    to_return2 = to_return.filter(
-      function(id) {
-        var tofind = id.split("Run")[1];
-        while (tofind.charAt(0) === '0') {
-          tofind = tofind.substr(1);
-        }
-        return query_result.indexOf(tofind) > -1;
+    to_return2 = to_return.filter(function(id) {
+      var tofind = id.split("Run")[1];
+      while (tofind.charAt(0) === '0') {
+        tofind = tofind.substr(1);
       }
-    );
+      return query_result.indexOf(tofind) > -1;
+    });
   }
   toDisplay = to_return2;  // .reverse();
   // console.log(toDisplay)
