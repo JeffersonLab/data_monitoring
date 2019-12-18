@@ -13,8 +13,9 @@ for x in glob('/work/halld2/data_monitoring/*'):
     runlist = []
     for z in glob(y + '/Run*'):
       runlist.append(z.split('/')[-1])
-    dict1['Runs'] = runlist
-    ver_list.append(dict1)
+    dict1['Runs'] = sorted(runlist)
+    if dict1['Runs']:
+      ver_list.append(dict1)
   dict0['Versions'] = ver_list
   list0.append(dict0)
 
