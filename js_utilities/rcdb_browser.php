@@ -3,8 +3,8 @@
 $data = array();
 
 $RunPeriods = scandir("/work/halld2/data_monitoring/");
-file_put_contents("/u/group/halld/www/halldweb/html/data_monitoring/debug.txt", "test\n");
-file_put_contents("/u/group/halld/www/halldweb/html/data_monitoring/debug.txt", print_r($RunPeriods, true), FILE_APPEND);
+// file_put_contents("/u/group/halld/www/halldweb/html/data_monitoring/debug.txt", "test\n");
+// file_put_contents("/u/group/halld/www/halldweb/html/data_monitoring/debug.txt", print_r($RunPeriods, true), FILE_APPEND);
 
 array_shift($RunPeriods);
 array_shift($RunPeriods);
@@ -57,6 +57,8 @@ echo json_encode($data, JSON_PRETTY_PRINT);
 //   echo json_encode($datum);
 //   echo '<br>';
 // }
+
+file_put_contents("/u/group/halld/www/halldweb/html/data_monitoring/debug.txt", print_r($data, true));
 
 return json_encode($data);
 // clean dirs
