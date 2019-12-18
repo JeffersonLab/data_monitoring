@@ -19,4 +19,5 @@ for x in sorted(glob('/work/halld2/data_monitoring/RunPeriod-*')):
   dict0['Versions'] = ver_list
   list0.append(dict0)
 
-print json.dumps(list0)
+with open('test.json', 'w') as f:
+  f.write(json.dumps(list0))
