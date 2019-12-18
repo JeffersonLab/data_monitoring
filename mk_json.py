@@ -19,8 +19,4 @@ for x in sorted(glob('/work/halld2/data_monitoring/RunPeriod-*')):
   dict0['Versions'] = ver_list
   list0.append(dict0)
 
-str_list0 = str(list0).replace("'", '"')
-print str_list0
-
-fw = open('test.json', 'w')
-json.dump(list0, fw, indent = 4)
+print json.dumps(list0)
