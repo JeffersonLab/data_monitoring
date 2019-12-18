@@ -2,6 +2,7 @@
 # coding:utf-8
 
 from glob import glob
+import json
 
 list0 = []
 for x in glob('/work/halld2/data_monitoring/*'):
@@ -18,3 +19,6 @@ for x in glob('/work/halld2/data_monitoring/*'):
   list0.append(dict0)
 
 print list0
+
+fw = open('test.json', 'w')
+json.dump(list0, fw, indent = 4)
