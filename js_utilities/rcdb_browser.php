@@ -58,9 +58,13 @@ echo json_encode($data, JSON_PRETTY_PRINT);
 //   echo '<br>';
 // }
 
-file_put_contents("/u/group/halld/www/halldweb/html/data_monitoring/debug.txt", print_r($data, true));
+$content = file_get_contents('../test2.json');
 
-return json_encode($data);
+file_put_contents("/u/group/halld/www/halldweb/html/data_monitoring/debug.txt", json_encode($data));
+file_put_contents("/u/group/halld/www/halldweb/html/data_monitoring/debug2.txt", $content);
+
+return $content;
+// return json_encode($data);
 // clean dirs
 
 ?>
