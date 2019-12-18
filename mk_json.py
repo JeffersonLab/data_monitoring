@@ -5,7 +5,7 @@ from glob import glob
 import json
 
 list0 = []
-for x in glob('/work/halld2/data_monitoring/*'):
+for x in sorted(glob('/work/halld2/data_monitoring/RunPeriod-*')):
   dict0 = {'RunPeriod':x.split('/')[-1]}
   ver_list = []
   for y in glob(x + '/*'):
