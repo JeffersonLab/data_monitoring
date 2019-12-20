@@ -1,6 +1,6 @@
 <?php
 
-$data = shell_exec('python BrowserFamily.py');
+$data = shell_exec('python browser_family_to_json.py');
 echo $data;
 return $data;
 
