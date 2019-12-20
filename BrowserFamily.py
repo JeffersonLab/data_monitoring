@@ -20,7 +20,7 @@ for x in sorted(runp_tup, key=lambda x: x['Name'], reverse=False):
     dbcursor.execute("SELECT * FROM Versions where RunPeriod_ID=%d" % x['ID'])
     ver_tup = dbcursor.fetchall()
     for y in sorted(ver_tup, key=lambda x: x['Type'] + '%02d' % x['VersionNumber'], reverse=False):
-        dict1 = {'Version': y['Type'] + '_%02d' % y['VersionNumber']}
+        dict1 = {'Version': y['Type'] + '_ver%02d' % y['VersionNumber']}
         runlist = []
         dbcursor.execute("SELECT * FROM Runs where Version_ID=%d" % y['ID'])
         run_tup = dbcursor.fetchall()
