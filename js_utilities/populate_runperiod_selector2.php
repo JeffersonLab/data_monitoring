@@ -14,7 +14,7 @@ if (!$conn) {
 mysqli_select_db($conn, $dbname);
 $sql = 'SELECT * FROM RunPeriods';
 $result = $conn->query($sql);
-$myarray = array();
+$data = array();
 while ($row = $result->fetch_assoc()) {
     $myarray[] = array(
         'ID' => $row['ID'],
@@ -22,12 +22,9 @@ while ($row = $result->fetch_assoc()) {
         'Location_ID' => $row['Location_ID']
     );
 }
-file_put_contents('../debug.txt', json_encode($myarray));
 
 $conn->close();
 
-$data = shell_exec('python browser_family_to_json.py');
-echo $data;
-return $data;
+return json_encode($data));
 
 ?>
