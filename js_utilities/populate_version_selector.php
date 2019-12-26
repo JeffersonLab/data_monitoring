@@ -23,7 +23,6 @@ while ($row = $result->fetch_assoc()) {
         'RunPeriod_ID' => $row['RunPeriod_ID']
     );
 }
-file_put_contents('../debug2.txt', json_encode($data));
 
 $conn->close();
 

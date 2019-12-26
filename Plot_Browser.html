@@ -296,8 +296,7 @@ function QueryFiles() {
         }
       }
       PopulateRunPeriodSelector();
-      PopulateVersionSelector2();
-      // PopulateVersionSelector();
+      PopulateVersionSelector();
       PopulateImagesSelector();
       SetRunRange();
       SetOptionsFromURL();
@@ -431,8 +430,8 @@ function PopulateRunPeriodSelector() {
   xmlhttp.send();
 }
 
-function PopulateVersionSelector2() {
-  // removeOptions(document.getElementById("Version"));
+function PopulateVersionSelector() {
+  removeOptions(document.getElementById("Version"));
 
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -448,8 +447,6 @@ function PopulateVersionSelector2() {
       for (var i = 0; i < result.length; i++) {
         var newoption   = document.createElement("option");
         var text = "";
-        console.log('bababababa');
-        console.log(result[i]['Type']);
         if (result[i]['Type'] == "rawdata") {
           text += "Rootspy "
         } else if (result[i]['Type'] == "recon") {
@@ -474,63 +471,6 @@ function PopulateVersionSelector2() {
   }
   xmlhttp.open("GET", "js_utilities/populate_version_selector.php?ID=" + runpID, false);
   xmlhttp.send();
-}
-
-function PopulateVersionSelector() {
-  removeOptions(document.getElementById("Version"));
-
-  var RunPSelector = document.getElementById("RunPeriod");
-  var SelectedRunP = RunPSelector.options[RunPSelector.selectedIndex].value;
-  var SelectedRunOBJ = fileResult[RunPSelector.selectedIndex];
-  // console.log(SelectedRunOBJ)
-
-  if (SelectedRunOBJ["Versions"].length == 0) {
-    var newoption = document.createElement("option");
-    newoption.text = "Rootspy ver00";   // SelectedRunOBJ["Versions"][i]["Version"];
-    newoption.value = "rawdata_ver00";  // SelectedRunOBJ["Versions"][i]["Version"];
-    document.getElementById("Version").add(newoption);
-
-    newoption = document.createElement("option");
-    newoption.text = "Incoming Data ver01";  // SelectedRunOBJ["Versions"][i]["Version"];
-    newoption.value = "mon_ver01";           // SelectedRunOBJ["Versions"][i]["Version"];
-    newoption.id = newoption.value;
-    newoption.selected = true;
-    document.getElementById("Version").add(newoption);
-  } else {
-    for (var i = 0; i < SelectedRunOBJ["Versions"].length; i++) {
-      // || SelectedRunOBJ["Versions"][i]["Version"].split("_")[0] == "mc"
-      if (SelectedRunOBJ["Versions"][i]["Version"].split("_")[0] == "analysis" || SelectedRunOBJ["Versions"][i]["Version"] == "recon_tests" || SelectedRunOBJ["Versions"][i]["Version"].split("_")[1] == "ver99") {
-        continue;
-      }
-
-      var newoption = document.createElement("option");
-      // console.log(SelectedRunOBJ["Versions"][i]["Version"])
-      var text = "";
-      var splitName = SelectedRunOBJ["Versions"][i]["Version"].split("_");
-      if (splitName[0] == "rawdata") {
-        text += "Rootspy "
-      } else if (splitName[0] == "recon") {
-        text += "Reconstruction Launch "
-      } else if (splitName[0] == "mon" && splitName[1] != "ver01") {
-        text += "Monitoring Launch "
-      } else if (splitName[0] == "mon" && splitName[1] == "ver01") {
-        text += "Incoming Data "
-      } else if (splitName[0] == "mc") {
-        text += "Monte Carlo "
-      }
-
-      text += splitName[1];
-
-      newoption.text = text;  // SelectedRunOBJ["Versions"][i]["Version"];
-      newoption.value = SelectedRunOBJ["Versions"][i]["Version"];
-      newoption.id = newoption.value;
-      document.getElementById("Version").add(newoption);
-
-      if (SelectedRunOBJ["Versions"][i]["Version"] == "mon_ver01") {
-        newoption.selected = true;
-      }
-    }
-  }
 }
 
 function PopulateImagesSelector() {
