@@ -80,6 +80,9 @@
 
   // https://halldweb.jlab.org/data_monitoring/Plot_Browser.html?minRunNum=40000&maxRunNum=51000&RunPeriod=RunPeriod-2018-01&Version=rawdata_ver00&Plot=CDC_occupancy&rcdb_query=@is_2018production
   var fileResult;
+  var runpID;
+  var verID;
+  var runID;
   var imgArray;
   var query_result = [];
   var SelectedRunListOBJ = [];
@@ -400,20 +403,6 @@ function SetRunRange() {
 }
 
 function PopulateRunPeriodSelector() {
-  for (var i = 0; i < fileResult.length; i++) {
-    var newoption   = document.createElement("option");
-    newoption.text  = fileResult[i]["RunPeriod"];
-    newoption.value = fileResult[i]["RunPeriod"];
-    newoption.id    = fileResult[i]["RunPeriod"];
-    document.getElementById("RunPeriod").add(newoption);
-    if (i == fileResult.length - 1) {
-      newoption.selected = true;
-    }
-  }
-}
-
-function PopulateRunPeriodSelector2() {
-  var qresult = new Array;
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp = new XMLHttpRequest();
@@ -436,7 +425,7 @@ function PopulateRunPeriodSelector2() {
       }
     }
   }
-  xmlhttp.open("GET", "js_utilities/populate_runperiod_selector2.php", false);
+  xmlhttp.open("GET", "js_utilities/populate_runperiod_selector.php", false);
   xmlhttp.send();
 }
 
