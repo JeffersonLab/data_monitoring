@@ -296,7 +296,8 @@ function QueryFiles() {
         }
       }
       PopulateRunPeriodSelector();
-      PopulateVersionSelector();
+      PopulateVersionSelector2();
+      // PopulateVersionSelector();
       PopulateImagesSelector();
       SetRunRange();
       SetOptionsFromURL();
@@ -421,11 +422,57 @@ function PopulateRunPeriodSelector() {
         document.getElementById("RunPeriod").add(newoption);
         if (i == result.length - 1) {
           newoption.selected = true;
+          runpID = result[i]['ID'];
         }
       }
     }
   }
   xmlhttp.open("GET", "js_utilities/populate_runperiod_selector.php", false);
+  xmlhttp.send();
+}
+
+function PopulateVersionSelector2() {
+  // removeOptions(document.getElementById("Version"));
+
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp = new XMLHttpRequest();
+  } else {
+    // code for IE6, IE5
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var result = JSON.parse(this.responseText);
+      console.log(result);
+      for (var i = 0; i < result.length; i++) {
+        var newoption   = document.createElement("option");
+        var text = "";
+        console.log('bababababa');
+        console.log(result[i]['Type']);
+        if (result[i]['Type'] == "rawdata") {
+          text += "Rootspy "
+        } else if (result[i]['Type'] == "recon") {
+          text += "Reconstruction Launch "
+        } else if (result[i]['Type'] == "mon" && result[i]['VersionNumber'] != 1) {
+          text += "Monitoring Launch "
+        } else if (result[i]['Type'] == "mon" && result[i]['VersionNumber'] == 1) {
+          text += "Incoming Data "
+        } else if (result[i]['Type'] == "mc") {
+          text += "Monte Carlo "
+        }
+        text += 'ver' + ('00' + result[i]['VersionNumber']).slice(-2);
+        newoption.text  = text;
+        newoption.value = result[i]['Type'] + '_ver' + ('00' + result[i]['VersionNumber']).slice(-2);
+        newoption.id    = newoption.value;
+        document.getElementById("Version").add(newoption);
+        // if (i == result.length - 1) {
+        //   newoption.selected = true;
+        // }
+      }
+    }
+  }
+  xmlhttp.open("GET", "js_utilities/populate_version_selector.php?ID=" + runpID, false);
   xmlhttp.send();
 }
 
