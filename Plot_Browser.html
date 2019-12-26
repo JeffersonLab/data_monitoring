@@ -98,11 +98,7 @@
   // $(document).ready(connectToDB());
 
 function toggleDisplayOrder() {
-  // console.log("TOGGLE")
-  // console.log(toDisplay)
   SelectedRunListOBJ = destructuringSwapHalf(SelectedRunListOBJ);
-  // toDisplay = destructuringSwapHalf(toDisplay);
-  // console.log(toDisplay)
   ShowPlots();
 }
 
@@ -152,8 +148,6 @@ function DoQuery() {
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       query_result=this.responseText.split("_");
-      // var result_to_use = JSON.parse(this.responseText);
-      // console.log(result_to_use);
       console.log(query_result);
       HideWaitIcon();
       // QueryXref();
@@ -165,7 +159,6 @@ function DoQuery() {
     query_to_do = document.getElementById("rcdb_query").value
   }
 
-  // console.log(query_to_do)
   var RunPSelector = document.getElementById("RunPeriod");
   var SelectedRunP = RunPSelector.options[RunPSelector.selectedIndex].value;
 
@@ -209,8 +202,6 @@ function ShowPlots() {
 
   var columnstoDisplay = document.getElementById("Columns").value;
 
-  // SelectedRunListOBJ = null;
-
   SetRunListOBJ();
 
   if (first_showing) {
@@ -218,7 +209,6 @@ function ShowPlots() {
     first_showing = false
     HideWaitIcon();
   }
-  // console.log(SelectedRunListOBJ);
 
   QueryXref();
 
@@ -263,7 +253,6 @@ function ShowPlots() {
     DOM_img.setAttribute("height", currentheight*scale_factor);
     var fullpth = "https://halldweb.jlab.org" + imgpth;
 
-    // console.log(fullpth);
     DOM_img.onclick = function click() { window.open(this.getAttribute("src"), '_blank'); }
 
     // Append a text node to the cell
@@ -322,12 +311,6 @@ function SetRunListOBJ() {
   var IMGSelector = document.getElementById("Plot");
   var SelectedIMG = IMGSelector.options[IMGSelector.selectedIndex].value;
 
-  // console.log(SelectedRunOBJ);
-  // console.log(SelectedVer);
-  // console.log(SelectedIMG);
-
-  // SelectedRunListOBJ = null;
-
   for (var i = 0; i < SelectedRunOBJ["Versions"].length; i++) {
     if (SelectedRunOBJ["Versions"][i]["Version"] == SelectedVer) {
       SelectedRunListOBJ = SelectedRunOBJ["Versions"][i]["Runs"]
@@ -337,7 +320,6 @@ function SetRunListOBJ() {
     }
   }
 }
-
 
 function SetOptionsFromURL() {
   currentURL_split =document.URL.split("?")
@@ -536,19 +518,6 @@ function removeOptions(selectbox) {
 }
 
 function QueryXref() {
-  // console.log(SelectedRunListOBJ);
-  // console.log(query_result);
-
-  // descend = false;
-  // if (toDisplay.length > 1) {
-  //   first = parseInt(toDisplay[0].substring(3))
-  //   last = parseInt(toDisplay[1].substring(3))
-  //   console.log(first + ">" + last)
-  //   if (first > last) {
-  //     descend=true;
-  //   }
-  // }
-
   var to_return = SelectedRunListOBJ;
   var to_return2 = to_return;
 
@@ -562,7 +531,6 @@ function QueryXref() {
     });
   }
   toDisplay = to_return2;  // .reverse();
-  // console.log(toDisplay)
 }
 
 function findRun(Run) {
