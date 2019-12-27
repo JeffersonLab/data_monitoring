@@ -151,15 +151,15 @@ function DoQuery() {
       ShowPlots();
     }
   }
-  query_to_do = ""
+  query_to_do = "";
   if (document.getElementById("rcdb_query").value != "") {
-    query_to_do = document.getElementById("rcdb_query").value
+    query_to_do = document.getElementById("rcdb_query").value;
   }
 
   var RunPSelector = document.getElementById("RunPeriod");
   var SelectedRunP = RunPSelector.options[RunPSelector.selectedIndex].value;
 
-  console.log("./js_utilities/rcdb_sql.php?query=" + query_to_do + "&RunP=" + SelectedRunP)
+  console.log("./js_utilities/rcdb_sql.php?query=" + query_to_do + "&RunP=" + SelectedRunP);
   xmlhttp.open("GET", "./js_utilities/rcdb_sql.php?query=" + query_to_do + "&RunP=" + SelectedRunP);
   xmlhttp.send();
 }
@@ -170,7 +170,7 @@ function sortSelect(selElem) {
     tmpAry[i] = new Array();
     tmpAry[i][0] = selElem.options[i].text;
     tmpAry[i][1] = selElem.options[i].value;
-    tmpAry[i][2] = selElem.options[i].id
+    tmpAry[i][2] = selElem.options[i].id;
   }
   tmpAry.sort();
   while (selElem.options.length > 0) {
@@ -203,7 +203,7 @@ function ShowPlots() {
 
   if (first_showing) {
     SelectedRunListOBJ = destructuringSwapHalf(SelectedRunListOBJ);
-    first_showing = false
+    first_showing = false;
     HideWaitIcon();
   }
 
@@ -290,7 +290,7 @@ function QueryFiles() {
         ShowPlots();
       }
     }
-  };
+  }
 
   console.log("js_utilities/rcdb_browser.php");
   xmlhttp.open("GET", "js_utilities/t.php", true);
@@ -310,7 +310,7 @@ function SetRunListOBJ() {
 
   for (var i = 0; i < SelectedRunOBJ["Versions"].length; i++) {
     if (SelectedRunOBJ["Versions"][i]["Version"] == SelectedVer) {
-      SelectedRunListOBJ = SelectedRunOBJ["Versions"][i]["Runs"]
+      SelectedRunListOBJ = SelectedRunOBJ["Versions"][i]["Runs"];
       var index = SelectedRunListOBJ.indexOf("IDXA");
       if (index !== -1) SelectedRunListOBJ.splice(index, 1);
       break;
@@ -319,17 +319,17 @@ function SetRunListOBJ() {
 }
 
 function SetOptionsFromURL() {
-  currentURL_split =document.URL.split("?")
+  currentURL_split = document.URL.split("?");
 
   if (currentURL_split.length == 2) {
-    URL_AND_split = currentURL_split[1].split("&")
-    console.log(URL_AND_split)
+    URL_AND_split = currentURL_split[1].split("&");
+    console.log(URL_AND_split);
     for (var i = 0; i < URL_AND_split.length; i++) {
-      var opt = URL_AND_split[i].split("=")
+      var opt = URL_AND_split[i].split("=");
       if (opt[0] == "minRunNum") {
-        document.getElementById("minRunNum").value = opt[1]
+        document.getElementById("minRunNum").value = opt[1];
       } else if (opt[0] == "maxRunNum") {
-        document.getElementById("maxRunNum").value = opt[1]
+        document.getElementById("maxRunNum").value = opt[1];
       } else if(opt[0] == "RunPeriod") {
         document.getElementById('RunPeriod').selectedIndex = document.getElementById(opt[1]).index;
         PopulateVersionSelector();
@@ -426,15 +426,15 @@ function PopulateVersionSelector() {
         var newoption   = document.createElement("option");
         var text = "";
         if (result[i]['Type'] == "rawdata") {
-          text += "Rootspy "
+          text += "Rootspy ";
         } else if (result[i]['Type'] == "recon") {
-          text += "Reconstruction Launch "
+          text += "Reconstruction Launch ";
         } else if (result[i]['Type'] == "mon" && result[i]['VersionNumber'] != 1) {
-          text += "Monitoring Launch "
+          text += "Monitoring Launch ";
         } else if (result[i]['Type'] == "mon" && result[i]['VersionNumber'] == 1) {
-          text += "Incoming Data "
+          text += "Incoming Data ";
         } else if (result[i]['Type'] == "mc") {
-          text += "Monte Carlo "
+          text += "Monte Carlo ";
         }
         text += 'ver' + ('00' + result[i]['VersionNumber']).slice(-2);
         newoption.text  = text;
