@@ -142,10 +142,9 @@ function DoQuery() {
 
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      query_result=this.responseText.split("_");
+      query_result = this.responseText.split("_");
       console.log(query_result);
       HideWaitIcon();
-      // QueryXref();
       ShowPlots();
     }
   }
@@ -509,14 +508,6 @@ function QueryXref() {
     });
   }
   toDisplay = to_return2;  // .reverse();
-}
-
-function findRun(Run) {
-  if (query_result.find(o==Run)) {
-    return true;
-  } else {
-    return false;
-  }
 }
 
 </script>
