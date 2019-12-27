@@ -79,7 +79,6 @@
   };
 
   // https://halldweb.jlab.org/data_monitoring/Plot_Browser.html?minRunNum=40000&maxRunNum=51000&RunPeriod=RunPeriod-2018-01&Version=rawdata_ver00&Plot=CDC_occupancy&rcdb_query=@is_2018production
-  var fileResult;
   var imgArray;
   var query_result = [];
   var SelectedRunListOBJ = [];
@@ -133,7 +132,6 @@ function PopulateColumnsSelector() {
 function DoQuery() {
   console.log(document.getElementById("rcdb_query").value);
 
-  var qresult = new Array;
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp = new XMLHttpRequest();
@@ -189,7 +187,6 @@ function ShowPlots() {
   var tableRef = document.getElementById('imgTable').getElementsByTagName('tbody')[0];
   var RunPSelector = document.getElementById("RunPeriod");
   var SelectedRunP = RunPSelector.options[RunPSelector.selectedIndex].value;
-  var SelectedRunOBJ = fileResult[RunPSelector.selectedIndex];
 
   var VerSelector = document.getElementById("Version");
   var SelectedVer = VerSelector.options[VerSelector.selectedIndex].value;
@@ -260,7 +257,6 @@ function ShowPlots() {
 }
 
 function QueryFiles() {
-  var qresult = new Array;
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp = new XMLHttpRequest();
@@ -271,7 +267,6 @@ function QueryFiles() {
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       result = JSON.parse(this.responseText);
-      fileResult = result;
       console.log("rcdb_browser 0");  // added on 17-Dec-2019
       console.log(result);
       console.log("rcdb_browser 1");  // added on 17-Dec-2019
