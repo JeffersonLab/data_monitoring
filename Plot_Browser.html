@@ -353,24 +353,24 @@ function SetOptionsFromURL() {
 function SetRunRange() {
   SetRunListOBJ();
 
-  currentURL_split = document.URL.split("?")
+  currentURL_split = document.URL.split("?");
 
   if (currentURL_split.length == 2) {
-    URL_AND_split = currentURL_split[1].split("&")
-    console.log(URL_AND_split)
+    URL_AND_split = currentURL_split[1].split("&");
+    console.log(URL_AND_split);
     for (var i = 0; i < URL_AND_split.length; i++) {
-      var opt=URL_AND_split[i].split("=")
+      var opt = URL_AND_split[i].split("=");
       if (opt[0] == "minRunNum") {
-        document.getElementById("minRunNum").value=opt[1]
+        document.getElementById("minRunNum").value = opt[1];
       } else if (opt[0] == "maxRunNum") {
-        document.getElementById("maxRunNum").value=opt[1]
+        document.getElementById("maxRunNum").value = opt[1];
       }
     }
   } else {
     if (SelectedRunListOBJ.length != 0) {
-      var numsList = SelectedRunListOBJ.map(e=>parseInt(e.split("Run")[1]))
+      var numsList = SelectedRunListOBJ.map(e=>parseInt(e.split("Run")[1]));
 
-      console.log(numsList)
+      console.log(numsList);
 
       document.getElementById("minRunNum").value = numsList.min();
       document.getElementById("maxRunNum").value = numsList.max();
