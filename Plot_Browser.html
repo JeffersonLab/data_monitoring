@@ -283,7 +283,7 @@ function QueryFiles() {
       }
       PopulateRunPeriodSelector();
       PopulateVersionSelector();
-      PopulateImagesSelector();
+      PopulateImagesSelector2();
       SetRunRange();
       SetOptionsFromURL();
       if (document.getElementById("rcdb_query").value == "") {
@@ -451,6 +451,37 @@ function PopulateVersionSelector() {
   xmlhttp.send();
 }
 
+function PopulateImagesSelector2() {
+  removeOptions(document.getElementById("Plot"));
+
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp = new XMLHttpRequest();
+  } else {
+    // code for IE6, IE5
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var result = JSON.parse(this.responseText);
+      console.log(result);
+      for (var i = 0; i < result.length; i++) {
+        var newoption   = document.createElement("option");
+        newoption.text  = result[i]['DisplayName'];
+        newoption.value = result[i]['FileName'];
+        newoption.id    = result[i]['ID'];
+        document.getElementById("Plot").add(newoption);
+        if (i == result.length - 1) {
+          newoption.selected = true;
+        }
+      }
+      sortSelect(document.getElementById("Plot"));
+    }
+  }
+  xmlhttp.open("GET", "js_utilities/populate_images_selector.php", false);
+  xmlhttp.send();
+}
+
 function PopulateImagesSelector() {
   removeOptions(document.getElementById("Plot"));
 
@@ -480,7 +511,6 @@ function PopulateImagesSelector() {
     }
 
     var newoption = document.createElement("option");
-    // console.log(SelectedRunOBJ["Versions"][i]["Version"])
     newoption.text = imgParts[1];
     newoption.value = imgParts[0];
     newoption.id = newoption.value.slice(0,-4);
@@ -490,7 +520,7 @@ function PopulateImagesSelector() {
       newoption.selected = true;
     }
   }
-  sortSelect(document.getElementById("Plot"))
+  sortSelect(document.getElementById("Plot"));
 }
 
 function readTextFile(file) {
