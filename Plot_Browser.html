@@ -283,7 +283,7 @@ function QueryFiles() {
       }
       PopulateRunPeriodSelector();
       PopulateVersionSelector();
-      PopulateImagesSelector2();
+      PopulateImagesSelector();
       SetRunRange();
       SetOptionsFromURL();
       if (document.getElementById("rcdb_query").value == "") {
@@ -451,7 +451,7 @@ function PopulateVersionSelector() {
   xmlhttp.send();
 }
 
-function PopulateImagesSelector2() {
+function PopulateImagesSelector() {
   removeOptions(document.getElementById("Plot"));
 
   if (window.XMLHttpRequest) {
@@ -480,47 +480,6 @@ function PopulateImagesSelector2() {
   }
   xmlhttp.open("GET", "js_utilities/populate_images_selector.php", false);
   xmlhttp.send();
-}
-
-function PopulateImagesSelector() {
-  removeOptions(document.getElementById("Plot"));
-
-  var VerSelector = document.getElementById("Version");
-  if (VerSelector.selectedIndex == -1) {
-    return;
-  }
-  var SelectedVer = VerSelector.options[VerSelector.selectedIndex].value;
-  var Ver_prefix = SelectedVer.split("_")[0];
-
-  for (var i = 0; i < imgArray.length - 1; i++) {
-    var imgParts = imgArray[i].split(",");
-    var bitmask = imgParts[3].split("")
-
-    if (Ver_prefix == "rawdata" && bitmask[0] == "0") {
-      continue;
-    } else if(Ver_prefix == "mon") {
-      if (SelectedVer == "mon_ver01" && bitmask[1] == "0") {
-        continue;
-      } else if(bitmask[2] == "0") {
-        continue;
-      }
-    } else if (Ver_prefix == "recon" && bitmask[3] == "0") {
-      continue;
-    } else if (Ver_prefix == "mc" && bitmask[3] == "0") {
-      continue;
-    }
-
-    var newoption = document.createElement("option");
-    newoption.text = imgParts[1];
-    newoption.value = imgParts[0];
-    newoption.id = newoption.value.slice(0,-4);
-    document.getElementById("Plot").add(newoption);
-
-    if (i == fileResult.length - 1) {
-      newoption.selected = true;
-    }
-  }
-  sortSelect(document.getElementById("Plot"));
 }
 
 function readTextFile(file) {
