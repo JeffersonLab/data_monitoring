@@ -298,24 +298,24 @@ function QueryFiles() {
 }
 
 function SetRunListOBJ() {
-  var RunPSelector = document.getElementById("RunPeriod");
-  var SelectedRunP = RunPSelector.options[RunPSelector.selectedIndex].value;
-  var SelectedRunOBJ = fileResult[RunPSelector.selectedIndex];
-
-  var VerSelector = document.getElementById("Version");
-  var SelectedVer = VerSelector.options[VerSelector.selectedIndex].value;
-
-  var IMGSelector = document.getElementById("Plot");
-  var SelectedIMG = IMGSelector.options[IMGSelector.selectedIndex].value;
-
-  for (var i = 0; i < SelectedRunOBJ["Versions"].length; i++) {
-    if (SelectedRunOBJ["Versions"][i]["Version"] == SelectedVer) {
-      SelectedRunListOBJ = SelectedRunOBJ["Versions"][i]["Runs"];
-      var index = SelectedRunListOBJ.indexOf("IDXA");
-      if (index !== -1) SelectedRunListOBJ.splice(index, 1);
-      break;
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp = new XMLHttpRequest();
+  } else {
+    // code for IE6, IE5
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var result = JSON.parse(this.responseText);
+      SelectedRunListOBJ = [];
+      for (var i = 0; i < result.length; i++) {
+        SelectedRunListOBJ.push('Run' + ('000000' + result[i]['RunNumber']).slice(-6));
+      }
     }
   }
+  xmlhttp.open("GET", "js_utilities/set_run_list_obj.php?ID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].id, false);
+  xmlhttp.send();
 }
 
 function SetOptionsFromURL() {
@@ -421,7 +421,6 @@ function PopulateVersionSelector() {
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       var result = JSON.parse(this.responseText);
-      console.log(result);
       for (var i = 0; i < result.length; i++) {
         var newoption   = document.createElement("option");
         var text = "";
@@ -439,7 +438,7 @@ function PopulateVersionSelector() {
         text += 'ver' + ('00' + result[i]['VersionNumber']).slice(-2);
         newoption.text  = text;
         newoption.value = result[i]['Type'] + '_ver' + ('00' + result[i]['VersionNumber']).slice(-2);
-        newoption.id    = newoption.value;
+        newoption.id    = result[i]['ID'];
         document.getElementById("Version").add(newoption);
         // if (i == result.length - 1) {
         //   newoption.selected = true;
@@ -464,7 +463,6 @@ function PopulateImagesSelector() {
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       var result = JSON.parse(this.responseText);
-      console.log(result);
       for (var i = 0; i < result.length; i++) {
         var newoption   = document.createElement("option");
         newoption.text  = result[i]['DisplayName'];

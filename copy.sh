@@ -5,4 +5,5 @@ cp js_utilities/rcdb_browser.php /group/halld/www/halldweb/html/data_monitoring/
 cp js_utilities/populate_runperiod_selector.php /group/halld/www/halldweb/html/data_monitoring/js_utilities/populate_runperiod_selector.php
 cp js_utilities/populate_version_selector.php /group/halld/www/halldweb/html/data_monitoring/js_utilities/populate_version_selector.php
 cp js_utilities/populate_images_selector.php /group/halld/www/halldweb/html/data_monitoring/js_utilities/populate_images_selector.php
+cp js_utilities/set_run_list_obj.php /group/halld/www/halldweb/html/data_monitoring/js_utilities/set_run_list_obj.php
 cp js_utilities/browser_family_to_json.py /group/halld/www/halldweb/html/data_monitoring/js_utilities/
