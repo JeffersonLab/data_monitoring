@@ -79,7 +79,6 @@
   };
 
   // https://halldweb.jlab.org/data_monitoring/Plot_Browser.html?minRunNum=40000&maxRunNum=51000&RunPeriod=RunPeriod-2018-01&Version=rawdata_ver00&Plot=CDC_occupancy&rcdb_query=@is_2018production
-  var imgArray;
   var query_result = [];
   var SelectedRunListOBJ = [];
   var toDisplay = [];
@@ -88,7 +87,6 @@
   $(document).ready(function() {
     PopulateColumnsSelector();
     QueryFiles();
-    readTextFile("./textdata/figure_titles");
   });
 
   // $(document).ready(connectToDB());
@@ -472,20 +470,6 @@ function PopulateImagesSelector() {
   }
   xmlhttp.open("GET", "js_utilities/populate_images_selector.php", false);
   xmlhttp.send();
-}
-
-function readTextFile(file) {
-  var rawFile = new XMLHttpRequest();
-  rawFile.open("GET", file, false);
-  rawFile.onreadystatechange = function() {
-    if (rawFile.readyState === 4) {
-      if (rawFile.status === 200 || rawFile.status == 0) {
-        var allText = rawFile.responseText;
-        imgArray = allText.split("\n");
-      }
-    }
-  }
-  rawFile.send(null);
 }
 
 function removeOptions(selectbox) {
