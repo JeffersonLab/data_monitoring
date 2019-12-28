@@ -12,7 +12,7 @@ if (!$conn) {
     die('Connection failed: ' . mysqli_connect_error());
 }
 mysqli_select_db($conn, $dbname);
-$sql = 'SELECT * FROM Versions WHERE RunPeriod_ID=' . $_GET["ID"] . ' ORDER BY VersionNumber';
+$sql = 'SELECT * FROM Versions WHERE RunPeriod_ID=' . $_GET["ID"] . ' ORDER BY Type, VersionNumber';
 $result = $conn->query($sql);
 $data = array();
 while ($row = $result->fetch_assoc()) {
