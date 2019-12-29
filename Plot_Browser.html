@@ -365,7 +365,7 @@ function PopulateRunPeriodSelector() {
         newoption.value = result[i]['Name'];
         newoption.id    = result[i]['ID'];
         document.getElementById("RunPeriod").add(newoption);
-        if (i == result.length - 1) {
+        if (i == result.length - 2) {
           newoption.selected = true;
         }
       }
@@ -407,9 +407,9 @@ function PopulateVersionSelector() {
         newoption.value = result[i]['Type'] + '_ver' + ('00' + result[i]['VersionNumber']).slice(-2);
         newoption.id    = result[i]['ID'];
         document.getElementById("Version").add(newoption);
-        // if (i == result.length - 1) {
-        //   newoption.selected = true;
-        // }
+        if (i == result.length - 3) {
+          newoption.selected = true;
+        }
       }
     }
   }
@@ -443,7 +443,7 @@ function PopulateImagesSelector() {
       sortSelect(document.getElementById("Plot"));
     }
   }
-  xmlhttp.open("GET", "js_utilities/populate_images_selector.php", false);
+  xmlhttp.open("GET", "js_utilities/populate_images_selector.php?ID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].id, false);
   xmlhttp.send();
 }
 
