@@ -86,7 +86,7 @@
 
   $(document).ready(function() {
     PopulateColumnsSelector();
-    QueryFiles();
+    PopulateRunPeriodSelector();
   });
 
   // $(document).ready(connectToDB());
@@ -247,15 +247,6 @@ function ShowPlots() {
     newCellh.appendChild(DOM_txt);
     newCell.appendChild(DOM_img);
     numAdded++;
-  }
-}
-
-function QueryFiles() {
-  PopulateRunPeriodSelector();
-  SetRunRange();
-  SetOptionsFromURL();
-  if (document.getElementById("rcdb_query").value == "") {
-    ShowPlots();
   }
 }
 
@@ -429,6 +420,11 @@ function PopulateImagesSelector() {
         }
       }
       sortSelect(document.getElementById("Plot"));
+      SetRunRange();
+      SetOptionsFromURL();
+      if (document.getElementById("rcdb_query").value == "") {
+        ShowPlots();
+      }
     }
   }
   xmlhttp.open("GET", "js_utilities/populate_images_selector.php?ID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].id, false);
