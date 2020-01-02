@@ -252,7 +252,6 @@ function ShowPlots() {
 
 function QueryFiles() {
   PopulateRunPeriodSelector();
-  PopulateVersionSelector();
   PopulateImagesSelector();
   SetRunRange();
   SetOptionsFromURL();
@@ -355,6 +354,7 @@ function PopulateRunPeriodSelector() {
           newoption.selected = true;
         }
       }
+      PopulateVersionSelector();
     }
   }
   xmlhttp.open("GET", "js_utilities/populate_runperiod_selector.php", false);
