@@ -398,6 +398,8 @@ function PopulateVersionSelector() {
           text += "Incoming Data ";
         } else if (result[i]['Type'] == "mc") {
           text += "Monte Carlo ";
+        } else {
+          continue;
         }
         text += 'ver' + ('00' + result[i]['VersionNumber']).slice(-2);
         newoption.text  = text;
