@@ -252,7 +252,6 @@ function ShowPlots() {
 
 function QueryFiles() {
   PopulateRunPeriodSelector();
-  PopulateImagesSelector();
   SetRunRange();
   SetOptionsFromURL();
   if (document.getElementById("rcdb_query").value == "") {
@@ -399,6 +398,7 @@ function PopulateVersionSelector() {
           newoption.selected = true;
         }
       }
+      PopulateImagesSelector();
     }
   }
   xmlhttp.open("GET", "js_utilities/populate_version_selector.php?ID=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].id, false);
