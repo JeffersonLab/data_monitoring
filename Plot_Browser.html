@@ -55,8 +55,8 @@
     <div>
       Select Run Period: <select id="RunPeriod" name="RunPeriod" onChange="PopulateVersionSelector()"></select>
       Select Version: <select id="Version" name="Version" onChange="PopulateImagesSelector()"></select><br>
-      Plot to Display: <select id="Plot" name="Plot" onChange="ShowPlots()"></select>Toggle plot order<input type="button" onclick="toggleDisplayOrder()"/>    columns: <select id="Columns" name="Columns" onChange="ShowPlots()"></select><br>
-      Run Range: <input type="number" id="minRunNum" name="minRunNum" size="20" onChange="ShowPlots()"/>-<input type="number" id="maxRunNum" name="maxRunNum" size="20" onChange="ShowPlots()"/><br>
+      Plot to Display: <select id="Plot" name="Plot" onChange="SetRunListOBJ();ShowPlots()"></select>Toggle plot order<input type="button" onclick="toggleDisplayOrder()"/>    columns: <select id="Columns" name="Columns" onChange="ShowPlots()"></select><br>
+      Run Range: <input type="number" id="minRunNum" name="minRunNum" size="20" onChange="SetRunListOBJ();ShowPlots()"/>-<input type="number" id="maxRunNum" name="maxRunNum" size="20" onChange="SetRunListOBJ();ShowPlots()"/><br>
       Query: <input type="text" id="rcdb_query" name="rcdb_query" size="40" />
       <input type="button" value="Query" onclick="ShowWaitIcon();DoQuery();">  <img id="wait_icon" name="wait_icon" src="./hourglass.png">
       <hr>
@@ -142,6 +142,7 @@ function DoQuery() {
       query_result = this.responseText.split("_");
       console.log(query_result);
       HideWaitIcon();
+      SetRunListOBJ();
       ShowPlots();
     }
   }
@@ -190,8 +191,6 @@ function ShowPlots() {
   var SelectedIMG = IMGSelector.options[IMGSelector.selectedIndex].value;
 
   var columnstoDisplay = document.getElementById("Columns").value;
-
-  SetRunListOBJ();
 
   if (first_showing) {
     SelectedRunListOBJ = destructuringSwapHalf(SelectedRunListOBJ);
@@ -414,6 +413,7 @@ function PopulateImagesSelector() {
       sortSelect(document.getElementById("Plot"));
       SetRunRange();
       SetOptionsFromURL();
+      SetRunListOBJ();
       if (document.getElementById("rcdb_query").value == "") {
         ShowPlots();
       }
