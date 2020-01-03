@@ -338,10 +338,8 @@ function PopulateRunPeriodSelector() {
         newoption.text  = result[i]['Name'];
         newoption.value = result[i]['Name'];
         newoption.id    = result[i]['ID'];
+        if (i == result.length - 2) newoption.selected = true;
         document.getElementById("RunPeriod").add(newoption);
-        if (i == result.length - 2) {
-          newoption.selected = true;
-        }
       }
       PopulateVersionSelector();
     }
