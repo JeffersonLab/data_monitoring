@@ -93,19 +93,8 @@
 
 function toggleDisplayOrder() {
   console.log('[oyster] toggleDisplayOrder() called');
-  SelectedRunListOBJ = destructuringSwapHalf(SelectedRunListOBJ);
+  SelectedRunListOBJ.reverse();
   ShowPlots();
-}
-
-function destructuringSwapHalf(array) {
-  var left = null;
-  var right = null;
-  var length = array.length;
-  for (left = 0; left < length / 2; left += 1) {
-    right = length - 1 - left;
-    [array[left], array[right]] = [array[right], array[left]];
-  }
-  return array;
 }
 
 function ShowWaitIcon() {
@@ -193,7 +182,7 @@ function ShowPlots() {
   var columnstoDisplay = document.getElementById("Columns").value;
 
   if (first_showing) {
-    SelectedRunListOBJ = destructuringSwapHalf(SelectedRunListOBJ);
+    SelectedRunListOBJ.reverse();
     first_showing = false;
     HideWaitIcon();
   }
