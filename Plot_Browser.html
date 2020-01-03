@@ -92,6 +92,7 @@
   // $(document).ready(connectToDB());
 
 function toggleDisplayOrder() {
+  console.log('[oyster] toggleDisplayOrder() called');
   SelectedRunListOBJ = destructuringSwapHalf(SelectedRunListOBJ);
   ShowPlots();
 }
@@ -117,13 +118,11 @@ function HideWaitIcon() {
 
 function PopulateColumnsSelector() {
   for (var i = 1; i <= 10; i++) {
-    var newoption = document.createElement("option");
-    newoption.text = i;
+    var newoption   = document.createElement("option");
+    newoption.text  = i;
     newoption.value = i;
+    if (i == 3) newoption.selected = true;
     document.getElementById("Columns").add(newoption);
-    if (i == 3) {
-      newoption.selected = true;
-    }
   }
 }
 
