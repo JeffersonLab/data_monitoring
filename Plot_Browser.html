@@ -83,6 +83,7 @@
   var SelectedRunListOBJ = [];
   var toDisplay = [];
   var first_showing = true;
+  var run_num_limit = 30;
 
   $(document).ready(function() {
     PopulateColumnsSelector();
@@ -248,7 +249,7 @@ function SetRunListOBJ() {
       document.getElementById("maxRunNum").value = int_run_list.max();
     }
   }
-  xmlhttp.open("GET", "js_utilities/set_run_list_obj.php?verID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].id + "&typeID=" + document.getElementById("Plot").options[document.getElementById("Plot").selectedIndex].id, false);
+  xmlhttp.open("GET", "js_utilities/set_run_list_obj.php?verID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].id + "&typeID=" + document.getElementById("Plot").options[document.getElementById("Plot").selectedIndex].id + "&runNumLimit=" + run_num_limit, false);
   xmlhttp.send();
 }
 

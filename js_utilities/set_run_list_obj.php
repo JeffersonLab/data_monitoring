@@ -12,7 +12,7 @@ if (!$conn) {
     die('Connection failed: ' . mysqli_connect_error());
 }
 mysqli_select_db($conn, $dbname);
-$sql = 'SELECT * FROM Runs WHERE Version_ID=' . $_GET["verID"] . ' AND ID IN (SELECT Run_ID FROM Plots WHERE PlotType_ID=' . $_GET["typeID"] . ') ORDER BY RunNumber DESC LIMIT 20';
+$sql = 'SELECT * FROM Runs WHERE Version_ID=' . $_GET["verID"] . ' AND ID IN (SELECT Run_ID FROM Plots WHERE PlotType_ID=' . $_GET["typeID"] . ') ORDER BY RunNumber DESC LIMIT ' . $_GET["runNumLimit"];
 $result = $conn->query($sql);
 $data = array();
 while ($row = $result->fetch_assoc()) {
