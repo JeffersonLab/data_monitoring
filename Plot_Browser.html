@@ -381,10 +381,8 @@ function PopulateVersionSelector() {
         newoption.text  = text;
         newoption.value = result[i]['Type'] + '_ver' + ('00' + result[i]['VersionNumber']).slice(-2);
         newoption.id    = result[i]['ID'];
+        if (i == 0) newoption.selected = true;
         document.getElementById("Version").add(newoption);
-        if (i == result.length - 3) {
-          newoption.selected = true;
-        }
       }
       PopulateImagesSelector();
     }
