@@ -347,7 +347,7 @@ function PopulateRunPeriodSelector() {
       PopulateVersionSelector();
     }
   }
-  xmlhttp.open("GET", "js_utilities/populate_runperiod_selector.php", false);
+  xmlhttp.open("GET", "js_utilities/populate_runperiod_selector.php", true);
   xmlhttp.send();
 }
 
@@ -392,7 +392,7 @@ function PopulateVersionSelector() {
       PopulateImagesSelector();
     }
   }
-  xmlhttp.open("GET", "js_utilities/populate_version_selector.php?ID=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].id, false);
+  xmlhttp.open("GET", "js_utilities/populate_version_selector.php?ID=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].id, true);
   xmlhttp.send();
 }
 
@@ -427,7 +427,7 @@ function PopulateImagesSelector() {
       }
     }
   }
-  xmlhttp.open("GET", "js_utilities/populate_images_selector.php?ID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].id, false);
+  xmlhttp.open("GET", "js_utilities/populate_images_selector.php?ID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].id, true);
   xmlhttp.send();
 }
 
