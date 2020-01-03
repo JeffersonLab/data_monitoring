@@ -409,10 +409,8 @@ function PopulateImagesSelector() {
         newoption.text  = result[i]['DisplayName'];
         newoption.value = result[i]['FileName'];
         newoption.id    = result[i]['ID'];
+        if (i == result.length - 1) newoption.selected = true;
         document.getElementById("Plot").add(newoption);
-        if (i == result.length - 1) {
-          newoption.selected = true;
-        }
       }
       sortSelect(document.getElementById("Plot"));
       SetRunRange();
