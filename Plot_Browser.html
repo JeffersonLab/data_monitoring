@@ -382,27 +382,20 @@ function PopulateImagesSelector() {
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       var result = JSON.parse(this.responseText);
-      if (result.length == 0) {
+      for (var i = 0; i < result.length; i++) {
         var newoption   = document.createElement("option");
-        newoption.text  = 'No Runs for this version';
-        newoption.selected = true;
+        newoption.text  = result[i]['DisplayName'];
+        newoption.value = result[i]['FileName'];
+        newoption.id    = result[i]['ID'];
+        if (i == result.length - 1) newoption.selected = true;
         document.getElementById("Plot").add(newoption);
-      } else {
-        for (var i = 0; i < result.length; i++) {
-          var newoption   = document.createElement("option");
-          newoption.text  = result[i]['DisplayName'];
-          newoption.value = result[i]['FileName'];
-          newoption.id    = result[i]['ID'];
-          if (i == result.length - 1) newoption.selected = true;
-          document.getElementById("Plot").add(newoption);
-        }
-        sortSelect(document.getElementById("Plot"));
-        SetRunRange();
-        SetOptionsFromURL();
-        SetRunListOBJ();
-        if (document.getElementById("rcdb_query").value == "") {
-          ShowPlots();
-        }
+      }
+      sortSelect(document.getElementById("Plot"));
+      SetRunRange();
+      SetOptionsFromURL();
+      SetRunListOBJ();
+      if (document.getElementById("rcdb_query").value == "") {
+        ShowPlots();
       }
     }
   }
