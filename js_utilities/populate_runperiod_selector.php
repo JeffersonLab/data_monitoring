@@ -22,7 +22,6 @@ while ($row = $result->fetch_assoc()) {
         'Location_ID' => $row['Location_ID']
     );
 }
-// file_put_contents('../debug2.txt', json_encode($data));
 
 $conn->close();
 
