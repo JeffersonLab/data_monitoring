@@ -54,8 +54,8 @@
     <div>
       Select Run Period: <select id="RunPeriod" name="RunPeriod" onChange="PopulateVersionSelector()"></select>
       Select Version: <select id="Version" name="Version" onChange="PopulateImagesSelector()"></select><br>
-      Plot to Display: <select id="Plot" name="Plot" onChange="SetRunListOBJ();ShowPlots()"></select> Toggle plot order<input type="button" onclick="SelectedRunListOBJ.reverse();ShowPlots()"/>    columns: <select id="Columns" name="Columns" onChange="ShowPlots()"></select><br>
-      Run Range: <input type="number" id="minRunNum" name="minRunNum" size="20" onChange="SetRunListOBJ();ShowPlots()"/>-<input type="number" id="maxRunNum" name="maxRunNum" size="20" onChange="SetRunListOBJ();ShowPlots()"/>  Max #plots: <input type="number" id="maxNumOfPlots" name="maxNumOfPlots" min="1" size="20" onChange="run_num_limit=document.getElementById('maxNumOfPlots').value;SetRunListOBJ();ShowPlots()"/><br>
+      Plot to Display: <select id="Plot" name="Plot" onChange="SetRunListOBJ(true);ShowPlots()"></select> Toggle plot order<input type="button" onclick="SelectedRunListOBJ.reverse();ShowPlots()"/>    columns: <select id="Columns" name="Columns" onChange="ShowPlots()"></select><br>
+      Run Range: <input type="number" id="minRunNum" name="minRunNum" size="20" onChange="SetRunListOBJ();ShowPlots()"/>-<input type="number" id="maxRunNum" name="maxRunNum" size="20" onChange="SetRunListOBJ();ShowPlots()"/>  Max #plots: <input type="number" id="maxNumOfPlots" name="maxNumOfPlots" min="1" size="20" onChange="SetMaxNumPlots();SetRunListOBJ();ShowPlots()"/><br>
       Query: <input type="text" id="rcdb_query" name="rcdb_query" size="40" />
       <input type="button" value="Query" onclick="ShowWaitIcon();DoQuery();">  <img id="wait_icon" name="wait_icon" src="./hourglass.png">
       <hr>
@@ -101,6 +101,16 @@ function HideWaitIcon() {
   document.getElementById("wait_icon").style.visibility = "hidden";
 }
 
+function SetMaxNumPlots() {
+  var tmp_num = document.getElementById('maxNumOfPlots').value;
+  if (tmp_num >= 1) {
+    run_num_limit = tmp_num;
+  } else {
+    run_num_limit = 1;
+    document.getElementById('maxNumOfPlots').value = run_num_limit;
+  }
+}
+
 function PopulateColumnsSelector() {
   for (var i = 1; i <= 10; i++) {
     var newoption   = document.createElement("option");
@@ -127,7 +137,7 @@ function DoQuery() {
       query_result = this.responseText.split("_");
       console.log(query_result);
       HideWaitIcon();
-      SetRunListOBJ();
+      SetRunListOBJ(true);
       ShowPlots();
     }
   }
@@ -235,7 +245,7 @@ function ShowPlots() {
   }
 }
 
-function SetRunListOBJ() {
+function SetRunListOBJ(run_range_update_flag=false) {
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp = new XMLHttpRequest();
@@ -252,17 +262,19 @@ function SetRunListOBJ() {
         SelectedRunListOBJ.push('Run' + ('000000' + result[i]['RunNumber']).slice(-6));
         int_run_list.push(parseInt(result[i]['RunNumber']));
       }
-      if (global_parameters['minRunNum'] == "") {
-        document.getElementById("minRunNum").value = int_run_list.min();
-      } else {
-        document.getElementById("minRunNum").value = global_parameters['minRunNum'];
-        global_parameters['minRunNum'] = "";
-      }
-      if (global_parameters['maxRunNum'] == "") {
-        document.getElementById("maxRunNum").value = int_run_list.max();
-      } else {
-        document.getElementById("maxRunNum").value = global_parameters['maxRunNum'];
-        global_parameters['maxRunNum'] = "";
+      if (run_range_update_flag) {
+        if (global_parameters['minRunNum'] == "") {
+          document.getElementById("minRunNum").value = int_run_list.min();
+        } else {
+          document.getElementById("minRunNum").value = global_parameters['minRunNum'];
+          global_parameters['minRunNum'] = "";
+        }
+        if (global_parameters['maxRunNum'] == "") {
+          document.getElementById("maxRunNum").value = int_run_list.max();
+        } else {
+          document.getElementById("maxRunNum").value = global_parameters['maxRunNum'];
+          global_parameters['maxRunNum'] = "";
+        }
       }
     }
   }
@@ -402,7 +414,7 @@ function PopulateImagesSelector() {
         DoQuery();
         global_parameters['rcdb_query'] == "";
       } else {
-        SetRunListOBJ();
+        SetRunListOBJ(true);
         if (document.getElementById("rcdb_query").value == "") {
           ShowPlots();
         }
