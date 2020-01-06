@@ -84,6 +84,8 @@
   var first_showing = true;
   var run_num_limit = 100;
 
+  var global_parameters = { minRunNum: "", maxRunNum: "", RunPeriod: "", Version: "", Plot: "", rcdb_query: "" };
+
   $(document).ready(function() {
     document.getElementById('maxNumOfPlots').value = run_num_limit;
     PopulateColumnsSelector();
@@ -255,6 +257,18 @@ function SetRunListOBJ() {
   xmlhttp.send();
 }
 
+function SetOptionsFromURL2() {
+  currentURL_split = document.URL.split("?");
+
+  if (currentURL_split.length == 2) {
+    URL_AND_split = currentURL_split[1].split("&");
+    for (var i = 0; i < URL_AND_split.length; i++) {
+      var opt = URL_AND_split[i].split("=");
+      global_parameters[opt[0]] = opt[1];
+    }
+  }
+}
+
 function SetOptionsFromURL() {
   currentURL_split = document.URL.split("?");
 
@@ -381,7 +395,7 @@ function PopulateImagesSelector() {
         document.getElementById("Plot").add(newoption);
       }
       sortSelect(document.getElementById("Plot"));
-      // SetOptionsFromURL();
+      SetOptionsFromURL2();
       SetRunListOBJ();
       if (document.getElementById("rcdb_query").value == "") {
         ShowPlots();
