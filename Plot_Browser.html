@@ -256,11 +256,13 @@ function SetRunListOBJ() {
         document.getElementById("minRunNum").value = int_run_list.min();
       } else {
         document.getElementById("minRunNum").value = global_parameters['minRunNum'];
+        global_parameters['minRunNum'] = "";
       }
       if (global_parameters['maxRunNum'] == "") {
         document.getElementById("maxRunNum").value = int_run_list.max();
       } else {
         document.getElementById("maxRunNum").value = global_parameters['maxRunNum'];
+        global_parameters['maxRunNum'] = "";
       }
     }
   }
@@ -304,6 +306,7 @@ function PopulateRunPeriodSelector() {
         }
         document.getElementById("RunPeriod").add(newoption);
       }
+      global_parameters['RunPeriod'] == "";
       PopulateVersionSelector();
     }
   }
@@ -353,6 +356,7 @@ function PopulateVersionSelector() {
         }
         document.getElementById("Version").add(newoption);
       }
+      global_parameters['Version'] == "";
       PopulateImagesSelector();
     }
   }
@@ -382,12 +386,13 @@ function PopulateImagesSelector() {
         if (newoption.id == global_parameters['Plot']) {
           newoption.selected = true;
         }
-        if (i == result.length - 1 && global_parameters['Plot'] == "") {
-          newoption.selected = true;
-        }
         document.getElementById("Plot").add(newoption);
       }
       sortSelect(document.getElementById("Plot"));
+      if (global_parameters['Plot'] == "") {
+        document.getElementById("Plot").selectedIndex = 0;
+      }
+      global_parameters['Plot'] == "";
       if (global_parameters['rcdb_query'] != "") {
         query_string = global_parameters['rcdb_query'].replace(/%3E/g, ">");
         query_string = query_string.replace(/%20/g, " ");
@@ -395,10 +400,12 @@ function PopulateImagesSelector() {
         document.getElementById('rcdb_query').value = query_string;
         ShowWaitIcon();
         DoQuery();
-      }
-      SetRunListOBJ();
-      if (document.getElementById("rcdb_query").value == "") {
-        ShowPlots();
+        global_parameters['rcdb_query'] == "";
+      } else {
+        SetRunListOBJ();
+        if (document.getElementById("rcdb_query").value == "") {
+          ShowPlots();
+        }
       }
     }
   }
