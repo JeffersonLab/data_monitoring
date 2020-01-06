@@ -148,6 +148,7 @@ function sortSelect(selElem) {
     tmpAry[i][0] = selElem.options[i].text;
     tmpAry[i][1] = selElem.options[i].value;
     tmpAry[i][2] = selElem.options[i].id;
+    tmpAry[i][3] = selElem.options[i].dbid;
   }
   tmpAry.sort();
   while (selElem.options.length > 0) {
@@ -155,7 +156,8 @@ function sortSelect(selElem) {
   }
   for (var i = 0; i < tmpAry.length; i++) {
     var op = new Option(tmpAry[i][0], tmpAry[i][1]);
-    op.id = tmpAry[i][2];
+    op.id   = tmpAry[i][2];
+    op.dbid = tmpAry[i][3];
     selElem.options[i] = op;
   }
   return;
@@ -249,7 +251,7 @@ function SetRunListOBJ() {
       document.getElementById("maxRunNum").value = int_run_list.max();
     }
   }
-  xmlhttp.open("GET", "js_utilities/set_run_list_obj.php?verID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].id + "&typeID=" + document.getElementById("Plot").options[document.getElementById("Plot").selectedIndex].id + "&runNumLimit=" + run_num_limit, false);
+  xmlhttp.open("GET", "js_utilities/set_run_list_obj.php?verID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid + "&typeID=" + document.getElementById("Plot").options[document.getElementById("Plot").selectedIndex].dbid + "&runNumLimit=" + run_num_limit, false);
   xmlhttp.send();
 }
 
@@ -316,7 +318,8 @@ function PopulateRunPeriodSelector() {
         var newoption   = document.createElement("option");
         newoption.text  = result[i]['Name'];
         newoption.value = result[i]['Name'];
-        newoption.id    = result[i]['ID'];
+        newoption.id    = result[i]['Name'];
+        newoption.dbid  = result[i]['ID'];
         if (i == result.length - 1) newoption.selected = true;
         document.getElementById("RunPeriod").add(newoption);
       }
@@ -359,14 +362,15 @@ function PopulateVersionSelector() {
         text += 'ver' + ('00' + result[i]['VersionNumber']).slice(-2);
         newoption.text  = text;
         newoption.value = result[i]['Type'] + '_ver' + ('00' + result[i]['VersionNumber']).slice(-2);
-        newoption.id    = result[i]['ID'];
+        newoption.id    = newoption.value;
+        newoption.dbid  = result[i]['ID'];
         if (i == 0) newoption.selected = true;
         document.getElementById("Version").add(newoption);
       }
       PopulateImagesSelector();
     }
   }
-  xmlhttp.open("GET", "js_utilities/populate_version_selector.php?ID=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].id, true);
+  xmlhttp.open("GET", "js_utilities/populate_version_selector.php?ID=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].dbid, true);
   xmlhttp.send();
 }
 
@@ -387,7 +391,8 @@ function PopulateImagesSelector() {
         var newoption   = document.createElement("option");
         newoption.text  = result[i]['DisplayName'];
         newoption.value = result[i]['FileName'];
-        newoption.id    = result[i]['ID'];
+        newoption.id    = result[i]['FileName'];
+        newoption.dbid  = result[i]['ID'];
         if (i == result.length - 1) newoption.selected = true;
         document.getElementById("Plot").add(newoption);
       }
@@ -400,7 +405,7 @@ function PopulateImagesSelector() {
       }
     }
   }
-  xmlhttp.open("GET", "js_utilities/populate_images_selector.php?ID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].id, true);
+  xmlhttp.open("GET", "js_utilities/populate_images_selector.php?ID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid, true);
   xmlhttp.send();
 }
 
