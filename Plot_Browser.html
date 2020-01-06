@@ -55,7 +55,7 @@
       Select Run Period: <select id="RunPeriod" name="RunPeriod" onChange="PopulateVersionSelector()"></select>
       Select Version: <select id="Version" name="Version" onChange="PopulateImagesSelector()"></select><br>
       Plot to Display: <select id="Plot" name="Plot" onChange="SetRunListOBJ();ShowPlots()"></select>Toggle plot order<input type="button" onclick="SelectedRunListOBJ.reverse();ShowPlots()"/>    columns: <select id="Columns" name="Columns" onChange="ShowPlots()"></select><br>
-      Run Range: <input type="number" id="minRunNum" name="minRunNum" size="20" onChange="SetRunListOBJ();ShowPlots()"/>-<input type="number" id="maxRunNum" name="maxRunNum" size="20" onChange="SetRunListOBJ();ShowPlots()"/>  Max # of plots: <input type="number" id="maxNumOfPlots" name="maxNumOfPlots" size="20" onChange="run_num_limit=document.getElementById('maxNumOfPlots').value;SetRunListOBJ();ShowPlots()"/><br>
+      Run Range: <input type="number" id="minRunNum" name="minRunNum" size="20" onChange="SetRunListOBJ();ShowPlots()"/>-<input type="number" id="maxRunNum" name="maxRunNum" size="20" onChange="SetRunListOBJ();ShowPlots()"/>  Max # of plots: <input type="number" id="maxNumOfPlots" name="maxNumOfPlots" min="1" size="20" onChange="run_num_limit=document.getElementById('maxNumOfPlots').value;SetRunListOBJ();ShowPlots()"/><br>
       Query: <input type="text" id="rcdb_query" name="rcdb_query" size="40" />
       <input type="button" value="Query" onclick="ShowWaitIcon();DoQuery();">  <img id="wait_icon" name="wait_icon" src="./hourglass.png">
       <hr>
