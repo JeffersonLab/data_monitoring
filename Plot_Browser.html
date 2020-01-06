@@ -252,8 +252,16 @@ function SetRunListOBJ() {
         SelectedRunListOBJ.push('Run' + ('000000' + result[i]['RunNumber']).slice(-6));
         int_run_list.push(parseInt(result[i]['RunNumber']));
       }
-      document.getElementById("minRunNum").value = int_run_list.min();
-      document.getElementById("maxRunNum").value = int_run_list.max();
+      if (global_parameters['minRunNum'] == "") {
+        document.getElementById("minRunNum").value = int_run_list.min();
+      } else {
+        document.getElementById("minRunNum").value = global_parameters['minRunNum'];
+      }
+      if (global_parameters['maxRunNum'] == "") {
+        document.getElementById("maxRunNum").value = int_run_list.max();
+      } else {
+        document.getElementById("maxRunNum").value = global_parameters['maxRunNum'];
+      }
     }
   }
   xmlhttp.open("GET", "js_utilities/set_run_list_obj.php?verID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid + "&typeID=" + document.getElementById("Plot").options[document.getElementById("Plot").selectedIndex].dbid + "&runNumLimit=" + run_num_limit, false);
