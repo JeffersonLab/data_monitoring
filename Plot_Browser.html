@@ -87,6 +87,7 @@
   var global_parameters = { minRunNum: "", maxRunNum: "", RunPeriod: "", Version: "", Plot: "", rcdb_query: "" };
 
   $(document).ready(function() {
+    SetOptionsFromURL2();
     document.getElementById('maxNumOfPlots').value = run_num_limit;
     PopulateColumnsSelector();
     PopulateRunPeriodSelector();
@@ -151,6 +152,7 @@ function sortSelect(selElem) {
     tmpAry[i][1] = selElem.options[i].value;
     tmpAry[i][2] = selElem.options[i].id;
     tmpAry[i][3] = selElem.options[i].dbid;
+    tmpAry[i][4] = selElem.options[i].selected;
   }
   tmpAry.sort();
   while (selElem.options.length > 0) {
@@ -158,8 +160,9 @@ function sortSelect(selElem) {
   }
   for (var i = 0; i < tmpAry.length; i++) {
     var op = new Option(tmpAry[i][0], tmpAry[i][1]);
-    op.id   = tmpAry[i][2];
-    op.dbid = tmpAry[i][3];
+    op.id       = tmpAry[i][2];
+    op.dbid     = tmpAry[i][3];
+    op.selected = tmpAry[i][4];
     selElem.options[i] = op;
   }
   return;
@@ -269,6 +272,17 @@ function SetOptionsFromURL2() {
   }
 }
 
+function SetOptionsFromURL3() {
+  if (global_parameters['rcdb_query'] != "") {
+    query_string = global_parameters['rcdb_query'].replace(/%3E/g, ">");
+    query_string = query_string.replace(/%20/g, " ");
+    // query_string = query_string.replace(/#as/g, " ");
+    document.getElementById('rcdb_query').value = query_string;
+    ShowWaitIcon();
+    DoQuery();
+  }
+}
+
 function SetOptionsFromURL() {
   currentURL_split = document.URL.split("?");
 
@@ -318,7 +332,12 @@ function PopulateRunPeriodSelector() {
         newoption.value = result[i]['Name'];
         newoption.id    = result[i]['Name'];
         newoption.dbid  = result[i]['ID'];
-        if (i == result.length - 1) newoption.selected = true;
+        if (newoption.id == global_parameters['RunPeriod']) {
+          newoption.selected = true;
+        }
+        if (i == result.length - 1 && global_parameters['RunPeriod'] == "") {
+          newoption.selected = true;
+        }
         document.getElementById("RunPeriod").add(newoption);
       }
       PopulateVersionSelector();
@@ -362,7 +381,12 @@ function PopulateVersionSelector() {
         newoption.value = result[i]['Type'] + '_ver' + ('00' + result[i]['VersionNumber']).slice(-2);
         newoption.id    = newoption.value;
         newoption.dbid  = result[i]['ID'];
-        if (i == 0) newoption.selected = true;
+        if (newoption.id == global_parameters['Version']) {
+          newoption.selected = true;
+        }
+        if (i == 0 && global_parameters['Version'] == "") {
+          newoption.selected = true;
+        }
         document.getElementById("Version").add(newoption);
       }
       PopulateImagesSelector();
@@ -389,13 +413,18 @@ function PopulateImagesSelector() {
         var newoption   = document.createElement("option");
         newoption.text  = result[i]['DisplayName'];
         newoption.value = result[i]['FileName'];
-        newoption.id    = result[i]['FileName'];
+        newoption.id    = newoption.value.slice(0,-4);
         newoption.dbid  = result[i]['ID'];
-        if (i == result.length - 1) newoption.selected = true;
+        if (newoption.id == global_parameters['Plot']) {
+          newoption.selected = true;
+        }
+        if (i == result.length - 1 && global_parameters['Plot'] == "") {
+          newoption.selected = true;
+        }
         document.getElementById("Plot").add(newoption);
       }
       sortSelect(document.getElementById("Plot"));
-      SetOptionsFromURL2();
+      SetOptionsFromURL3();
       SetRunListOBJ();
       if (document.getElementById("rcdb_query").value == "") {
         ShowPlots();
