@@ -87,7 +87,7 @@
   var global_parameters = { minRunNum: "", maxRunNum: "", RunPeriod: "", Version: "", Plot: "", rcdb_query: "" };
 
   $(document).ready(function() {
-    SetOptionsFromURL2();
+    SetOptionsFromURL();
     document.getElementById('maxNumOfPlots').value = run_num_limit;
     PopulateColumnsSelector();
     PopulateRunPeriodSelector();
@@ -268,57 +268,13 @@ function SetRunListOBJ() {
   xmlhttp.send();
 }
 
-function SetOptionsFromURL2() {
+function SetOptionsFromURL() {
   currentURL_split = document.URL.split("?");
-
   if (currentURL_split.length == 2) {
     URL_AND_split = currentURL_split[1].split("&");
     for (var i = 0; i < URL_AND_split.length; i++) {
       var opt = URL_AND_split[i].split("=");
       global_parameters[opt[0]] = opt[1];
-    }
-  }
-}
-
-function SetOptionsFromURL3() {
-  if (global_parameters['rcdb_query'] != "") {
-    query_string = global_parameters['rcdb_query'].replace(/%3E/g, ">");
-    query_string = query_string.replace(/%20/g, " ");
-    // query_string = query_string.replace(/#as/g, " ");
-    document.getElementById('rcdb_query').value = query_string;
-    ShowWaitIcon();
-    DoQuery();
-  }
-}
-
-function SetOptionsFromURL() {
-  currentURL_split = document.URL.split("?");
-
-  if (currentURL_split.length == 2) {
-    URL_AND_split = currentURL_split[1].split("&");
-    console.log(URL_AND_split);
-    for (var i = 0; i < URL_AND_split.length; i++) {
-      var opt = URL_AND_split[i].split("=");
-      if (opt[0] == "minRunNum") {
-        document.getElementById("minRunNum").value = opt[1];
-      } else if (opt[0] == "maxRunNum") {
-        document.getElementById("maxRunNum").value = opt[1];
-      } else if (opt[0] == "RunPeriod") {
-        document.getElementById('RunPeriod').selectedIndex = document.getElementById(opt[1]).index;
-        PopulateVersionSelector();
-      } else if (opt[0] == "Version") {
-        document.getElementById('Version').selectedIndex = document.getElementById(opt[1]).index;
-        PopulateImagesSelector();
-      } else if (opt[0] == "Plot") {
-        document.getElementById('Plot').selectedIndex = document.getElementById(opt[1]).index;
-      } else if (opt[0] == "rcdb_query") {
-        query_string = opt[1].replace(/%3E/g, ">");
-        query_string = query_string.replace(/%20/g, " ");
-        // query_string = query_string.replace(/#as/g, " ");
-        document.getElementById('rcdb_query').value = query_string;
-        ShowWaitIcon();
-        DoQuery();
-      }
     }
   }
 }
@@ -432,7 +388,14 @@ function PopulateImagesSelector() {
         document.getElementById("Plot").add(newoption);
       }
       sortSelect(document.getElementById("Plot"));
-      SetOptionsFromURL3();
+      if (global_parameters['rcdb_query'] != "") {
+        query_string = global_parameters['rcdb_query'].replace(/%3E/g, ">");
+        query_string = query_string.replace(/%20/g, " ");
+        // query_string = query_string.replace(/#as/g, " ");
+        document.getElementById('rcdb_query').value = query_string;
+        ShowWaitIcon();
+        DoQuery();
+      }
       SetRunListOBJ();
       if (document.getElementById("rcdb_query").value == "") {
         ShowPlots();
