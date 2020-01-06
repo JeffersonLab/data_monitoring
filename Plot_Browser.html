@@ -287,22 +287,6 @@ function SetOptionsFromURL() {
   }
 }
 
-function SetRunRange() {
-  currentURL_split = document.URL.split("?");
-  if (currentURL_split.length == 2) {
-    URL_AND_split = currentURL_split[1].split("&");
-    console.log(URL_AND_split);
-    for (var i = 0; i < URL_AND_split.length; i++) {
-      var opt = URL_AND_split[i].split("=");
-      if (opt[0] == "minRunNum") {
-        document.getElementById("minRunNum").value = opt[1];
-      } else if (opt[0] == "maxRunNum") {
-        document.getElementById("maxRunNum").value = opt[1];
-      }
-    }
-  }
-}
-
 function PopulateRunPeriodSelector() {
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -397,8 +381,7 @@ function PopulateImagesSelector() {
         document.getElementById("Plot").add(newoption);
       }
       sortSelect(document.getElementById("Plot"));
-      SetRunRange();
-      SetOptionsFromURL();
+      // SetOptionsFromURL();
       SetRunListOBJ();
       if (document.getElementById("rcdb_query").value == "") {
         ShowPlots();
