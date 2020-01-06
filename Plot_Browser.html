@@ -267,15 +267,15 @@ function SetOptionsFromURL() {
         document.getElementById("minRunNum").value = opt[1];
       } else if (opt[0] == "maxRunNum") {
         document.getElementById("maxRunNum").value = opt[1];
-      } else if(opt[0] == "RunPeriod") {
+      } else if (opt[0] == "RunPeriod") {
         document.getElementById('RunPeriod').selectedIndex = document.getElementById(opt[1]).index;
         PopulateVersionSelector();
-      } else if(opt[0] == "Version") {
+      } else if (opt[0] == "Version") {
         document.getElementById('Version').selectedIndex = document.getElementById(opt[1]).index;
         PopulateImagesSelector();
-      } else if(opt[0] == "Plot") {
+      } else if (opt[0] == "Plot") {
         document.getElementById('Plot').selectedIndex = document.getElementById(opt[1]).index;
-      } else if(opt[0] == "rcdb_query") {
+      } else if (opt[0] == "rcdb_query") {
         query_string = opt[1].replace(/%3E/g, ">");
         query_string = query_string.replace(/%20/g, " ");
         // query_string = query_string.replace(/#as/g, " ");
