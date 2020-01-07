@@ -403,15 +403,10 @@ function PopulateImagesSelector() {
         document.getElementById('rcdb_query').value = par_from_url['rcdb_query'].replace(/%3E/g, ">").replace(/%20/g, " ");
         ShowWaitIcon();
         DoQuery();  // Sets query_result.
-        SetRunListOBJ(true);
-        ShowPlots();
         par_from_url['rcdb_query'] == "";
-      } else {
-        SetRunListOBJ(true);
-        if (document.getElementById("rcdb_query").value == "") {
-          ShowPlots();
-        }
       }
+      SetRunListOBJ(true);
+      ShowPlots();
     }
   }
   xmlhttp.open("GET", "js_utilities/populate_images_selector.php?ID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid, true);
