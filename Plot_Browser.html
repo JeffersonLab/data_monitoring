@@ -137,8 +137,6 @@ function PopulateColumnsSelector() {
 }
 
 function DoQuery() {
-  console.log(document.getElementById("rcdb_query").value);
-
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp = new XMLHttpRequest();
@@ -156,16 +154,8 @@ function DoQuery() {
       ShowPlots();
     }
   }
-  query_to_do = "";
-  if (document.getElementById("rcdb_query").value != "") {
-    query_to_do = document.getElementById("rcdb_query").value;
-  }
-
-  var RunPSelector = document.getElementById("RunPeriod");
-  var SelectedRunP = RunPSelector.options[RunPSelector.selectedIndex].value;
-
-  console.log("./js_utilities/rcdb_sql.php?query=" + query_to_do + "&RunP=" + SelectedRunP);
-  xmlhttp.open("GET", "./js_utilities/rcdb_sql.php?query=" + query_to_do + "&RunP=" + SelectedRunP);
+  console.log(        "./js_utilities/rcdb_sql.php?query=" + document.getElementById("rcdb_query").value + "&RunP=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].value);
+  xmlhttp.open("GET", "./js_utilities/rcdb_sql.php?query=" + document.getElementById("rcdb_query").value + "&RunP=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].value);
   xmlhttp.send();
 }
 
