@@ -102,9 +102,11 @@ function SetOptionsFromURL() {
       var opt = URL_AND_split[i].split("=");
       par_from_url[opt[0]] = opt[1];
     }
-  }
-  if (par_from_url['minRunNum'] != "" && par_from_url['maxRunNum'] != "") {
-    run_range_set_by_user = true;
+    if (par_from_url['minRunNum'] != "" && par_from_url['maxRunNum'] != "") {
+      run_range_set_by_user = true;
+    }
+    document.getElementById("minRunNum").value = par_from_url['minRunNum'];
+    document.getElementById("maxRunNum").value = par_from_url['maxRunNum'];
   }
 }
 
@@ -403,7 +405,7 @@ function PopulateImagesSelector() {
         // query_string = query_string.replace(/#as/g, " ");
         document.getElementById('rcdb_query').value = query_string;
         ShowWaitIcon();
-        DoQuery();
+        DoQuery();  // Sets query_result.
         SetRunListOBJ(true);
         ShowPlots();
         par_from_url['rcdb_query'] == "";
