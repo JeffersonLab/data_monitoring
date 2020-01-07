@@ -57,7 +57,7 @@
       Plot to Display: <select id="Plot" name="Plot" onChange="SetRunListOBJ(true);ShowPlots()"></select> Toggle plot order<input type="button" onclick="SelectedRunListOBJ.reverse();ShowPlots()"/>    columns: <select id="Columns" name="Columns" onChange="ShowPlots()"></select><br>
       Run Range: <input type="number" id="minRunNum" name="minRunNum" size="20" onChange="SetRunListOBJ();ShowPlots()"/>-<input type="number" id="maxRunNum" name="maxRunNum" size="20" onChange="SetRunListOBJ();ShowPlots()"/>  Max #plots: <input type="number" id="maxNumOfPlots" name="maxNumOfPlots" min="1" size="20" onChange="SetMaxNumPlots();SetRunListOBJ();ShowPlots()"/><br>
       Query: <input type="text" id="rcdb_query" name="rcdb_query" size="40" />
-      <input type="button" value="Query" onclick="ShowWaitIcon();DoQuery();SetRunListOBJ(true);ShowPlots()">  <img id="wait_icon" name="wait_icon" src="./hourglass.png">
+      <input type="button" value="Query" onclick="DoQuery();SetRunListOBJ(true);ShowPlots()">  <img id="wait_icon" name="wait_icon" src="./hourglass.png">
       <hr>
       <div style="height: 90%; overflow-y: scroll;">
 
@@ -139,6 +139,7 @@ function PopulateColumnsSelector() {
 }
 
 function DoQuery() {
+  ShowWaitIcon();
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp = new XMLHttpRequest();
@@ -401,7 +402,6 @@ function PopulateImagesSelector() {
       par_from_url['Plot'] == "";
       if (par_from_url['rcdb_query'] != "") {
         document.getElementById('rcdb_query').value = par_from_url['rcdb_query'].replace(/%3E/g, ">").replace(/%20/g, " ");
-        ShowWaitIcon();
         DoQuery();  // Sets query_result.
         par_from_url['rcdb_query'] == "";
       }
