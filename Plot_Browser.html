@@ -8,44 +8,11 @@
   <script type="text/javascript" src="js_utilities/datatables.min.js"></script>
   <script src="js_utilities/plotly-latest.min.js"></script>
   <style>
-    .warning {
-      background-color: #F99 !important;
-    }
-    .better {
-      background-color: rgb(139, 250, 65);
-    }
-
-    /* Tooltip text */
-    .tooltiptext {
-      visibility: visible;
-      width: 120px;
-      background-color: black;
-      color: #fff;
-      text-align: center;
-      padding: 5px 0;
-      border-radius: 6px;
-
-      /* Position the tooltip text - see examples below! */
-      position: absolute;
-      z-index: 1;
-    }
-
-    #wait_icon
-    {
+    #wait_icon {
       visibility: visible;
       width: 25px;
       height: 25px;
       display: inline
-    }
-
-    #tooltip {
-      position: absolute;
-      z-index: 1001;
-      display: none;
-      border: 2px solid #ebebeb;
-      border-radius: 5px;
-      padding: 10px;
-      background-color: rgb(0, 0, 0);
     }
   </style>
 
@@ -231,7 +198,7 @@ function ShowPlots() {
     var DOM_img = document.createElement("IMG");
 
     var DOM_txt = document.createElement("b");
-    DOM_txt.setAttribute('style','text-align:center;')
+    DOM_txt.setAttribute('style', 'text-align:center;')
     DOM_txt.innerHTML = "<center><font size='5'>" + "Run  " + toDisplay[i].split("Run")[1] + "</font></center>";
 
     // Insert a row in the table at the last row
