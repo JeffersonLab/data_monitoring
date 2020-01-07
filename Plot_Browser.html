@@ -85,6 +85,7 @@
   var run_num_limit = 100;
 
   var par_from_url = { minRunNum: "", maxRunNum: "", RunPeriod: "", Version: "", Plot: "", rcdb_query: "" };
+  var use_url_par = false;
   var run_range_set_by_user = false;
 
   $(document).ready(function() {
@@ -97,6 +98,7 @@
 function SetOptionsFromURL() {
   currentURL_split = document.URL.split("?");
   if (currentURL_split.length == 2) {
+    use_url_par = true;
     URL_AND_split = currentURL_split[1].split("&");
     for (var i = 0; i < URL_AND_split.length; i++) {
       var opt = URL_AND_split[i].split("=");
@@ -108,6 +110,16 @@ function SetOptionsFromURL() {
     document.getElementById("minRunNum").value = par_from_url['minRunNum'];
     document.getElementById("maxRunNum").value = par_from_url['maxRunNum'];
   }
+}
+
+function ClearOptionsFromURL() {
+  par_from_url['minRunNum']  = "";
+  par_from_url['maxRunNum']  = "";
+  par_from_url['RunPeriod']  = "";
+  par_from_url['Version']    = "";
+  par_from_url['Plot']       = "";
+  par_from_url['rcdb_query'] = "";
+  use_url_par                = false;
 }
 
 function ShowWaitIcon() {
@@ -249,6 +261,8 @@ function ShowPlots() {
     newCell.appendChild(DOM_img);
     numAdded++;
   }
+
+  if (use_url_par) ClearOptionsFromURL();
 }
 
 function SetRunListOBJ(run_range_update_flag=false) {
@@ -273,13 +287,11 @@ function SetRunListOBJ(run_range_update_flag=false) {
           document.getElementById("minRunNum").value = int_run_list.min();
         } else {
           document.getElementById("minRunNum").value = par_from_url['minRunNum'];
-          par_from_url['minRunNum'] = "";
         }
         if (par_from_url['maxRunNum'] == "") {
           document.getElementById("maxRunNum").value = int_run_list.max();
         } else {
           document.getElementById("maxRunNum").value = par_from_url['maxRunNum'];
-          par_from_url['maxRunNum'] = "";
         }
       }
     }
@@ -313,7 +325,6 @@ function PopulateRunPeriodSelector() {
         }
         document.getElementById("RunPeriod").add(newoption);
       }
-      par_from_url['RunPeriod'] == "";
       PopulateVersionSelector();
     }
   }
@@ -363,7 +374,6 @@ function PopulateVersionSelector() {
         }
         document.getElementById("Version").add(newoption);
       }
-      par_from_url['Version'] == "";
       PopulateImagesSelector();
     }
   }
@@ -399,11 +409,9 @@ function PopulateImagesSelector() {
       if (par_from_url['Plot'] == "") {
         document.getElementById("Plot").selectedIndex = 0;
       }
-      par_from_url['Plot'] == "";
       if (par_from_url['rcdb_query'] != "") {
         document.getElementById('rcdb_query').value = par_from_url['rcdb_query'].replace(/%3E/g, ">").replace(/%20/g, " ");
         DoQuery();  // Sets query_result.
-        par_from_url['rcdb_query'] == "";
       }
       SetRunListOBJ(true);
       ShowPlots();
