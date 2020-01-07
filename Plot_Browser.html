@@ -57,7 +57,7 @@
       Plot to Display: <select id="Plot" name="Plot" onChange="SetRunListOBJ(true);ShowPlots()"></select> Toggle plot order<input type="button" onclick="SelectedRunListOBJ.reverse();ShowPlots()"/>    columns: <select id="Columns" name="Columns" onChange="ShowPlots()"></select><br>
       Run Range: <input type="number" id="minRunNum" name="minRunNum" size="20" onChange="SetRunListOBJ();ShowPlots()"/>-<input type="number" id="maxRunNum" name="maxRunNum" size="20" onChange="SetRunListOBJ();ShowPlots()"/>  Max #plots: <input type="number" id="maxNumOfPlots" name="maxNumOfPlots" min="1" size="20" onChange="SetMaxNumPlots();SetRunListOBJ();ShowPlots()"/><br>
       Query: <input type="text" id="rcdb_query" name="rcdb_query" size="40" />
-      <input type="button" value="Query" onclick="ShowWaitIcon();DoQuery();">  <img id="wait_icon" name="wait_icon" src="./hourglass.png">
+      <input type="button" value="Query" onclick="ShowWaitIcon();DoQuery();SetRunListOBJ(true);ShowPlots()">  <img id="wait_icon" name="wait_icon" src="./hourglass.png">
       <hr>
       <div style="height: 90%; overflow-y: scroll;">
 
@@ -150,12 +150,10 @@ function DoQuery() {
       query_result = this.responseText.split("_");
       console.log(query_result);
       HideWaitIcon();
-      SetRunListOBJ(true);
-      ShowPlots();
     }
   }
   console.log(        "./js_utilities/rcdb_sql.php?query=" + document.getElementById("rcdb_query").value + "&RunP=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].value);
-  xmlhttp.open("GET", "./js_utilities/rcdb_sql.php?query=" + document.getElementById("rcdb_query").value + "&RunP=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].value);
+  xmlhttp.open("GET", "./js_utilities/rcdb_sql.php?query=" + document.getElementById("rcdb_query").value + "&RunP=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].value, false);
   xmlhttp.send();
 }
 
@@ -406,6 +404,8 @@ function PopulateImagesSelector() {
         document.getElementById('rcdb_query').value = query_string;
         ShowWaitIcon();
         DoQuery();
+        SetRunListOBJ(true);
+        ShowPlots();
         par_from_url['rcdb_query'] == "";
       } else {
         SetRunListOBJ(true);
