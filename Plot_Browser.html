@@ -52,12 +52,12 @@
 
   <body onresize="ShowPlots()">
     <div>
-      Select Run Period: <select id="RunPeriod" name="RunPeriod" onChange="PopulateVersionSelector()"></select>
+      Select Run Period: <select id="RunPeriod" name="RunPeriod" onChange="run_range_set_by_user=false;PopulateVersionSelector()"></select>
       Select Version: <select id="Version" name="Version" onChange="PopulateImagesSelector()"></select><br>
-      Plot to Display: <select id="Plot" name="Plot" onChange="SetRunListOBJ(true);ShowPlots()"></select> Toggle plot order<input type="button" onclick="SelectedRunListOBJ.reverse();ShowPlots()"/>    columns: <select id="Columns" name="Columns" onChange="ShowPlots()"></select><br>
-      Run Range: <input type="number" id="minRunNum" name="minRunNum" size="20" onChange="SetRunListOBJ();ShowPlots()"/>-<input type="number" id="maxRunNum" name="maxRunNum" size="20" onChange="SetRunListOBJ();ShowPlots()"/>  Max #plots: <input type="number" id="maxNumOfPlots" name="maxNumOfPlots" min="1" size="20" onChange="SetMaxNumPlots();SetRunListOBJ();ShowPlots()"/><br>
+      Plot to Display: <select id="Plot" name="Plot" onChange="SetRunListOBJ();ShowPlots()"></select> Toggle plot order<input type="button" onclick="SelectedRunListOBJ.reverse();ShowPlots()"/>    columns: <select id="Columns" name="Columns" onChange="ShowPlots()"></select><br>
+      Run Range: <input type="number" id="minRunNum" name="minRunNum" size="20" onChange="run_range_set_by_user=true;SetRunListOBJ();ShowPlots()"/>-<input type="number" id="maxRunNum" name="maxRunNum" size="20" onChange="run_range_set_by_user=true;SetRunListOBJ();ShowPlots()"/>  Max #plots: <input type="number" id="maxNumOfPlots" name="maxNumOfPlots" min="1" size="20" onChange="SetMaxNumPlots();SetRunListOBJ();ShowPlots()"/><br>
       Query: <input type="text" id="rcdb_query" name="rcdb_query" size="40" />
-      <input type="button" value="Query" onclick="DoQuery();SetRunListOBJ(true);ShowPlots()">  <img id="wait_icon" name="wait_icon" src="./hourglass.png">
+      <input type="button" value="Query" onclick="DoQuery();SetRunListOBJ();ShowPlots()">  <img id="wait_icon" name="wait_icon" src="./hourglass.png">
       <hr>
       <div style="height: 90%; overflow-y: scroll;">
 
@@ -268,7 +268,7 @@ function ShowPlots() {
   if (use_url_par) ClearOptionsFromURL();
 }
 
-function SetRunListOBJ(run_range_update_flag=false) {
+function SetRunListOBJ() {
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp = new XMLHttpRequest();
@@ -285,17 +285,9 @@ function SetRunListOBJ(run_range_update_flag=false) {
         SelectedRunListOBJ.push('Run' + ('000000' + result[i]['RunNumber']).slice(-6));
         int_run_list.push(parseInt(result[i]['RunNumber']));
       }
-      if (run_range_update_flag) {
-        if (par_from_url['minRunNum'] == "") {
-          document.getElementById("minRunNum").value = int_run_list.min();
-        } else {
-          document.getElementById("minRunNum").value = par_from_url['minRunNum'];
-        }
-        if (par_from_url['maxRunNum'] == "") {
-          document.getElementById("maxRunNum").value = int_run_list.max();
-        } else {
-          document.getElementById("maxRunNum").value = par_from_url['maxRunNum'];
-        }
+      if (!run_range_set_by_user) {
+        document.getElementById("minRunNum").value = int_run_list.min();
+        document.getElementById("maxRunNum").value = int_run_list.max();
       }
     }
   }
@@ -413,7 +405,7 @@ function PopulateImagesSelector() {
         document.getElementById("Plot").selectedIndex = 0;
       }
       if (par_from_url['rcdb_query'] != "") DoQuery();  // Sets query_result.
-      SetRunListOBJ(true);
+      SetRunListOBJ();
       ShowPlots();
     }
   }
