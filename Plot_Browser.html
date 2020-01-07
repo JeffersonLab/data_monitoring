@@ -85,6 +85,7 @@
   var run_num_limit = 100;
 
   var par_from_url = { minRunNum: "", maxRunNum: "", RunPeriod: "", Version: "", Plot: "", rcdb_query: "" };
+  var run_range_set_by_user = false;
 
   $(document).ready(function() {
     SetOptionsFromURL();
@@ -92,6 +93,20 @@
     PopulateColumnsSelector();
     PopulateRunPeriodSelector();
   });
+
+function SetOptionsFromURL() {
+  currentURL_split = document.URL.split("?");
+  if (currentURL_split.length == 2) {
+    URL_AND_split = currentURL_split[1].split("&");
+    for (var i = 0; i < URL_AND_split.length; i++) {
+      var opt = URL_AND_split[i].split("=");
+      par_from_url[opt[0]] = opt[1];
+    }
+  }
+  if (par_from_url['minRunNum'] != "" && par_from_url['maxRunNum'] != "") {
+    run_range_set_by_user = true;
+  }
+}
 
 function ShowWaitIcon() {
   document.getElementById("wait_icon").style.visibility = "visible";
@@ -280,17 +295,6 @@ function SetRunListOBJ(run_range_update_flag=false) {
   }
   xmlhttp.open("GET", "js_utilities/set_run_list_obj.php?verID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid + "&typeID=" + document.getElementById("Plot").options[document.getElementById("Plot").selectedIndex].dbid + "&runNumLimit=" + run_num_limit, false);
   xmlhttp.send();
-}
-
-function SetOptionsFromURL() {
-  currentURL_split = document.URL.split("?");
-  if (currentURL_split.length == 2) {
-    URL_AND_split = currentURL_split[1].split("&");
-    for (var i = 0; i < URL_AND_split.length; i++) {
-      var opt = URL_AND_split[i].split("=");
-      par_from_url[opt[0]] = opt[1];
-    }
-  }
 }
 
 function PopulateRunPeriodSelector() {
