@@ -400,10 +400,7 @@ function PopulateImagesSelector() {
       }
       par_from_url['Plot'] == "";
       if (par_from_url['rcdb_query'] != "") {
-        query_string = par_from_url['rcdb_query'].replace(/%3E/g, ">");
-        query_string = query_string.replace(/%20/g, " ");
-        // query_string = query_string.replace(/#as/g, " ");
-        document.getElementById('rcdb_query').value = query_string;
+        document.getElementById('rcdb_query').value = par_from_url['rcdb_query'].replace(/%3E/g, ">").replace(/%20/g, " ");
         ShowWaitIcon();
         DoQuery();  // Sets query_result.
         SetRunListOBJ(true);
