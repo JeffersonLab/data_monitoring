@@ -166,11 +166,9 @@ function DoQuery() {
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       query_result = this.responseText.split("_");
-      console.log(query_result);
       HideWaitIcon();
     }
   }
-  console.log(        "./js_utilities/rcdb_sql.php?query=" + document.getElementById("rcdb_query").value + "&RunP=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].value);
   xmlhttp.open("GET", "./js_utilities/rcdb_sql.php?query=" + document.getElementById("rcdb_query").value + "&RunP=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].value, false);
   xmlhttp.send();
 }
@@ -392,7 +390,7 @@ function PopulateImagesSelector() {
         var newoption   = document.createElement("option");
         newoption.text  = result[i]['DisplayName'];
         newoption.value = result[i]['FileName'];
-        newoption.id    = newoption.value.slice(0,-4);
+        newoption.id    = newoption.value.slice(0, -4);
         newoption.dbid  = result[i]['ID'];
         if (newoption.id == par_from_url['Plot']) {
           newoption.selected = true;
