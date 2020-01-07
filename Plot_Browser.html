@@ -84,7 +84,7 @@
   var first_showing = true;
   var run_num_limit = 100;
 
-  var global_parameters = { minRunNum: "", maxRunNum: "", RunPeriod: "", Version: "", Plot: "", rcdb_query: "" };
+  var par_from_url = { minRunNum: "", maxRunNum: "", RunPeriod: "", Version: "", Plot: "", rcdb_query: "" };
 
   $(document).ready(function() {
     SetOptionsFromURL();
@@ -263,17 +263,17 @@ function SetRunListOBJ(run_range_update_flag=false) {
         int_run_list.push(parseInt(result[i]['RunNumber']));
       }
       if (run_range_update_flag) {
-        if (global_parameters['minRunNum'] == "") {
+        if (par_from_url['minRunNum'] == "") {
           document.getElementById("minRunNum").value = int_run_list.min();
         } else {
-          document.getElementById("minRunNum").value = global_parameters['minRunNum'];
-          global_parameters['minRunNum'] = "";
+          document.getElementById("minRunNum").value = par_from_url['minRunNum'];
+          par_from_url['minRunNum'] = "";
         }
-        if (global_parameters['maxRunNum'] == "") {
+        if (par_from_url['maxRunNum'] == "") {
           document.getElementById("maxRunNum").value = int_run_list.max();
         } else {
-          document.getElementById("maxRunNum").value = global_parameters['maxRunNum'];
-          global_parameters['maxRunNum'] = "";
+          document.getElementById("maxRunNum").value = par_from_url['maxRunNum'];
+          par_from_url['maxRunNum'] = "";
         }
       }
     }
@@ -288,7 +288,7 @@ function SetOptionsFromURL() {
     URL_AND_split = currentURL_split[1].split("&");
     for (var i = 0; i < URL_AND_split.length; i++) {
       var opt = URL_AND_split[i].split("=");
-      global_parameters[opt[0]] = opt[1];
+      par_from_url[opt[0]] = opt[1];
     }
   }
 }
@@ -310,15 +310,15 @@ function PopulateRunPeriodSelector() {
         newoption.value = result[i]['Name'];
         newoption.id    = result[i]['Name'];
         newoption.dbid  = result[i]['ID'];
-        if (newoption.id == global_parameters['RunPeriod']) {
+        if (newoption.id == par_from_url['RunPeriod']) {
           newoption.selected = true;
         }
-        if (i == result.length - 1 && global_parameters['RunPeriod'] == "") {
+        if (i == result.length - 1 && par_from_url['RunPeriod'] == "") {
           newoption.selected = true;
         }
         document.getElementById("RunPeriod").add(newoption);
       }
-      global_parameters['RunPeriod'] == "";
+      par_from_url['RunPeriod'] == "";
       PopulateVersionSelector();
     }
   }
@@ -360,15 +360,15 @@ function PopulateVersionSelector() {
         newoption.value = result[i]['Type'] + '_ver' + ('00' + result[i]['VersionNumber']).slice(-2);
         newoption.id    = newoption.value;
         newoption.dbid  = result[i]['ID'];
-        if (newoption.id == global_parameters['Version']) {
+        if (newoption.id == par_from_url['Version']) {
           newoption.selected = true;
         }
-        if (i == 0 && global_parameters['Version'] == "") {
+        if (i == 0 && par_from_url['Version'] == "") {
           newoption.selected = true;
         }
         document.getElementById("Version").add(newoption);
       }
-      global_parameters['Version'] == "";
+      par_from_url['Version'] == "";
       PopulateImagesSelector();
     }
   }
@@ -395,24 +395,24 @@ function PopulateImagesSelector() {
         newoption.value = result[i]['FileName'];
         newoption.id    = newoption.value.slice(0,-4);
         newoption.dbid  = result[i]['ID'];
-        if (newoption.id == global_parameters['Plot']) {
+        if (newoption.id == par_from_url['Plot']) {
           newoption.selected = true;
         }
         document.getElementById("Plot").add(newoption);
       }
       sortSelect(document.getElementById("Plot"));
-      if (global_parameters['Plot'] == "") {
+      if (par_from_url['Plot'] == "") {
         document.getElementById("Plot").selectedIndex = 0;
       }
-      global_parameters['Plot'] == "";
-      if (global_parameters['rcdb_query'] != "") {
-        query_string = global_parameters['rcdb_query'].replace(/%3E/g, ">");
+      par_from_url['Plot'] == "";
+      if (par_from_url['rcdb_query'] != "") {
+        query_string = par_from_url['rcdb_query'].replace(/%3E/g, ">");
         query_string = query_string.replace(/%20/g, " ");
         // query_string = query_string.replace(/#as/g, " ");
         document.getElementById('rcdb_query').value = query_string;
         ShowWaitIcon();
         DoQuery();
-        global_parameters['rcdb_query'] == "";
+        par_from_url['rcdb_query'] == "";
       } else {
         SetRunListOBJ(true);
         if (document.getElementById("rcdb_query").value == "") {
