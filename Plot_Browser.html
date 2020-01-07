@@ -412,9 +412,7 @@ function PopulateImagesSelector() {
       if (par_from_url['Plot'] == "") {
         document.getElementById("Plot").selectedIndex = 0;
       }
-      if (par_from_url['rcdb_query'] != "") {
-        DoQuery();  // Sets query_result.
-      }
+      if (par_from_url['rcdb_query'] != "") DoQuery();  // Sets query_result.
       SetRunListOBJ(true);
       ShowPlots();
     }
