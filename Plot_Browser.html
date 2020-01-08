@@ -1,26 +1,33 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
     <title>Plot Browser by Thomas Britton & Keigo M.</title>
+
+    <link rel="stylesheet" href="js_utilities/datatables.min.css" type="text/css" />
+
+    <script type="text/javascript" src="js_utilities/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js_utilities/jquery-ui.js"></script>
+    <script type="text/javascript" src="js_utilities/datatables.min.js"></script>
+    <script type="text/javascript" src="js_utilities/plotly-latest.min.js"></script>
+
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      #wait_icon {
+        visibility: visible;
+        width: 25px;
+        height: 25px;
+        display: inline
+      }
+    </style>
   </head>
-  <script src="js_utilities/jquery-3.3.1.min.js" type="text/javascript"></script>
-  <script src="js_utilities/jquery-ui.js"></script>
-  <link rel="stylesheet" type="text/css" href="js_utilities/datatables.min.css"/>
-  <script type="text/javascript" src="js_utilities/datatables.min.js"></script>
-  <script src="js_utilities/plotly-latest.min.js"></script>
-  <style>
-    body {
-      font-family: sans-serif;
-    }
-    #wait_icon {
-      visibility: visible;
-      width: 25px;
-      height: 25px;
-      display: inline
-    }
-  </style>
-
-
-  <body onresize="ShowPlots()">
+  <body role="document" onresize="ShowPlots()">
     <div>
       Run Period <select id="RunPeriod" name="RunPeriod" onChange="run_range_set_by_user=false;DoQuery();PopulateVersionSelector()"></select>
       Version <select id="Version" name="Version" onChange="PopulateImagesSelector()"></select><br>
