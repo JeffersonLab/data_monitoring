@@ -1,28 +1,36 @@
-  Array.prototype.max = function() {
-    return Math.max.apply(null, this);
-  };
+/*
+ * plowbrowser.js
+ * --------------
+ *
+ * Functions for Plot_Browser.html.
+ *
+ */
 
-  Array.prototype.min = function() {
-    return Math.min.apply(null, this);
-  };
+Array.prototype.max = function() {
+  return Math.max.apply(null, this);
+};
 
-  // https://halldweb.jlab.org/data_monitoring/Plot_Browser.html?minRunNum=40000&maxRunNum=51000&RunPeriod=RunPeriod-2018-01&Version=rawdata_ver00&Plot=CDC_occupancy&rcdb_query=@is_2018production
-  var query_result = [];
-  var SelectedRunListOBJ = [];
-  var toDisplay = [];
-  var first_showing = true;
-  var run_num_limit = 100;
+Array.prototype.min = function() {
+  return Math.min.apply(null, this);
+};
 
-  var par_from_url = { minRunNum: "", maxRunNum: "", RunPeriod: "", Version: "", Plot: "", rcdb_query: "" };
-  var use_url_par = false;
-  var run_range_set_by_user = false;
+// https://halldweb.jlab.org/data_monitoring/Plot_Browser.html?minRunNum=40000&maxRunNum=51000&RunPeriod=RunPeriod-2018-01&Version=rawdata_ver00&Plot=CDC_occupancy&rcdb_query=@is_2018production
+var query_result = [];
+var SelectedRunListOBJ = [];
+var toDisplay = [];
+var first_showing = true;
+var run_num_limit = 100;
 
-  $(document).ready(function() {
-    SetOptionsFromURL();
-    PopulateColumnsSelector();
-    document.getElementById('maxNumOfPlots').value = run_num_limit;
-    PopulateRunPeriodSelector();
-  });
+var par_from_url = { minRunNum: "", maxRunNum: "", RunPeriod: "", Version: "", Plot: "", rcdb_query: "" };
+var use_url_par = false;
+var run_range_set_by_user = false;
+
+$(document).ready(function() {
+  SetOptionsFromURL();
+  PopulateColumnsSelector();
+  document.getElementById('maxNumOfPlots').value = run_num_limit;
+  PopulateRunPeriodSelector();
+});
 
 function SetOptionsFromURL() {
   currentURL_split = document.URL.split("?");
