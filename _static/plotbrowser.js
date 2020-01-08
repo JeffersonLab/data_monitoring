@@ -113,7 +113,7 @@ function DoQuery() {
       HideWaitIcon();
     }
   }
-  xmlhttp.open("GET", "./js_utilities/rcdb_sql.php?query=" + document.getElementById("rcdb_query").value + "&RunP=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].value, false);
+  xmlhttp.open("GET", "_static/rcdb_sql.php?query=" + document.getElementById("rcdb_query").value + "&RunP=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].value, false);
   xmlhttp.send();
 }
 
@@ -232,7 +232,7 @@ function SetRunListOBJ() {
       }
     }
   }
-  var php_string = "js_utilities/set_run_list_obj.php?verID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid + "&typeID=" + document.getElementById("Plot").options[document.getElementById("Plot").selectedIndex].dbid + "&runNumLimit=" + run_num_limit;
+  var php_string = "_static/set_run_list_obj.php?verID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid + "&typeID=" + document.getElementById("Plot").options[document.getElementById("Plot").selectedIndex].dbid + "&runNumLimit=" + run_num_limit;
   if (run_range_set_by_user) {
     php_string += "&minRunNum=" + document.getElementById("minRunNum").value;
     php_string += "&maxRunNum=" + document.getElementById("maxRunNum").value;
@@ -269,7 +269,7 @@ function PopulateRunPeriodSelector() {
       PopulateVersionSelector();
     }
   }
-  xmlhttp.open("GET", "js_utilities/populate_runperiod_selector.php", true);
+  xmlhttp.open("GET", "_static/populate_runperiod_selector.php", true);
   xmlhttp.send();
 }
 
@@ -318,7 +318,7 @@ function PopulateVersionSelector() {
       PopulateImagesSelector();
     }
   }
-  xmlhttp.open("GET", "js_utilities/populate_version_selector.php?ID=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].dbid, true);
+  xmlhttp.open("GET", "_static/populate_version_selector.php?ID=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].dbid, true);
   xmlhttp.send();
 }
 
@@ -355,7 +355,7 @@ function PopulateImagesSelector() {
       ShowPlots();
     }
   }
-  xmlhttp.open("GET", "js_utilities/populate_images_selector.php?ID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid, true);
+  xmlhttp.open("GET", "_static/populate_images_selector.php?ID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid, true);
   xmlhttp.send();
 }
 
