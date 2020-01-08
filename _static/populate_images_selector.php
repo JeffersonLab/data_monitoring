@@ -17,9 +17,9 @@ $result = $conn->query($sql);
 $data = array();
 while ($row = $result->fetch_assoc()) {
     $data[] = array(
-        'ID' => $row['ID'],
-        'FileName' => $row['FileName'],
-        'DisplayName' => $row['DisplayName'],
+        'ID'              => $row['ID'],
+        'FileName'        => $row['FileName'],
+        'DisplayName'     => $row['DisplayName'],
         'PlotCategory_ID' => $row['PlotCategory_ID']
     );
 }

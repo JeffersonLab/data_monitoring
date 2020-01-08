@@ -17,10 +17,10 @@ $result = $conn->query($sql);
 $data = array();
 while ($row = $result->fetch_assoc()) {
     $data[] = array(
-        'ID' => $row['ID'],
-        'Type' => $row['Type'],
+        'ID'            => $row['ID'],
+        'Type'          => $row['Type'],
         'VersionNumber' => $row['VersionNumber'],
-        'RunPeriod_ID' => $row['RunPeriod_ID']
+        'RunPeriod_ID'  => $row['RunPeriod_ID']
     );
 }
 

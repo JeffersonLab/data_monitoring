@@ -17,8 +17,8 @@ $result = $conn->query($sql);
 $data = array();
 while ($row = $result->fetch_assoc()) {
     $data[] = array(
-        'ID' => $row['ID'],
-        'Name' => $row['Name'],
+        'ID'          => $row['ID'],
+        'Name'        => $row['Name'],
         'Location_ID' => $row['Location_ID']
     );
 }

@@ -15,10 +15,10 @@ mysqli_select_db($conn, $dbname);
 
 $sql = 'SELECT * FROM Runs WHERE Version_ID=' . $_GET["verID"] . ' AND ID IN (SELECT Run_ID FROM Plots WHERE PlotType_ID=' . $_GET["typeID"] . ')';
 if (array_key_exists('minRunNum', $_GET) && array_key_exists('maxRunNum', $_GET)) {
-  $sql .= ' AND (RunNumber BETWEEN ' . $_GET['minRunNum'] . ' AND ' . $_GET['maxRunNum'] . ')';
+    $sql .= ' AND (RunNumber BETWEEN ' . $_GET['minRunNum'] . ' AND ' . $_GET['maxRunNum'] . ')';
 }
 if (array_key_exists('query', $_GET)) {
-  $sql .= " AND RunNumber IN (" . str_replace("_", ", ", $_GET['query']) . ")";
+    $sql .= " AND RunNumber IN (" . str_replace("_", ", ", $_GET['query']) . ")";
 }
 $sql .= ' ORDER BY RunNumber DESC LIMIT ' . $_GET["runNumLimit"];
 
@@ -26,8 +26,8 @@ $result = $conn->query($sql);
 $data = array();
 while ($row = $result->fetch_assoc()) {
     $data[] = array(
-        'ID' => $row['ID'],
-        'RunNumber' => $row['RunNumber'],
+        'ID'         => $row['ID'],
+        'RunNumber'  => $row['RunNumber'],
         'Version_ID' => $row['Version_ID']
     );
 }
