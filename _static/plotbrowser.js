@@ -17,7 +17,6 @@ Array.prototype.min = function() {
 // https://halldweb.jlab.org/data_monitoring/Plot_Browser.html?minRunNum=40000&maxRunNum=51000&RunPeriod=RunPeriod-2018-01&Version=rawdata_ver00&Plot=CDC_occupancy&rcdb_query=@is_2018production
 var query_result = [];
 var SelectedRunListOBJ = [];
-var toDisplay = [];
 var first_showing = true;
 var run_num_limit = 100;
 
@@ -163,14 +162,12 @@ function ShowPlots() {
     HideWaitIcon();
   }
 
-  QueryXref();
-
   $("#imgTableBody").empty();
 
   var numAdded = 0;
 
-  for (var i = 0; i < toDisplay.length; i++) {
-    var runNum_asINT = parseInt(toDisplay[i].split("Run")[1]);
+  for (var i = 0; i < SelectedRunListOBJ.length; i++) {
+    var runNum_asINT = parseInt(SelectedRunListOBJ[i].split("Run")[1]);
     if (runNum_asINT < document.getElementById("minRunNum").value || runNum_asINT > document.getElementById("maxRunNum").value) {
       continue;
     }
@@ -179,7 +176,7 @@ function ShowPlots() {
 
     var DOM_txt = document.createElement("b");
     DOM_txt.setAttribute('style', 'text-align:center;')
-    DOM_txt.innerHTML = "<center><font size='5'>" + "Run  " + toDisplay[i].split("Run")[1] + "</font></center>";
+    DOM_txt.innerHTML = "<center><font size='5'>" + "Run  " + SelectedRunListOBJ[i].split("Run")[1] + "</font></center>";
 
     // Insert a row in the table at the last row
     if (numAdded % columnstoDisplay == 0) {
@@ -189,10 +186,10 @@ function ShowPlots() {
     var newCellh = newRowhead.insertCell(numAdded % columnstoDisplay);
     var newCell  = newRow.insertCell(numAdded % columnstoDisplay);
 
-    var JSRootLinkt = '<center><font size="5"><b><a href=\"/cgi-bin/data_monitoring/monitoring/runBrowser.py?run_number=' + runNum_asINT + '&ver=' + SelectedVer + '&period=' + SelectedRunP + '\" target=\"_blank\">' + "Run" + toDisplay[i].split("Run")[1] + '</a></b>  <a href=\"https://halldweb.jlab.org/rcdb/runs/info/' + runNum_asINT + '\"' + 'target=\"_blank\">' + 'info' + '</a></font></center>'
+    var JSRootLinkt = '<center><font size="5"><b><a href=\"/cgi-bin/data_monitoring/monitoring/runBrowser.py?run_number=' + runNum_asINT + '&ver=' + SelectedVer + '&period=' + SelectedRunP + '\" target=\"_blank\">' + "Run" + SelectedRunListOBJ[i].split("Run")[1] + '</a></b>  <a href=\"https://halldweb.jlab.org/rcdb/runs/info/' + runNum_asINT + '\"' + 'target=\"_blank\">' + 'info' + '</a></font></center>'
 
     DOM_txt.innerHTML = JSRootLinkt;
-    var imgpth = "/work/halld2/data_monitoring/" + SelectedRunP + "/" + SelectedVer + "/" + toDisplay[i] + "/" + SelectedIMG;
+    var imgpth = "/work/halld2/data_monitoring/" + SelectedRunP + "/" + SelectedVer + "/" + SelectedRunListOBJ[i] + "/" + SelectedIMG;
     DOM_img.setAttribute("src", "https://halldweb.jlab.org" + imgpth);
     var currentwidth = 1196;
     var currentheight = 772;
@@ -368,20 +365,4 @@ function removeOptions(selectbox) {
   for (var i = selectbox.options.length - 1; i >= 0; i--) {
     selectbox.remove(i);
   }
-}
-
-function QueryXref() {
-  var to_return = SelectedRunListOBJ;
-  var to_return2 = to_return;
-
-  if (query_result.length != 0) {
-    to_return2 = to_return.filter(function(id) {
-      var tofind = id.split("Run")[1];
-      while (tofind.charAt(0) === '0') {
-        tofind = tofind.substr(1);
-      }
-      return query_result.indexOf(tofind) > -1;
-    });
-  }
-  toDisplay = to_return2;  // .reverse();
 }
