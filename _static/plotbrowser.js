@@ -239,6 +239,9 @@ function SetRunListOBJ() {
     php_string += "&minRunNum=" + document.getElementById("minRunNum").value;
     php_string += "&maxRunNum=" + document.getElementById("maxRunNum").value;
   }
+  if (query_result != "") {
+    php_string += "&query=" + query_result;
+  }
   xmlhttp.open("GET", php_string, false);
   xmlhttp.send();
 }
