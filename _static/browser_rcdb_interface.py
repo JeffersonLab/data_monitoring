@@ -54,8 +54,8 @@ def main(argv):
             RunMin = 0
             RunMax = 99999
     else:
-        RunMin = int(arg[2])
-        RunMax = int(arg[3])
+        RunMin = int(argv[2])
+        RunMax = int(argv[3])
 
     approvedRuns = []
     approvedRuns = db.select_runs(query, run_min=RunMin, run_max=RunMax)

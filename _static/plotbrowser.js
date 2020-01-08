@@ -110,10 +110,17 @@ function DoQuery() {
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       query_result = this.responseText.split("_");
+      console.log('[oyster0]');
+      console.log(query_result);
       HideWaitIcon();
     }
   }
-  xmlhttp.open("GET", "_static/rcdb_sql.php?query=" + document.getElementById("rcdb_query").value + "&RunP=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].value, false);
+  var php_string = "_static/rcdb_sql.php?query=" + document.getElementById("rcdb_query").value + "&RunP=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].value;
+  if (run_range_set_by_user) {
+    php_string += "&minRunNum=" + document.getElementById("minRunNum").value;
+    php_string += "&maxRunNum=" + document.getElementById("maxRunNum").value;
+  }
+  xmlhttp.open("GET", php_string, false);
   xmlhttp.send();
 }
 
