@@ -7,9 +7,6 @@ os.environ["RCDB_HOME"] = "/group/halld/www/halldweb/html/rcdb_home"
 sys.path.append("/group/halld/www/halldweb/html/rcdb_home/python")
 import rcdb
 
-os.environ["RCDB_HOME"] = "/group/halld/www/halldweb/html/rcdb_home"
-sys.path.append("/group/halld/www/halldweb/html/rcdb_home/python")
-
 db = rcdb.RCDBProvider("mysql://rcdb@hallddb/rcdb")
 
 dbhost = "hallddb.jlab.org"
