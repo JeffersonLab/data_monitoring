@@ -8,25 +8,16 @@ sys.path.append("/group/halld/www/halldweb/html/rcdb_home/python")
 import rcdb
 
 db = rcdb.RCDBProvider("mysql://rcdb@hallddb/rcdb")
-
 dbhost = "hallddb.jlab.org"
 dbuser = 'datmon'
-dbpass = ''
 dbname = 'data_monitoring'
-
 conn = MySQLdb.connect(host=dbhost, user=dbuser, db=dbname)
-curs = conn.cursor(MySQLdb.cursors.DictCursor)
-
 
 def main(argv):
-
-    query = ""
-    RunPeriod = ""
+    query = argv[0]
+    RunPeriod = argv[1]
     RunMin = 0
     RunMax = 99999
-    if len(argv) != 0:
-        query = argv[0]
-        RunPeriod = argv[1]
 
     if len(argv) == 2:
         if RunPeriod == "RunPeriod-2019-11":
@@ -50,26 +41,12 @@ def main(argv):
         elif RunPeriod == "RunPeriod-2016-02":
             RunMin = 10000
             RunMax = 19999
-        else:
-            RunMin = 0
-            RunMax = 99999
     else:
         RunMin = int(argv[2])
         RunMax = int(argv[3])
 
-    approvedRuns = []
-    approvedRuns = db.select_runs(query, run_min=RunMin, run_max=RunMax)
-    approvedRunsRev = approvedRuns[::-1]
-    approvedList = ""
-
-    for ar in approvedRuns:
-        approvedList = approvedList + str(ar.number) + "_"
-    approvedList = approvedList[:-1]
-
-    print approvedList
-
+    print '_'.join([str(x.number) for x in db.select_runs(query, run_min=RunMin, run_max=RunMax)])
     conn.close()
-
 
 if __name__ == "__main__":
     main(sys.argv[1:])
