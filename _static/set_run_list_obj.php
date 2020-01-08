@@ -18,6 +18,10 @@ if (array_key_exists('minRunNum', $_GET) && array_key_exists('maxRunNum', $_GET)
     $sql .= ' AND (RunNumber BETWEEN ' . $_GET['minRunNum'] . ' AND ' . $_GET['maxRunNum'] . ')';
 }
 if (array_key_exists('query', $_GET)) {
+    if (strcmp($_GET['query'], "NaN") == 0) {
+        echo "[]";
+        exit(0);
+    }
     $sql .= " AND RunNumber IN (" . str_replace("_", ", ", $_GET['query']) . ")";
 }
 $sql .= ' ORDER BY RunNumber DESC LIMIT ' . $_GET["runNumLimit"];
