@@ -28,25 +28,25 @@ def main(argv):
         query = argv[0]
         RunPeriod = argv[1]
 
-    if(RunPeriod == "RunPeriod-2019-11"):
+    if RunPeriod == "RunPeriod-2019-11":
         RunMin = 70000
         RunMax = 79999
-    elif(RunPeriod == "RunPeriod-2019-01"):
+    elif RunPeriod == "RunPeriod-2019-01":
         RunMin = 60000
         RunMax = 69999
-    elif(RunPeriod == "RunPeriod-2018-08"):
+    elif RunPeriod == "RunPeriod-2018-08":
         RunMin = 50000
         RunMax = 59999
-    elif(RunPeriod == "RunPeriod-2018-01"):
+    elif RunPeriod == "RunPeriod-2018-01":
         RunMin = 40000
         RunMax = 49999
-    elif(RunPeriod == "RunPeriod-2017-01"):
+    elif RunPeriod == "RunPeriod-2017-01":
         RunMin = 30000
         RunMax = 39999
-    elif(RunPeriod == "RunPeriod-2016-10"):
+    elif RunPeriod == "RunPeriod-2016-10":
         RunMin = 20000
         RunMin = 29999
-    elif(RunPeriod == "RunPeriod-2016-02"):
+    elif RunPeriod == "RunPeriod-2016-02":
         RunMin = 10000
         RunMax = 19999
     else:
@@ -59,7 +59,7 @@ def main(argv):
     approvedList = ""
 
     for ar in approvedRuns:
-        approvedList = approvedList+str(ar.number)+"_"
+        approvedList = approvedList + str(ar.number) + "_"
     approvedList = approvedList[:-1]
 
     print approvedList
