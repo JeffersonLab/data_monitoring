@@ -1,0 +1,21 @@
+/*
+ * plowbrowser.css
+ * ---------------
+ *
+ * Stylesheet for Plot_Browser.html.
+ *
+ */
+
+body {
+    line-height: 1.5;
+    padding: 0px;
+    font-family: "DejaVu Sans", Arial, Helvetica, sans-serif;
+    color: #333333;
+}
+
+#wait_icon {
+    visibility: visible;
+    width: 25px;
+    height: 25px;
+    display: inline;
+}
