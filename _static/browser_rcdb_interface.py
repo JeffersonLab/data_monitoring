@@ -1,3 +1,6 @@
+#! /apps/bin/python3
+# coding:utf-8
+
 import MySQLdb
 import sys
 import cgitb
@@ -47,9 +50,9 @@ def main(argv):
 
     run_list = db.select_runs(query, run_min=RunMin, run_max=RunMax)
     if len(run_list) == 0:
-        print 'NaN'
+        print('NaN')
     else:
-        print '_'.join([str(x.number) for x in run_list])
+        print('_'.join([str(x.number) for x in run_list]))
     conn.close()
 
 if __name__ == "__main__":
