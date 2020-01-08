@@ -22,8 +22,6 @@ if (array_key_exists('query', $_GET)) {
 }
 $sql .= ' ORDER BY RunNumber DESC LIMIT ' . $_GET["runNumLimit"];
 
-file_put_contents("/u/group/halld/www/halldweb/html/data_monitoring/debug.txt", print_r($sql, true), FILE_APPEND);
-
 $result = $conn->query($sql);
 $data = array();
 while ($row = $result->fetch_assoc()) {
