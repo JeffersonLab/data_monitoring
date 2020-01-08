@@ -1,21 +1,20 @@
-import time
-import glob
-import rcdb
-import os.path
-import os
-import re
 import MySQLdb
 import sys
 import cgi
 import cgitb
 cgitb.enable()
-
+import re
+import os
+import os.path
+os.environ["RCDB_HOME"] = "/group/halld/www/halldweb/html/rcdb_home"
+import sys
+sys.path.append("/group/halld/www/halldweb/html/rcdb_home/python")
+import rcdb
+import glob
+import time
 
 os.environ["RCDB_HOME"] = "/group/halld/www/halldweb/html/rcdb_home"
 sys.path.append("/group/halld/www/halldweb/html/rcdb_home/python")
-
-#from os import listdir
-#from os.path import isfile, join
 
 db = rcdb.RCDBProvider("mysql://rcdb@hallddb/rcdb")
 
