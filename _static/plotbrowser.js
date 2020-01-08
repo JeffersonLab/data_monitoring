@@ -184,7 +184,7 @@ function ShowPlots() {
     var newCellh = newRowhead.insertCell(numAdded % columnstoDisplay);
     var newCell  = newRow.insertCell(numAdded % columnstoDisplay);
 
-    var JSRootLinkt = '<center><font size="5"><b><a href=\"/cgi-bin/data_monitoring/monitoring/runBrowser.py?run_number=' + runNum_asINT + '&ver=' + SelectedVer + '&period=' + SelectedRunP + '\" target=\"_blank\">' + "Run  " + toDisplay[i].split("Run")[1] + '</a></b>  <a href=\"https://halldweb.jlab.org/rcdb/runs/info/' + runNum_asINT + '\"' + 'target=\"_blank\">' + 'info' + '</a></font></center>'
+    var JSRootLinkt = '<center><font size="5"><b><a href=\"/cgi-bin/data_monitoring/monitoring/runBrowser.py?run_number=' + runNum_asINT + '&ver=' + SelectedVer + '&period=' + SelectedRunP + '\" target=\"_blank\">' + "Run" + toDisplay[i].split("Run")[1] + '</a></b>  <a href=\"https://halldweb.jlab.org/rcdb/runs/info/' + runNum_asINT + '\"' + 'target=\"_blank\">' + 'info' + '</a></font></center>'
 
     DOM_txt.innerHTML = JSRootLinkt;
     var imgpth = "/work/halld2/data_monitoring/" + SelectedRunP + "/" + SelectedVer + "/" + toDisplay[i] + "/" + SelectedIMG;
