@@ -22,6 +22,36 @@ hr {
     margin-top: 20px;
 }
 
+a:link {
+    font-weight: bold;
+    text-decoration: none;
+    color: #dc3c01;
+}
+
+a:visited {
+    font-weight: bold;
+    text-decoration: none;
+    color: #892601;
+}
+
+a:hover, a:active {
+    text-decoration: underline;
+    color: #ff4500;
+}
+
+a.headerlink {
+    color: #a7ce38;
+    padding-left: 5px;
+}
+
+a.headerlink:hover {
+    color: #a7ce38;
+}
+
+a.uplink {
+    font-weight: normal;
+}
+
 #wait_icon {
     visibility: visible;
     width: 25px;
