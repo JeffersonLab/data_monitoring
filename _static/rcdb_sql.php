@@ -7,10 +7,7 @@ if (array_key_exists('minRunNum', $_GET) && array_key_exists('maxRunNum', $_GET)
 }
 
 $command = escapeshellcmd($command_str);
-// file_put_contents("/u/group/halld/www/halldweb/html/data_monitoring/debug.txt", print_r($command_str, true), FILE_APPEND);
 
-$output = shell_exec($command);
-
-echo $output;
+echo shell_exec($command);
 
 ?>
