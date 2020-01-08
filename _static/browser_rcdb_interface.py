@@ -28,30 +28,34 @@ def main(argv):
         query = argv[0]
         RunPeriod = argv[1]
 
-    if RunPeriod == "RunPeriod-2019-11":
-        RunMin = 70000
-        RunMax = 79999
-    elif RunPeriod == "RunPeriod-2019-01":
-        RunMin = 60000
-        RunMax = 69999
-    elif RunPeriod == "RunPeriod-2018-08":
-        RunMin = 50000
-        RunMax = 59999
-    elif RunPeriod == "RunPeriod-2018-01":
-        RunMin = 40000
-        RunMax = 49999
-    elif RunPeriod == "RunPeriod-2017-01":
-        RunMin = 30000
-        RunMax = 39999
-    elif RunPeriod == "RunPeriod-2016-10":
-        RunMin = 20000
-        RunMin = 29999
-    elif RunPeriod == "RunPeriod-2016-02":
-        RunMin = 10000
-        RunMax = 19999
+    if len(argv) == 2:
+        if RunPeriod == "RunPeriod-2019-11":
+            RunMin = 70000
+            RunMax = 79999
+        elif RunPeriod == "RunPeriod-2019-01":
+            RunMin = 60000
+            RunMax = 69999
+        elif RunPeriod == "RunPeriod-2018-08":
+            RunMin = 50000
+            RunMax = 59999
+        elif RunPeriod == "RunPeriod-2018-01":
+            RunMin = 40000
+            RunMax = 49999
+        elif RunPeriod == "RunPeriod-2017-01":
+            RunMin = 30000
+            RunMax = 39999
+        elif RunPeriod == "RunPeriod-2016-10":
+            RunMin = 20000
+            RunMin = 29999
+        elif RunPeriod == "RunPeriod-2016-02":
+            RunMin = 10000
+            RunMax = 19999
+        else:
+            RunMin = 0
+            RunMax = 99999
     else:
-        RunMin = 0
-        RunMax = 99999
+        RunMin = int(arg[2])
+        RunMax = int(arg[3])
 
     approvedRuns = []
     approvedRuns = db.select_runs(query, run_min=RunMin, run_max=RunMax)
