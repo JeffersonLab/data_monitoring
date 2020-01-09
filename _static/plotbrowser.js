@@ -369,7 +369,8 @@ function PopulateImagesSelector() {
       ShowPlots();
     }
   }
-  xmlhttp.open("GET", "_static/populate_images_selector.php?ID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid, true);
+  var sql = "SELECT * FROM PlotTypes WHERE ID IN (SELECT PlotType_ID FROM Plots WHERE Run_ID IN (SELECT ID FROM Runs WHERE Version_ID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid + "))";
+  xmlhttp.open("GET", "_static/py.php?script=browser_family&query=" + encodeURIComponent(sql), true);
   xmlhttp.send();
 }
 
