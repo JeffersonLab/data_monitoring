@@ -214,6 +214,10 @@ function ShowPlots() {
 }
 
 function SetRunListOBJ() {
+  if (query_result == "NaN") {
+    SelectedRunListOBJ = [];
+    return;
+  }
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp = new XMLHttpRequest();
