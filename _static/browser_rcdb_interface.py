@@ -47,9 +47,6 @@ else:
     RunMin = int(sys.argv[3])
     RunMax = int(sys.argv[4])
 
-run_list = db.select_runs(query, run_min=RunMin, run_max=RunMax)
-if len(run_list) == 0:
-    print('NaN')
-else:
-    print('_'.join([str(x.number) for x in run_list]))
+print('_'.join([str(x.number) for x in db.select_runs(query, run_min=RunMin, run_max=RunMax)]))
+
 conn.close()

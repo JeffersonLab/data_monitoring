@@ -109,6 +109,7 @@ function DoQuery() {
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       query_result = this.responseText.trim();
+      if (query_result == "") query_result = "NaN";
       HideWaitIcon();
     }
   }
@@ -212,6 +213,8 @@ function ShowPlots() {
 }
 
 function SetRunListOBJ() {
+  SelectedRunListOBJ = [];
+  if (query_result == "NaN") return;
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp = new XMLHttpRequest();
@@ -222,7 +225,6 @@ function SetRunListOBJ() {
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       var result = JSON.parse(this.responseText);
-      SelectedRunListOBJ = [];
       int_run_list = [];
       for (var i = 0; i < result.length; i++) {
         SelectedRunListOBJ.push('Run' + ('000000' + result[i]['RunNumber']).slice(-6));
