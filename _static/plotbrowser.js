@@ -109,8 +109,6 @@ function DoQuery() {
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       query_result = this.responseText.trim();
-      console.log('[oyster]');
-      console.log(query_result);
       HideWaitIcon();
     }
   }
@@ -227,7 +225,6 @@ function SetRunListOBJ() {
   }
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      console.log(this.responseText);
       var result = JSON.parse(this.responseText);
       SelectedRunListOBJ = [];
       int_run_list = [];
