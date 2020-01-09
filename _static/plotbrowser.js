@@ -331,7 +331,8 @@ function PopulateVersionSelector() {
       PopulateImagesSelector();
     }
   }
-  xmlhttp.open("GET", "_static/populate_version_selector.php?ID=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].dbid, true);
+  var sql = "SELECT * FROM Versions WHERE RunPeriod_ID=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].dbid + " AND ID IN (SELECT Version_ID FROM Runs) ORDER BY Type, VersionNumber";
+  xmlhttp.open("GET", "_static/py.php?script=browser_family&query=" + encodeURIComponent(sql), true);
   xmlhttp.send();
 }
 
