@@ -46,7 +46,7 @@ function SetOptionsFromURL() {
     document.getElementById("minRunNum").value = par_from_url['minRunNum'];
     document.getElementById("maxRunNum").value = par_from_url['maxRunNum'];
     if (par_from_url['rcdb_query'] != "") {
-      document.getElementById('rcdb_query').value = par_from_url['rcdb_query'].replace(/%3E/g, ">").replace(/%20/g, " ");
+      document.getElementById('rcdb_query').value = decodeURIComponent(par_from_url['rcdb_query']);
     }
   }
 }
