@@ -114,7 +114,7 @@ function DoQuery() {
       HideWaitIcon();
     }
   }
-  var php_string = "_static/rcdb_sql.php?script=browser_rcdb_interface&query=" + document.getElementById("rcdb_query").value + "&RunP=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].value;
+  var php_string = "_static/py.php?script=browser_rcdb_interface&query=" + document.getElementById("rcdb_query").value + "&RunP=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].value;
   if (run_range_set_by_user) {
     php_string += "&minRunNum=" + document.getElementById("minRunNum").value;
     php_string += "&maxRunNum=" + document.getElementById("maxRunNum").value;
