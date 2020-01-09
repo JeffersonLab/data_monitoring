@@ -112,7 +112,7 @@ function DoQuery() {
       HideWaitIcon();
     }
   }
-  var php_string = "_static/py.php?script=rcdb_query&query=" + document.getElementById("rcdb_query").value + "&RunP=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].value;
+  var php_string = "_static/rcdb_sql.php?query=" + document.getElementById("rcdb_query").value + "&RunP=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].value;
   if (run_range_set_by_user) {
     php_string += "&minRunNum=" + document.getElementById("minRunNum").value;
     php_string += "&maxRunNum=" + document.getElementById("maxRunNum").value;
@@ -212,10 +212,6 @@ function ShowPlots() {
 }
 
 function SetRunListOBJ() {
-  if (query_result == "NaN") {
-    SelectedRunListOBJ = [];
-    return;
-  }
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp = new XMLHttpRequest();
@@ -238,15 +234,15 @@ function SetRunListOBJ() {
       }
     }
   }
-  var sql = "SELECT * FROM Runs WHERE Version_ID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid + " AND ID IN (SELECT Run_ID FROM Plots WHERE PlotType_ID=" + document.getElementById("Plot").options[document.getElementById("Plot").selectedIndex].dbid + ")";
+  var php_string = "_static/set_run_list_obj.php?verID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid + "&typeID=" + document.getElementById("Plot").options[document.getElementById("Plot").selectedIndex].dbid + "&runNumLimit=" + run_num_limit;
   if (run_range_set_by_user) {
-    sql += " AND (RunNumber BETWEEN " + document.getElementById("minRunNum").value + " AND " + document.getElementById("maxRunNum").value + ")";
+    php_string += "&minRunNum=" + document.getElementById("minRunNum").value;
+    php_string += "&maxRunNum=" + document.getElementById("maxRunNum").value;
   }
   if (query_result != "") {
-    sql += " AND RunNumber IN (" + query_result.replace(/_/g, ', ') + ")";
+    php_string += "&query=" + query_result;
   }
-  sql += " ORDER BY RunNumber DESC LIMIT " + run_num_limit;
-  xmlhttp.open("GET", "_static/py.php?script=browser_family&query=" + encodeURIComponent(sql), false);
+  xmlhttp.open("GET", php_string, false);
   xmlhttp.send();
 }
 
@@ -278,8 +274,7 @@ function PopulateRunPeriodSelector() {
       PopulateVersionSelector();
     }
   }
-  var sql = "SELECT * FROM RunPeriods ORDER BY Name";
-  xmlhttp.open("GET", "_static/py.php?script=browser_family&query=" + encodeURIComponent(sql), true);
+  xmlhttp.open("GET", "_static/populate_runperiod_selector.php", true);
   xmlhttp.send();
 }
 
@@ -328,8 +323,7 @@ function PopulateVersionSelector() {
       PopulateImagesSelector();
     }
   }
-  var sql = "SELECT * FROM Versions WHERE RunPeriod_ID=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].dbid + " AND ID IN (SELECT Version_ID FROM Runs) ORDER BY Type, VersionNumber";
-  xmlhttp.open("GET", "_static/py.php?script=browser_family&query=" + encodeURIComponent(sql), true);
+  xmlhttp.open("GET", "_static/populate_version_selector.php?ID=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].dbid, true);
   xmlhttp.send();
 }
 
@@ -366,8 +360,7 @@ function PopulateImagesSelector() {
       ShowPlots();
     }
   }
-  var sql = "SELECT * FROM PlotTypes WHERE ID IN (SELECT PlotType_ID FROM Plots WHERE Run_ID IN (SELECT ID FROM Runs WHERE Version_ID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid + "))";
-  xmlhttp.open("GET", "_static/py.php?script=browser_family&query=" + encodeURIComponent(sql), true);
+  xmlhttp.open("GET", "_static/populate_images_selector.php?ID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid, true);
   xmlhttp.send();
 }
 
