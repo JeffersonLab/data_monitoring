@@ -242,20 +242,13 @@ function SetRunListOBJ() {
     }
   }
   var sql = "SELECT * FROM Runs WHERE Version_ID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid + " AND ID IN (SELECT Run_ID FROM Plots WHERE PlotType_ID=" + document.getElementById("Plot").options[document.getElementById("Plot").selectedIndex].dbid + ")";
-  var php_string = "_static/set_run_list_obj.php?verID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid + "&typeID=" + document.getElementById("Plot").options[document.getElementById("Plot").selectedIndex].dbid + "&runNumLimit=" + run_num_limit;
   if (run_range_set_by_user) {
-    php_string += "&minRunNum=" + document.getElementById("minRunNum").value;
-    php_string += "&maxRunNum=" + document.getElementById("maxRunNum").value;
     sql += " AND (RunNumber BETWEEN " + document.getElementById("minRunNum").value + " AND " + document.getElementById("maxRunNum").value + ")";
   }
   if (query_result != "") {
-    php_string += "&query=" + query_result;
     sql += " AND RunNumber IN (" + query_result.replace(/_/g, ', ') + ")";
   }
   sql += " ORDER BY RunNumber DESC LIMIT " + run_num_limit;
-  console.log('[oyster00]');
-  console.log(encodeURIComponent(sql));
-  // xmlhttp.open("GET", php_string, false);
   xmlhttp.open("GET", "_static/py.php?script=browser_family&query=" + encodeURIComponent(sql), false);
   xmlhttp.send();
 }
