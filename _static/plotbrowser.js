@@ -281,7 +281,8 @@ function PopulateRunPeriodSelector() {
       PopulateVersionSelector();
     }
   }
-  xmlhttp.open("GET", "_static/populate_runperiod_selector.php", true);
+  var sql = "SELECT * FROM RunPeriods ORDER BY Name";
+  xmlhttp.open("GET", "_static/py.php?script=browser_family&query=" + encodeURIComponent(sql), true);
   xmlhttp.send();
 }
 
