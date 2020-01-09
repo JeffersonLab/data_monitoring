@@ -1,11 +1,5 @@
 <?php
 
-$command = './browser_rcdb_interface.py ' . $_GET["query"] . " " . $_GET["RunP"];
-
-if (array_key_exists('minRunNum', $_GET) && array_key_exists('maxRunNum', $_GET)) {
-    $command .= " " . $_GET["minRunNum"] . " " . $_GET["maxRunNum"];
-}
-
-echo shell_exec(escapeshellcmd($command));
+echo shell_exec('./' . $_GET['script'] . '.py "' . http_build_query($_GET) . '"');
 
 ?>
