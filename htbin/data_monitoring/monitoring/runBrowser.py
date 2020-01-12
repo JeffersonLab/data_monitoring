@@ -1,4 +1,6 @@
-#!/usr/bin/python
+#! /usr/bin/env python
+# coding:utf-8
+
 import MySQLdb
 import cgi
 import cgitb
@@ -21,28 +23,32 @@ dbuser = 'datmon'
 dbpass = ''
 dbname = 'data_monitoring'
 
-conn=MySQLdb.connect(host=dbhost, user=dbuser, db=dbname)
-curs=conn.cursor()
+conn = MySQLdb.connect(host=dbhost, user=dbuser, db=dbname)
+curs = conn.cursor()
 
 # get data from the database
 # if an interval is passed,
 # return a list of records from the database
+
+
 def get_data(options):
-    
+
     revision_str = str(options[1])
     revision = int(re.search(r'\d+', revision_str).group())
-  
+
     query = "SELECT distinct r.run_num, r.start_time, r.num_events FROM run_info r, version_info v, bcal_hits b WHERE b.runid=r.run_num and v.version_id=b.version_id and run_num>0 and revision=%s and run_period=%s ORDER BY r.run_num"
     #query = "SELECT distinct r.run_num, r.start_time, r.num_events from run_info r, version_info v WHERE run_num>0 and revision=%s and run_period=%s ORDER BY r.run_num"
-    #curs.execute(query)
+    # curs.execute(query)
     print revision
     print str(options[2])
-    curs.execute(query, (revision, str(options[2])))    
-    rows=curs.fetchall()
+    curs.execute(query, (revision, str(options[2])))
+    rows = curs.fetchall()
     #print rows
     return rows
 
 # get data from the database for single run
+
+
 def get_data_singlerun(options):
 
     revision_str = str(options[1])
@@ -50,54 +56,62 @@ def get_data_singlerun(options):
     #revision_str = revision_str.replace("ver","")
     #revision = int(float(revision_str))
     query = "SELECT distinct r.run_num, r.start_time, r.num_events, r.beam_current, r.radiator_type, r.solenoid_current, r.trigger_config_file from run_info r, version_info v, bcal_hits b WHERE b.runid=r.run_num and v.version_id=b.version_id and run_num>0 and revision=%s and r.run_num=%s ORDER BY r.run_num"
-    #if revision == 0:
-	#query = "SELECT distinct r.run_num, r.start_time, r.num_events, r.beam_current, r.radiator_type, r.solenoid_current, r.trigger_config_file from run_info r, version_info v WHERE run_num>0 and revision=%s and r.run_num=%s ORDER BY r.run_num"
+    # if revision == 0:
+    #query = "SELECT distinct r.run_num, r.start_time, r.num_events, r.beam_current, r.radiator_type, r.solenoid_current, r.trigger_config_file from run_info r, version_info v WHERE run_num>0 and revision=%s and r.run_num=%s ORDER BY r.run_num"
     curs.execute(query, (revision, options[0]))
-    rows=curs.fetchall()
+    rows = curs.fetchall()
 
     return rows
 
 # get list of versions from the DB
+
+
 def get_versions(options):
 
     query = "SELECT revision, data_type, production_time, run_period from version_info where run_period=%s ORDER BY version_id DESC"
     curs.execute(query, [str(options[2])])
-    rows=curs.fetchall()
+    rows = curs.fetchall()
 
     return rows
 
 # get list of periods from the DB
+
+
 def get_periods(options):
 
     query = "SELECT DISTINCT run_period from version_info ORDER BY run_period DESC"
     curs.execute(query)
-    rows=curs.fetchall()
-    rowstoreturn =[]
+    rows = curs.fetchall()
+    rowstoreturn = []
 
-    for i in range (0,len(rows)-1):
+    for i in range(0, len(rows)-1):
         rowstoreturn.append(rows[i])
 
     return rowstoreturn
 
 # get period for given run_number from the DB
+
+
 def get_periods_run_number(options):
 
     query = "SELECT DISTINCT run_period from version_info v, run_info r, bcal_hits b WHERE b.runid=r.run_num and v.version_id=b.version_id and r.run_num=%s ORDER BY run_period DESC"
     curs.execute(query, [str(options[0])])
-    rows=curs.fetchall()
+    rows = curs.fetchall()
 
     return rows
 
 # get dates to list on runBrowser page
+
+
 def get_dates(options):
-   
+
     revision_str = str(options[1])
     revision = int(re.search(r'\d+', revision_str).group())
     #revision_str = revision_str.replace("ver","")
-    #revision = int(float(revision_str)) 
+    #revision = int(float(revision_str))
     query = "SELECT DISTINCT DATE(r.start_time) FROM run_info r, version_info v WHERE run_num>0 and start_time>'2014-11-01' and revision=%s and run_period=%s ORDER BY DATE(start_time)"
     curs.execute(query, (revision, str(options[2])))
-    rows=curs.fetchall()
+    rows = curs.fetchall()
 
     return rows
 
@@ -338,16 +352,17 @@ def printHTMLHead(title):
         }
       </script>
 """
-    #window.alert(document.getElementById("period").value);
-    
+    # window.alert(document.getElementById("period").value);
+
+
 def print_version_selector(options):
     print """<form action="/cgi-bin/data_monitoring/monitoring/runBrowser.py" method="POST">"""
-    
+
     periods = get_periods(options)
-    print "<select id=\"period\" name=\"period\" onChange=\"changePeriod();changePath();\">" 
+    print "<select id=\"period\" name=\"period\" onChange=\"changePeriod();changePath();\">"
     for period in periods:
         if period[0] == "RunPeriod-2015-01":
-            continue;
+            continue
         print "<option value=\"%s\" " % (period[0])
         if options != None and period[0] == options[2]:
             print "selected"
@@ -357,7 +372,7 @@ def print_version_selector(options):
     recon_versions = []
 
     versions = get_versions(options)
-    print "<select id=\"ver\" name=\"ver\" onChange=\"changeRunList(options);changePath();showPlot();\">" 
+    print "<select id=\"ver\" name=\"ver\" onChange=\"changeRunList(options);changePath();showPlot();\">"
     for version in versions:
         revision = ("ver%02d" % version[0])
         data_type = version[1]
@@ -370,7 +385,7 @@ def print_version_selector(options):
                 print "selected"
             elif version[0] not in recon_versions:
                 print "selected"
-	version_name = ""
+        version_name = ""
         if version[0] == 0 and data_type == "rawdata":
             version_name = "RootSpy"
         elif data_type == "mon":
@@ -390,63 +405,67 @@ def print_version_selector(options):
             version_name = "MC Production "
             version_name += production_time
         print "> %s %s</option>" % (revision, version_name)
-    
+
     print "</select>"
-    
+
     print "<input type=\"submit\" value=\"Show Runs\" />"
     print "<input type=\"submit\" value=\"Show Plots\" />"
     print "Link displays plots or <button type=\"button\"> ROOT </button> opens file"
     print "<br>"
     print "<button onclick=\"help_function()\"> Help </button>"
-    print "<br><br>"  
+    print "<br><br>"
 
-#def newprint_run_selector(options)
+# def newprint_run_selector(options)
+
 
 def print_run_selector(records, options, row):
-    months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-    rcdb_inelig = ['detcom_02','RunPeriod-2014-10','RunPeriod-2015-03','RunPeriod-2015-06','RunPeriod-2015-12']
+    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+              "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    rcdb_inelig = ['detcom_02', 'RunPeriod-2014-10',
+                   'RunPeriod-2015-03', 'RunPeriod-2015-06', 'RunPeriod-2015-12']
     print "<ul id=\"runList\">"
     dates = get_dates(options)
-    
-    runmin=40000
-    runmax=49999
 
-    if options[2]=="RunPeriod-2016-10":
-        runmin=20000
-        runmax=29999
-    elif options[2]=="RunPeriod-2016-02":
-        runmin=10000
-        runmax=19999
-    elif options[2]=="RunPeriod-2017-01":
-        runmin=30000
-        runmax=39999
+    runmin = 40000
+    runmax = 49999
 
+    if options[2] == "RunPeriod-2016-10":
+        runmin = 20000
+        runmax = 29999
+    elif options[2] == "RunPeriod-2016-02":
+        runmin = 10000
+        runmax = 19999
+    elif options[2] == "RunPeriod-2017-01":
+        runmin = 30000
+        runmax = 39999
 
-    if options[2] in rcdb_inelig or options[2]=="RunPeriod-2018-01":
-        rcdb_runs = db.get_runs(runmin,runmax)
+    if options[2] in rcdb_inelig or options[2] == "RunPeriod-2018-01":
+        rcdb_runs = db.get_runs(runmin, runmax)
     else:
-        rcdb_runs = db.select_runs("@status_approved and @is_production",runmin,runmax)
+        rcdb_runs = db.select_runs(
+            "@status_approved and @is_production", runmin, runmax)
 
-    rcdb_run_numbers = [ run.number for run in rcdb_runs ]
+    rcdb_run_numbers = [run.number for run in rcdb_runs]
 
     if "mc_ver01" in options:
-        newText="MC"
-        print ("<label><input type=\"radio\" id=\"run_number\" name=\"run_number\" value=\"%s\" onclick=\"changeRun(%s,%s);\"> %s</label>" % (10000, 10000, "MC_run", 10000))
+        newText = "MC"
+        print ("<label><input type=\"radio\" id=\"run_number\" name=\"run_number\" value=\"%s\" onclick=\"changeRun(%s,%s);\"> %s</label>" %
+               (10000, 10000, "MC_run", 10000))
         #print ("<a href=\"/cgi-bin/data_monitoring/monitoring/browseJSRoot.py?run_number=%s&ver=%s&period=%s\" target=\"_blank\"><button type=\"button\"> ROOT </button></a>" % (row[0], options[1], options[2]))
         #print ("<a href=\"https://halldweb.jlab.org/rcdb/runs/info/%s\" target=\"_blank\"><button type=\"button\"> RCDB </button></a>" % (row[0]))
         return
 
     #print dates
     for date in dates:
-        if date[0] == None: 
-            continue;
+        if date[0] == None:
+            continue
 
         # format date (must be a better way)
-        fulldate = str(date[0]) 
+        fulldate = str(date[0])
         month = fulldate[5:7]
         day = fulldate[8:10]
-        namedate = "%s %s" % (months[int(month)-1], day)      
- 
+        namedate = "%s %s" % (months[int(month)-1], day)
+
         # get run range
         minRun = 9e9
         maxRun = 0
@@ -457,44 +476,46 @@ def print_run_selector(records, options, row):
             if "recon" in options[1] and row[0] not in rcdb_run_numbers:
                 continue
 
-	    rundate_obj = None
-	    try:
-            	rundate_obj = datetime.datetime.strptime(row[1], "%Y-%m-%d %H:%M:%S")
-	    except ValueError:
-		pass
-	    if rundate_obj == None:
-		continue
+            rundate_obj = None
+            try:
+                rundate_obj = datetime.datetime.strptime(
+                    row[1], "%Y-%m-%d %H:%M:%S")
+            except ValueError:
+                pass
+            if rundate_obj == None:
+                continue
             #print rundate_obj
 
-	    try:
-            	rundate = rundate_obj.strftime("%Y-%m-%d")
+            try:
+                rundate = rundate_obj.strftime("%Y-%m-%d")
             except ValueError:
-		pass
-	    #print rundate
-	    
+                pass
+            #print rundate
+
             if rundate == fulldate:
                 if row[0] < minRun:
                     minRun = row[0]
                 if row[0] > maxRun:
                     maxRun = row[0]
-                
+
         if minRun != 9e9 and maxRun != 0:
             print "<li>"
             print "<b>%s</b> (Run %s-%s)" % (namedate, minRun, maxRun)
             print "<ul>"
-            
+
             # print runs for given date
             for row in records:
                 if row[1] == None or row[1] == '0':
                     continue
-		if "recon" in options[1] and row[0] not in rcdb_run_numbers:
+                if "recon" in options[1] and row[0] not in rcdb_run_numbers:
                     continue
 
-		rundate_obj = None
+                rundate_obj = None
                 try:
-    	            rundate_obj = datetime.datetime.strptime(row[1], "%Y-%m-%d %H:%M:%S")
+                    rundate_obj = datetime.datetime.strptime(
+                        row[1], "%Y-%m-%d %H:%M:%S")
                 except ValueError:
-            	    pass
+                    pass
                 if rundate_obj == None:
                     continue
                 #print rundate_obj
@@ -506,40 +527,44 @@ def print_run_selector(records, options, row):
                 #print rundate
 
                 numevents = row[2]
-                
-                
+
                 if rundate == fulldate:
                     if options[2] not in rcdb_inelig:
                         if db.get_condition(row[0], "event_count"):
-                            numevents = db.get_condition(row[0], "event_count").value
+                            numevents = db.get_condition(
+                                row[0], "event_count").value
                     print "<li>"
                     #print records
-                    print ("<label><input type=\"radio\" id=\"run_number\" name=\"run_number\" value=\"%s\" onclick=\"changeRun(%s,%s);changePath();showPlot()\"> %s (%s eve)</label>" % (row[0], row[0], row[0], row[0], numevents))
-                    print ("<a href=\"/cgi-bin/data_monitoring/monitoring/browseJSRoot.py?run_number=%s&ver=%s&period=%s\" target=\"_blank\"><button type=\"button\"> ROOT </button></a>" % (row[0], options[1], options[2]))
-                    print ("<a href=\"https://halldweb.jlab.org/rcdb/runs/info/%s\" target=\"_blank\"><button type=\"button\"> RCDB </button></a>" % (row[0]))
+                    print ("<label><input type=\"radio\" id=\"run_number\" name=\"run_number\" value=\"%s\" onclick=\"changeRun(%s,%s);changePath();showPlot()\"> %s (%s eve)</label>" %
+                           (row[0], row[0], row[0], row[0], numevents))
+                    print ("<a href=\"/cgi-bin/data_monitoring/monitoring/browseJSRoot.py?run_number=%s&ver=%s&period=%s\" target=\"_blank\"><button type=\"button\"> ROOT </button></a>" %
+                           (row[0], options[1], options[2]))
+                    print (
+                        "<a href=\"https://halldweb.jlab.org/rcdb/runs/info/%s\" target=\"_blank\"><button type=\"button\"> RCDB </button></a>" % (row[0]))
                     print "</li>"
-                    
+
             print "</ul>"
             print "</li>"
-    
+
     print "</ul>"
 
     print "<script type=\"text/javascript\">make_tree_menu('runList');</script>"
 
 
-#print row of table to display histograms
+# print row of table to display histograms
 def print_row(options, charts):
     for chart in charts:
-        print "<td class=\"plotrows\" style='text-align:center' bgcolor='#A9E2F3' onclick=\"freezeIt(); updatePlot(\'%s\');showPlot();\" onmouseover=\"updatePlot(\'%s\');showPlot(); this.style.backgroundColor='#F78181';\" onmouseout=\"this.style.backgroundColor='#A9E2F3';\">%s</td>" % (chart[0],chart[0], chart[1])
-#    print "</tr>" 
+        print "<td class=\"plotrows\" style='text-align:center' bgcolor='#A9E2F3' onclick=\"freezeIt(); updatePlot(\'%s\');showPlot();\" onmouseover=\"updatePlot(\'%s\');showPlot(); this.style.backgroundColor='#F78181';\" onmouseout=\"this.style.backgroundColor='#A9E2F3';\">%s</td>" % (
+            chart[0], chart[0], chart[1])
+#    print "</tr>"
 
 
-#return the option passed to the script
+# return the option passed to the script
 def get_options():
-    form=cgi.FieldStorage()
+    form = cgi.FieldStorage()
     run_number_str = []
     run_number = []
-    
+
     verName = "rawdata_ver00"
     periodName = "RunPeriod-2018-01"
 
@@ -550,7 +575,7 @@ def get_options():
     if "run_number" in form:
         run_number_str.append(form["run_number"].value)
     if len(run_number_str) == 1 and run_number_str[0].isalnum():
-	run_number.append(int(run_number_str[0]))
+        run_number.append(int(run_number_str[0]))
         run_number.append(verName)
         run_number.append(periodName)
         return run_number
@@ -558,12 +583,12 @@ def get_options():
         run_number.append(None)
         run_number.append(verName)
         run_number.append(periodName)
-    
+
     return run_number
 
 
 def get_path(options):
-    runpth="./"
+    runpth = "./"
     if options[0] != None:
         runpth = "/work/halld2/data_monitoring/"
         runpth += options[2]
@@ -577,8 +602,9 @@ def get_path(options):
         runpth += "/"
     return runpth
 
+
 def get_link_path(options):
-    runpth="./"
+    runpth = "./"
     if options[0] != None:
         runpth = "https://halldweb.jlab.org/cgi-bin/data_monitoring/monitoring/runBrowser.py?period="
         runpth += options[2]
@@ -594,11 +620,11 @@ def get_link_path(options):
 
 # main function
 # This is where the program starts
-def main():    
+def main():
     with open('/group/halld/www/halldweb/htbin/data_monitoring/monitoring/debug.txt', 'w') as f:
-        f.write('oyster0\n')
+        f.write('oyster1\n')
     # get options that may have been passed to this script
-    options=get_options()
+    options = get_options()
 
     # print the HTTP header
     printHTTPheader()
@@ -614,26 +640,25 @@ def main():
     # print the page body
     print "<body style=\"overflow-y: hidden\" >"
 
-
     print "<input type=\"hidden\" id=\"plotToShow\" value=\"none\">"
-   #set period and version if only run_number is given
+   # set period and version if only run_number is given
     if options[0] != None:
         # set period first
-        period=get_periods_run_number(options)
-        options[2]=period[0][0]
+        period = get_periods_run_number(options)
+        options[2] = period[0][0]
         # set version
         if options[1] == None:
-            versions=get_versions(options)
+            versions = get_versions(options)
             revision = ("%s_ver%d" % (versions[0][1], versions[0][0]))
-            options[1]=revision
-    
+            options[1] = revision
+
     # print version selector
     print """<div id="nav" class="link-list">"""
     print_version_selector(options)
-    
+
     # print run selector form
-    records=get_data(options)
-    #if records == None: 
+    records = get_data(options)
+    # if records == None:
     #    records.append([10267, "", 10])
     print_run_selector(records, options, records)
     print "</form>"
@@ -642,75 +667,75 @@ def main():
     # print main page with plots if run number selected
     print """<div id="main">"""
 
-    #if options[0] == None:
+    # if options[0] == None:
     #print "Select run number link to show histograms or click <button type=\"button\"> ROOT </button> to open ROOT file in browser."
     #print "</div>"
     #print "</body>"
     #print "</html>"
-    #sys.exit() 
+    # sys.exit()
 
-    # get revision number 
+    # get revision number
     revision_str = str(options[1])
     revision = int(re.search(r'\d+', revision_str).group())
     #revision_str = revision_str.replace("ver","")
     #revision = int(float(revision_str))
 
     isRecon = "recon" in revision_str
-#######################################################################3    
-    #define and initialize charts
-    occupancy_charts = [["OCCUPANCY","OCCUPANCY"]]
+# 3
+    # define and initialize charts
+    occupancy_charts = [["OCCUPANCY", "OCCUPANCY"]]
     occupancy_charts.pop(0)
-    cdc_charts = [["CDC","CDC"]]
+    cdc_charts = [["CDC", "CDC"]]
     cdc_charts.pop(0)
-    bcal_charts = [["BCAL","BCAL"]]
+    bcal_charts = [["BCAL", "BCAL"]]
     bcal_charts.pop(0)
-    fcal_charts = [["FCAL","FCAL"]]
+    fcal_charts = [["FCAL", "FCAL"]]
     fcal_charts.pop(0)
-    tof_charts = [["TOF","TOF"]]
+    tof_charts = [["TOF", "TOF"]]
     tof_charts.pop(0)
-    fdc_charts = [["FDC","FDC"]]
+    fdc_charts = [["FDC", "FDC"]]
     fdc_charts.pop(0)
-    st_charts = [["ST","ST"]]
+    st_charts = [["ST", "ST"]]
     st_charts.pop(0)
-    tagm_charts = [["TAGM","TAGM"]]
+    tagm_charts = [["TAGM", "TAGM"]]
     tagm_charts.pop(0)
-    tagh_charts = [["TAGH","TAGH"]]
+    tagh_charts = [["TAGH", "TAGH"]]
     tagh_charts.pop(0)
-    hldetectortiming_charts = [["HLTIMING","HLTIMING"]]
+    hldetectortiming_charts = [["HLTIMING", "HLTIMING"]]
     hldetectortiming_charts.pop(0)
-    ps_charts = [["PS","PS"]]
+    ps_charts = [["PS", "PS"]]
     ps_charts.pop(0)
-    l1_charts = [["L1","L1"]]
+    l1_charts = [["L1", "L1"]]
     l1_charts.pop(0)
-    rf_charts = [["RF","RF"]]
+    rf_charts = [["RF", "RF"]]
     rf_charts.pop(0)
-    ana_charts1 = [["ANA1","ANA1"]]
+    ana_charts1 = [["ANA1", "ANA1"]]
     ana_charts1.pop(0)
-    ana_charts2 = [["ANA2","ANA2"]]
+    ana_charts2 = [["ANA2", "ANA2"]]
     ana_charts2.pop(0)
-    ana_charts3 = [["ANA3","ANA3"]]
+    ana_charts3 = [["ANA3", "ANA3"]]
     ana_charts3.pop(0)
-    tpol_charts = [["TPOL","TPOL"]]
+    tpol_charts = [["TPOL", "TPOL"]]
     tpol_charts.pop(0)
-    elec_charts = [["ELECTRONICS","ELECTRONICS"]]
+    elec_charts = [["ELECTRONICS", "ELECTRONICS"]]
     elec_charts.pop(0)
-    uncat_charts = [["UNCAT","UNCAT"]]
+    uncat_charts = [["UNCAT", "UNCAT"]]
     uncat_charts.pop(0)
 
-    #folder_path="./"
-    folder_path=get_path(options)
+    # folder_path="./"
+    folder_path = get_path(options)
     print "<b id='folderPath'>"
     print folder_path
     print "</b>"
     print "<br>"
-    link_path=get_link_path(options)
+    link_path = get_link_path(options)
     print "Link:"
     print "<b id='linkPath'>"
     print link_path
     print "</b>"
     print "<br>"
     print "<br>"
-    #for each file in the folder find the corresponding textfile entry and sort into the subdetector table
+    # for each file in the folder find the corresponding textfile entry and sort into the subdetector table
     if os.path.isdir(folder_path):
         os.chdir(folder_path)
         for file in glob.glob("*.png"):
@@ -722,61 +747,61 @@ def main():
             #print "<br>"
             filename = ""
             dispname = ""
-            category =""
-            with open('/u/group/halld/www/halldweb/htbin/data_monitoring/monitoring/figure_titles','r') as f:
+            category = ""
+            with open('/u/group/halld/www/halldweb/htbin/data_monitoring/monitoring/figure_titles', 'r') as f:
                 for line in f:
-                    words=line.split(',',4)
-                    filename = words[0]#line.split(',', 3)[0]
-                    dispname = words[1]#line.split(',', 3)[1]
-                    category = words[2]#line.split(
+                    words = line.split(',', 4)
+                    filename = words[0]  # line.split(',', 3)[0]
+                    dispname = words[1]  # line.split(',', 3)[1]
+                    category = words[2]  # line.split(
                     version = words[3]
-                    
+
                     if filename == file:
                         is_found = True
                         break
-                    
+
             if is_found == False:
                 print "<script>"
                 print "console.log(\"%s\")" % (file)
                 print "</script>"
                 continue
             else:
-                if category=="ANA":
-                    ana_charts3.append([filename[:-4],dispname])
-                elif category=="OCCUPANCY":
-                    occupancy_charts.append([filename[:-4],dispname])
+                if category == "ANA":
+                    ana_charts3.append([filename[:-4], dispname])
+                elif category == "OCCUPANCY":
+                    occupancy_charts.append([filename[:-4], dispname])
                 elif category == "RECONSTRUCTION":
-                    ana_charts1.append([filename[:-4],dispname])
-                elif category== "CDC":
-                    cdc_charts.append([filename[:-4],dispname])
-                elif category== "BCAL":
-                    bcal_charts.append([filename[:-4],dispname])
-                elif category== "FCAL":
-                    fcal_charts.append([filename[:-4],dispname])
-                elif category== "TOF":
-                    tof_charts.append([filename[:-4],dispname])
-                elif category== "FDC":
-                    fdc_charts.append([filename[:-4],dispname])
-                elif category== "SC":
-                    st_charts.append([filename[:-4],dispname])
+                    ana_charts1.append([filename[:-4], dispname])
+                elif category == "CDC":
+                    cdc_charts.append([filename[:-4], dispname])
+                elif category == "BCAL":
+                    bcal_charts.append([filename[:-4], dispname])
+                elif category == "FCAL":
+                    fcal_charts.append([filename[:-4], dispname])
+                elif category == "TOF":
+                    tof_charts.append([filename[:-4], dispname])
+                elif category == "FDC":
+                    fdc_charts.append([filename[:-4], dispname])
+                elif category == "SC":
+                    st_charts.append([filename[:-4], dispname])
                 elif category == "TAGM":
-                    tagm_charts.append([filename[:-4],dispname])
-                elif category== "TAGH":
-                    tagh_charts.append([filename[:-4],dispname])
-                elif category== "L1":
-                    l1_charts.append([filename[:-4],dispname])
-                elif category== "HLDT":
-                    hldetectortiming_charts.append([filename[:-4],dispname])
-                elif category== "PS":
-                    ps_charts.append([filename[:-4],dispname])
-                elif category== "RF":
-                    rf_charts.append([filename[:-4],dispname])
-                elif category=="TPOL":
-                    tpol_charts.append([filename[:-4],dispname])
-                elif category=="ELECTRONICS":
-                    elec_charts.append([filename[:-4],dispname])
+                    tagm_charts.append([filename[:-4], dispname])
+                elif category == "TAGH":
+                    tagh_charts.append([filename[:-4], dispname])
+                elif category == "L1":
+                    l1_charts.append([filename[:-4], dispname])
+                elif category == "HLDT":
+                    hldetectortiming_charts.append([filename[:-4], dispname])
+                elif category == "PS":
+                    ps_charts.append([filename[:-4], dispname])
+                elif category == "RF":
+                    rf_charts.append([filename[:-4], dispname])
+                elif category == "TPOL":
+                    tpol_charts.append([filename[:-4], dispname])
+                elif category == "ELECTRONICS":
+                    elec_charts.append([filename[:-4], dispname])
                 else:
-                    uncat_charts.append([filename[:-4],dispname])
+                    uncat_charts.append([filename[:-4], dispname])
             #print filename
             #print "<br>"
 
@@ -789,8 +814,6 @@ def main():
         print "<br>"
         print "<br>"
 
-
-    
     occupancy_charts.sort()
     cdc_charts.sort()
     bcal_charts.sort()
@@ -811,147 +834,147 @@ def main():
     elec_charts.sort()
     uncat_charts.sort()
 
-    
+
 ####################################################################################
 
     # display all possible charts in table for selection
     print """Click on a system header, then mouse over <font style="background-color: #A9E2F3">light blue</font> entries in table to view histograms, and <b>click</b>  on an entry to freeze/unfreeze a specific histogram. <br>"""
     print """<table style="width:200px; font-size:0.8em">"""
-    
-    if len(elec_charts)>0:
+
+    if len(elec_charts) > 0:
         print "<th onclick=toggleRows(\"eleccharts\") >Electronics: "
         print "</th>"
         print "<tr id=\"eleccharts\" style=\"display:none;\">"
-        print_row(options,elec_charts)
+        print_row(options, elec_charts)
         print "</tr>"
 
-    if len(occupancy_charts)>0:
+    if len(occupancy_charts) > 0:
         print "<th onclick=toggleRows(\"occcharts\") >Occupancy: "
         print "</th>"
         print "<tr id=\"occcharts\" style=\"display:none;\">"
-        print_row(options,occupancy_charts)
+        print_row(options, occupancy_charts)
         print "</tr>"
 
-    if len(rf_charts)>0:
+    if len(rf_charts) > 0:
         print "<th onclick=toggleRows(\"rfcharts\") >RF: "
         print "</th>"
         print "<tr id=\"rfcharts\" style=\"display:none;\">"
-        print_row(options,rf_charts)
+        print_row(options, rf_charts)
         print "</tr>"
-    
-    if len(tpol_charts)>0:
+
+    if len(tpol_charts) > 0:
         print "<th onclick=toggleRows(\"tpolcharts\") >TPOL: "
         print "</th>"
         print "<tr id=\"tpolcharts\" style=\"display:none;\">"
-        print_row(options,tpol_charts)
+        print_row(options, tpol_charts)
         print "</tr>"
 
-    if len(tagm_charts)>0:
+    if len(tagm_charts) > 0:
         print "<th onclick=toggleRows(\"tagmcharts\") >TAGM: "
         print "</th>"
         print "<tr id=\"tagmcharts\" style=\"display:none;\">"
-        print_row(options,tagm_charts)
+        print_row(options, tagm_charts)
         print "</tr>"
 
-    if len(tagh_charts)>0:
+    if len(tagh_charts) > 0:
         print "<th onclick=toggleRows(\"taghcharts\") >TAGH: "
         print "</th>"
         print "<tr id=\"taghcharts\" style=\"display:none;\">"
-        print_row(options,tagh_charts)
+        print_row(options, tagh_charts)
         print "</tr>"
 
-    if len(ps_charts)>0:
+    if len(ps_charts) > 0:
         print "<th onclick=toggleRows(\"pscharts\") >PS: "
         print "</th>"
         print "<tr id=\"pscharts\" style=\"display:none;\">"
-        print_row(options,ps_charts)
+        print_row(options, ps_charts)
         print "</tr>"
 
-    if len(st_charts)>0:
+    if len(st_charts) > 0:
         print "<th onclick=toggleRows(\"stcharts\") >SC/ST: "
         print "</td>"
         print "<tr id=\"stcharts\" style=\"display:none;\">"
-        print_row(options,st_charts)
+        print_row(options, st_charts)
         print "</tr>"
 
-    if len(cdc_charts)>0:
+    if len(cdc_charts) > 0:
         print "<th onclick=toggleRows(\"cdccharts\") >CDC: "
         print "</th>"
         print "<tr id=\"cdccharts\" style=\"display:none;\">"
-        print_row(options,cdc_charts)
+        print_row(options, cdc_charts)
         print "</tr>"
 
-    if len(bcal_charts)>0:
+    if len(bcal_charts) > 0:
         print "<th onclick=toggleRows(\"bcalcharts\") >BCAL: "
         print "</th>"
         print "<tr id=\"bcalcharts\" style=\"display:none;\">"
-        print_row(options,bcal_charts)
+        print_row(options, bcal_charts)
         print "</tr>"
 
-    if len(fdc_charts)>0:
+    if len(fdc_charts) > 0:
         print "<th onclick=toggleRows(\"fdccharts\") >FDC: "
         print "</th>"
         print "<tr id=\"fdccharts\" style=\"display:none;\">"
-        print_row(options,fdc_charts)
+        print_row(options, fdc_charts)
         print "</tr>"
 
-    if len(fcal_charts)>0:
+    if len(fcal_charts) > 0:
         print "<th onclick=toggleRows(\"fcalcharts\") >FCAL: "
         print "</th>"
         print "<tr id=\"fcalcharts\" style=\"display:none;\">"
-        print_row(options,fcal_charts)
+        print_row(options, fcal_charts)
         print "</tr>"
 
-    if len(tof_charts)>0:
+    if len(tof_charts) > 0:
         print "<th onclick=toggleRows(\"tofcharts\") >TOF: "
         print "</td>"
         print "<tr id=\"tofcharts\" style=\"display:none;\">"
-        print_row(options,tof_charts)
+        print_row(options, tof_charts)
         print "</tr>"
 
-    if len(l1_charts)>0:
+    if len(l1_charts) > 0:
         print "<th onclick=toggleRows(\"l1charts\") >L1: "
         print "</th>"
         print "<tr id=\"l1charts\" style=\"display:none;\">"
-        print_row(options,l1_charts)
+        print_row(options, l1_charts)
         print "</tr>"
 
-    if len(hldetectortiming_charts)>0:
+    if len(hldetectortiming_charts) > 0:
         print "<th onclick=toggleRows(\"hldtcharts\") >HLDT: "
         print "</th>"
         print "<tr id=\"hldtcharts\" style=\"display:none;\">"
-        print_row(options,hldetectortiming_charts)
+        print_row(options, hldetectortiming_charts)
         print "</tr>"
 
-    if len(ana_charts1)>0:
+    if len(ana_charts1) > 0:
         print "<th onclick=toggleRows(\"ana1charts\") >Recon.: "
         print "</th>"
         print "<tr id=\"ana1charts\" style=\"display:none;\">"
-        print_row(options,ana_charts1)
+        print_row(options, ana_charts1)
         print "</tr>"
 
-    if len(ana_charts3)>0:
+    if len(ana_charts3) > 0:
         print "<th onclick=toggleRows(\"ana3charts\") >ANA: "
         print "</th>"
         print "<tr id=\"ana3charts\" style=\"display:none;\">"
-        print_row(options,ana_charts3)
+        print_row(options, ana_charts3)
         print "</tr>"
 
-    if len(uncat_charts)>0:
+    if len(uncat_charts) > 0:
         print "<th onclick=toggleRows(\"uncatcharts\") >Uncategorized: "
         print "</th>"
         print "<tr id=\"uncatcharts\" style=\"display:none;\">"
-        print_row(options,uncat_charts)
+        print_row(options, uncat_charts)
         print "</tr>"
 
     print "</table>"
 
  #   record_singlerun=get_data_singlerun(options)
-    #print "<br> Run %s" % (options[0]) # record_singlerun[3])
-    
+    # print "<br> Run %s" % (options[0]) # record_singlerun[3])
+
     print "<br>"
     print "<b id='RunLine'> <b>Run %s:</b> </b>" % (options[0])
- 
+
     # display histogram
     #print """<img width=800px height=600px src="" id="imageshow" style="display:none">"""
     print """<img src="" id="imageshow" style="display:none">"""
@@ -962,5 +985,6 @@ def main():
 
     conn.close()
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     main()
