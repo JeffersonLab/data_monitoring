@@ -595,6 +595,8 @@ def get_link_path(options):
 # main function
 # This is where the program starts
 def main():    
+    with open('/group/halld/www/halldweb/htbin/data_monitoring/monitoring/debug.txt', 'w') as f:
+        f.write('oyster0\n')
     # get options that may have been passed to this script
     options=get_options()
 
