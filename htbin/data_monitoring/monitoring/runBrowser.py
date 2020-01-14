@@ -29,43 +29,20 @@ curs = conn.cursor()
 # get data from the database
 # if an interval is passed,
 # return a list of records from the database
-
-
 def get_data(options):
 
     revision_str = str(options[1])
     revision = int(re.search(r'\d+', revision_str).group())
 
     query = "SELECT distinct r.run_num, r.start_time, r.num_events FROM run_info r, version_info v, bcal_hits b WHERE b.runid=r.run_num and v.version_id=b.version_id and run_num>0 and revision=%s and run_period=%s ORDER BY r.run_num"
-    #query = "SELECT distinct r.run_num, r.start_time, r.num_events from run_info r, version_info v WHERE run_num>0 and revision=%s and run_period=%s ORDER BY r.run_num"
-    # curs.execute(query)
     print revision
     print str(options[2])
     curs.execute(query, (revision, str(options[2])))
     rows = curs.fetchall()
-    #print rows
     return rows
 
-# get data from the database for single run
-
-
-def get_data_singlerun(options):
-
-    revision_str = str(options[1])
-    revision = int(re.search(r'\d+', revision_str).group())
-    #revision_str = revision_str.replace("ver","")
-    #revision = int(float(revision_str))
-    query = "SELECT distinct r.run_num, r.start_time, r.num_events, r.beam_current, r.radiator_type, r.solenoid_current, r.trigger_config_file from run_info r, version_info v, bcal_hits b WHERE b.runid=r.run_num and v.version_id=b.version_id and run_num>0 and revision=%s and r.run_num=%s ORDER BY r.run_num"
-    # if revision == 0:
-    #query = "SELECT distinct r.run_num, r.start_time, r.num_events, r.beam_current, r.radiator_type, r.solenoid_current, r.trigger_config_file from run_info r, version_info v WHERE run_num>0 and revision=%s and r.run_num=%s ORDER BY r.run_num"
-    curs.execute(query, (revision, options[0]))
-    rows = curs.fetchall()
-
-    return rows
 
 # get list of versions from the DB
-
-
 def get_versions(options):
 
     query = "SELECT revision, data_type, production_time, run_period from version_info where run_period=%s ORDER BY version_id DESC"
@@ -74,9 +51,8 @@ def get_versions(options):
 
     return rows
 
+
 # get list of periods from the DB
-
-
 def get_periods(options):
 
     query = "SELECT DISTINCT run_period from version_info ORDER BY run_period DESC"
@@ -89,9 +65,8 @@ def get_periods(options):
 
     return rowstoreturn
 
+
 # get period for given run_number from the DB
-
-
 def get_periods_run_number(options):
 
     query = "SELECT DISTINCT run_period from version_info v, run_info r, bcal_hits b WHERE b.runid=r.run_num and v.version_id=b.version_id and r.run_num=%s ORDER BY run_period DESC"
@@ -100,9 +75,8 @@ def get_periods_run_number(options):
 
     return rows
 
+
 # get dates to list on runBrowser page
-
-
 def get_dates(options):
 
     revision_str = str(options[1])
@@ -352,7 +326,6 @@ def printHTMLHead(title):
         }
       </script>
 """
-    # window.alert(document.getElementById("period").value);
 
 
 def print_version_selector(options):
@@ -415,9 +388,8 @@ def print_version_selector(options):
     print "<button onclick=\"help_function()\"> Help </button>"
     print "<br><br>"
 
+
 # def newprint_run_selector(options)
-
-
 def print_run_selector(records, options, row):
     months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
               "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -451,8 +423,6 @@ def print_run_selector(records, options, row):
         newText = "MC"
         print ("<label><input type=\"radio\" id=\"run_number\" name=\"run_number\" value=\"%s\" onclick=\"changeRun(%s,%s);\"> %s</label>" %
                (10000, 10000, "MC_run", 10000))
-        #print ("<a href=\"/cgi-bin/data_monitoring/monitoring/browseJSRoot.py?run_number=%s&ver=%s&period=%s\" target=\"_blank\"><button type=\"button\"> ROOT </button></a>" % (row[0], options[1], options[2]))
-        #print ("<a href=\"https://halldweb.jlab.org/rcdb/runs/info/%s\" target=\"_blank\"><button type=\"button\"> RCDB </button></a>" % (row[0]))
         return
 
     #print dates
@@ -484,13 +454,11 @@ def print_run_selector(records, options, row):
                 pass
             if rundate_obj == None:
                 continue
-            #print rundate_obj
 
             try:
                 rundate = rundate_obj.strftime("%Y-%m-%d")
             except ValueError:
                 pass
-            #print rundate
 
             if rundate == fulldate:
                 if row[0] < minRun:
@@ -534,7 +502,6 @@ def print_run_selector(records, options, row):
                             numevents = db.get_condition(
                                 row[0], "event_count").value
                     print "<li>"
-                    #print records
                     print ("<label><input type=\"radio\" id=\"run_number\" name=\"run_number\" value=\"%s\" onclick=\"changeRun(%s,%s);changePath();showPlot()\"> %s (%s eve)</label>" %
                            (row[0], row[0], row[0], row[0], numevents))
                     print ("<a href=\"/cgi-bin/data_monitoring/monitoring/browseJSRoot.py?run_number=%s&ver=%s&period=%s\" target=\"_blank\"><button type=\"button\"> ROOT </button></a>" %
@@ -556,35 +523,29 @@ def print_row(options, charts):
     for chart in charts:
         print "<td class=\"plotrows\" style='text-align:center' bgcolor='#A9E2F3' onclick=\"freezeIt(); updatePlot(\'%s\');showPlot();\" onmouseover=\"updatePlot(\'%s\');showPlot(); this.style.backgroundColor='#F78181';\" onmouseout=\"this.style.backgroundColor='#A9E2F3';\">%s</td>" % (
             chart[0], chart[0], chart[1])
-#    print "</tr>"
 
 
 # return the option passed to the script
 def get_options():
     form = cgi.FieldStorage()
-    run_number_str = []
-    run_number = []
+    options = []
 
-    verName = "rawdata_ver00"
-    periodName = "RunPeriod-2018-01"
-
-    if "ver" in form:
-        verName = str(form["ver"].value)
-    if "period" in form:
-        periodName = str(form["period"].value)
-    if "run_number" in form:
-        run_number_str.append(form["run_number"].value)
-    if len(run_number_str) == 1 and run_number_str[0].isalnum():
-        run_number.append(int(run_number_str[0]))
-        run_number.append(verName)
-        run_number.append(periodName)
-        return run_number
+    if 'run_number' in form:
+        options.append(int(form['run_number'].value))
     else:
-        run_number.append(None)
-        run_number.append(verName)
-        run_number.append(periodName)
+        options.append(None)
 
-    return run_number
+    if 'ver' in form:
+        options.append(str(form['ver'].value))
+    else:
+        options.append(None)
+
+    if 'period' in form:
+        options.append(str(form["period"].value))
+    else:
+        options.append(None)
+
+    return options
 
 
 def get_path(options):
@@ -621,8 +582,9 @@ def get_link_path(options):
 # main function
 # This is where the program starts
 def main():
-    with open('/group/halld/www/halldweb/htbin/data_monitoring/monitoring/debug.txt', 'w') as f:
-        f.write('oyster1\n')
+    # with open('/group/halld/www/halldweb/htbin/data_monitoring/monitoring/debug.txt', 'w') as f:
+    #     f.write('oyster0\n')
+
     # get options that may have been passed to this script
     options = get_options()
 
@@ -641,13 +603,14 @@ def main():
     print "<body style=\"overflow-y: hidden\" >"
 
     print "<input type=\"hidden\" id=\"plotToShow\" value=\"none\">"
-   # set period and version if only run_number is given
-    if options[0] != None:
+    # set period and version if only run_number is given
+    if options[0] is not None:
         # set period first
-        period = get_periods_run_number(options)
-        options[2] = period[0][0]
+        if options[2] is None:
+            period = get_periods_run_number(options)
+            options[2] = period[0][0]
         # set version
-        if options[1] == None:
+        if options[1] is None:
             versions = get_versions(options)
             revision = ("%s_ver%d" % (versions[0][1], versions[0][0]))
             options[1] = revision
@@ -667,18 +630,9 @@ def main():
     # print main page with plots if run number selected
     print """<div id="main">"""
 
-    # if options[0] == None:
-    #print "Select run number link to show histograms or click <button type=\"button\"> ROOT </button> to open ROOT file in browser."
-    #print "</div>"
-    #print "</body>"
-    #print "</html>"
-    # sys.exit()
-
     # get revision number
     revision_str = str(options[1])
     revision = int(re.search(r'\d+', revision_str).group())
-    #revision_str = revision_str.replace("ver","")
-    #revision = int(float(revision_str))
 
     isRecon = "recon" in revision_str
 # 3
@@ -802,11 +756,7 @@ def main():
                     elec_charts.append([filename[:-4], dispname])
                 else:
                     uncat_charts.append([filename[:-4], dispname])
-            #print filename
-            #print "<br>"
 
-            #print name
-            #print "<br>"
     else:
         print "This run number does not exist for the given run period/version number!!!!"
         print "<br>"
@@ -968,15 +918,10 @@ def main():
         print "</tr>"
 
     print "</table>"
-
- #   record_singlerun=get_data_singlerun(options)
-    # print "<br> Run %s" % (options[0]) # record_singlerun[3])
-
     print "<br>"
     print "<b id='RunLine'> <b>Run %s:</b> </b>" % (options[0])
 
     # display histogram
-    #print """<img width=800px height=600px src="" id="imageshow" style="display:none">"""
     print """<img src="" id="imageshow" style="display:none">"""
     print "</div>"
 
