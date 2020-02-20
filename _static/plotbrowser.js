@@ -209,6 +209,16 @@ function ShowPlots() {
     numAdded++;
   }
 
+  if (numAdded == 0) {
+    var DOM_img = document.createElement("IMG");
+    // Insert a row in the table at the last row
+    var newRowhead = tableRef.insertRow(tableRef.rows.length);
+    var newRow = tableRef.insertRow(tableRef.rows.length);
+    var newCell  = newRow.insertCell(numAdded % columnstoDisplay);
+    DOM_img.setAttribute("src", "https://halldweb.jlab.org/data_monitoring/_static/no_plots.png");
+    newCell.appendChild(DOM_img);
+  }
+
   if (use_url_par) ClearOptionsFromURL();
 }
 
