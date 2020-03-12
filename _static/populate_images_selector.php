@@ -13,6 +13,7 @@ if (!$conn) {
 }
 mysqli_select_db($conn, $dbname);
 $sql = 'SELECT * FROM PlotTypes WHERE ID IN (SELECT PlotType_ID FROM Plots WHERE Run_ID IN (SELECT ID FROM Runs WHERE Version_ID=' . $_GET["ID"] . '))';
+# $sql = 'SELECT * FROM PlotTypes WHERE ID IN (SELECT PlotType_ID FROM Plots WHERE Run_ID IN (SELECT ID FROM Runs WHERE Version_ID=' . $_GET["ID"] . ')) AND (bitmask >> 3 AND "rawdata" IN (SELECT Type FROM Versions WHERE ID=' . $_GET["ID"] . '))';
 $result = $conn->query($sql);
 $data = array();
 while ($row = $result->fetch_assoc()) {
