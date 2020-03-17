@@ -9,6 +9,7 @@ import os
 os.environ["RCDB_HOME"] = "/group/halld/www/halldweb/html/rcdb_home"
 sys.path.append("/group/halld/www/halldweb/html/rcdb_home/python")
 import rcdb
+import urllib.parse
 
 db = rcdb.RCDBProvider("mysql://rcdb@hallddb/rcdb")
 dbhost = "hallddb.jlab.org"
@@ -16,7 +17,7 @@ dbuser = 'datmon'
 dbname = 'data_monitoring'
 conn = MySQLdb.connect(host=dbhost, user=dbuser, db=dbname)
 
-query = sys.argv[1]
+query = urllib.parse.unquote_plus(sys.argv[1])
 RunPeriod = sys.argv[2]
 RunMin = 0
 RunMax = 99999
