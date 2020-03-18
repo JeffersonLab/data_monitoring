@@ -10,6 +10,8 @@ A symbolic link `/group/halld/www/halldweb/htbin/data_monitoring/monitoring/runB
 
 ## Python script to send out monitoring update plots `email/montoring_update.py`
 
+crontab for gluex@jlabl5
+
 ```
 #
 # ccdb sqlite version management
