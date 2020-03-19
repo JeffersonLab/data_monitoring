@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+   <head>
+      <title>Draw of single element</title>
+      <!--  this file used by THttpServer to display single element -->
+      <meta http-equiv="X-UA-Compatible" content="IE=Edge; text/html">
+      <script type="text/javascript" src="/jsrootsys/scripts/JSRootCore.js"></script>
+   </head>
+
+   <script type='text/javascript'>
+   
+      function CreateDrawGui() {
+         // analyze URL options
+         var drawopt = JSROOT.GetUrlOption("opt");
+         
+         var monitor = JSROOT.GetUrlOption("monitoring");
+         if (monitor == "") monitor = 3000; else
+         if (monitor != null) monitor = parseInt(monitor);  
+         
+         var objpainter = null;
+   
+         function drawfunction() {
+           
+            var req = JSROOT.NewHttpRequest("root.json.gz?compact=3", 'text', function(result) {
+                var obj = JSROOT.parse(result);
+                if (!obj) {
+                   if (!objpainter) $('#drawing').append("<h3>Can not get object from the server</h3>"); 
+                   return;
+                }
+                
+                document.body.style.cursor = 'wait';
+                if (!objpainter) {
+                   $('#drawing').empty();
+                   objpainter = JSROOT.draw('drawing', obj, drawopt); 
+                } else {
+                   objpainter.UpdateObject(obj);   
+                   objpainter.RedrawFrame();
+                }
+                document.body.style.cursor = 'auto';
+                
+            });
+           
+            // submit request 
+            req.send(null);
+         }
+   
+         drawfunction();
+   
+         if (monitor!=null)
+            setInterval(drawfunction, monitor);
+   
+         JSROOT.RegisterForResize(function() { if (objpainter) objpainter.CheckResize(); });
+      }
+   
+   </script>
+
+   <body onload="JSROOT.AssertPrerequisites('2d', CreateDrawGui)">
+      <div id="drawing" style="position:absolute; left:1px; top:1px; bottom:1px; right:1px">
+         loading scripts...
+      </div>
+   </body>
+
+</html>
