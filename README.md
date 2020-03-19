@@ -25,13 +25,13 @@ crontab for gluex@jlabl5
 # update ccdb users from NIS tables
 #
 0 0 * * * /home/gluex/bin/ccdb_update_users.sh
-#
-# send out monitoring update plots
-#
-MAILTO="keigo@jlab.org"
-0  5 * * * /group/halld/www/halldweb/html/data_monitoring/email/monitoring_update.py ; cd /home/gluex/simple_email_list/lists/monitoring_update ; ../../scripts/simple_email_list.pl
-0 17 * * * /group/halld/www/halldweb/html/data_monitoring/email/monitoring_update.py ; cd /home/gluex/simple_email_list/lists/monitoring_update ; ../../scripts/simple_email_list.pl
+
 
 # Updates database.
 */5  *  *  *  *  /group/halld/www/halldweb/html/data_monitoring/utilities/update_browser_family.py
+
+# send out monitoring update plots
+MAILTO="keigo@jlab.org"
+0  5 * * * /group/halld/www/halldweb/html/data_monitoring/email/monitoring_update.py ; cd /home/gluex/simple_email_list/lists/monitoring_update ; ../../scripts/simple_email_list.pl
+0 17 * * * /group/halld/www/halldweb/html/data_monitoring/email/monitoring_update.py ; cd /home/gluex/simple_email_list/lists/monitoring_update ; ../../scripts/simple_email_list.pl
 ```
