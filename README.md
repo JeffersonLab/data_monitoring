@@ -33,5 +33,5 @@ MAILTO="keigo@jlab.org"
 0 17 * * * /group/halld/www/halldweb/html/data_monitoring/email/monitoring_update.py ; cd /home/gluex/simple_email_list/lists/monitoring_update ; ../../scripts/simple_email_list.pl
 
 # Updates database.
-*/5  *  *  *  *  /group/halld/www/halldweb/html/data_monitoring/utilities/update_browser_family.py >> /group/halld/www/halldweb/html/data_monitoring/utilities/cron.log 2>&1
+*/5  *  *  *  *  /group/halld/www/halldweb/html/data_monitoring/utilities/update_browser_family.py
 ```
