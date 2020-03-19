@@ -1,0 +1,5 @@
+#-----------------------------------------------------------------------------
+# Min    Hour    Day    Month    Weekday    Command
+#-----------------------------------------------------------------------------
+MAILTO=aaustreg@jlab.org
+*/30      *      *       *         *       /bin/bash -c /group/halld/www/halldweb/html/data_monitoring/run_statistics/RunPeriod-2018-01/cron_exec.sh > /group/halld/www/halldweb/html/data_monitoring/run_statistics/RunPeriod-2018-01/int_triggers.log 2>&1
