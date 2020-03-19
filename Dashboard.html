@@ -1,0 +1,496 @@
+<html>
+<head>
+    <title>Monitoring Dashboard by Thomas Britton</title>
+</head>
+<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<script src="js_utilities/jquery-3.3.1.min.js" type="text/javascript"></script>
+<script src="js_utilities/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="js_utilities/datatables.min.css"/>
+<script type="text/javascript" src="js_utilities/datatables.min.js"></script>
+<script src="js_utilities/plotly-latest.min.js"></script>
+<style>
+    .warning {
+    background-color: #F99 !important;
+    }
+    .better {
+        background-color: rgb(139, 250, 65);
+    }
+
+   /* Tooltip text */
+.tooltiptext {
+    visibility: visible;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+#tooltip {
+  position: absolute;
+  z-index: 1001;
+  display: none;
+  border: 2px solid #ebebeb;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgb(0, 0, 0);
+}
+
+</style>
+
+
+<body>
+
+<font size="32">b1pi</font>
+<br>
+<br>
+<b>Start Date</b><input type="text" id="b1pi_startDate" onChange="QueryDates('b1pi_test_data','*');">
+<b>End Date</b><input type="text" id="b1pi_endDate" onChange="QueryDates('b1pi_test_data','*');">
+<br>
+<br>
+<div class="tooltip">
+        <span class="tooltiptext" id="tooltip">blah</span>
+</div>
+<div class="container" id="b1piContainer" >
+    <table cellpadding="0" cellspacing="0" border="1" class="dataTable table" id="b1piTable">
+
+    </table>
+</div>
+<br>
+<div class="container" id="b1piGraphContainer">
+
+</div>
+<hr>
+<font size="32">Delta++</font>
+<b>Start Date</b><input type="text" id="deltapp_startDate" onChange="QueryDates('deltapp_test_data','*');">
+<b>End Date</b><input type="text" id="deltapp_endDate" onChange="QueryDates('deltapp_test_data','*');">
+<br>
+<br>
+<div class="tooltip">
+        <span class="tooltiptext" id="tooltip">blah</span>
+</div>
+<div class="container" id="b1pideltappContainer" >
+    <table cellpadding="0" cellspacing="0" border="1" class="dataTable table" id="deltappTable">
+
+    </table>
+</div>
+<br>
+<div class="container" id="deltappGraphContainer">
+
+</div>
+
+
+<script>
+    
+    var result= new Array();
+    var deltappresult= new Array();
+
+    var b1piTable;
+    var b1piDataSet=[];
+    var b1piColumnDefs=[];
+    var b1piTableConfig=[];
+
+    var deltappTable;
+    var deltappDataSet=[];
+    var deltappColumnDefs=[];
+    var deltappTableConfig=[];
+    $(document).ready(buildCalendars());
+
+
+    //$(document).ready(connectToDB());
+
+    function buildCalendars() {
+
+        $('#b1pi_startDate').datepicker({dateFormat: 'yy-mm-dd', defaultDate: '-7d'});
+        $('#b1pi_startDate').datepicker('setDate', '-6m');
+
+        $('#b1pi_endDate').datepicker({dateFormat: 'yy-mm-dd', defaultDate: '-0m'});
+        $('#b1pi_endDate').datepicker('setDate', '-0m');
+
+        QueryDates('b1pi_test_data','*');
+
+        $('#deltapp_startDate').datepicker({dateFormat: 'yy-mm-dd', defaultDate: '-7d'});
+        $('#deltapp_startDate').datepicker('setDate', '-6m');
+
+        $('#deltapp_endDate').datepicker({dateFormat: 'yy-mm-dd', defaultDate: '-0m'});
+        $('#deltapp_endDate').datepicker('setDate', '-0m');
+
+        QueryDates('deltapp_test_data','*');
+
+    }
+  
+  function QueryDates(table,cstring)
+  {
+      var qresult= new Array;
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var result_to_use;
+                if(table=="b1pi_test_data")
+                {
+                result=JSON.parse(this.responseText);
+                result_to_use=result;
+                }
+                else{
+                    deltappresult=JSON.parse(this.responseText);
+                result_to_use=deltappresult;
+                }
+
+                StoreResult(table,result_to_use);
+                
+            }
+        };
+        var qsstring=$('#b1pi_startDate').datepicker("getDate");
+        var qestring=$('#b1pi_endDate').datepicker("getDate");
+
+        if( table == "deltapp_test_data")
+         {   
+             qsstring=$('#deltapp_startDate').datepicker("getDate");
+            qestring=$('#deltapp_endDate').datepicker("getDate");
+         }
+
+        console.log("js_utilities/dat_mon_sql.php?t="+table+"\&c="+cstring+"\&"+"qs="+qsstring+"\&"+"qe="+qestring);
+        xmlhttp.open("GET","js_utilities/dat_mon_sql.php?t="+table+"\&c="+cstring+"\&"+"qs="+qsstring+"\&"+"qe="+qestring,true);
+        xmlhttp.send();
+  }
+
+  function StoreResult(table,result)
+  {
+    if (result.length==0)
+        return;
+    console.log(result);
+    var rows=new Array();
+    for(var i=0; i< result.length;i++)
+    {
+        rows.push(result[i]);
+    }
+    qresult=rows.reverse();
+
+    MakeTable(table,qresult);
+  }
+
+  function MakeTable(table, resultArray)
+  {
+
+      b1piDataSet=[];
+      b1piColumnDefs=[];
+
+      deltappDataSet=[];
+      deltappColumnDefs=[];
+
+      if(resultArray.length > 0)
+      {
+
+        for (var key in resultArray[0]) {
+            if( key == "config" || key=="id")
+                continue;
+
+            if(table=="b1pi_test_data")
+            {
+            b1piColumnDefs.push({title: key});
+            }
+            else if(table=="deltapp_test_data")
+            {
+            deltappColumnDefs.push({title: key});
+            }
+            
+        }
+
+        //TABLE ROWS
+        var cellConfig=new Array();
+
+        
+        for (i = 0; i < resultArray.length; i++) {
+
+            var dataRow=[];
+            for (var key in resultArray[i]) {
+                
+                if( key == "config")
+                {
+                    if(resultArray[i]["config"] != "")
+                        cellConfig.push(JSON.parse(resultArray[i]["config"]));
+                    else
+                        cellConfig.push(JSON.parse("{}"))
+                    //cellConfig.push(resultArray[i]["config"]);
+                    continue;
+                }
+                if(key== "id")
+                {continue;}
+               
+        
+                dataRow.push(resultArray[i][key]);
+               
+            }
+            if(table=="b1pi_test_data")
+            {
+                b1piDataSet.push(dataRow);
+            }
+            else if(table=="deltapp_test_data"){
+                deltappDataSet.push(dataRow);
+            }
+        }  
+        
+        if(table=="b1pi_test_data")
+            {
+               b1piTableConfig=cellConfig;
+            }
+            else if(table=="deltapp_test_data"){
+                deltappTableConfig=cellConfig;
+            }
+
+        
+    }
+    
+    if(table=="b1pi_test_data")
+            {
+               b1piDataSet=b1piDataSet.reverse();
+            }
+            else if(table=="deltapp_test_data"){
+                deltappDataSet=deltappDataSet.reverse();
+            }
+    
+
+    if(table=="b1pi_test_data")
+    {
+               if ( $.fn.dataTable.isDataTable( '#b1piTable' ) ) {
+        b1piTable = $('#b1piTable').DataTable();
+        b1piTable.destroy();
+        $('#b1piTable').empty();
+    }
+    }
+    else if(table=="deltapp_test_data"){
+                if ( $.fn.dataTable.isDataTable( '#deltappTable' ) ) {
+        deltappTable = $('#deltappTable').DataTable();
+       deltappTable.destroy();
+        $('#deltappTable').empty();
+    }
+    }
+    
+    var ColumnDefs=b1piColumnDefs;
+    if(table == "deltapp_test_data")
+        {
+            ColumnDefs=deltappColumnDefs;
+        }
+    
+   var column_index;
+    for(var c=0;c<ColumnDefs.length;c++)
+            {
+                if(ColumnDefs[c].title == "date_generated")
+                {
+                    column_index=c;
+                    break;
+                }
+            
+            }
+    
+    if(table=="b1pi_test_data")
+    {
+              b1piTable=$('#b1piTable').DataTable({data: b1piDataSet , columns: ColumnDefs, order: [[column_index,"desc"]]});
+    $('#b1piTable').dataTable().on('click','td',function (){DoPlot(b1piTable,this)});
+    $('#b1piTable').dataTable().on('mouseover','td',function (event){DoCellTooltip(b1piTable,this,'on',event)});
+    $('#b1piTable').dataTable().on('mouseleave','td',function (event){DoCellTooltip(b1piTable,this,'off',event)});
+    ColorCells(b1piTable,cellConfig);
+    
+    }
+    else if(table=="deltapp_test_data"){
+     deltappTable=$('#deltappTable').DataTable({data: deltappDataSet , columns: ColumnDefs, order: [[column_index,"desc"]]});
+    $('#deltappTable').dataTable().on('click','td',function (){DoPlot(deltappTable,this)});
+    $('#deltappTable').dataTable().on('mouseover','td',function (event){DoCellTooltip(deltappTable,this,'on',event)});
+    $('#deltappTable').dataTable().on('mouseleave','td',function (event){DoCellTooltip(deltappTable,this,'off',event)});
+    ColorCells(deltappTable,cellConfig);
+    }
+   
+
+}
+function DoPlot(table,cell)
+{
+    var y_vals=[];
+    var x_vals=[];
+
+    var column_index=0;
+
+    for(var c=0;c<table.columns()[0].length;c++)
+            {
+                if(table.column( c ).header().innerHTML == "date_generated")
+                {
+                    column_index=c;
+                    break;
+                }
+            
+            }
+
+        
+    for(var r=0;r<table.rows()[0].length;r++)
+        {
+            x_vals.push(table.cell({row: r, column: column_index}).data())
+            y_vals.push(table.cell({row: r, column: cell._DT_CellIndex.column }).data());
+        }
+       // console.log(x_vals);
+    //console.log(y_vals);
+        var chartLine = {x: x_vals,y: y_vals,mode: 'lines+markers' }
+        if(table==b1piTable)
+        {
+            Plotly.newPlot('b1piGraphContainer',[chartLine],{});
+        }
+        else if(table==deltappTable)
+        {
+            Plotly.newPlot('deltappGraphContainer',[chartLine],{});
+        }
+    
+    
+}
+
+    function ColorCells(table,cellConfig)
+    {
+        //console.log(cellConfig);
+        //JSON.parse(cellConfig[0]);
+
+        for(var r=0;r<table.rows()[0].length;r++)
+        {
+            for(var c=0;c<table.columns()[0].length;c++)
+            {
+                var key=table.column( c ).header().innerHTML;
+                if(key == "id" || key == "platform" || key == "run" || key == "comment" || key == "date_generated")
+                    continue;
+
+                if(!cellConfig[r][key])
+                    continue;
+
+                var cell = table.cell({ row: r, column: c}).node();
+                //$(cell).addClass('tooltip');
+                //var cell_value = table.cell({ row: r, column: c}).data();
+                var cellMode=Compare(table.cell({ row: r, column: c}).data(),cellConfig[r][key].lowLimit, cellConfig[r][key].highLimit,cellConfig[r][key].bounding)
+
+                //console.log(cellConfig[r][key].lowLimit)
+                if(cellMode=="warning")
+                {
+                    $(cell).addClass('warning')
+                }
+                if(cellMode=="better")
+                {
+                    $(cell).addClass('better')
+                }
+            }
+        }
+
+    }
+
+    function Compare(cell_value,low, high,bounding)
+    {
+        if(!high || !low || !bounding)
+        {
+            return;
+        }
+        if(high==-1)
+        {
+            high=Infinity;
+        }
+        if(low==-1)
+        {
+            low=-Infinity;
+        }
+        if(bounding==="atLeast")
+        {
+            if(cell_value<low)
+                return "warning"
+            else
+                return "normal"
+        }
+        else if(bounding==="within")
+        {
+            if(cell_value<low || cell_value>high)
+                return "warning"
+            else
+                return "normal"
+        }
+        else if(bounding==="atMost")
+        {
+            if(cell_value>high)
+                return "warning"
+            else
+                return "normal"
+        }
+        else if(bounding==="exactly")
+        {
+            if(cell_value===high && cell_value===low )
+                return "normal"
+            else
+                return "warning"
+        }
+        else if(bounding==="typical_low")
+        {
+            if(cell_value>high)
+                return "warning"
+            else if(cell_value<low)
+                return "better"
+            else
+                return "normal"
+        }
+        else if(bounding==="typical_hi")
+        {
+            if(cell_value<low)
+                return "warning"
+            else if(cell_value>high)
+                return "better"
+            else
+                return "normal"
+        }
+
+
+
+    }
+
+    function DoCellTooltip(b1piTable,cell,vis,e)
+    {
+        if(vis=='on')
+        {
+        var row=cell._DT_CellIndex.row;
+        var ColumnName=b1piTable.column( cell._DT_CellIndex.column ).header().innerHTML;
+
+     if(b1piTableConfig[row][ColumnName])
+     {
+         var text="";
+         if( b1piTableConfig[row][ColumnName].lowLimit == -1)
+         {
+            text+="-inf"
+         }
+        else
+        {
+            text+=b1piTableConfig[row][ColumnName].lowLimit;
+        }
+        text+=" to ";
+        if( b1piTableConfig[row][ColumnName].highLimit == -1)
+         {
+            text+="inf";
+         }
+        else
+        {
+            text+=b1piTableConfig[row][ColumnName].highLimit;
+        }
+        text+="\n\n"+b1piTableConfig[row][ColumnName].bounding;
+
+        $("#tooltip").text(text).animate({ left: e.pageX, top: e.pageY }, 1);
+        //console.log(b1piTableConfig[row][ColumnName].lowLimit+"  ----->  "+b1piTableConfig[row][ColumnName].highLimit);
+        if (!$("#tooltip").is(':visible')) $("#tooltip").show();
+     }
+    }
+    else
+    {
+        $("#tooltip").hide();
+    }
+    }
+</script>
+
+</body>
+</html>

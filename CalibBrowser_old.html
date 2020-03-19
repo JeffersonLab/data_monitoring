@@ -1,0 +1,328 @@
+<html>
+<head>
+    <title>Calibration Browser by Thomas Britton</title>
+</head>
+<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<script src="js_utilities/jquery-3.3.1.min.js" type="text/javascript"></script>
+<script src="js_utilities/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="js_utilities/datatables.min.css"/>
+<script type="text/javascript" src="js_utilities/datatables.min.js"></script>
+<script src="js_utilities/plotly-latest.min.js"></script>
+<style>
+    body
+    {
+        height: 100%
+    }
+
+    body.wait, body.wait *{
+        cursor: wait !important;   
+    }
+       
+#myProgress {
+    width: 30%;
+    background-color: grey;
+}
+#progressbar {
+    width: 1%;
+    height: 30px;
+    background-color: green;
+}
+
+</style>
+
+
+<body id="body">
+
+<font size="32">Calibrations</font>
+<button id="initiateScan" onclick=CrawlCalibs()>Initiate New Scan</button>
+<!--<div id="myProgress">
+<div class="myProgress" id="progressbar"></div>
+</div>-->
+<br>
+<br>
+<b>Run Period</b><select id="RunPeriod_selector" onchange="updateOptions(this.id);MakeTable(getSelectorSelectedValue('Plot_selector'));"></select>
+<b>Version</b><select id="Version_selector" onchange="updateOptions(this.id);MakeTable(getSelectorSelectedValue('Plot_selector'));"></select>
+<b>Pass</b><select id="SubDir_selector" onchange="updateOptions(this.id);MakeTable(getSelectorSelectedValue('Plot_selector'));"></select>
+<b>Plot</b><select id="Plot_selector" onChange="MakeTable(getSelectorSelectedValue('Plot_selector'))"></select>
+<b>Columns</b><select id="Columns_selector" onChange="columns=this.value;MakeTable(getSelectorSelectedValue('Plot_selector'))"></select>
+<br>
+<br>
+<div class="container" id="imageTable" >
+    <table cellpadding="0" cellspacing="0" border="1" class="dataTable table" id="imgTable">
+
+    </table>
+</div>
+<br>
+<div class="container" id="b1piGraphContainer">
+
+</div>
+
+
+<script>
+    
+    var result= new Array();
+    var prog_width=0;
+    var RunP_Selectedresults;
+    var RunP_Version_Selectedresults;
+    var RunP_Version_pass_Selectedresults;
+    var selectedFileName="";
+    var base_img_path="/work/halld2/calibration/";
+    var Default_RunP="RunPeriod-2018-01";
+    var columns=2;
+
+
+    $(document).ready(function(){LoadCalibCrawl();});
+
+
+
+  function CrawlCalibs()
+  {
+    $("body").toggleClass("wait");
+      var qresult= new Array;
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                result=JSON.parse(this.responseText).map(r => JSON.parse(r));
+
+                MakeOptions(result)
+
+                
+            }
+        };
+        
+        xmlhttp.open("GET","./js_utilities/CalibrationCrawler.php",true);
+        xmlhttp.send();
+  }
+  function LoadCalibCrawl()
+  {
+      var got_result=false;
+    $("body").toggleClass("wait");
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", "/data/webdata/CalibBrowser.json", true);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                if(rawFile.responseText =="")
+                {
+                    CrawlCalibs();
+                    return;
+                }
+               result = JSON.parse(rawFile.responseText).map(r => JSON.parse(r));
+               got_result=true;
+               MakeOptions(result);
+            //console.log(result);
+            }
+        }
+    }
+    rawFile.send(null);
+    if(result.length==0 && got_result)
+    {
+        CrawlCalibs();
+    }
+    
+  }
+
+
+  function MakeOptions(result)
+  {
+
+    removeOptions(document.getElementById("RunPeriod_selector"));
+    removeOptions(document.getElementById("Version_selector"));
+    removeOptions(document.getElementById("SubDir_selector"));
+    removeOptions(document.getElementById("Plot_selector"));
+
+    removeOptions(document.getElementById("Columns_selector"));
+    var colarr=[1,2,3,4,5];
+    //console.log("here")
+    colarr.map(function (ur){var el = document.createElement("option"); el.textContent=ur;el.value=ur;document.getElementById("Columns_selector").appendChild(el);return;})
+    SetSelectorDefault("Columns_selector","2");
+
+
+    const unique_RunP = [...new Set(result.map(item => item.RunPeriod))];
+    
+    unique_RunP.sort().map(function (ur){var el = document.createElement("option"); el.textContent=ur;el.value=ur;document.getElementById("RunPeriod_selector").appendChild(el);return;});
+    SetSelectorDefault("RunPeriod_selector",Default_RunP);
+    //$.unique(result.map(function (d) { return d.RunPeriod;})).sort().map(function (ur){var el = document.createElement("option"); el.textContent=ur;el.value=ur;document.getElementById("RunPeriod_selector").appendChild(el);prog_width=prog_width+5; progbar.style.width=prog_width+'%';return;});
+    //document.getElementById("RunPeriod_selector").selectedIndex="0";
+
+    RunP_Selectedresults= QueryJson(result,"RunPeriod",getSelectorSelectedValue("RunPeriod_selector"));
+    const unique_Version = [...new Set(RunP_Selectedresults.map(item => item.Version))];
+    unique_Version.sort().map(function (ur){var el = document.createElement("option"); el.textContent=ur;el.value=ur;document.getElementById("Version_selector").appendChild(el);return;});
+    var verArr = unique_Version.map(e => parseInt(e.substring(3)));
+    var s="000"+Math.max(...verArr);
+    SetSelectorDefault("Version_selector","ver"+s.substr(s.length-2));
+
+    RunP_Version_Selectedresults=QueryJson(RunP_Selectedresults,"Version",getSelectorSelectedValue("Version_selector"));
+    const unique_SubDir = [...new Set(RunP_Version_Selectedresults.map(item => item.SubDir))];
+    unique_SubDir.sort().map(function (ur){var el = document.createElement("option"); el.textContent=ur;el.value=ur;document.getElementById("SubDir_selector").appendChild(el);return;});
+    //document.getElementById("SubDir_selector").selectedIndex="0";
+
+    RunP_Version_pass_Selectedresults=QueryJson(RunP_Version_Selectedresults,"SubDir",getSelectorSelectedValue("SubDir_selector"));
+    
+    const unique_Files = [...new Set(RunP_Version_pass_Selectedresults.map(item => item.FileName))];
+    unique_Files.sort().map(function (ur){var el = document.createElement("option"); el.textContent=ur;el.value=ur;document.getElementById("Plot_selector").appendChild(el);return;});
+    //$.unique(RunP_Version_pass_Selectedresults.map(function (d) { return d.FileName;})).sort().map(function (ur){var el = document.createElement("option"); el.textContent=ur;el.value=ur;document.getElementById("Plot_selector").appendChild(el);return;});
+    selectedFileName=getSelectorSelectedValue("Plot_selector");
+
+   // SetDefaultOptions();
+
+    $("body").toggleClass("wait");
+    MakeTable(getSelectorSelectedValue('Plot_selector'));
+   // progbar.style.width=0+'%';
+  }
+  function updateOptions(name)
+  {
+    //console.log(name);
+    if(name=="SubDir_selector")
+    {
+       
+        RunP_Version_pass_Selectedresults=QueryJson(RunP_Version_Selectedresults,"SubDir",getSelectorSelectedValue("SubDir_selector"));
+        removeOptions(document.getElementById("Plot_selector"));
+        const unique_Files = [...new Set(RunP_Version_pass_Selectedresults.map(item => item.FileName))];
+        unique_Files.sort().map(function (ur){var el = document.createElement("option"); el.textContent=ur;el.value=ur;document.getElementById("Plot_selector").appendChild(el);return;});
+    }
+    else if(name=="Version_selector")
+    {
+        
+        RunP_Version_Selectedresults=QueryJson(RunP_Selectedresults,"Version",getSelectorSelectedValue("Version_selector"));
+        removeOptions(document.getElementById("SubDir_selector"));
+        const unique_SubDir = [...new Set(RunP_Version_Selectedresults.map(item => item.SubDir))];
+        unique_SubDir.sort().map(function (ur){var el = document.createElement("option"); el.textContent=ur;el.value=ur;document.getElementById("SubDir_selector").appendChild(el);return;});
+        updateOptions("SubDir_selector")
+    }
+    else if(name=="RunPeriod_selector")
+    {
+        
+        RunP_Selectedresults= QueryJson(result,"RunPeriod",getSelectorSelectedValue("RunPeriod_selector"));
+        removeOptions(document.getElementById("Version_selector"));
+        const unique_RunP = [...new Set(RunP_Selectedresults.map(item => item.Version))];
+        unique_RunP.sort().map(function (ur){var el = document.createElement("option"); el.textContent=ur;el.value=ur;document.getElementById("Version_selector").appendChild(el);return;});
+        updateOptions("Version_selector")
+    }
+
+  }
+
+function SetSelectorDefault(select,defaultopt)
+{
+    var Selector=document.getElementById(select);
+
+    for(var i=0;i<Selector.options.length;i++)
+    {
+        if(Selector.options[i].value===defaultopt)
+        {
+            Selector.selectedIndex=i;
+            break;
+        }
+    }
+}
+
+function getSelectorSelectedValue(id)
+{
+    return document.getElementById(id)[document.getElementById(id).selectedIndex].value
+}
+function QueryJson(array,key,value)
+{
+    var TrimmedArray= new Array();
+    for(var i=0;i<array.length;i++)
+    {
+        if(array[i][key] === value )
+        {
+            TrimmedArray.push(array[i]);
+        }
+    }
+
+    return TrimmedArray;
+}
+
+  function removeOptions(selectbox)
+{
+    var i;
+    for(i = selectbox.options.length - 1 ; i >= 0 ; i--)
+    {
+        selectbox.remove(i);
+    }
+}
+  function MakeTable(filename)
+  {
+      
+      var RunNumbers = new Array()
+
+        for(var i=0; i<RunP_Version_pass_Selectedresults.length;i++)
+        {
+            if (RunP_Version_pass_Selectedresults[i].FileName===filename)
+            {
+                RunNumbers.push(RunP_Version_pass_Selectedresults[i]);
+            }
+        }
+
+        var SortedRunNumbers=RunNumbers.sort(function order(a,b){return parseInt(a.RunNumber.substring(3))-parseInt(b.RunNumber.substring(3))}).reverse();
+        //Object.keys(RunNumbers).map(e => ({id: e, RunNumber: parseInt(RunNumbers[e].RunNumber.substring(3))})).sort((a, b) => b.RunNumber - a.RunNumber);
+
+         $("#imgTable").empty();
+                                                                                                                                                                                                                  
+           //MAKE THE TABLE OUT OF ROWS OF COLUMNS                                                                                                                                                                
+           //MAKE A NEW ROW EVERY % columns == 0                                                                                                                                                                  
+           var tableRef = document.getElementById('imgTable');//.getElementsByTagName('tbody')[0];                                                                                                                   
+           //var plotToShow = document.getElementById('plot');                                                                                                                                                    
+           //var thePlot = plotToShow.options[plotToShow.selectedIndex].value
+	   
+	   
+           for(var j=0; j<SortedRunNumbers.length;j++)                                                                                                                                                                    
+           {                                                                                                                                                                                                      
+             //console.log(toDisplay[j])                                                             
+             var imgpth=base_img_path+SortedRunNumbers[j].RunPeriod+"/"+SortedRunNumbers[j].Version+"/"+SortedRunNumbers[j].RunNumber+"/"+SortedRunNumbers[j].SubDir+"/"+SortedRunNumbers[j].FileName;
+    
+             var DOM_img = document.createElement("IMG"); 
+             DOM_img.style.alignContent="center"                                                                                                                                                        
+                                                                                                                                                                                                                  
+             var DOM_txt = document.createElement("b");                                                                                                                                                          
+              DOM_txt.innerHTML='<b><center>'+SortedRunNumbers[j].RunNumber.substring(0,3)+"   "+SortedRunNumbers[j].RunNumber.substring(3)+'</center></b>'; 
+              DOM_txt.style.textAlign ="center";                                                                                                                                                                
+                                                                                                                                                                                                                  
+             // Insert a row in the table at the last row                                                                                                                                                         
+             if(j%columns==0)                                                                                                                                                                                     
+             {                                                                                                                                                                                                    
+             var newRowhead = tableRef.insertRow(tableRef.rows.length);                                                                                                                                           
+             var newRow   = tableRef.insertRow(tableRef.rows.length);                                                                                                                                             
+             }                                                                                                                                                                                                    
+             // Insert a cell in the row at index 0                                                                                                                                                               
+                                                                                                                                                                                                                  
+             var newCellh = newRowhead.insertCell(j%columns);
+              var newCell  = newRow.insertCell(j%columns);     
+
+            DOM_img.setAttribute("src", "https://halldweb.jlab.org"+imgpth);                                                                                                                                    
+             var currentwidth = 1196;                                                                                                                                                                             
+             var currentheight =772;                                                                                                                                                                              
+                                                                                                                                                                                                                 
+
+             var width_to_use=$(document).width()*.95/columns;                                                                                                                                                    
+             var scale_factor=width_to_use/currentwidth;                                                                                                                                                          
+             DOM_img.setAttribute("width", currentwidth*scale_factor);                                                                                                                                            
+             DOM_img.setAttribute("height", currentheight*scale_factor);                                                                                                                                          
+             //var fullpth="https://halldweb.jlab.org"+imgpth;                                                                                                                                                      
+                                                                                                                                                                                                                  
+             //console.log(fullpth);                                                                
+             DOM_img.onclick= function click(){ window.open(this.getAttribute("src"), '_blank');}                                                                                                                 
+                                                                                                                                                                                                                  
+             // Append a text node to the cell                                                                                                                                                                    
+             newCellh.appendChild(DOM_txt);                                                                                                                                                                       
+             newCell.appendChild(DOM_img); 
+
+            }  
+       
+	    
+}
+
+</script>
+
+</body>
+</html>

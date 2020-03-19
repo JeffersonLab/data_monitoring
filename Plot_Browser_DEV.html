@@ -1,0 +1,685 @@
+
+<html>
+<head>
+    <title>Plot Browser by Thomas Britton</title>
+</head>
+<link href="https://code.j.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<script src="js_utilities/jquery-3.3.1.min.js" type="text/javascript"></script>
+<script src="js_utilities/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="js_utilities/datatables.min.css"/>
+<script type="text/javascript" src="js_utilities/datatables.min.js"></script>
+<script src="js_utilities/plotly-latest.min.js"></script>
+<style>
+    .warning {
+    background-color: #F99 !important;
+    }
+    .better {
+        background-color: rgb(139, 250, 65);
+    }
+
+   /* Tooltip text */
+.tooltiptext {
+    visibility: visible;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+#wait_icon 
+{
+    visibility: visible;
+    width: 25px;
+    height: 25px;
+    display: inline
+}
+
+#tooltip {
+  position: absolute;
+  z-index: 1001;
+  display: none;
+  border: 2px solid #ebebeb;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgb(0, 0, 0);
+}
+
+</style>
+
+
+<body onresize="ShowPlots()">
+    <div>
+        Select Run Period: <select id="RunPeriod" name="RunPeriod" onChange="PopulateVersionSelector();SetRunRange();ShowPlots()"></select>
+        Select Version: <select id="Version" name="Version" onChange="PopulateImagesSelector();first_showing=true;ShowPlots()"></select><br>
+        Plot to Display: <select id="Plot" name="Plot" onChange="ShowPlots()"></select>Toggle plot order<input type="button" onclick="toggleDisplayOrder();"/>    columns: <select id="Columns" name="Columns" onChange="ShowPlots()"></select><br>
+        Run Range: <input type="number" id="minRunNum" name="minRunNum" size="20" onChange="ShowPlots()"/>-<input type="number" id="maxRunNum" name="maxRunNum" size="20" onChange="ShowPlots()"/><br>
+        Query: <input type="text" id="rcdb_query" name="rcdb_query" size="40" />
+        <input type="button" value="Query" onclick="ShowWaitIcon();DoQuery();">  <img id="wait_icon" name="wait_icon" src="./hourglass.png">
+        <hr>
+        <div style="height: 90%; overflow-y: scroll;">
+    
+        <table id="imgTable" border="1">
+        <tbody id="imgTableBody">    
+        </tbody>
+        </table>
+    </div>
+    
+
+
+
+<script>
+
+    Array.prototype.max = function() {
+  return Math.max.apply(null, this);
+};
+
+Array.prototype.min = function() {
+  return Math.min.apply(null, this);
+};
+
+    //https://halldweb.jlab.org/data_monitoring/Plot_Browser.html?minRunNum=40000&maxRunNum=51000&RunPeriod=RunPeriod-2018-01&Version=rawdata_ver00&Plot=CDC_occupancy&rcdb_query=@is_2018production
+    var fileResult;
+    var imgArray;
+    var query_result=[];
+    var SelectedRunListOBJ=[];
+    var toDisplay=[];
+    var first_showing=true;
+    
+    $(document).ready(function(){PopulateColumnsSelector();QueryFiles();readTextFile("./textdata/figure_titles");});
+
+
+    //$(document).ready(connectToDB());
+
+function toggleDisplayOrder()
+{
+    //console.log("TOGGLE")
+    //console.log(toDisplay)
+    SelectedRunListOBJ=destructuringSwapHalf(SelectedRunListOBJ);
+    //toDisplay=destructuringSwapHalf(toDisplay);
+    //console.log(toDisplay)
+    ShowPlots();
+}
+function destructuringSwapHalf(array)
+{
+    var left = null;
+    var right = null;
+    var length = array.length;
+    for (left = 0; left < length / 2; left += 1)
+    {
+        right = length - 1 - left;
+        [array[left], array[right]] = [array[right], array[left]];
+    }
+    return array;
+}
+function ShowWaitIcon()
+{
+    document.getElementById("wait_icon").style.visibility="visible";
+}
+function HideWaitIcon()
+{
+    document.getElementById("wait_icon").style.visibility="hidden";
+}
+
+function PopulateColumnsSelector()
+  {
+      for(var i=1;i<=10;i++ )
+      {
+        var newoption = document.createElement("option");
+        newoption.text = i;
+        newoption.value = i;
+        document.getElementById("Columns").add(newoption);
+
+        if(i==3)
+        {
+            newoption.selected=true;
+        }
+      }
+  }
+
+function DoQuery()
+{
+    console.log(document.getElementById("rcdb_query").value);
+
+          var qresult= new Array;
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+
+                query_result=this.responseText.split("_");
+                //var result_to_use=JSON.parse(this.responseText);
+                //console.log(result_to_use);
+                console.log(query_result)
+                HideWaitIcon();
+                //QueryXref();
+                ShowPlots();
+                }
+                
+            }
+            query_to_do=""
+            if(document.getElementById("rcdb_query").value !="")
+                query_to_do=document.getElementById("rcdb_query").value
+
+            //console.log(query_to_do)
+
+        console.log("./js_utilities/rcdb_sql.php?query="+query_to_do)
+        xmlhttp.open("GET","./js_utilities/rcdb_sql.php?query="+query_to_do);
+
+        
+        xmlhttp.send();
+}
+
+function sortSelect(selElem) {
+    var tmpAry = new Array();
+    for (var i=0;i<selElem.options.length;i++) {
+        tmpAry[i] = new Array();
+        tmpAry[i][0] = selElem.options[i].text;
+        tmpAry[i][1] = selElem.options[i].value;
+        tmpAry[i][2] = selElem.options[i].id
+    }
+    tmpAry.sort();
+    while (selElem.options.length > 0) {
+        selElem.options[0] = null;
+    }
+    for (var i=0;i<tmpAry.length;i++) {
+        var op = new Option(tmpAry[i][0], tmpAry[i][1]);
+        op.id=tmpAry[i][2];
+        selElem.options[i] = op;
+    }
+    return;
+}
+
+function ShowPlots()
+{
+    console.log(toDisplay.length);
+    var tableRef = document.getElementById('imgTable').getElementsByTagName('tbody')[0];  
+    var RunPSelector=document.getElementById("RunPeriod");
+    var SelectedRunP=RunPSelector.options[RunPSelector.selectedIndex].value;
+    var SelectedRunOBJ=fileResult[RunPSelector.selectedIndex];
+
+    var VerSelector=document.getElementById("Version");
+    var SelectedVer=VerSelector.options[VerSelector.selectedIndex].value;
+
+    var IMGSelector=document.getElementById("Plot");
+    var SelectedIMG=IMGSelector.options[IMGSelector.selectedIndex].value;
+    
+    var columnstoDisplay=document.getElementById("Columns").value;
+
+    //SelectedRunListOBJ=null;
+
+    SetRunListOBJ();
+
+    if(first_showing)
+    {
+        SelectedRunListOBJ=destructuringSwapHalf(SelectedRunListOBJ);
+        first_showing=false
+        HideWaitIcon();
+    }
+    //console.log(SelectedRunListOBJ);
+    
+    QueryXref();
+    
+    
+
+    $("#imgTableBody").empty();
+
+    var numAdded=0;
+
+    for(var i=0;i<toDisplay.length;i++)
+    {
+        
+        var runNum_asINT=parseInt(toDisplay[i].split("Run")[1]);
+        if(runNum_asINT<document.getElementById("minRunNum").value || runNum_asINT>document.getElementById("maxRunNum").value)
+            continue;
+
+        var DOM_img = document.createElement("IMG");                                                                                                                                                         
+                                                                                                                                                                                                                  
+        var DOM_txt = document.createElement("b");
+        DOM_txt.setAttribute('style','text-align:center;')
+        DOM_txt.innerHTML="<center><font size='5'>"+"Run  "+toDisplay[i].split("Run")[1]+"</font></center>";                                                                                                                                                                  
+                                                                                                                                                                                                                  
+        // Insert a row in the table at the last row                                                                                                                                                         
+        if(numAdded%columnstoDisplay==0)                                                                                                                                                                                     
+        {                                                                                                                                                                                                    
+            var newRowhead = tableRef.insertRow(tableRef.rows.length);                                                                                                                                           
+            var newRow   = tableRef.insertRow(tableRef.rows.length);                                                                                                                                             
+        }    
+        var newCellh = newRowhead.insertCell(numAdded%columnstoDisplay);
+        var newCell  = newRow.insertCell(numAdded%columnstoDisplay);
+
+        var JSRootLinkt='<center><font size="5"><b><a href=\"/cgi-bin/data_monitoring/monitoring/runBrowser.py?run_number='+runNum_asINT+'&ver='+SelectedVer+'&period='+SelectedRunP+'\" target=\"_blank\">'+"Run  "+toDisplay[i].split("Run")[1]+'</a></b>  <a href=\"https://halldweb.jlab.org/rcdb/runs/info/'+runNum_asINT+'\"'+'target=\"_blank\">'+'info'+'</a></font></center>' 
+                                            
+        // var imgLink='<a href="https://halldweb.jlab.org'+imgpth+'" target="_blank">'+'<img src="https://halldweb.jlab.org';//+imgpth+'"'+'></a>';                                                          
+        // var imgLink='<img src="https://halldweb.jlab.org' + imgpth + '" onclick="window.open(' + "'https://halldweb.jlab.org" + imgpth + "'" + "," + " '_blank')" + '"' + "></img>"                        
+                                                                                                                                                                                                                  
+        DOM_txt.innerHTML=JSRootLinkt;                                                                                                                                                                       
+        var imgpth="/work/halld2/data_monitoring/"+SelectedRunP+"/"+SelectedVer+"/"+toDisplay[i]+"/"+SelectedIMG;                                                                                                                                                                                                        
+        DOM_img.setAttribute("src", "https://halldweb.jlab.org"+imgpth);                                                                                                                                    
+        var currentwidth = 1196;                                                                                                                                                                             
+        var currentheight =772;                                                                                                                                                                              
+                                                                                                                                                                                                                 
+
+             var width_to_use=$(document).width()*.95/columnstoDisplay;                                                                                                                                                    
+             var scale_factor=width_to_use/currentwidth;                                                                                                                                                          
+             DOM_img.setAttribute("width", currentwidth*scale_factor);                                                                                                                                            
+             DOM_img.setAttribute("height", currentheight*scale_factor);                                                                                                                                          
+             var fullpth="https://halldweb.jlab.org"+imgpth;                                                                                                                                                      
+                                                                                                                                                                                                                  
+             //console.log(fullpth);                                                                
+             DOM_img.onclick= function click(){ window.open(this.getAttribute("src"), '_blank');}                                                                                                                 
+                                                                                                                                                                                                                  
+             // Append a text node to the cell                                                                                                                                                                    
+             newCellh.appendChild(DOM_txt);                                                                                                                                                                       
+             newCell.appendChild(DOM_img);
+             numAdded++;                                                
+    }
+    
+}
+
+    
+  function QueryFiles()
+  {
+      var qresult= new Array;
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                result=JSON.parse(this.responseText);
+                fileResult=result;
+                console.log(result);
+                PopulateRunPeriodSelector();
+                PopulateVersionSelector();
+                PopulateImagesSelector();
+                SetRunRange();
+                SetOptionsFromURL();
+                if(document.getElementById("rcdb_query").value=="")
+                    ShowPlots();
+                
+            }
+        };
+        
+        console.log("js_utilities/rcdb_browser.php");
+        xmlhttp.open("GET","js_utilities/rcdb_browser.php",true);
+        xmlhttp.send();
+  }
+
+function SetRunListOBJ()
+{
+    var RunPSelector=document.getElementById("RunPeriod");
+    var SelectedRunP=RunPSelector.options[RunPSelector.selectedIndex].value;
+    var SelectedRunOBJ=fileResult[RunPSelector.selectedIndex];
+
+    var VerSelector=document.getElementById("Version");
+    var SelectedVer=VerSelector.options[VerSelector.selectedIndex].value;
+
+    var IMGSelector=document.getElementById("Plot");
+    var SelectedIMG=IMGSelector.options[IMGSelector.selectedIndex].value;
+    
+    //console.log(SelectedRunOBJ);
+    //console.log(SelectedVer);
+    //console.log(SelectedIMG);
+
+    //SelectedRunListOBJ=null;
+
+    for(var i=0;i<SelectedRunOBJ["Versions"].length;i++)
+    {
+        if(SelectedRunOBJ["Versions"][i]["Version"]==SelectedVer)
+        {
+            SelectedRunListOBJ=SelectedRunOBJ["Versions"][i]["Runs"]
+            
+            var index = SelectedRunListOBJ.indexOf("IDXA");
+            if (index !== -1) SelectedRunListOBJ.splice(index, 1);
+
+
+            break;
+        }
+    }
+    
+}
+
+
+function SetOptionsFromURL()
+{
+    currentURL_split =document.URL.split("?")
+
+
+    if(currentURL_split.length==2)
+    {
+        URL_AND_split=currentURL_split[1].split("&")
+        console.log(URL_AND_split)
+        for(var i=0; i<URL_AND_split.length; i++)
+        {
+            var opt=URL_AND_split[i].split("=")
+            if(opt[0]=="minRunNum")
+            {
+                document.getElementById("minRunNum").value=opt[1]
+            }
+            else if(opt[0]=="maxRunNum")
+            {
+                document.getElementById("maxRunNum").value=opt[1]
+            }
+            else if(opt[0]=="RunPeriod")
+            {
+                document.getElementById('RunPeriod').selectedIndex = document.getElementById(opt[1]).index;
+                PopulateVersionSelector();
+
+            }
+            else if(opt[0]=="Version")
+            {
+                document.getElementById('Version').selectedIndex = document.getElementById(opt[1]).index;
+                PopulateImagesSelector();
+            }
+            else if(opt[0]=="Plot")
+            {
+                document.getElementById('Plot').selectedIndex = document.getElementById(opt[1]).index;
+            }
+            else if(opt[0]=="rcdb_query")
+            {
+                query_string=opt[1].replace(/%3E/g, ">");
+                query_string=query_string.replace(/%20/g, " ");
+                //query_string=query_string.replace(/#as/g, " ");
+                document.getElementById('rcdb_query').value = query_string;
+                ShowWaitIcon();
+                DoQuery();
+            }
+    }
+    
+}
+}
+function SetRunRange()
+{
+
+    SetRunListOBJ();
+
+    currentURL_split =document.URL.split("?")
+
+
+    if(currentURL_split.length==2)
+    {
+        URL_AND_split=currentURL_split[1].split("&")
+        console.log(URL_AND_split)
+        for(var i=0; i<URL_AND_split.length; i++)
+        {
+            var opt=URL_AND_split[i].split("=")
+            if(opt[0]=="minRunNum")
+            {
+                document.getElementById("minRunNum").value=opt[1]
+            }
+            else if(opt[0]=="maxRunNum")
+            {
+                document.getElementById("maxRunNum").value=opt[1]
+            }
+        }
+    }
+    else
+    {
+        if(SelectedRunListOBJ.length!=0)
+        {
+            var numsList=SelectedRunListOBJ.map(e=>parseInt(e.split("Run")[1]))
+    
+            console.log(numsList)
+
+            document.getElementById("minRunNum").value=numsList.min();
+            document.getElementById("maxRunNum").value=numsList.max();
+        }
+        else
+        {
+            document.getElementById("minRunNum").value=0;
+            document.getElementById("maxRunNum").value=100000;
+        }
+    }
+}
+  function PopulateRunPeriodSelector()
+  {
+
+    var URL_Runp=""
+
+
+
+      for(var i=0;i<fileResult.length;i++ )
+      {
+	if(fileResult[i]["RunPeriod"] == "calibrations" || fileResult[i]["RunPeriod"] == "simulated")
+					  { continue;
+
+}
+        var newoption = document.createElement("option");
+        newoption.text = fileResult[i]["RunPeriod"];
+        newoption.value = fileResult[i]["RunPeriod"];
+        newoption.id=fileResult[i]["RunPeriod"];
+        document.getElementById("RunPeriod").add(newoption);
+
+        if(i==fileResult.length-1)
+        {
+            newoption.selected=true;
+        }
+
+        //console.log(fileResult[i]["RunPeriod"]);
+      }
+
+
+  }
+
+  function PopulateVersionSelector()
+  {
+    removeOptions(document.getElementById("Version"));
+
+    var RunPSelector=document.getElementById("RunPeriod");
+    var SelectedRunP=RunPSelector.options[RunPSelector.selectedIndex].value;
+    var SelectedRunOBJ=fileResult[RunPSelector.selectedIndex];
+    //console.log(SelectedRunOBJ)
+       
+    if(SelectedRunOBJ["Versions"].length==0)
+    {
+        var newoption = document.createElement("option");
+        newoption.text = "Rootspy ver00";//SelectedRunOBJ["Versions"][i]["Version"];
+        newoption.value= "rawdata_ver00";//SelectedRunOBJ["Versions"][i]["Version"];
+        document.getElementById("Version").add(newoption);
+
+        newoption = document.createElement("option");
+        newoption.text = "Incoming Data ver01";//SelectedRunOBJ["Versions"][i]["Version"];
+        newoption.value= "mon_ver01";//SelectedRunOBJ["Versions"][i]["Version"];
+        newoption.id=newoption.value;
+        newoption.selected=true;
+        document.getElementById("Version").add(newoption);
+        
+    }
+else
+{
+    for(var i=0;i<SelectedRunOBJ["Versions"].length;i++ )
+    {
+        //|| SelectedRunOBJ["Versions"][i]["Version"].split("_")[0]=="mc"
+        if(SelectedRunOBJ["Versions"][i]["Version"].split("_")[0]=="analysis"  || SelectedRunOBJ["Versions"][i]["Version"] =="recon_tests" || SelectedRunOBJ["Versions"][i]["Version"].split("_")[1]=="ver99")
+            continue;
+
+        
+
+        var newoption = document.createElement("option");
+        //console.log(SelectedRunOBJ["Versions"][i]["Version"])
+        var text="";
+        var splitName=SelectedRunOBJ["Versions"][i]["Version"].split("_");
+        if(splitName[0]=="rawdata")
+        {
+            text+="Rootspy "
+        }
+        else if(splitName[0]=="recon" )
+        {
+            text+="Reconstruction Launch "
+        }
+        else if(splitName[0]=="mon" && splitName[1]!="ver01" )
+        {
+            text+="Monitoring Launch "
+        }
+        else if(splitName[0]=="mon" && splitName[1]=="ver01" )
+        {
+            text+="Incoming Data "
+        }
+        else if(splitName[0] == "mc")
+        {
+            text+="Monte Carlo "
+        }
+
+        text+=splitName[1];
+
+        newoption.text = text;//SelectedRunOBJ["Versions"][i]["Version"];
+        newoption.value= SelectedRunOBJ["Versions"][i]["Version"];
+        newoption.id=newoption.value;
+        document.getElementById("Version").add(newoption);
+
+        if(SelectedRunOBJ["Versions"][i]["Version"]=="mon_ver01")
+        {
+            newoption.selected=true;
+        }
+
+      }
+}
+  }
+
+function PopulateImagesSelector()
+{
+    removeOptions(document.getElementById("Plot"));
+
+    var VerSelector=document.getElementById("Version");
+    if(VerSelector.selectedIndex == -1)
+        return;
+    var SelectedVer=VerSelector.options[VerSelector.selectedIndex].value;
+    var Ver_prefix=SelectedVer.split("_")[0];
+
+    for(var i=0;i<imgArray.length-1;i++)
+    {
+        var imgParts=imgArray[i].split(",");
+        var bitmask=imgParts[3].split("")
+        
+        
+        if(Ver_prefix=="rawdata" && bitmask[0]=="0")
+        {
+            continue;
+        }
+        else if(Ver_prefix=="mon")
+        {
+            if(SelectedVer == "mon_ver01" && bitmask[1]=="0")
+               { continue;}
+            else if(bitmask[2]=="0" )
+                {continue;}
+
+        }
+        else if(Ver_prefix=="recon" && bitmask[3]=="0")
+        {
+            continue;
+        }
+        else if(Ver_prefix=="mc" && bitmask[3]=="0")
+        {
+            continue;
+        }
+
+        var newoption = document.createElement("option");
+        //console.log(SelectedRunOBJ["Versions"][i]["Version"])
+        newoption.text = imgParts[1];
+        newoption.value= imgParts[0];
+        newoption.id = newoption.value.slice(0,-4);
+        document.getElementById("Plot").add(newoption);
+
+        if(i==fileResult.length-1)
+        {
+            newoption.selected=true;
+        }
+
+    }
+    sortSelect(document.getElementById("Plot"))
+}
+
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                imgArray = allText.split("\n");
+                
+            }
+        }
+    }
+    rawFile.send(null);
+}
+
+function removeOptions(selectbox)
+{
+    for(var i = selectbox.options.length - 1 ; i >= 0 ; i--)
+    {
+        selectbox.remove(i);
+    }
+}
+
+function QueryXref()
+{
+    //console.log(SelectedRunListOBJ);
+    //console.log(query_result);
+    /*descend=false;
+    if(toDisplay.length>1)
+    {
+        first=parseInt(toDisplay[0].substring(3))
+        last=parseInt(toDisplay[1].substring(3))
+        console.log(first+">"+last)
+        if(first>last)
+        {
+            descend=true;
+        }
+    }*/
+
+    var to_return=SelectedRunListOBJ;
+    var to_return2=to_return;
+
+    if(query_result.length != 0)
+    {
+        
+        to_return2 = to_return.filter(function(id) {
+        var tofind=id.split("Run")[1];
+
+        while(tofind.charAt(0) === '0')
+        {
+            tofind = tofind.substr(1);
+        }
+        
+
+        return query_result.indexOf(tofind) > -1;
+        });
+    }
+    toDisplay=to_return2;//.reverse();
+    
+    //console.log(toDisplay)
+
+}
+
+function findRun(Run)
+{
+    if(query_result.find(o==Run))
+    return true;
+    else
+    return false; 
+}
+
+</script>
+
+</body>
+</html>

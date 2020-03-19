@@ -1,0 +1,285 @@
+<style>
+    .options
+    {
+        background-color:white;
+        height: 25px;
+        margin:0px;
+        visibility: visible;
+        position: fixed;
+        width:100%;
+        /*page-break-after: 25px;*/
+        font-size:15pt;
+        padding-top: 0px;
+        padding-bottom:10px;
+        float: center;
+        padding-left:20%;
+    
+        
+    }
+    .header-text
+    {
+        font-size: 25pt;
+        
+    }
+    .imgtable
+    {
+        margin-top:25px;
+    }
+    .img:hover{
+        cursor: pointer;
+    }
+    p, div, body, html {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        background: transparent;
+    }
+
+
+    </style>
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="js_utilities/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="js_utilities/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="js_utilities/datatables.min.css"/>
+    <script type="text/javascript" src="js_utilities/datatables.min.js"></script>
+    <script src="js_utilities/plotly-latest.min.js"></script>
+    <script>
+    
+        $(document).ready(function(){MakeOptions("RunPeriod_selector","RunPeriod","");}); 
+    
+    function MakeOptions(selectorstr,option, extratags)
+    {
+        if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    //console.log(this.responseText)
+                    if(this.responseText != "")
+                    {
+                    
+                    result=JSON.parse(this.responseText);
+                    
+                    var selector=document.getElementById(selectorstr);
+    
+                        removeOptions(selector)
+                        for(var i=0;i<result.length;i++)
+                        {
+                            var el = document.createElement("option");
+                            el.textContent=result[i];
+                            el.value=result[i];
+                            if(i==result.length-1)
+                            {
+                                el.selected=true;
+                            }
+                            selector.appendChild(el);
+                        }
+    
+                        
+    
+                    }
+                    var text=selector.options[selector.selectedIndex].text;
+    
+                    if(selectorstr=="RunPeriod_selector")
+                    {
+                        MakeOptions("Version_selector","Version","RunP="+text);
+                    }
+                    else if (selectorstr=="Version_selector")
+                    {
+                       MakeOptions("SubDir_selector","SubDir",extratags+"&Ver="+text);
+                    }
+                    else if (selectorstr=="SubDir_selector")
+                    {
+                       MakeOptions("Plot_selector","images",extratags+"&Pass="+text);
+                    }
+                    else if (selectorstr=="Plot_selector")
+                    {
+                        MakeTable();
+                    }
+    
+                }
+                
+            };
+            
+             
+    
+            var addr=option;
+            if(extratags != "")
+            {
+                addr+="&"+extratags;
+            }
+            console.log("js_utilities/CalibrationCrawler.php?option="+addr)
+            xmlhttp.open("GET","js_utilities/CalibrationCrawler.php?option="+addr,true);
+            xmlhttp.send();
+    }
+    function UpdateOptions(selectorstr)
+    {
+        var selector=document.getElementById(selectorstr);
+        var text=selector.options[selector.selectedIndex].text;
+        if(selectorstr=="RunPeriod_selector")
+        {
+        MakeOptions("Version_selector","Version","RunP="+text);
+        }
+        else if(selectorstr=="Version_selector")
+        {
+            var rpselector=document.getElementById("RunPeriod_selector");
+            var rptext=rpselector.options[rpselector.selectedIndex].text;
+            var extratags="RunP="+rptext;
+            MakeOptions("SubDir_selector","SubDir",extratags+"&Ver="+text);
+        }
+        else if(selectorstr=="SubDir_selector")
+        {
+            var rpselector=document.getElementById("RunPeriod_selector");
+            var rptext=rpselector.options[rpselector.selectedIndex].text;
+            var extratags="RunP="+rptext;
+            var vselector=document.getElementById("Version_selector");
+            var vtext=vselector.options[vselector.selectedIndex].text;
+            extratags+="&Ver="+vtext;
+            MakeOptions("Plot_selector","images",extratags+"&Pass="+text);
+        }
+    
+    }
+    function MakeTable()
+    {
+        var rpselector=document.getElementById("RunPeriod_selector");
+        var rptext=rpselector.options[rpselector.selectedIndex].text;
+        var vselector=document.getElementById("Version_selector");
+        var vtext=vselector.options[vselector.selectedIndex].text;
+        var passselector=document.getElementById("SubDir_selector");
+        var passtext=passselector.options[passselector.selectedIndex].text;
+        var imgselector=document.getElementById("Plot_selector");
+        var imgtext=imgselector.options[imgselector.selectedIndex].text;
+        var columns_sel=document.getElementById("Columns_selector");
+        var columns=parseInt(columns_sel.options[columns_sel.selectedIndex].text)
+    
+         if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    //console.log(this.responseText)
+                    if(this.responseText != "")
+                    {
+                    
+                    result=JSON.parse(this.responseText);
+    
+                    console.log(result);
+    
+                    $("#imgTable").empty();
+                                                                                                                                                                                                                      
+               //MAKE THE TABLE OUT OF ROWS OF COLUMNS                                                                                                                                                                
+               //MAKE A NEW ROW EVERY % columns == 0                                                                                                                                                                  
+               var tableRef = document.getElementById('imgTable');//.getElementsByTagName('tbody')[0];                                                                                                                   
+               //var plotToShow = document.getElementById('plot');                                                                                                                                                    
+               //var thePlot = plotToShow.options[plotToShow.selectedIndex].value
+           
+           
+               for(var j=0; j<result.length;j++)                                                                                                                                                                    
+               {                                                                                                                                                                                                      
+                 //console.log(toDisplay[j])
+                 var base_img_path="/work/halld2/calibration/";                                                             
+                 var imgpth=base_img_path+rptext+"/"+vtext+"/"+result[j]+"/"+passtext+"/"+imgtext;
+        
+                 var DOM_img = document.createElement("IMG"); 
+                 DOM_img.style.alignContent="center";
+                 DOM_img.className="img"                                                                                                                                                        
+                                                                                                                                                                                                                      
+                 var DOM_txt = document.createElement("b");                                                                                                                                                          
+                  DOM_txt.innerHTML='<b><center>'+result[j].substring(0,3)+"   "+result[j].substring(3)+'</center></b>'; 
+                  DOM_txt.style.textAlign ="center";
+                  DOM_txt.className="header-text";                                                                                                                                                                
+                                                                                                                                                                                                                      
+                 // Insert a row in the table at the last row                                                                                                                                                         
+                 if(j%columns==0)                                                                                                                                                                                     
+                 {                                                                                                                                                                                                    
+                 var newRowhead = tableRef.insertRow(tableRef.rows.length);                                                                                                                                           
+                 var newRow   = tableRef.insertRow(tableRef.rows.length);                                                                                                                                             
+                 }                                                                                                                                                                                                    
+                 // Insert a cell in the row at index 0                                                                                                                                                               
+                                                                                                                                                                                                                      
+                 var newCellh = newRowhead.insertCell(j%columns);
+                  var newCell  = newRow.insertCell(j%columns);     
+    
+                DOM_img.setAttribute("src", "https://halldweb.jlab.org"+imgpth);                                                                                                                                    
+                 var currentwidth = 1196;                                                                                                                                                                             
+                 var currentheight =772;                                                                                                                                                                              
+                                                                                                                                                                                                                     
+    
+                 var width_to_use=$(document).width()*.95/columns;                                                                                                                                                    
+                 var scale_factor=width_to_use/currentwidth;                                                                                                                                                          
+                 DOM_img.setAttribute("width", currentwidth*scale_factor);                                                                                                                                            
+                 DOM_img.setAttribute("height", currentheight*scale_factor);                                                                                                                                          
+                 //var fullpth="https://halldweb.jlab.org"+imgpth;                                                                                                                                                      
+                                                                                                                                                                                                                      
+                 //console.log(fullpth);                                                                
+                 DOM_img.onclick= function click(){ window.open(this.getAttribute("src"), '_blank');}                                                                                                                 
+                                                                                                                                                                                                                      
+                 // Append a text node to the cell                                                                                                                                                                    
+                 newCellh.appendChild(DOM_txt);                                                                                                                                                                       
+                 newCell.appendChild(DOM_img); 
+    
+                }
+    
+                    }
+                    
+                }
+                
+            };
+            
+    
+            console.log("js_utilities/CalibrationCrawler.php?option=Runs&RunP="+rptext+"&Ver="+vtext)
+            xmlhttp.open("GET","js_utilities/CalibrationCrawler.php?option=Runs&RunP="+rptext+"&Ver="+vtext,true);
+            xmlhttp.send();
+    }
+    function removeOptions(selectbox)
+    {
+        var i;
+        for(i = selectbox.options.length - 1 ; i >= 0 ; i--)
+        {
+            selectbox.remove(i);
+        }
+    }
+    </script>
+    <html>
+    <head>
+        <title>Calibration Browser by Thomas Britton</title>
+    </head>
+    <body style="background-color:white">
+    
+    <span id="options-header" class="options">
+        <b>Run Period</b><select id="RunPeriod_selector" onchange="UpdateOptions('RunPeriod_selector')"></select>
+        <b>     Version</b><select id="Version_selector" onchange="UpdateOptions('Version_selector')"></select>
+        <b>     Pass</b><select id="SubDir_selector" onchange="UpdateOptions('SubDir_selector')"></select>
+        <b>     Plot</b><select id="Plot_selector" onchange="MakeTable()"></select>
+        <b>     Columns</b><select id="Columns_selector" onchange="MakeTable()">
+        <option value="1">1</option>
+        <option value="2" selected>2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        </select>
+    </span>
+<br>
+    <div class="container imgtable" id="imageTable" >
+        <table cellpadding="0" cellspacing="0" border="1" class="table" id="imgTable">
+    
+        </table>
+    </div>>
+    
+    
+    </body>
+    
+    
+    
+    </html>
