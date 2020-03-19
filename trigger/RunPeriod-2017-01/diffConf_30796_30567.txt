@@ -1,0 +1,10 @@
+554,555c554,555
+< FADC250_USER_DIR    /gluex/CALIB/TAGM/fadc250/user/spring_2017
+< FADC250_USER_VER    spring_2017_v2
+---
+> FADC250_USER_DIR    /home/
+> FADC250_USER_VER    
+579,581d578
+< 
+< DSC2_COM_DIR /gluex/CALIB/ALL/dsc/default
+< DSC2_COM_VER spring_2017_v2

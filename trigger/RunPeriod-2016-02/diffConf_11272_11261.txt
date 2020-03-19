@@ -1,0 +1,4 @@
+136c136
+< TS_TRIG_HOLD  5  1
+---
+> TS_TRIG_HOLD  2  1

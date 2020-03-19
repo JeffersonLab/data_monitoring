@@ -1,0 +1,23 @@
+105,108c105
+< 
+< # Changed 03/31/16
+< #TRIG_TYPE     BFCAL       440        5        0           1        18000     0    2 
+< TRIG_TYPE     BFCAL       440        5        0           1        25000     0    2 
+---
+> TRIG_TYPE     BFCAL       440        5        0           1        18000     0    2 
+118,119c115
+< 
+< #TS_GTP_PRES  3  2
+---
+> TS_GTP_PRES  3  2
+189,191d184
+< # FADC250_USER_DIR     /gluonfs1/gluex/CALIB/FCAL/fadc250/user/spring_2016
+< # FADC250_USER_VER     ring3_hot_v1
+< 
+195,200d187
+< # FADC250_USER_DIR     /gluonfs1/gluex/CALIB/FCAL/fadc250/user/spring_2016
+< # FADC250_USER_VER     ring1_hot_v1
+< 
+< # FADC250_USER_DIR     /gluonfs1/gluex/CALIB/FCAL/fadc250/user/spring_2016
+< # FADC250_USER_VER     ring_hot_v1
+< 

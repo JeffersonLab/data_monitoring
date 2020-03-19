@@ -1,0 +1,21 @@
+720,723d719
+< #  Modes 3 and 6:  IE = 200  and ABIT = 3
+< #  Modes 5 and 8:  IE = 10   and ABIT = 0
+< 
+< 
+726c722
+< # New read out mode requested by Naomi on 02/25/2018
+---
+> # New readout requested by  Naomi's on  02/25/2018
+741c737
+< # Modified by Naomi's request 02/25/2015
+---
+> # Modified by Naomi's requst 02/25/2015
+747c743
+< # New value requested by Naomi on 02/25/2018
+---
+> # New value reuested by Naomi's on  02/25/201
+759c755
+< # New value requested by Naomi on 02/25/2018
+---
+> # New value reuested by Naomi's on  02/25/201

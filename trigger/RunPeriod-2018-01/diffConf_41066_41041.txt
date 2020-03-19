@@ -1,0 +1,10 @@
+275,278d274
+< # FADC250_USER_DIR     /gluonfs1/gluex/CALIB/FCAL/fadc250/user/spring_2018
+< # FADC250_USER_VER     ring2_hot_v1
+< 
+< # Changed by Alex on 1/24/18
+280c276,277
+< FADC250_USER_VER     ring2_hot_v2
+---
+> FADC250_USER_VER     ring2_hot_v1
+> 

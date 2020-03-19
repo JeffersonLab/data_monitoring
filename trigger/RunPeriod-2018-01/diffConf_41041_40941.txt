@@ -1,0 +1,12 @@
+683,685c683
+< #FADC250_W_WIDTH      150
+< # Changed 01/23/18 Sebastian, Beni
+< FADC250_W_WIDTH      500
+---
+> FADC250_W_WIDTH      150
+695,697c693
+< #FADC250_READ_THR     150
+< # Changed 01/23/18 Sebastian, Beni
+< FADC250_READ_THR     160
+---
+> FADC250_READ_THR     150

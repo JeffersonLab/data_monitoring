@@ -1,0 +1,33 @@
+450c450
+< #FADC250_READ_THR     115 #(early spring 2016)
+---
+> FADC250_READ_THR     115 #(early spring 2016)
+455d454
+< FADC250_READ_THR     200 # (new defaults 4/21/16 by AEB)
+458,459c457
+< #FADC250_TRIG_THR     210
+< FADC250_TRIG_THR     400 # (new defaults 4/21/16 by AEB)
+---
+> FADC250_TRIG_THR     210
+467,468c465,466
+< FADC250_USER_DIR    /gluex/Subsystems/TAGM/calib
+< FADC250_USER_VER    test_v1
+---
+> #FADC250_USER_DIR    /gluonfs1/gluex/Subsystems/TAGM/calib
+> #FADC250_USER_VER    test_v1
+470,471c468,469
+< #FADC250_USER_DIR    /home/
+< #FADC250_USER_VER    
+---
+> FADC250_USER_DIR    /home/
+> FADC250_USER_VER    
+488c486
+< #DSC2_THRESHOLD    12    12 
+---
+> DSC2_THRESHOLD    12    12 
+490d487
+< DSC2_THRESHOLD    80    80  #(new defaults 4/21/16 by AEB)
+590c587
+< FADC125_TH          90
+---
+> FADC125_TH          100

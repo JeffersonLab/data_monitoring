@@ -1,0 +1,20 @@
+1c1
+< c#! Run type::  PHYSICS_8    Config::  TRG_FCAL_BCAL_m8_b1bf1.conf
+---
+> #! Run type::  PHYSICS_8    Config::  TRG_FCAL_BCAL_m8_b1bf1.conf
+54c54
+< TS_TRIG_TYPE  6
+---
+> TS_TRIG_TYPE  7
+56c56
+< TS_FP_INPUTS  3   9  10 
+---
+> TS_FP_INPUTS  9  10 
+64,66c64
+< TS_FP_DELAY   3   427
+< 
+< TS_SOFT_TRIG  1  0   0x2F  1
+---
+> TS_SOFT_TRIG  1  0xFFFF   0x2F  1
+100d97
+< 

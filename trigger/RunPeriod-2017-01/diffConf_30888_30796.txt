@@ -1,0 +1,28 @@
+303c303
+< DSC2_WIDTH       20   40 
+---
+> DSC2_WIDTH       40   40 
+462c462
+< DSC2_WIDTH       20   40 
+---
+> DSC2_WIDTH       40   40 
+511c511
+< DSC2_WIDTH       20   40 
+---
+> DSC2_WIDTH       40   40 
+555c555
+< FADC250_USER_VER    spring_2017_v3
+---
+> FADC250_USER_VER    spring_2017_v2
+572c572
+< DSC2_WIDTH        20   40
+---
+> DSC2_WIDTH        40   40
+581c581
+< DSC2_COM_VER spring_2017_v3
+---
+> DSC2_COM_VER spring_2017_v2
+638c638
+< DSC2_WIDTH       20   40 
+---
+> DSC2_WIDTH       40   40 

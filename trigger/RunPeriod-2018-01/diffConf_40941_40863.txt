@@ -1,0 +1,12 @@
+606c606
+< #DSC2_THRESHOLD    12    12 # 2/5/17 by AEB, new fiber calib not finished
+---
+> DSC2_THRESHOLD    12    12 # 2/5/17 by AEB, new fiber calib not finished
+610,613c610,611
+< 
+< # New thresholds from Richard, 1/17/2018
+< DSC2_COM_DIR    /gluex/CALIB/ALL/dsc/spring-2018
+< DSC2_COM_VER    spring_2018_v1
+---
+> #DSC2_USER_DIR    /gluex/CALIB/ALL/dsc/spring-2018
+> #DSC2_USER_VER    spring_2018_v1

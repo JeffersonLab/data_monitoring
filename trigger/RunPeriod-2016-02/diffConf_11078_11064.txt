@@ -1,0 +1,8 @@
+185,187d184
+< # FADC250_USER_DIR     /gluonfs1/gluex/CALIB/FCAL/fadc250/user/spring_2016
+< # FADC250_USER_VER     ring4_hot_v1
+< 
+581c578
+< FADC125_W_OFFSET     425
+---
+> FADC125_W_OFFSET     415

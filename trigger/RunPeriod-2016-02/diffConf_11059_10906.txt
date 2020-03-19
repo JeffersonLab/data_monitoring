@@ -1,0 +1,28 @@
+168c168
+< FADC250_NSB          1
+---
+> FADC250_NSB          0
+195c195
+< FADC250_NSB          1
+---
+> FADC250_NSB          0
+244c244
+< FADC250_NSB          1
+---
+> FADC250_NSB          0
+579,580c579,580
+< FADC125_W_WIDTH      100
+< FADC125_IE           16
+---
+> FADC125_W_WIDTH      80
+> FADC125_IE           80
+589c589
+< FADC125_PBIT        0
+---
+> FADC125_PBIT        2
+591,592c591,592
+< FADC125_TH          50
+< FADC125_TL          12
+---
+> FADC125_TH          100
+> FADC125_TL          25

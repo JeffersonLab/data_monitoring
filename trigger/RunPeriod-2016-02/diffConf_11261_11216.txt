@@ -1,0 +1,6 @@
+136c136
+< TS_TRIG_HOLD  2  1
+---
+> TS_TRIG_HOLD  5  1
+441d440
+< #FADC250_READ_THR     250 # 4/9/16 aeb

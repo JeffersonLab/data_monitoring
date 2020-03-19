@@ -1,0 +1,12 @@
+81c81
+< TRIG_EQ      FCAL        8          10           1
+---
+> TRIG_EQ      FCAL        8          15           1
+133,137c133
+< # TS_SYNC_INT  1000
+< # 2/7/16 changed to 5000
+< 
+< TS_SYNC_INT  5000
+< 
+---
+> TS_SYNC_INT  1000

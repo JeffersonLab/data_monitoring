@@ -1,0 +1,17 @@
+516d515
+< FADC250_READ_THR     115 # 2/4/17 by AEB, new fibers not yet calibrated
+520c519
+< #FADC250_READ_THR     200 # (new defaults 4/21/16 by AEB)
+---
+> FADC250_READ_THR     200 # (new defaults 4/21/16 by AEB)
+524,525c523
+< #FADC250_TRIG_THR     400 # (new defaults 4/21/16 by AEB)
+< FADC250_TRIG_THR     115 # (match read thr, 2/4/17 by AEB)
+---
+> FADC250_TRIG_THR     400 # (new defaults 4/21/16 by AEB)
+631,633c629
+< #FADC250_READ_THR     160
+< # Changed 02/04/17
+< FADC250_READ_THR     150
+---
+> FADC250_READ_THR     160

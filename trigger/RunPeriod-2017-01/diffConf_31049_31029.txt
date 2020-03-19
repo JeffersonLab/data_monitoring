@@ -1,0 +1,34 @@
+88c88
+< SSP_SLOT     6         0x1         0
+---
+> # SSP_SLOT     6         0x1         0
+91c91
+< SSP_SLOT     4         0x1         0
+---
+> # SSP_SLOT     4         0x1         0
+102c102
+< TRIG_EQ      ST          31          3           1
+---
+> TRIG_EQ      ST          31          3           0
+106c106
+< TRIG_EQ      TAGH        106         0           1
+---
+> TRIG_EQ      TAGH        106         0           0
+122,123c122,123
+< TRIG_TYPE     BFCAL       440        5        25          1        45000    0     7         200         65535       0        65535
+< TRIG_TYPE     ST          440        5        1300      1900       1100     1     7
+---
+> # TRIG_TYPE     BFCAL       440        5        25          1        45000    0     7         200         65535       0        65535
+> # TRIG_TYPE     ST          440        5        1300      1900       1100     1     7
+126,127c126,127
+< TRIG_TYPE     TAGH        440        4        1           1       1100      1     8          0         65535       0          65535     0xF000 
+< TRIG_TYPE     ST          440        4       1300      1900       1100      1     8 
+---
+> # TRIG_TYPE     TAGH        440        4        1           1       1100      1     8          0         65535       0          65535     0xF000 
+> # TRIG_TYPE     ST          440        4       1300      1900       1100      1     8 
+203a204
+> 
+516c517
+< # CTP_USE   0
+---
+> CTP_USE   0

@@ -1,0 +1,12 @@
+272,273c272,273
+< # FADC250_USER_DIR     /gluonfs1/gluex/CALIB/FCAL/fadc250/user/spring_2017
+< # FADC250_USER_VER     ring2_hot_v2
+---
+> FADC250_USER_DIR     /gluonfs1/gluex/CALIB/FCAL/fadc250/user/spring_2017
+> FADC250_USER_VER     ring2_hot_v2
+275,276c275,276
+< FADC250_USER_DIR     /gluonfs1/gluex/CALIB/FCAL/fadc250/user/spring_2018
+< FADC250_USER_VER     ring2_hot_v1
+---
+> # FADC250_USER_DIR     /gluonfs1/gluex/CALIB/FCAL/fadc250/user/spring_2018
+> # FADC250_USER_VER     ring2_hot_v1

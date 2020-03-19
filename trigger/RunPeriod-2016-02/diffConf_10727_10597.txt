@@ -1,0 +1,12 @@
+101,103c101,103
+< TRIG_TYPE     BFCAL       440        20       4           1        6000     0    -1
+< TRIG_TYPE     BFCAL       440        5        1           0        3800     0    -1
+< TRIG_TYPE     BFCAL       440        5        0           1        9000     0     2 
+---
+> TRIG_TYPE     BFCAL       440        20       4           1        6000     0   -1
+> TRIG_TYPE     BFCAL       440        5        1           0        1800     0    1
+> TRIG_TYPE     BFCAL       440        5        0           1        9000     0    2
+105c105
+< TRIG_TYPE     BCAL_COS    440        40       1500      2100       1300     0    -1
+---
+> TRIG_TYPE     BCAL_COS    440        40       1500      2100       1300     0   -1

@@ -1,0 +1,24 @@
+720d719
+< # Default read out mode before 02/25/2018
+722,726d720
+< # New readout requested by  Naomi's on  02/25/2018
+< # FADC125_MODE         3
+< 
+< 
+< 
+735d728
+< # Default window size 02/25/2018
+737,739d729
+< # Modified by Naomi's requst 02/25/2018
+< #  FADC125_W_WIDTH      174
+< 
+743,745d732
+< # New value reuested by Naomi's on  02/25/201
+< # FADC125_IE           200
+< 
+753d739
+< 
+755,757d740
+< # New value reuested by Naomi's on  02/25/201
+< # FADC125_ABIT        3
+< 

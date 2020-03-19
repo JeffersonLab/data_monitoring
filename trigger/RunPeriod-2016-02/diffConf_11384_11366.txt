@@ -1,0 +1,4 @@
+459,461d458
+< # FADC250_USER_DIR    /gluonfs1/gluex/Subsystems/TAGM/calib
+< # FADC250_USER_VER    test_v1
+< 

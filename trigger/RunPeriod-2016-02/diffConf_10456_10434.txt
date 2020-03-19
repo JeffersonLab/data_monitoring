@@ -1,0 +1,6 @@
+116,118c116
+< # TS_TRIG_HOLD  62  1
+< TS_TRIG_HOLD  1  1
+< 
+---
+> TS_TRIG_HOLD  62  1

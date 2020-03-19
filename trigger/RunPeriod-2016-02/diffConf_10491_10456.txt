@@ -1,0 +1,35 @@
+73c73
+< TRIG_EQ      BCAL_E      14         20           1
+---
+> TRIG_EQ      BCAL_E      20         20           1
+82c82
+< #            TYPE      LATENCY     WIDTH     FCAL_E    BCAL_E     EN_THR   NHIT LANE    FCAL_EMIN   FCAL_EMAX  BCAL_EMIN   BCAL_EMAX   PATTERN
+---
+> #            TYPE      LATENCY     WIDTH     FCAL_E    BCAL_E     EN_THR   NHIT LANE
+91,94c91
+< TRIG_TYPE     BFCAL       440        5        10          2        18000    0    0        200         65535       0        65535
+< 
+< # TRIG_TYPE     BFCAL       440        5        10          3        18000    0    0 
+< 
+---
+> TRIG_TYPE     BFCAL       440        5        10          3        18000    0    0 
+97c94
+< TRIG_TYPE     BFCAL       440        5        0           1        9000     0    2
+---
+> TRIG_TYPE     BFCAL       440        5        0           1        6000     0    2
+116c113
+< TS_COIN_WIND  10
+---
+> TS_COIN_WIND 10
+120c117
+< TS_TRIG_HOLD  15  1
+---
+> TS_TRIG_HOLD  1  1
+469c466
+< FADC250_MODE         1
+---
+> FADC250_MODE         7
+473c470
+< FADC250_NSA          10
+---
+> FADC250_NSA          6

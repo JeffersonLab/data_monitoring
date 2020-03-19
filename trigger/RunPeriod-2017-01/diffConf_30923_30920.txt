@@ -1,0 +1,5 @@
+55,56c55
+< TS_TRIG_TYPE  6
+< 
+---
+> TS_TRIG_TYPE  4

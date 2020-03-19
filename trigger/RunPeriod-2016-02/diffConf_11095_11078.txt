@@ -1,0 +1,6 @@
+427c427
+< #FADC250_READ_THR     180   #(change 3/30/2016 by RTJ)
+---
+> #FADC250_READ_THR     180
+458d457
+< #DSC2_THRESHOLD    100    150  #(changed 3/30/2016 by RTJ)

@@ -1,0 +1,26 @@
+87c87
+< # ST
+---
+> # SSP for ST
+108d107
+< 
+122,123c121,122
+< # TRIG_TYPE     BFCAL       440        5        25          1        45000    0     7         200         65535       0        65535
+< # TRIG_TYPE     ST          440        5        1300      1900       1100     1     7
+---
+> # TRIG_TYPE     BFCAL       440        5        25          1        45000    0     4         200         65535       0        65535
+> # TRIG_TYPE     ST          440        5        1300      1900       1100     1     4
+126,127c125,126
+< # TRIG_TYPE     TAGH        440        4        1           1       1100      1     8          0         65535       0          65535     0xF000 
+< # TRIG_TYPE     ST          440        4       1300      1900       1100      1     8 
+---
+> # TRIG_TYPE     TAGH        440        4        1           1       1100      1    1          0         65535       0          65535     0xF000 
+> # TRIG_TYPE     ST          440        4       1300      1900       1100      1    1 
+161d159
+< # TS_GTP_PRES  8  7
+162a161
+> TS_GTP_PRES  6  1
+218,220d216
+< FADC250_FORMAT  2
+< 
+< FADC125_FORMAT  1

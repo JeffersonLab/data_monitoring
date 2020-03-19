@@ -1,0 +1,20 @@
+76,79d75
+< # SSP for ST
+< SSP_SLOT     6         0x1         0
+< 
+< 
+86c82
+< TRIG_EQ      ST          30         10           1
+---
+> TRIG_EQ      ST          20         10           0
+116,119d111
+< TRIG_TYPE     BFCAL       440        5        1           0        900      0     1
+< TRIG_TYPE     ST          440        5        1300      1900       1100     1     1
+< 
+< 
+122d113
+< TS_GTP_PRES  1  1
+368c359
+< FADC250_TRIG_THR     150
+---
+> FADC250_TRIG_THR     130

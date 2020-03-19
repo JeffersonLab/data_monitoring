@@ -1,0 +1,13 @@
+56,57c56
+< 
+< TS_FP_INPUTS  3   9  10  12
+---
+> TS_FP_INPUTS  3   9  10 
+67c66
+< TS_SOFT_TRIG  1  0   0x1F  1
+---
+> TS_SOFT_TRIG  1  0   0x2F  1
+146c145
+< TS_SYNC_INT  200
+---
+> TS_SYNC_INT  5000

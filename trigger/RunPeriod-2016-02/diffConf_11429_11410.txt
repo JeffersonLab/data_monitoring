@@ -1,0 +1,12 @@
+66,69c66,67
+< TS_FP_DELAY   9   23
+< TS_FP_DELAY   10  44
+< 
+< 
+---
+> TS_FP_DELAY   9   25
+> TS_FP_DELAY   10  51
+152c150
+< TS_SYNC_INT  5000
+---
+> TS_SYNC_INT  200

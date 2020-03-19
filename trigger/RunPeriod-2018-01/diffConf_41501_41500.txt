@@ -1,0 +1,8 @@
+736,738c736,738
+< # FADC125_W_WIDTH      200
+< # Modified by Naomi's requst 02/25/2015
+< FADC125_W_WIDTH      174
+---
+> FADC125_W_WIDTH      200
+> # Modified by Naomi's requst 02/25/2018
+> #  FADC125_W_WIDTH      174

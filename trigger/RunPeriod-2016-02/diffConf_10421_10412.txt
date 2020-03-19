@@ -1,0 +1,4 @@
+116c116
+< #TS_SYNC_INT  500
+---
+> TS_SYNC_INT  500

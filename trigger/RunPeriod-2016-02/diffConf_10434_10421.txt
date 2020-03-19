@@ -1,0 +1,15 @@
+79,80d78
+< # TRIG_EQ      BCAL_E      20         20           1
+< # TRIG_EQ      FCAL        8          10           1
+118c116
+< TS_SYNC_INT  1000
+---
+> #TS_SYNC_INT  500
+413c411
+< FADC250_NSA          10
+---
+> FADC250_NSA          6
+416c414
+< FADC250_READ_THR     130
+---
+> FADC250_READ_THR     120

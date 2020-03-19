@@ -1,0 +1,4 @@
+460c460
+< FADC250_MODE         7
+---
+> FADC250_MODE         8

@@ -1,0 +1,8 @@
+181a182,184
+> FADC250_USER_DIR     /gluonfs1/gluex/CALIB/FCAL/fadc250/user/spring_2016
+> FADC250_USER_VER     ring4_hot_v1
+> 
+185,187d187
+< FADC250_USER_DIR     /gluonfs1/gluex/CALIB/FCAL/fadc250/user/spring_2016
+< FADC250_USER_VER     ring2_hot_v1
+< 

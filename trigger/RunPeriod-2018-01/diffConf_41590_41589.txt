@@ -1,0 +1,6 @@
+193c193,195
+< TS_SYNC_INT  5000
+---
+> # TS_SYNC_INT  5000
+> 
+> TS_SYNC_INT  2

@@ -1,0 +1,11 @@
+781,782c781,783
+< FADC125_COM_DIR        /gluex/CALIB/ALL/fadc125/fall2017
+< FADC125_COM_VER        spring2018_B
+---
+> # FADC125_COM_DIR        /gluex/CALIB/ALL/fadc125/fall2017
+> # FADC125_COM_VER        spring2018_B
+> 
+783a785,787
+> # Threshold scan, Beni settings 3/4/2018
+> FADC125_COM_DIR        /gluex/CALIB/ALL/fadc125/fall2017
+> FADC125_COM_VER        spring18_TH140

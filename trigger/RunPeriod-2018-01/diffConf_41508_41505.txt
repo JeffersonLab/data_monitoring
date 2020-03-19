@@ -1,0 +1,32 @@
+721c721
+< # FADC125_MODE         5
+---
+> FADC125_MODE         5
+723c723
+< FADC125_MODE         3
+---
+> # FADC125_MODE         3
+736c736
+< FADC125_W_WIDTH      200
+---
+> # FADC125_W_WIDTH      200
+738c738
+< # FADC125_W_WIDTH      174
+---
+> FADC125_W_WIDTH      174
+742c742
+< # FADC125_IE           10
+---
+> FADC125_IE           10
+744c744
+< FADC125_IE           200
+---
+> # FADC125_IE           200
+754c754
+< # FADC125_ABIT        0
+---
+> FADC125_ABIT        0
+756c756
+< FADC125_ABIT        3
+---
+> # FADC125_ABIT        3

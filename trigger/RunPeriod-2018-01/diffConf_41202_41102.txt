@@ -1,0 +1,8 @@
+754c754
+< # New thresholds from Naomi 2/2/2018
+---
+> # New thresholds from Naomi 1/12/2018
+756c756
+< FADC125_COM_VER        spring2018_B
+---
+> FADC125_COM_VER        spring2018_A

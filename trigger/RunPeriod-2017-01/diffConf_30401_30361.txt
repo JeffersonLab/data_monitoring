@@ -1,0 +1,15 @@
+58c58
+< # TS_FP_INPUTS  3   9  10  12
+---
+> TS_FP_INPUTS  3   9  10  12
+93,94d92
+< # Spring 2017 initial 
+< # TRIG_EQ      BCAL_E      15         20           1
+97c95
+< TRIG_EQ      BCAL_E      12         20           1
+---
+> TRIG_EQ      BCAL_E      15         20           1
+117,119d114
+< 
+< 
+< 

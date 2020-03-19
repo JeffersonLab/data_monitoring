@@ -1,0 +1,5 @@
+557,558c557
+< #DSC2_THRESHOLD    80    80  #(new defaults 4/21/16 by AEB)
+< DSC2_THRESHOLD    12    12 # 2/5/17 by AEB, new fiber calib not finished
+---
+> DSC2_THRESHOLD    80    80  #(new defaults 4/21/16 by AEB)

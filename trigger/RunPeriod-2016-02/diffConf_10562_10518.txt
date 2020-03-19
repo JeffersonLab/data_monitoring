@@ -1,0 +1,43 @@
+54c54
+< TS_TRIG_TYPE  6
+---
+> TS_TRIG_TYPE  4
+56,62c56
+< TS_FP_INPUTS  9  10 
+< 
+< #TS_FP_DELAY   9   24
+< #TS_FP_DELAY   10  50
+< 
+< TS_FP_DELAY   9   27
+< TS_FP_DELAY   10  53
+---
+> #TS_FP_INPUTS  11  12 
+79c73
+< TRIG_EQ      BCAL_E      15         20           1
+---
+> TRIG_EQ      BCAL_E      14         20           1
+81c75
+< TRIG_EQ      FCAL        8          15           1
+---
+> TRIG_EQ      FCAL        8          10           1
+122c116
+< TS_COIN_WIND  15
+---
+> TS_COIN_WIND  10
+184,185c178
+< # Changed from 825 to 820 (2/26/15)
+< FADC250_W_OFFSET     820
+---
+> FADC250_W_OFFSET     825
+443,445c436,438
+< #DSC2_THRESHOLD    20  20  (changed 2/10/16 by A.B.)
+< #DSC2_THRESHOLD    5    5  (changed for diamond alignment 2/20/16)
+< DSC2_THRESHOLD    12    12
+---
+> DSC2_THRESHOLD    20  20
+> #DSC2_THRESHOLD    5    5 (changed for diamond alignment 2/20/16)
+> 
+508c501
+< FADC250_W_WIDTH      150
+---
+> FADC250_W_WIDTH      100

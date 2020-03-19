@@ -1,0 +1,14 @@
+686c686
+< FADC250_W_WIDTH      150
+---
+> #FADC250_W_WIDTH      150
+688,689c688
+< #FADC250_W_WIDTH      500
+< #Switched back to 150 1/26/18
+---
+> FADC250_W_WIDTH      500
+701,702c700
+< FADC250_READ_THR     150
+< #Switched back to 150 1/26/18
+---
+> FADC250_READ_THR     160
