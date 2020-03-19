@@ -1,0 +1,2636 @@
+<html>
+  <head>
+  <link rel="stylesheet" type="text/css" href="mystyle.css">
+  <meta http-equiv="content-style-type" content="text/css">
+  <title>Summary of analysis_2016-02_ver02_batch01</title>
+  </head>
+  <body>
+  <h1>analysis_2016-02_ver02_batch01</h1>
+  <hr>
+  <h3 style="color:red; text-align:right; font-size:1em;">Click on each figure to show larger version</h3>
+  <h2>Status</h2>
+  <h3>Info retrieved: 2016-09-15 09:48:17.0</h3>
+  <h3>Job Limit: 0  Total attempts: 9227</h3>
+  <table style="border: 0px; table-layout: fixed;">
+  <h2>Status from SWIF Summary</h2>
+  <h3>Numbers are for individual registered jobs, final status.</h3>
+    <tr style="background: #99CCFF;">
+      <th style="border: 0px; height:10px; width:100px;">Undispatched</th>
+      <th style="border: 0px; height:10px; width:100px;">Dispatched</th>
+      <th style="border: 0px; height:10px; width:100px;">Succeeded</th>
+      <th style="border: 0px; height:10px; width:100px;">Failed</th>
+      <th style="border: 0px; height:10px; width:100px;">Problems</th>
+      <th style="border: 0px; height:10px; width:100px;">Canceled</th>
+      <th style="border: 0px; height:10px; width:100px;">Total</th>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>9022</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td><b>9022</b></td>
+    </tr>
+  </table>
+  <br><br>
+  <h2>Auger Status</h2>
+  <table style="border: 0px; table-layout: fixed;">
+    <tr style="background: #99CCFF;">
+      <th style="border: 0px; height:10px; width:100px;">Dependency</th>
+      <th style="border: 0px; height:10px; width:100px;">Pending</th>
+      <th style="border: 0px; height:10px; width:100px;">Staging In</th>
+      <th style="border: 0px; height:10px; width:100px;">Active</th>
+      <th style="border: 0px; height:10px; width:100px;">Staging Out</th>
+      <th style="border: 0px; height:10px; width:100px;">Finishing</th>
+      <th style="border: 0px; height:10px; width:100px;">Dispatched Total</th>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td><b>0</b></td>
+    </tr>
+  </table>
+  <h2>Status by Resources</h2>
+  <h3>Counts are for each attempt of running a job, if an attempt fails and the job is resubmitted</h3>
+  <h3> the same job will appear in other places as other attempts.</h3>
+  <table style="border: 0px; table-layout: fixed;">
+    <tr style="background: #99CCFF;">
+      <th colspan = "2" style="border: 0px; height:10px; width:300px; bgcolor = #ff0000;">Resources</th>
+      <th colspan = "8" style="border: 0px; height:10px; width:500px; bgcolor = #00ff00;">Results</th>
+      <th rowspan="2"><b>TOTAL</b></th>
+    </tr>
+    <tr style="background: #99CCFF;">
+      <th style="border: 0px; height:10px; width:150px;">RAM (GB)</th>
+      <th style="border: 0px; height:10px; width:150px;">time limit (hrs)</th>
+      <th style="border: 0px; height:10px; width:100px;">SUCCESS</th>
+      <th style="border: 0px; height:10px; width:150px;">USER ERROR</th>
+      <th style="border: 0px; height:10px; width:100px;">FAILED</th>
+      <th style="border: 0px; height:10px; width:100px;">TIMEOUT</th>
+      <th style="border: 0px; height:10px; width:100px;">OVER_RLIMIT</th>
+      <th style="border: 0px; height:10px; width:100px;">UNDISPATCHED</th>
+      <th style="border: 0px; height:10px; width:100px;">ACTIVE</th>
+      <th style="border: 0px; height:10px; width:100px;">CANCELLED</th>
+    </tr>
+    <tr>
+      <td>20.0</td>     <!-- RAM -->
+      <td>4.0</td>    <!-- time -->
+      <td>9021</td>
+      <td>57</td>
+      <td>147</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>9226</td>
+      </tr>
+    <tr>
+      <td>20.0</td>     <!-- RAM -->
+      <td>8.0</td>    <!-- time -->
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      </tr>
+    <tr>
+      <td colspan="2"><b>TOTAL</b></td>
+      <td><b>9022</b></td>
+      <td><b>57</b></td>
+      <td><b>147</b></td>
+      <td><b>1</b></td>
+      <td><b>0</b></td>
+      <td><b>0</b></td>
+      <td><b>0</b></td>
+      <td><b>0</b></td>
+      <td><b>9227</b></td>
+    </tr>
+  </table>
+  <hr>
+    <h2>Number of Attempts For Each Job</h2>
+    <a href = "figures/analysis_2016-02_ver02_batch01/hnum_attempts.png">
+      <img src = "figures/analysis_2016-02_ver02_batch01/hnum_attempts.png" width = "70%">
+    </a>
+    <hr>
+    <h2>Number of jobs in each stage since launch</h2>
+    <a href = "figures/analysis_2016-02_ver02_batch01/cumulativeNumsSinceLaunch.png">
+      <img src = "figures/analysis_2016-02_ver02_batch01/cumulativeNumsSinceLaunch.png" width = "70%">
+    </a>
+    <hr>
+    <h2>Time Spent in Dependency</h2>
+    <a href = "figures/analysis_2016-02_ver02_batch01/hDependency.png">
+      <img src = "figures/analysis_2016-02_ver02_batch01/hDependency.png" width = "70%">
+    </a>
+    <hr>
+    <h2>Time Spent in Pending</h2>
+    <a href = "figures/analysis_2016-02_ver02_batch01/hPending.png">
+      <img src = "figures/analysis_2016-02_ver02_batch01/hPending.png" width = "70%">
+    </a>
+    <hr>
+    <h2>Number of Jobs Active</h2>
+    <a href = "figures/analysis_2016-02_ver02_batch01/hJobsActive.png">
+      <img src = "figures/analysis_2016-02_ver02_batch01/hJobsActive.png" width = "33%">
+    </a>
+    <hr>
+    <h2>Duration of Each Stage</h2>
+    <a href = "figures/analysis_2016-02_ver02_batch01/duration.png">
+      <img src = "figures/analysis_2016-02_ver02_batch01/duration.png" width = "100%">
+    </a>
+    <hr>
+    <h2>Wall Time, CPU Time vs Wall Time</h2>
+    <a href = "figures/analysis_2016-02_ver02_batch01/walltime.png">
+      <img src = "figures/analysis_2016-02_ver02_batch01/walltime.png" width = "80%">
+    </a>
+    <hr>
+    <h2>MAX Memory reported by AUGER</h2>
+    <a href = "figures/analysis_2016-02_ver02_batch01/hauger_mem.png">
+      <img src = "figures/analysis_2016-02_ver02_batch01/hauger_mem.png" width = "100%">
+    </a>
+    <hr>
+  <h2>Problem Jobs</h2>
+  <table style="border: 0px; table-layout: fixed;">
+    <tr style="background: #99CCFF;">
+      <th style="border: 0px; height:10px; width:100px;">Run</th>
+      <th style="border: 0px; height:10px; width:100px;">File</th>
+      <th style="border: 0px; height:10px; width:50px;">RAM (GB)</th>
+      <th style="border: 0px; height:10px; width:50px;">Attempt</th>
+      <th style="border: 0px; height:10px; width:200px;">Problem</th>
+      <th style="border: 0px; height:10px; width:140px;">Resolution</th>
+      <th style="border: 0px; height:10px; width:160px;">SWIF Job ID</th>
+      <th style="border: 0px; height:10px; width:160px;">Auger Job ID</th>
+      <th style="border: 0px; height:10px; width:200px;">Submit Time</th>
+      <th style="border: 0px; height:10px; width:200px;">Complete Time</th>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>142</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660233</td>
+      <td>28362210</td>
+      <td>2016-09-13 10:30:30.0</td>
+      <td>2016-09-13 11:44:31.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>065</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660234</td>
+      <td>28362211</td>
+      <td>2016-09-13 10:30:31.0</td>
+      <td>2016-09-13 11:45:25.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>099</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660244</td>
+      <td>28362224</td>
+      <td>2016-09-13 10:30:33.0</td>
+      <td>2016-09-13 11:48:37.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>176</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660264</td>
+      <td>28362248</td>
+      <td>2016-09-13 10:30:37.0</td>
+      <td>2016-09-13 11:59:59.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>113</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660266</td>
+      <td>28362250</td>
+      <td>2016-09-13 10:30:38.0</td>
+      <td>2016-09-13 12:00:48.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>039</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660289</td>
+      <td>28362277</td>
+      <td>2016-09-13 10:30:42.0</td>
+      <td>2016-09-13 12:12:08.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>013</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660293</td>
+      <td>28362282</td>
+      <td>2016-09-13 10:30:43.0</td>
+      <td>2016-09-13 12:12:42.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>005</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660294</td>
+      <td>28362283</td>
+      <td>2016-09-13 10:30:43.0</td>
+      <td>2016-09-13 12:12:42.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>155</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660297</td>
+      <td>28362287</td>
+      <td>2016-09-13 10:30:44.0</td>
+      <td>2016-09-13 12:13:23.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>096</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660306</td>
+      <td>28362297</td>
+      <td>2016-09-13 10:30:46.0</td>
+      <td>2016-09-13 12:15:20.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>171</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660307</td>
+      <td>28362298</td>
+      <td>2016-09-13 10:30:46.0</td>
+      <td>2016-09-13 12:15:45.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>163</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660308</td>
+      <td>28362299</td>
+      <td>2016-09-13 10:30:46.0</td>
+      <td>2016-09-13 12:16:06.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>047</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660309</td>
+      <td>28362300</td>
+      <td>2016-09-13 10:30:46.0</td>
+      <td>2016-09-13 12:16:07.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>006</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660310</td>
+      <td>28362301</td>
+      <td>2016-09-13 10:30:46.0</td>
+      <td>2016-09-13 12:16:07.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>114</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660311</td>
+      <td>28362303</td>
+      <td>2016-09-13 10:30:47.0</td>
+      <td>2016-09-13 12:16:07.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>183</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660313</td>
+      <td>28362305</td>
+      <td>2016-09-13 10:30:47.0</td>
+      <td>2016-09-13 12:16:28.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>031</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660314</td>
+      <td>28362307</td>
+      <td>2016-09-13 10:30:47.0</td>
+      <td>2016-09-13 12:16:28.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>084</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660317</td>
+      <td>28362311</td>
+      <td>2016-09-13 10:30:48.0</td>
+      <td>2016-09-13 12:17:15.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>125</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660318</td>
+      <td>28362312</td>
+      <td>2016-09-13 10:30:48.0</td>
+      <td>2016-09-13 12:17:15.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>025</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660321</td>
+      <td>28362315</td>
+      <td>2016-09-13 10:30:48.0</td>
+      <td>2016-09-13 12:17:17.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>000</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660322</td>
+      <td>28362316</td>
+      <td>2016-09-13 10:30:49.0</td>
+      <td>2016-09-13 12:17:17.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>173</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660325</td>
+      <td>28362319</td>
+      <td>2016-09-13 10:30:49.0</td>
+      <td>2016-09-13 12:17:14.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>067</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660327</td>
+      <td>28362321</td>
+      <td>2016-09-13 10:30:49.0</td>
+      <td>2016-09-13 12:17:16.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>002</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660329</td>
+      <td>28362324</td>
+      <td>2016-09-13 10:30:50.0</td>
+      <td>2016-09-13 12:17:53.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>169</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660331</td>
+      <td>28362327</td>
+      <td>2016-09-13 10:30:50.0</td>
+      <td>2016-09-13 12:17:32.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>014</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660336</td>
+      <td>28362333</td>
+      <td>2016-09-13 10:30:51.0</td>
+      <td>2016-09-13 12:17:53.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>052</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660337</td>
+      <td>28362334</td>
+      <td>2016-09-13 10:30:51.0</td>
+      <td>2016-09-13 12:18:11.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>004</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660338</td>
+      <td>28362335</td>
+      <td>2016-09-13 10:30:51.0</td>
+      <td>2016-09-13 12:18:14.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>154</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660348</td>
+      <td>28362346</td>
+      <td>2016-09-13 10:30:53.0</td>
+      <td>2016-09-13 12:18:53.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>109</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660349</td>
+      <td>28362347</td>
+      <td>2016-09-13 10:30:53.0</td>
+      <td>2016-09-13 12:18:51.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>032</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660353</td>
+      <td>28362352</td>
+      <td>2016-09-13 10:30:54.0</td>
+      <td>2016-09-13 12:19:49.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>137</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660354</td>
+      <td>28362353</td>
+      <td>2016-09-13 10:30:54.0</td>
+      <td>2016-09-13 12:19:29.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>058</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660359</td>
+      <td>28362360</td>
+      <td>2016-09-13 10:30:55.0</td>
+      <td>2016-09-13 12:20:40.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>126</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660362</td>
+      <td>28362363</td>
+      <td>2016-09-13 10:30:56.0</td>
+      <td>2016-09-13 12:21:00.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>015</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660363</td>
+      <td>28362364</td>
+      <td>2016-09-13 10:30:56.0</td>
+      <td>2016-09-13 12:21:00.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>073</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660368</td>
+      <td>28362369</td>
+      <td>2016-09-13 10:30:57.0</td>
+      <td>2016-09-13 12:21:36.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>035</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660370</td>
+      <td>28362371</td>
+      <td>2016-09-13 10:30:57.0</td>
+      <td>2016-09-13 12:22:03.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>180</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660381</td>
+      <td>28362385</td>
+      <td>2016-09-13 10:30:59.0</td>
+      <td>2016-09-13 12:26:16.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>022</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660385</td>
+      <td>28362389</td>
+      <td>2016-09-13 10:30:59.0</td>
+      <td>2016-09-13 12:27:41.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>071</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660386</td>
+      <td>28362390</td>
+      <td>2016-09-13 10:31:00.0</td>
+      <td>2016-09-13 12:28:35.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>011</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660388</td>
+      <td>28362392</td>
+      <td>2016-09-13 10:31:00.0</td>
+      <td>2016-09-13 12:29:00.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>094</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660389</td>
+      <td>28362394</td>
+      <td>2016-09-13 10:31:00.0</td>
+      <td>2016-09-13 12:29:29.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>028</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660390</td>
+      <td>28362395</td>
+      <td>2016-09-13 10:31:00.0</td>
+      <td>2016-09-13 12:29:48.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>146</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660397</td>
+      <td>28362403</td>
+      <td>2016-09-13 10:31:02.0</td>
+      <td>2016-09-13 12:31:31.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>045</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660398</td>
+      <td>28362405</td>
+      <td>2016-09-13 10:31:02.0</td>
+      <td>2016-09-13 12:32:20.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>160</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660399</td>
+      <td>28362406</td>
+      <td>2016-09-13 10:31:02.0</td>
+      <td>2016-09-13 12:33:10.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>063</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660400</td>
+      <td>28362407</td>
+      <td>2016-09-13 10:31:02.0</td>
+      <td>2016-09-13 12:33:56.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>181</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660401</td>
+      <td>28362408</td>
+      <td>2016-09-13 10:31:03.0</td>
+      <td>2016-09-13 12:34:44.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>188</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660402</td>
+      <td>28362410</td>
+      <td>2016-09-13 10:31:03.0</td>
+      <td>2016-09-13 12:35:09.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>174</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660403</td>
+      <td>28362411</td>
+      <td>2016-09-13 10:31:03.0</td>
+      <td>2016-09-13 12:35:32.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>040</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660404</td>
+      <td>28362412</td>
+      <td>2016-09-13 10:31:03.0</td>
+      <td>2016-09-13 12:36:10.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>012</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660405</td>
+      <td>28362413</td>
+      <td>2016-09-13 10:31:03.0</td>
+      <td>2016-09-13 12:36:28.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>037</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660407</td>
+      <td>28362415</td>
+      <td>2016-09-13 10:31:04.0</td>
+      <td>2016-09-13 12:36:59.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>024</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660409</td>
+      <td>28362417</td>
+      <td>2016-09-13 10:31:04.0</td>
+      <td>2016-09-13 12:37:34.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>007</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660410</td>
+      <td>28362418</td>
+      <td>2016-09-13 10:31:05.0</td>
+      <td>2016-09-13 12:37:38.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>108</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660412</td>
+      <td>28362421</td>
+      <td>2016-09-13 10:31:05.0</td>
+      <td>2016-09-13 12:38:34.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>053</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660419</td>
+      <td>28362430</td>
+      <td>2016-09-13 10:31:06.0</td>
+      <td>2016-09-13 12:42:16.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>016</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660420</td>
+      <td>28362431</td>
+      <td>2016-09-13 10:31:07.0</td>
+      <td>2016-09-13 12:43:33.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>139</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660427</td>
+      <td>28362438</td>
+      <td>2016-09-13 10:31:08.0</td>
+      <td>2016-09-13 12:45:06.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>132</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660428</td>
+      <td>28362440</td>
+      <td>2016-09-13 10:31:08.0</td>
+      <td>2016-09-13 12:45:07.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>059</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660432</td>
+      <td>28362444</td>
+      <td>2016-09-13 10:31:09.0</td>
+      <td>2016-09-13 12:45:34.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>143</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660433</td>
+      <td>28362446</td>
+      <td>2016-09-13 10:31:09.0</td>
+      <td>2016-09-13 12:45:45.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>035</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660434</td>
+      <td>28362447</td>
+      <td>2016-09-13 10:31:09.0</td>
+      <td>2016-09-13 12:46:00.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>025</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660435</td>
+      <td>28362448</td>
+      <td>2016-09-13 10:31:09.0</td>
+      <td>2016-09-13 12:46:33.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>138</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660436</td>
+      <td>28362449</td>
+      <td>2016-09-13 10:31:09.0</td>
+      <td>2016-09-13 12:46:43.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>088</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660437</td>
+      <td>28362451</td>
+      <td>2016-09-13 10:31:09.0</td>
+      <td>2016-09-13 12:46:43.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>101</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660449</td>
+      <td>28362464</td>
+      <td>2016-09-13 10:31:11.0</td>
+      <td>2016-09-13 12:49:50.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>097</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660450</td>
+      <td>28362465</td>
+      <td>2016-09-13 10:31:12.0</td>
+      <td>2016-09-13 12:50:50.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>049</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660451</td>
+      <td>28362466</td>
+      <td>2016-09-13 10:31:12.0</td>
+      <td>2016-09-13 12:50:52.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>073</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660453</td>
+      <td>28362468</td>
+      <td>2016-09-13 10:31:12.0</td>
+      <td>2016-09-13 12:50:48.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>067</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660457</td>
+      <td>28362473</td>
+      <td>2016-09-13 10:31:13.0</td>
+      <td>2016-09-13 12:52:49.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>091</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660459</td>
+      <td>28362476</td>
+      <td>2016-09-13 10:31:13.0</td>
+      <td>2016-09-13 12:51:31.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>036</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660460</td>
+      <td>28362478</td>
+      <td>2016-09-13 10:31:13.0</td>
+      <td>2016-09-13 12:52:49.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>084</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660461</td>
+      <td>28362479</td>
+      <td>2016-09-13 10:31:13.0</td>
+      <td>2016-09-13 12:51:56.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>150</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660465</td>
+      <td>28362483</td>
+      <td>2016-09-13 10:31:14.0</td>
+      <td>2016-09-13 12:52:34.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>002</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660466</td>
+      <td>28362484</td>
+      <td>2016-09-13 10:31:14.0</td>
+      <td>2016-09-13 12:52:54.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>030</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660468</td>
+      <td>28362486</td>
+      <td>2016-09-13 10:31:14.0</td>
+      <td>2016-09-13 12:53:17.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>003</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660471</td>
+      <td>28362489</td>
+      <td>2016-09-13 10:31:15.0</td>
+      <td>2016-09-13 12:53:34.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>100</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660472</td>
+      <td>28362490</td>
+      <td>2016-09-13 10:31:15.0</td>
+      <td>2016-09-13 12:53:34.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>146</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660473</td>
+      <td>28362491</td>
+      <td>2016-09-13 10:31:15.0</td>
+      <td>2016-09-13 12:53:37.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>120</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660476</td>
+      <td>28362494</td>
+      <td>2016-09-13 10:31:16.0</td>
+      <td>2016-09-13 12:53:35.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>077</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660478</td>
+      <td>28362498</td>
+      <td>2016-09-13 10:31:16.0</td>
+      <td>2016-09-13 12:54:12.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>044</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660479</td>
+      <td>28362499</td>
+      <td>2016-09-13 10:31:16.0</td>
+      <td>2016-09-13 12:54:14.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>055</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660480</td>
+      <td>28362500</td>
+      <td>2016-09-13 10:31:16.0</td>
+      <td>2016-09-13 12:54:12.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>142</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660482</td>
+      <td>28362503</td>
+      <td>2016-09-13 10:31:17.0</td>
+      <td>2016-09-13 12:54:13.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>098</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660483</td>
+      <td>28362504</td>
+      <td>2016-09-13 10:31:17.0</td>
+      <td>2016-09-13 12:54:33.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>096</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660484</td>
+      <td>28362505</td>
+      <td>2016-09-13 10:31:17.0</td>
+      <td>2016-09-13 12:54:26.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>119</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660485</td>
+      <td>28362506</td>
+      <td>2016-09-13 10:31:17.0</td>
+      <td>2016-09-13 12:54:31.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>083</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660488</td>
+      <td>28362509</td>
+      <td>2016-09-13 10:31:18.0</td>
+      <td>2016-09-13 12:54:39.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>013</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660490</td>
+      <td>28362511</td>
+      <td>2016-09-13 10:31:18.0</td>
+      <td>2016-09-13 12:54:53.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>010</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660491</td>
+      <td>28362512</td>
+      <td>2016-09-13 10:31:18.0</td>
+      <td>2016-09-13 12:54:53.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>010</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660491</td>
+      <td>28376761</td>
+      <td>2016-09-13 15:43:17.0</td>
+      <td>2016-09-15 02:40:20.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>039</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660492</td>
+      <td>28362514</td>
+      <td>2016-09-13 10:31:18.0</td>
+      <td>2016-09-13 12:54:53.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>131</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660496</td>
+      <td>28362518</td>
+      <td>2016-09-13 10:31:19.0</td>
+      <td>2016-09-13 12:55:12.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>141</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660497</td>
+      <td>28362519</td>
+      <td>2016-09-13 10:31:19.0</td>
+      <td>2016-09-13 12:54:53.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>128</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660500</td>
+      <td>28362522</td>
+      <td>2016-09-13 10:31:20.0</td>
+      <td>2016-09-13 12:55:31.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>026</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660502</td>
+      <td>28362525</td>
+      <td>2016-09-13 10:31:20.0</td>
+      <td>2016-09-13 12:55:31.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>048</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660506</td>
+      <td>28362530</td>
+      <td>2016-09-13 10:31:21.0</td>
+      <td>2016-09-13 12:56:25.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>076</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660508</td>
+      <td>28362533</td>
+      <td>2016-09-13 10:31:21.0</td>
+      <td>2016-09-13 12:55:56.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>008</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660510</td>
+      <td>28362535</td>
+      <td>2016-09-13 10:31:22.0</td>
+      <td>2016-09-13 12:56:25.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>103</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660511</td>
+      <td>28362536</td>
+      <td>2016-09-13 10:31:22.0</td>
+      <td>2016-09-13 12:56:25.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>000</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660512</td>
+      <td>28362537</td>
+      <td>2016-09-13 10:31:22.0</td>
+      <td>2016-09-13 12:55:48.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>127</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660513</td>
+      <td>28362538</td>
+      <td>2016-09-13 10:31:22.0</td>
+      <td>2016-09-13 12:56:25.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>147</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660517</td>
+      <td>28362542</td>
+      <td>2016-09-13 10:31:23.0</td>
+      <td>2016-09-13 12:56:29.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>052</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660520</td>
+      <td>28362545</td>
+      <td>2016-09-13 10:31:23.0</td>
+      <td>2016-09-13 12:56:26.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>134</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660521</td>
+      <td>28362546</td>
+      <td>2016-09-13 10:31:23.0</td>
+      <td>2016-09-13 12:56:29.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>104</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660532</td>
+      <td>28362560</td>
+      <td>2016-09-13 10:31:25.0</td>
+      <td>2016-09-13 12:58:07.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>066</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660535</td>
+      <td>28362563</td>
+      <td>2016-09-13 10:31:26.0</td>
+      <td>2016-09-13 12:58:07.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>086</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660538</td>
+      <td>28362566</td>
+      <td>2016-09-13 10:31:26.0</td>
+      <td>2016-09-13 12:58:09.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>005</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660567</td>
+      <td>28362600</td>
+      <td>2016-09-13 10:31:31.0</td>
+      <td>2016-09-13 13:02:20.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>021</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660569</td>
+      <td>28362603</td>
+      <td>2016-09-13 10:31:32.0</td>
+      <td>2016-09-13 13:02:55.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>090</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660570</td>
+      <td>28362604</td>
+      <td>2016-09-13 10:31:32.0</td>
+      <td>2016-09-13 13:03:17.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>052</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660576</td>
+      <td>28362611</td>
+      <td>2016-09-13 10:31:33.0</td>
+      <td>2016-09-13 13:04:20.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>092</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660581</td>
+      <td>28362616</td>
+      <td>2016-09-13 10:31:34.0</td>
+      <td>2016-09-13 13:04:56.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>124</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660587</td>
+      <td>28362624</td>
+      <td>2016-09-13 10:31:35.0</td>
+      <td>2016-09-13 13:05:53.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>084</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660588</td>
+      <td>28362625</td>
+      <td>2016-09-13 10:31:35.0</td>
+      <td>2016-09-13 13:05:55.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>132</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660593</td>
+      <td>28362631</td>
+      <td>2016-09-13 10:31:36.0</td>
+      <td>2016-09-13 13:06:46.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>082</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660594</td>
+      <td>28362632</td>
+      <td>2016-09-13 10:31:36.0</td>
+      <td>2016-09-13 13:07:03.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>056</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660595</td>
+      <td>28362633</td>
+      <td>2016-09-13 10:31:36.0</td>
+      <td>2016-09-13 13:07:05.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>130</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660596</td>
+      <td>28362634</td>
+      <td>2016-09-13 10:31:36.0</td>
+      <td>2016-09-13 13:07:59.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>011</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660597</td>
+      <td>28362635</td>
+      <td>2016-09-13 10:31:36.0</td>
+      <td>2016-09-13 13:07:05.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>058</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660599</td>
+      <td>28362637</td>
+      <td>2016-09-13 10:31:37.0</td>
+      <td>2016-09-13 13:07:56.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>088</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660602</td>
+      <td>28362641</td>
+      <td>2016-09-13 10:31:37.0</td>
+      <td>2016-09-13 13:08:00.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>077</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660603</td>
+      <td>28362642</td>
+      <td>2016-09-13 10:31:37.0</td>
+      <td>2016-09-13 13:07:37.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>044</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660604</td>
+      <td>28362643</td>
+      <td>2016-09-13 10:31:38.0</td>
+      <td>2016-09-13 13:08:18.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>098</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660613</td>
+      <td>28362653</td>
+      <td>2016-09-13 10:31:39.0</td>
+      <td>2016-09-13 13:08:59.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>023</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660621</td>
+      <td>28362663</td>
+      <td>2016-09-13 10:31:41.0</td>
+      <td>2016-09-13 13:09:39.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>127</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660625</td>
+      <td>28362667</td>
+      <td>2016-09-13 10:31:41.0</td>
+      <td>2016-09-13 13:10:17.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>055</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660626</td>
+      <td>28362668</td>
+      <td>2016-09-13 10:31:41.0</td>
+      <td>2016-09-13 13:10:19.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>128</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660627</td>
+      <td>28362669</td>
+      <td>2016-09-13 10:31:41.0</td>
+      <td>2016-09-13 13:10:57.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>107</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660636</td>
+      <td>28362680</td>
+      <td>2016-09-13 10:31:43.0</td>
+      <td>2016-09-13 13:12:58.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>067</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660638</td>
+      <td>28362683</td>
+      <td>2016-09-13 10:31:43.0</td>
+      <td>2016-09-13 13:13:31.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>121</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660639</td>
+      <td>28362684</td>
+      <td>2016-09-13 10:31:43.0</td>
+      <td>2016-09-13 13:13:48.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>074</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660640</td>
+      <td>28362685</td>
+      <td>2016-09-13 10:31:44.0</td>
+      <td>2016-09-13 13:15:51.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>029</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660641</td>
+      <td>28362686</td>
+      <td>2016-09-13 10:31:44.0</td>
+      <td>2016-09-13 13:14:40.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>078</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660642</td>
+      <td>28362687</td>
+      <td>2016-09-13 10:31:44.0</td>
+      <td>2016-09-13 13:14:43.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>039</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660643</td>
+      <td>28362688</td>
+      <td>2016-09-13 10:31:44.0</td>
+      <td>2016-09-13 13:14:43.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>085</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660646</td>
+      <td>28362692</td>
+      <td>2016-09-13 10:31:45.0</td>
+      <td>2016-09-13 13:15:03.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>135</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660647</td>
+      <td>28362693</td>
+      <td>2016-09-13 10:31:45.0</td>
+      <td>2016-09-13 13:15:02.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>118</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660648</td>
+      <td>28362694</td>
+      <td>2016-09-13 10:31:45.0</td>
+      <td>2016-09-13 13:15:43.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>062</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660649</td>
+      <td>28362695</td>
+      <td>2016-09-13 10:31:45.0</td>
+      <td>2016-09-13 13:15:27.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>136</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660650</td>
+      <td>28362696</td>
+      <td>2016-09-13 10:31:45.0</td>
+      <td>2016-09-13 13:15:25.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>010</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660651</td>
+      <td>28362697</td>
+      <td>2016-09-13 10:31:45.0</td>
+      <td>2016-09-13 13:15:42.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>125</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660652</td>
+      <td>28362698</td>
+      <td>2016-09-13 10:31:46.0</td>
+      <td>2016-09-13 13:15:43.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>041</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660653</td>
+      <td>28362700</td>
+      <td>2016-09-13 10:31:46.0</td>
+      <td>2016-09-13 13:15:44.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>131</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660654</td>
+      <td>28362701</td>
+      <td>2016-09-13 10:31:46.0</td>
+      <td>2016-09-13 13:16:18.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>113</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660655</td>
+      <td>28362702</td>
+      <td>2016-09-13 10:31:46.0</td>
+      <td>2016-09-13 13:16:19.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>071</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660656</td>
+      <td>28362703</td>
+      <td>2016-09-13 10:31:46.0</td>
+      <td>2016-09-13 13:16:40.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>101</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660657</td>
+      <td>28362704</td>
+      <td>2016-09-13 10:31:46.0</td>
+      <td>2016-09-13 13:16:57.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>104</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660658</td>
+      <td>28362705</td>
+      <td>2016-09-13 10:31:47.0</td>
+      <td>2016-09-13 13:16:57.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>037</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660659</td>
+      <td>28362707</td>
+      <td>2016-09-13 10:31:47.0</td>
+      <td>2016-09-13 13:16:40.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>019</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660660</td>
+      <td>28362709</td>
+      <td>2016-09-13 10:31:47.0</td>
+      <td>2016-09-13 13:16:41.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>096</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660662</td>
+      <td>28362711</td>
+      <td>2016-09-13 10:31:47.0</td>
+      <td>2016-09-13 13:17:23.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>022</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660663</td>
+      <td>28362712</td>
+      <td>2016-09-13 10:31:48.0</td>
+      <td>2016-09-13 13:17:46.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>072</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660664</td>
+      <td>28362713</td>
+      <td>2016-09-13 10:31:48.0</td>
+      <td>2016-09-13 13:17:23.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>106</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660665</td>
+      <td>28362714</td>
+      <td>2016-09-13 10:31:48.0</td>
+      <td>2016-09-13 13:17:23.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>025</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660666</td>
+      <td>28362715</td>
+      <td>2016-09-13 10:31:48.0</td>
+      <td>2016-09-13 13:17:43.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>112</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660667</td>
+      <td>28362716</td>
+      <td>2016-09-13 10:31:48.0</td>
+      <td>2016-09-13 13:17:43.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>003</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660668</td>
+      <td>28362717</td>
+      <td>2016-09-13 10:31:48.0</td>
+      <td>2016-09-13 13:17:43.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>018</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660669</td>
+      <td>28362718</td>
+      <td>2016-09-13 10:31:48.0</td>
+      <td>2016-09-13 13:18:19.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>006</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660670</td>
+      <td>28362719</td>
+      <td>2016-09-13 10:31:49.0</td>
+      <td>2016-09-13 13:18:21.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>086</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660671</td>
+      <td>28362720</td>
+      <td>2016-09-13 10:31:49.0</td>
+      <td>2016-09-13 13:18:21.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>000</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660672</td>
+      <td>28362721</td>
+      <td>2016-09-13 10:31:49.0</td>
+      <td>2016-09-13 13:18:21.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>059</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660673</td>
+      <td>28362722</td>
+      <td>2016-09-13 10:31:49.0</td>
+      <td>2016-09-13 13:18:41.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>016</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660674</td>
+      <td>28362723</td>
+      <td>2016-09-13 10:31:49.0</td>
+      <td>2016-09-13 13:18:42.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>066</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660675</td>
+      <td>28362726</td>
+      <td>2016-09-13 10:31:50.0</td>
+      <td>2016-09-13 13:19:00.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>097</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660679</td>
+      <td>28362731</td>
+      <td>2016-09-13 10:31:51.0</td>
+      <td>2016-09-13 13:19:00.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>036</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660680</td>
+      <td>28362732</td>
+      <td>2016-09-13 10:31:51.0</td>
+      <td>2016-09-13 13:19:19.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>026</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660681</td>
+      <td>28362733</td>
+      <td>2016-09-13 10:31:51.0</td>
+      <td>2016-09-13 13:19:18.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>043</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660682</td>
+      <td>28362734</td>
+      <td>2016-09-13 10:31:51.0</td>
+      <td>2016-09-13 13:19:19.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>030</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660683</td>
+      <td>28362735</td>
+      <td>2016-09-13 10:31:51.0</td>
+      <td>2016-09-13 13:19:19.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>040</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660684</td>
+      <td>28362736</td>
+      <td>2016-09-13 10:31:52.0</td>
+      <td>2016-09-13 13:19:36.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>081</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660685</td>
+      <td>28362737</td>
+      <td>2016-09-13 10:31:52.0</td>
+      <td>2016-09-13 13:19:36.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>015</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660686</td>
+      <td>28362738</td>
+      <td>2016-09-13 10:31:52.0</td>
+      <td>2016-09-13 13:19:38.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>115</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660687</td>
+      <td>28362739</td>
+      <td>2016-09-13 10:31:52.0</td>
+      <td>2016-09-13 13:19:54.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>069</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660688</td>
+      <td>28362740</td>
+      <td>2016-09-13 10:31:52.0</td>
+      <td>2016-09-13 13:19:56.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>049</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660689</td>
+      <td>28362741</td>
+      <td>2016-09-13 10:31:52.0</td>
+      <td>2016-09-13 13:20:15.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>110</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660690</td>
+      <td>28362743</td>
+      <td>2016-09-13 10:31:53.0</td>
+      <td>2016-09-13 13:20:14.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>083</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660691</td>
+      <td>28362744</td>
+      <td>2016-09-13 10:31:53.0</td>
+      <td>2016-09-13 13:20:14.0</td>
+    </tr>
+    <tr>
+      <td>011384</td>
+      <td>087</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660692</td>
+      <td>28362745</td>
+      <td>2016-09-13 10:31:53.0</td>
+      <td>2016-09-13 13:20:14.0</td>
+    </tr>
+    <tr>
+      <td>011404</td>
+      <td>005</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660697</td>
+      <td>28362751</td>
+      <td>2016-09-13 10:31:54.0</td>
+      <td>2016-09-13 13:20:33.0</td>
+    </tr>
+    <tr>
+      <td>011404</td>
+      <td>031</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660720</td>
+      <td>28362800</td>
+      <td>2016-09-13 10:32:21.0</td>
+      <td>2016-09-13 13:26:16.0</td>
+    </tr>
+    <tr>
+      <td>011404</td>
+      <td>029</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660721</td>
+      <td>28362801</td>
+      <td>2016-09-13 10:32:21.0</td>
+      <td>2016-09-13 13:26:36.0</td>
+    </tr>
+    <tr>
+      <td>011404</td>
+      <td>035</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660725</td>
+      <td>28362805</td>
+      <td>2016-09-13 10:32:22.0</td>
+      <td>2016-09-13 13:27:13.0</td>
+    </tr>
+    <tr>
+      <td>011404</td>
+      <td>039</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660728</td>
+      <td>28362809</td>
+      <td>2016-09-13 10:32:23.0</td>
+      <td>2016-09-13 13:27:41.0</td>
+    </tr>
+    <tr>
+      <td>011404</td>
+      <td>042</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660737</td>
+      <td>28362820</td>
+      <td>2016-09-13 10:32:24.0</td>
+      <td>2016-09-13 13:28:28.0</td>
+    </tr>
+    <tr>
+      <td>011404</td>
+      <td>004</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660738</td>
+      <td>28362821</td>
+      <td>2016-09-13 10:32:24.0</td>
+      <td>2016-09-13 13:29:16.0</td>
+    </tr>
+    <tr>
+      <td>011404</td>
+      <td>038</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660740</td>
+      <td>28362823</td>
+      <td>2016-09-13 10:32:25.0</td>
+      <td>2016-09-13 13:29:40.0</td>
+    </tr>
+    <tr>
+      <td>011405</td>
+      <td>068</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660749</td>
+      <td>28362834</td>
+      <td>2016-09-13 10:32:26.0</td>
+      <td>2016-09-13 13:34:21.0</td>
+    </tr>
+    <tr>
+      <td>011405</td>
+      <td>106</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660751</td>
+      <td>28362836</td>
+      <td>2016-09-13 10:32:27.0</td>
+      <td>2016-09-13 13:35:28.0</td>
+    </tr>
+    <tr>
+      <td>011406</td>
+      <td>057</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2660906</td>
+      <td>28363013</td>
+      <td>2016-09-13 10:32:55.0</td>
+      <td>2016-09-13 14:01:57.0</td>
+    </tr>
+    <tr>
+      <td>011406</td>
+      <td>020</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2660910</td>
+      <td>28363019</td>
+      <td>2016-09-13 10:32:56.0</td>
+      <td>2016-09-13 14:03:14.0</td>
+    </tr>
+    <tr>
+      <td>011407</td>
+      <td>016</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2661002</td>
+      <td>28363121</td>
+      <td>2016-09-13 10:33:12.0</td>
+      <td>2016-09-13 14:19:09.0</td>
+    </tr>
+    <tr>
+      <td>011432</td>
+      <td>164</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2661419</td>
+      <td>28363590</td>
+      <td>2016-09-13 10:34:28.0</td>
+      <td>2016-09-13 16:19:47.0</td>
+    </tr>
+    <tr>
+      <td>011435</td>
+      <td>062</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-FAILED</td>
+      <td>retry</td>
+      <td>2661665</td>
+      <td>28363864</td>
+      <td>2016-09-13 10:35:11.0</td>
+      <td>2016-09-14 14:30:52.0</td>
+    </tr>
+    <tr>
+      <td>011435</td>
+      <td>079</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-FAILED</td>
+      <td>retry</td>
+      <td>2661697</td>
+      <td>28363900</td>
+      <td>2016-09-13 10:35:17.0</td>
+      <td>2016-09-14 14:30:52.0</td>
+    </tr>
+    <tr>
+      <td>011450</td>
+      <td>201</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2662930</td>
+      <td>28365273</td>
+      <td>2016-09-13 10:38:50.0</td>
+      <td>2016-09-13 20:37:28.0</td>
+    </tr>
+    <tr>
+      <td>011452</td>
+      <td>139</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2663069</td>
+      <td>28365426</td>
+      <td>2016-09-13 10:39:13.0</td>
+      <td>2016-09-13 21:07:00.0</td>
+    </tr>
+    <tr>
+      <td>011453</td>
+      <td>097</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2663200</td>
+      <td>28365571</td>
+      <td>2016-09-13 10:39:34.0</td>
+      <td>2016-09-13 21:24:53.0</td>
+    </tr>
+    <tr>
+      <td>011482</td>
+      <td>030</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2664653</td>
+      <td>28367152</td>
+      <td>2016-09-13 10:43:45.0</td>
+      <td>2016-09-14 02:07:33.0</td>
+    </tr>
+    <tr>
+      <td>011508</td>
+      <td>036</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2665093</td>
+      <td>28367604</td>
+      <td>2016-09-13 10:44:38.0</td>
+      <td>2016-09-14 06:47:36.0</td>
+    </tr>
+    <tr>
+      <td>011513</td>
+      <td>029</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2665512</td>
+      <td>28368053</td>
+      <td>2016-09-13 10:45:39.0</td>
+      <td>2016-09-14 04:19:42.0</td>
+    </tr>
+    <tr>
+      <td>011529</td>
+      <td>087</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2666198</td>
+      <td>28368772</td>
+      <td>2016-09-13 10:47:35.0</td>
+      <td>2016-09-14 08:21:31.0</td>
+    </tr>
+    <tr>
+      <td>011554</td>
+      <td>045</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2666405</td>
+      <td>28368990</td>
+      <td>2016-09-13 10:48:17.0</td>
+      <td>2016-09-14 08:46:26.0</td>
+    </tr>
+    <tr>
+      <td>011651</td>
+      <td>101</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2668896</td>
+      <td>28371576</td>
+      <td>2016-09-13 10:55:11.0</td>
+      <td>2016-09-14 19:16:49.0</td>
+    </tr>
+    </table>
+    <hr>
+  </body>
+</html>

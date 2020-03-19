@@ -1,0 +1,4933 @@
+<html>
+  <head>
+  <link rel="stylesheet" type="text/css" href="mystyle.css">
+  <meta http-equiv="content-style-type" content="text/css">
+  <title>Summary of analysis_2016-02_ver01_batch01</title>
+  </head>
+  <body>
+  <h1>analysis_2016-02_ver01_batch01</h1>
+  <hr>
+  <h3 style="color:red; text-align:right; font-size:1em;">Click on each figure to show larger version</h3>
+  <h2>Status</h2>
+  <h3>Info retrieved: 2016-08-04 10:11:24.0</h3>
+  <h3>Job Limit: 0  Total attempts: 9416</h3>
+  <table style="border: 0px; table-layout: fixed;">
+  <h2>Status from SWIF Summary</h2>
+  <h3>Numbers are for individual registered jobs, final status.</h3>
+    <tr style="background: #99CCFF;">
+      <th style="border: 0px; height:10px; width:100px;">Undispatched</th>
+      <th style="border: 0px; height:10px; width:100px;">Dispatched</th>
+      <th style="border: 0px; height:10px; width:100px;">Succeeded</th>
+      <th style="border: 0px; height:10px; width:100px;">Failed</th>
+      <th style="border: 0px; height:10px; width:100px;">Problems</th>
+      <th style="border: 0px; height:10px; width:100px;">Canceled</th>
+      <th style="border: 0px; height:10px; width:100px;">Total</th>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>9020</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td><b>9020</b></td>
+    </tr>
+  </table>
+  <br><br>
+  <h2>Auger Status</h2>
+  <table style="border: 0px; table-layout: fixed;">
+    <tr style="background: #99CCFF;">
+      <th style="border: 0px; height:10px; width:100px;">Dependency</th>
+      <th style="border: 0px; height:10px; width:100px;">Pending</th>
+      <th style="border: 0px; height:10px; width:100px;">Staging In</th>
+      <th style="border: 0px; height:10px; width:100px;">Active</th>
+      <th style="border: 0px; height:10px; width:100px;">Staging Out</th>
+      <th style="border: 0px; height:10px; width:100px;">Finishing</th>
+      <th style="border: 0px; height:10px; width:100px;">Dispatched Total</th>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td><b>0</b></td>
+    </tr>
+  </table>
+  <h2>Status by Resources</h2>
+  <h3>Counts are for each attempt of running a job, if an attempt fails and the job is resubmitted</h3>
+  <h3> the same job will appear in other places as other attempts.</h3>
+  <table style="border: 0px; table-layout: fixed;">
+    <tr style="background: #99CCFF;">
+      <th colspan = "2" style="border: 0px; height:10px; width:300px; bgcolor = #ff0000;">Resources</th>
+      <th colspan = "8" style="border: 0px; height:10px; width:500px; bgcolor = #00ff00;">Results</th>
+      <th rowspan="2"><b>TOTAL</b></th>
+    </tr>
+    <tr style="background: #99CCFF;">
+      <th style="border: 0px; height:10px; width:150px;">RAM (GB)</th>
+      <th style="border: 0px; height:10px; width:150px;">time limit (hrs)</th>
+      <th style="border: 0px; height:10px; width:100px;">SUCCESS</th>
+      <th style="border: 0px; height:10px; width:150px;">USER ERROR</th>
+      <th style="border: 0px; height:10px; width:100px;">FAILED</th>
+      <th style="border: 0px; height:10px; width:100px;">TIMEOUT</th>
+      <th style="border: 0px; height:10px; width:100px;">OVER_RLIMIT</th>
+      <th style="border: 0px; height:10px; width:100px;">UNDISPATCHED</th>
+      <th style="border: 0px; height:10px; width:100px;">ACTIVE</th>
+      <th style="border: 0px; height:10px; width:100px;">CANCELLED</th>
+    </tr>
+    <tr>
+      <td>20.0</td>     <!-- RAM -->
+      <td>2.0</td>    <!-- time -->
+      <td>8774</td>
+      <td>113</td>
+      <td>18</td>
+      <td>246</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>9151</td>
+      </tr>
+    <tr>
+      <td>20.0</td>     <!-- RAM -->
+      <td>4.0</td>    <!-- time -->
+      <td>246</td>
+      <td>8</td>
+      <td>11</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>265</td>
+      </tr>
+    <tr>
+      <td colspan="2"><b>TOTAL</b></td>
+      <td><b>9020</b></td>
+      <td><b>121</b></td>
+      <td><b>29</b></td>
+      <td><b>246</b></td>
+      <td><b>0</b></td>
+      <td><b>0</b></td>
+      <td><b>0</b></td>
+      <td><b>0</b></td>
+      <td><b>9416</b></td>
+    </tr>
+  </table>
+  <hr>
+    <h2>Number of Attempts For Each Job</h2>
+    <a href = "figures/analysis_2016-02_ver01_batch01/hnum_attempts.png">
+      <img src = "figures/analysis_2016-02_ver01_batch01/hnum_attempts.png" width = "70%">
+    </a>
+    <hr>
+    <h2>Number of jobs reaching each stage since launch</h2>
+    <a href = "figures/analysis_2016-02_ver01_batch01/cumulativeNumsSinceLaunch.png">
+      <img src = "figures/analysis_2016-02_ver01_batch01/cumulativeNumsSinceLaunch.png" width = "70%">
+    </a>
+    <hr>
+    <h2>Time Spent in Dependency</h2>
+    <a href = "figures/analysis_2016-02_ver01_batch01/hDependency.png">
+      <img src = "figures/analysis_2016-02_ver01_batch01/hDependency.png" width = "70%">
+    </a>
+    <hr>
+    <h2>Time Spent in Pending</h2>
+    <a href = "figures/analysis_2016-02_ver01_batch01/hPending.png">
+      <img src = "figures/analysis_2016-02_ver01_batch01/hPending.png" width = "70%">
+    </a>
+    <hr>
+    <h2>Duration of Each Stage</h2>
+    <a href = "figures/analysis_2016-02_ver01_batch01/duration.png">
+      <img src = "figures/analysis_2016-02_ver01_batch01/duration.png" width = "100%">
+    </a>
+    <hr>
+    <h2>Total Job Time in Order of Auger ID</h2>
+    <a href = "figures/analysis_2016-02_ver01_batch01/hstack_times_auger_id.png">
+      <img src = "figures/analysis_2016-02_ver01_batch01/hstack_times_auger_id.png" width = "70%">
+    </a>
+    <hr>
+    <h2>Total Job Time in Order of Total Time</h2>
+    <a href = "figures/analysis_2016-02_ver01_batch01/hstack_times_totaltime.png">
+      <img src = "figures/analysis_2016-02_ver01_batch01/hstack_times_totaltime.png" width = "70%">
+    </a>
+    <hr>
+    <h2>Wall Time, CPU Time vs Wall Time</h2>
+    <a href = "figures/analysis_2016-02_ver01_batch01/walltime.png">
+      <img src = "figures/analysis_2016-02_ver01_batch01/walltime.png" width = "80%">
+    </a>
+    <hr>
+    <h2>MAX Memory reported by AUGER</h2>
+    <a href = "figures/analysis_2016-02_ver01_batch01/hauger_mem.png">
+      <img src = "figures/analysis_2016-02_ver01_batch01/hauger_mem.png" width = "70%">
+    </a>
+    <hr>
+  <h2>Problem Jobs</h2>
+  <table style="border: 0px; table-layout: fixed;">
+    <tr style="background: #99CCFF;">
+      <th style="border: 0px; height:10px; width:100px;">Run</th>
+      <th style="border: 0px; height:10px; width:100px;">File</th>
+      <th style="border: 0px; height:10px; width:50px;">RAM (GB)</th>
+      <th style="border: 0px; height:10px; width:50px;">Attempt</th>
+      <th style="border: 0px; height:10px; width:200px;">Problem</th>
+      <th style="border: 0px; height:10px; width:140px;">Resolution</th>
+      <th style="border: 0px; height:10px; width:160px;">SWIF Job ID</th>
+      <th style="border: 0px; height:10px; width:160px;">Auger Job ID</th>
+      <th style="border: 0px; height:10px; width:200px;">Submit Time</th>
+      <th style="border: 0px; height:10px; width:200px;">Complete Time</th>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>079</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2392896</td>
+      <td>26127772</td>
+      <td>2016-07-28 13:15:26.0</td>
+      <td>2016-07-28 14:30:59.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>105</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2392902</td>
+      <td>26127778</td>
+      <td>2016-07-28 13:15:27.0</td>
+      <td>2016-07-28 14:28:23.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>105</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2392902</td>
+      <td>26156608</td>
+      <td>2016-07-29 15:17:40.0</td>
+      <td>2016-08-01 19:47:47.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>134</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2392943</td>
+      <td>26127817</td>
+      <td>2016-07-28 13:15:33.0</td>
+      <td>2016-07-28 15:31:11.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>050</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2392974</td>
+      <td>26127833</td>
+      <td>2016-07-28 13:15:37.0</td>
+      <td>2016-07-28 14:30:24.0</td>
+    </tr>
+    <tr>
+      <td>011366</td>
+      <td>086</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2393115</td>
+      <td>26127946</td>
+      <td>2016-07-28 13:15:52.0</td>
+      <td>2016-07-28 14:35:32.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>066</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2393234</td>
+      <td>26128070</td>
+      <td>2016-07-28 13:16:08.0</td>
+      <td>2016-08-02 01:58:14.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>068</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2393239</td>
+      <td>26128075</td>
+      <td>2016-07-28 13:16:09.0</td>
+      <td>2016-08-02 03:46:04.0</td>
+    </tr>
+    <tr>
+      <td>011367</td>
+      <td>083</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2393257</td>
+      <td>26128094</td>
+      <td>2016-07-28 13:16:11.0</td>
+      <td>2016-08-02 06:54:40.0</td>
+    </tr>
+    <tr>
+      <td>011405</td>
+      <td>090</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2393493</td>
+      <td>26128345</td>
+      <td>2016-07-28 13:17:12.0</td>
+      <td>2016-07-28 16:11:09.0</td>
+    </tr>
+    <tr>
+      <td>011405</td>
+      <td>110</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2393498</td>
+      <td>26128350</td>
+      <td>2016-07-28 13:17:12.0</td>
+      <td>2016-07-28 16:03:43.0</td>
+    </tr>
+    <tr>
+      <td>011405</td>
+      <td>035</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2393511</td>
+      <td>26128364</td>
+      <td>2016-07-28 13:17:14.0</td>
+      <td>2016-07-29 20:23:56.0</td>
+    </tr>
+    <tr>
+      <td>011405</td>
+      <td>021</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2393512</td>
+      <td>26128365</td>
+      <td>2016-07-28 13:17:14.0</td>
+      <td>2016-07-29 20:37:00.0</td>
+    </tr>
+    <tr>
+      <td>011405</td>
+      <td>043</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2393540</td>
+      <td>26128394</td>
+      <td>2016-07-28 13:17:18.0</td>
+      <td>2016-07-30 17:56:55.0</td>
+    </tr>
+    <tr>
+      <td>011405</td>
+      <td>012</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2393559</td>
+      <td>26128414</td>
+      <td>2016-07-28 13:17:21.0</td>
+      <td>2016-07-31 18:13:02.0</td>
+    </tr>
+    <tr>
+      <td>011405</td>
+      <td>088</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2393575</td>
+      <td>26128431</td>
+      <td>2016-07-28 13:17:25.0</td>
+      <td>2016-07-31 20:55:34.0</td>
+    </tr>
+    <tr>
+      <td>011405</td>
+      <td>108</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2393576</td>
+      <td>26128432</td>
+      <td>2016-07-28 13:17:25.0</td>
+      <td>2016-07-31 20:56:23.0</td>
+    </tr>
+    <tr>
+      <td>011405</td>
+      <td>087</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2393577</td>
+      <td>26128433</td>
+      <td>2016-07-28 13:17:25.0</td>
+      <td>2016-07-31 20:58:37.0</td>
+    </tr>
+    <tr>
+      <td>011405</td>
+      <td>126</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2393581</td>
+      <td>26128437</td>
+      <td>2016-07-28 13:17:26.0</td>
+      <td>2016-07-31 21:53:22.0</td>
+    </tr>
+    <tr>
+      <td>011405</td>
+      <td>085</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2393583</td>
+      <td>26128439</td>
+      <td>2016-07-28 13:17:26.0</td>
+      <td>2016-07-31 23:04:29.0</td>
+    </tr>
+    <tr>
+      <td>011405</td>
+      <td>081</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2393589</td>
+      <td>26128445</td>
+      <td>2016-07-28 13:17:27.0</td>
+      <td>2016-07-31 23:05:55.0</td>
+    </tr>
+    <tr>
+      <td>011406</td>
+      <td>004</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2393615</td>
+      <td>26128472</td>
+      <td>2016-07-28 13:17:29.0</td>
+      <td>2016-08-02 18:53:31.0</td>
+    </tr>
+    <tr>
+      <td>011407</td>
+      <td>093</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2393712</td>
+      <td>26128572</td>
+      <td>2016-07-28 13:17:42.0</td>
+      <td>2016-07-31 23:26:01.0</td>
+    </tr>
+    <tr>
+      <td>011407</td>
+      <td>088</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2393751</td>
+      <td>26128614</td>
+      <td>2016-07-28 13:17:51.0</td>
+      <td>2016-07-31 21:04:30.0</td>
+    </tr>
+    <tr>
+      <td>011407</td>
+      <td>114</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2393776</td>
+      <td>26128639</td>
+      <td>2016-07-28 13:17:53.0</td>
+      <td>2016-08-02 13:29:43.0</td>
+    </tr>
+    <tr>
+      <td>011429</td>
+      <td>028</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2393798</td>
+      <td>26128662</td>
+      <td>2016-07-28 13:17:55.0</td>
+      <td>2016-08-02 04:51:37.0</td>
+    </tr>
+    <tr>
+      <td>011430</td>
+      <td>018</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2393859</td>
+      <td>26128725</td>
+      <td>2016-07-28 13:18:03.0</td>
+      <td>2016-07-29 20:17:06.0</td>
+    </tr>
+    <tr>
+      <td>011430</td>
+      <td>072</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2393876</td>
+      <td>26128743</td>
+      <td>2016-07-28 13:18:05.0</td>
+      <td>2016-07-30 10:11:40.0</td>
+    </tr>
+    <tr>
+      <td>011430</td>
+      <td>051</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2393884</td>
+      <td>26128751</td>
+      <td>2016-07-28 13:18:07.0</td>
+      <td>2016-07-30 10:17:01.0</td>
+    </tr>
+    <tr>
+      <td>011430</td>
+      <td>064</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2393885</td>
+      <td>26128752</td>
+      <td>2016-07-28 13:18:07.0</td>
+      <td>2016-07-30 10:17:02.0</td>
+    </tr>
+    <tr>
+      <td>011430</td>
+      <td>006</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2393938</td>
+      <td>26128807</td>
+      <td>2016-07-28 13:18:15.0</td>
+      <td>2016-07-31 21:58:52.0</td>
+    </tr>
+    <tr>
+      <td>011431</td>
+      <td>024</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2393967</td>
+      <td>26128850</td>
+      <td>2016-07-28 13:19:04.0</td>
+      <td>2016-07-30 02:16:21.0</td>
+    </tr>
+    <tr>
+      <td>011431</td>
+      <td>035</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2393975</td>
+      <td>26128858</td>
+      <td>2016-07-28 13:19:05.0</td>
+      <td>2016-07-30 17:29:16.0</td>
+    </tr>
+    <tr>
+      <td>011431</td>
+      <td>017</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2393981</td>
+      <td>26128864</td>
+      <td>2016-07-28 13:19:05.0</td>
+      <td>2016-08-01 21:30:42.0</td>
+    </tr>
+    <tr>
+      <td>011431</td>
+      <td>016</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2393983</td>
+      <td>26128866</td>
+      <td>2016-07-28 13:19:05.0</td>
+      <td>2016-08-02 04:25:55.0</td>
+    </tr>
+    <tr>
+      <td>011432</td>
+      <td>140</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2394004</td>
+      <td>26128888</td>
+      <td>2016-07-28 13:19:07.0</td>
+      <td>2016-07-29 19:39:48.0</td>
+    </tr>
+    <tr>
+      <td>011432</td>
+      <td>179</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394021</td>
+      <td>26128905</td>
+      <td>2016-07-28 13:19:09.0</td>
+      <td>2016-07-31 19:01:09.0</td>
+    </tr>
+    <tr>
+      <td>011432</td>
+      <td>169</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394028</td>
+      <td>26128912</td>
+      <td>2016-07-28 13:19:10.0</td>
+      <td>2016-07-31 20:08:18.0</td>
+    </tr>
+    <tr>
+      <td>011432</td>
+      <td>124</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2394033</td>
+      <td>26128917</td>
+      <td>2016-07-28 13:19:10.0</td>
+      <td>2016-07-31 19:50:05.0</td>
+    </tr>
+    <tr>
+      <td>011432</td>
+      <td>109</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394037</td>
+      <td>26128922</td>
+      <td>2016-07-28 13:19:11.0</td>
+      <td>2016-07-31 21:00:12.0</td>
+    </tr>
+    <tr>
+      <td>011432</td>
+      <td>154</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2394039</td>
+      <td>26128924</td>
+      <td>2016-07-28 13:19:11.0</td>
+      <td>2016-07-31 19:55:32.0</td>
+    </tr>
+    <tr>
+      <td>011432</td>
+      <td>039</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394073</td>
+      <td>26128943</td>
+      <td>2016-07-28 13:19:13.0</td>
+      <td>2016-08-02 02:02:22.0</td>
+    </tr>
+    <tr>
+      <td>011432</td>
+      <td>035</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394079</td>
+      <td>26128946</td>
+      <td>2016-07-28 13:19:14.0</td>
+      <td>2016-08-02 02:04:00.0</td>
+    </tr>
+    <tr>
+      <td>011432</td>
+      <td>060</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394094</td>
+      <td>26128955</td>
+      <td>2016-07-28 13:19:15.0</td>
+      <td>2016-08-02 04:53:18.0</td>
+    </tr>
+    <tr>
+      <td>011432</td>
+      <td>003</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394124</td>
+      <td>26128972</td>
+      <td>2016-07-28 13:19:18.0</td>
+      <td>2016-08-02 13:12:00.0</td>
+    </tr>
+    <tr>
+      <td>011432</td>
+      <td>011</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394157</td>
+      <td>26128991</td>
+      <td>2016-07-28 13:19:21.0</td>
+      <td>2016-08-02 13:15:10.0</td>
+    </tr>
+    <tr>
+      <td>011432</td>
+      <td>008</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2394165</td>
+      <td>26128995</td>
+      <td>2016-07-28 13:19:22.0</td>
+      <td>2016-08-02 13:45:23.0</td>
+    </tr>
+    <tr>
+      <td>011432</td>
+      <td>187</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2394167</td>
+      <td>26128996</td>
+      <td>2016-07-28 13:19:22.0</td>
+      <td>2016-08-02 13:09:24.0</td>
+    </tr>
+    <tr>
+      <td>011432</td>
+      <td>148</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2394213</td>
+      <td>26129021</td>
+      <td>2016-07-28 13:19:27.0</td>
+      <td>2016-08-02 21:40:18.0</td>
+    </tr>
+    <tr>
+      <td>011432</td>
+      <td>148</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2394213</td>
+      <td>26258810</td>
+      <td>2016-08-03 10:50:17.0</td>
+      <td>2016-08-03 16:45:27.0</td>
+    </tr>
+    <tr>
+      <td>011432</td>
+      <td>044</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2394224</td>
+      <td>26129027</td>
+      <td>2016-07-28 13:19:28.0</td>
+      <td>2016-07-28 16:30:21.0</td>
+    </tr>
+    <tr>
+      <td>011432</td>
+      <td>045</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2394231</td>
+      <td>26129032</td>
+      <td>2016-07-28 13:19:29.0</td>
+      <td>2016-07-28 16:32:02.0</td>
+    </tr>
+    <tr>
+      <td>011432</td>
+      <td>051</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2394233</td>
+      <td>26129033</td>
+      <td>2016-07-28 13:19:29.0</td>
+      <td>2016-07-28 16:34:18.0</td>
+    </tr>
+    <tr>
+      <td>011432</td>
+      <td>063</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394303</td>
+      <td>26129071</td>
+      <td>2016-07-28 13:19:36.0</td>
+      <td>2016-08-02 03:13:12.0</td>
+    </tr>
+    <tr>
+      <td>011432</td>
+      <td>071</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394305</td>
+      <td>26129072</td>
+      <td>2016-07-28 13:19:36.0</td>
+      <td>2016-08-02 03:14:48.0</td>
+    </tr>
+    <tr>
+      <td>011434</td>
+      <td>046</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394374</td>
+      <td>26129110</td>
+      <td>2016-07-28 13:19:42.0</td>
+      <td>2016-07-31 21:02:34.0</td>
+    </tr>
+    <tr>
+      <td>011434</td>
+      <td>099</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2394448</td>
+      <td>26129150</td>
+      <td>2016-07-28 13:19:47.0</td>
+      <td>2016-07-30 09:44:17.0</td>
+    </tr>
+    <tr>
+      <td>011434</td>
+      <td>012</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2394461</td>
+      <td>26129157</td>
+      <td>2016-07-28 13:19:48.0</td>
+      <td>2016-08-02 12:07:55.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>195</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394818</td>
+      <td>26129363</td>
+      <td>2016-07-28 13:20:48.0</td>
+      <td>2016-07-31 18:54:03.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>210</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394823</td>
+      <td>26129366</td>
+      <td>2016-07-28 13:20:48.0</td>
+      <td>2016-07-31 18:55:35.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>062</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394833</td>
+      <td>26129371</td>
+      <td>2016-07-28 13:20:49.0</td>
+      <td>2016-07-30 18:15:23.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>099</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394855</td>
+      <td>26129384</td>
+      <td>2016-07-28 13:20:51.0</td>
+      <td>2016-07-31 18:55:35.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>077</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394865</td>
+      <td>26129389</td>
+      <td>2016-07-28 13:20:52.0</td>
+      <td>2016-07-31 18:56:19.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>109</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394872</td>
+      <td>26129393</td>
+      <td>2016-07-28 13:20:52.0</td>
+      <td>2016-07-31 18:57:07.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>147</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394874</td>
+      <td>26129394</td>
+      <td>2016-07-28 13:20:53.0</td>
+      <td>2016-07-31 18:57:07.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>160</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394893</td>
+      <td>26129405</td>
+      <td>2016-07-28 13:20:54.0</td>
+      <td>2016-07-31 19:01:57.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>139</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394904</td>
+      <td>26129411</td>
+      <td>2016-07-28 13:20:55.0</td>
+      <td>2016-07-31 20:12:09.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>170</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394953</td>
+      <td>26129437</td>
+      <td>2016-07-28 13:20:59.0</td>
+      <td>2016-08-02 01:07:19.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>153</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394967</td>
+      <td>26129445</td>
+      <td>2016-07-28 13:21:00.0</td>
+      <td>2016-08-02 03:54:54.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>133</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2394969</td>
+      <td>26129446</td>
+      <td>2016-07-28 13:21:00.0</td>
+      <td>2016-08-02 04:06:27.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>095</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395030</td>
+      <td>26129479</td>
+      <td>2016-07-28 13:21:05.0</td>
+      <td>2016-07-31 18:58:52.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>035</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395060</td>
+      <td>26129496</td>
+      <td>2016-07-28 13:21:07.0</td>
+      <td>2016-07-31 19:03:26.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>142</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2395075</td>
+      <td>26129504</td>
+      <td>2016-07-28 13:21:09.0</td>
+      <td>2016-07-31 18:06:56.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>142</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2395075</td>
+      <td>26233049</td>
+      <td>2016-08-02 10:01:06.0</td>
+      <td>2016-08-03 12:14:55.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>180</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395103</td>
+      <td>26129520</td>
+      <td>2016-07-28 13:21:11.0</td>
+      <td>2016-07-31 20:19:29.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>126</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2395157</td>
+      <td>26129551</td>
+      <td>2016-07-28 13:21:15.0</td>
+      <td>2016-07-28 15:51:03.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>169</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2395159</td>
+      <td>26129552</td>
+      <td>2016-07-28 13:21:15.0</td>
+      <td>2016-07-28 15:51:01.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>086</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395180</td>
+      <td>26129563</td>
+      <td>2016-07-28 13:21:17.0</td>
+      <td>2016-08-02 01:03:17.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>023</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395182</td>
+      <td>26129564</td>
+      <td>2016-07-28 13:21:17.0</td>
+      <td>2016-08-02 01:05:41.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>043</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395195</td>
+      <td>26129571</td>
+      <td>2016-07-28 13:21:19.0</td>
+      <td>2016-08-02 03:17:13.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>084</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395204</td>
+      <td>26129576</td>
+      <td>2016-07-28 13:21:19.0</td>
+      <td>2016-08-02 03:58:08.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>207</td>
+      <td>20</td>
+      <td>1 / 4</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395223</td>
+      <td>26129586</td>
+      <td>2016-07-28 13:21:21.0</td>
+      <td>2016-08-02 02:08:52.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>207</td>
+      <td>20</td>
+      <td>2 / 4</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2395223</td>
+      <td>26232796</td>
+      <td>2016-08-02 09:51:30.0</td>
+      <td>2016-08-03 10:17:29.0</td>
+    </tr>
+    <tr>
+      <td>011436</td>
+      <td>207</td>
+      <td>20</td>
+      <td>3 / 4</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2395223</td>
+      <td>26258829</td>
+      <td>2016-08-03 10:51:18.0</td>
+      <td>2016-08-03 16:52:55.0</td>
+    </tr>
+    <tr>
+      <td>011437</td>
+      <td>056</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395259</td>
+      <td>26129605</td>
+      <td>2016-07-28 13:21:24.0</td>
+      <td>2016-08-02 02:09:40.0</td>
+    </tr>
+    <tr>
+      <td>011437</td>
+      <td>024</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395330</td>
+      <td>26129648</td>
+      <td>2016-07-28 13:21:30.0</td>
+      <td>2016-08-02 01:04:54.0</td>
+    </tr>
+    <tr>
+      <td>011445</td>
+      <td>035</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2395390</td>
+      <td>26129708</td>
+      <td>2016-07-28 13:21:39.0</td>
+      <td>2016-07-28 17:03:19.0</td>
+    </tr>
+    <tr>
+      <td>011445</td>
+      <td>008</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2395422</td>
+      <td>26129740</td>
+      <td>2016-07-28 13:21:45.0</td>
+      <td>2016-07-30 14:26:00.0</td>
+    </tr>
+    <tr>
+      <td>011445</td>
+      <td>005</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2395425</td>
+      <td>26129743</td>
+      <td>2016-07-28 13:21:45.0</td>
+      <td>2016-07-30 16:37:48.0</td>
+    </tr>
+    <tr>
+      <td>011445</td>
+      <td>002</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395427</td>
+      <td>26129745</td>
+      <td>2016-07-28 13:21:45.0</td>
+      <td>2016-07-30 18:09:58.0</td>
+    </tr>
+    <tr>
+      <td>011446</td>
+      <td>068</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2395470</td>
+      <td>26129788</td>
+      <td>2016-07-28 13:21:53.0</td>
+      <td>2016-07-28 17:05:05.0</td>
+    </tr>
+    <tr>
+      <td>011446</td>
+      <td>136</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2395614</td>
+      <td>26129932</td>
+      <td>2016-07-28 13:22:35.0</td>
+      <td>2016-08-01 21:54:04.0</td>
+    </tr>
+    <tr>
+      <td>011446</td>
+      <td>088</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395652</td>
+      <td>26129970</td>
+      <td>2016-07-28 13:22:41.0</td>
+      <td>2016-07-31 21:13:17.0</td>
+    </tr>
+    <tr>
+      <td>011447</td>
+      <td>115</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2395694</td>
+      <td>26130012</td>
+      <td>2016-07-28 13:22:47.0</td>
+      <td>2016-07-30 04:37:55.0</td>
+    </tr>
+    <tr>
+      <td>011447</td>
+      <td>113</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2395695</td>
+      <td>26130013</td>
+      <td>2016-07-28 13:22:47.0</td>
+      <td>2016-07-30 10:23:12.0</td>
+    </tr>
+    <tr>
+      <td>011447</td>
+      <td>023</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2395722</td>
+      <td>26130040</td>
+      <td>2016-07-28 13:22:51.0</td>
+      <td>2016-08-01 21:25:00.0</td>
+    </tr>
+    <tr>
+      <td>011447</td>
+      <td>056</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395728</td>
+      <td>26130046</td>
+      <td>2016-07-28 13:22:52.0</td>
+      <td>2016-08-02 03:58:08.0</td>
+    </tr>
+    <tr>
+      <td>011447</td>
+      <td>095</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2395742</td>
+      <td>26130060</td>
+      <td>2016-07-28 13:22:54.0</td>
+      <td>2016-07-29 18:09:26.0</td>
+    </tr>
+    <tr>
+      <td>011448</td>
+      <td>098</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2395797</td>
+      <td>26130115</td>
+      <td>2016-07-28 13:23:04.0</td>
+      <td>2016-07-30 15:19:41.0</td>
+    </tr>
+    <tr>
+      <td>011448</td>
+      <td>009</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395805</td>
+      <td>26130123</td>
+      <td>2016-07-28 13:23:06.0</td>
+      <td>2016-07-30 18:02:36.0</td>
+    </tr>
+    <tr>
+      <td>011448</td>
+      <td>031</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2395808</td>
+      <td>26130126</td>
+      <td>2016-07-28 13:23:06.0</td>
+      <td>2016-07-30 17:30:30.0</td>
+    </tr>
+    <tr>
+      <td>011448</td>
+      <td>112</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395823</td>
+      <td>26130141</td>
+      <td>2016-07-28 13:23:09.0</td>
+      <td>2016-07-31 07:20:05.0</td>
+    </tr>
+    <tr>
+      <td>011448</td>
+      <td>146</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395872</td>
+      <td>26130190</td>
+      <td>2016-07-28 13:23:16.0</td>
+      <td>2016-08-02 02:10:29.0</td>
+    </tr>
+    <tr>
+      <td>011448</td>
+      <td>138</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395873</td>
+      <td>26130191</td>
+      <td>2016-07-28 13:23:16.0</td>
+      <td>2016-08-02 02:10:29.0</td>
+    </tr>
+    <tr>
+      <td>011448</td>
+      <td>064</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395876</td>
+      <td>26130194</td>
+      <td>2016-07-28 13:23:17.0</td>
+      <td>2016-08-02 03:19:33.0</td>
+    </tr>
+    <tr>
+      <td>011448</td>
+      <td>131</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395877</td>
+      <td>26130195</td>
+      <td>2016-07-28 13:23:17.0</td>
+      <td>2016-08-02 03:19:33.0</td>
+    </tr>
+    <tr>
+      <td>011448</td>
+      <td>155</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2395878</td>
+      <td>26130196</td>
+      <td>2016-07-28 13:23:17.0</td>
+      <td>2016-08-02 02:12:54.0</td>
+    </tr>
+    <tr>
+      <td>011448</td>
+      <td>190</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395879</td>
+      <td>26130197</td>
+      <td>2016-07-28 13:23:17.0</td>
+      <td>2016-08-02 03:20:23.0</td>
+    </tr>
+    <tr>
+      <td>011448</td>
+      <td>154</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395881</td>
+      <td>26130199</td>
+      <td>2016-07-28 13:23:18.0</td>
+      <td>2016-08-02 03:20:24.0</td>
+    </tr>
+    <tr>
+      <td>011448</td>
+      <td>154</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2395881</td>
+      <td>26232805</td>
+      <td>2016-08-02 09:51:31.0</td>
+      <td>2016-08-03 09:49:58.0</td>
+    </tr>
+    <tr>
+      <td>011448</td>
+      <td>136</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395882</td>
+      <td>26130200</td>
+      <td>2016-07-28 13:23:18.0</td>
+      <td>2016-08-02 03:21:58.0</td>
+    </tr>
+    <tr>
+      <td>011448</td>
+      <td>181</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395883</td>
+      <td>26130201</td>
+      <td>2016-07-28 13:23:18.0</td>
+      <td>2016-08-02 03:58:08.0</td>
+    </tr>
+    <tr>
+      <td>011448</td>
+      <td>172</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395884</td>
+      <td>26130202</td>
+      <td>2016-07-28 13:23:18.0</td>
+      <td>2016-08-02 04:03:59.0</td>
+    </tr>
+    <tr>
+      <td>011448</td>
+      <td>182</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395902</td>
+      <td>26130220</td>
+      <td>2016-07-28 13:23:20.0</td>
+      <td>2016-08-02 14:10:30.0</td>
+    </tr>
+    <tr>
+      <td>011448</td>
+      <td>025</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2395930</td>
+      <td>26130248</td>
+      <td>2016-07-28 13:23:25.0</td>
+      <td>2016-07-29 19:44:22.0</td>
+    </tr>
+    <tr>
+      <td>011448</td>
+      <td>015</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395938</td>
+      <td>26130256</td>
+      <td>2016-07-28 13:23:26.0</td>
+      <td>2016-07-30 11:34:38.0</td>
+    </tr>
+    <tr>
+      <td>011448</td>
+      <td>022</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395945</td>
+      <td>26130263</td>
+      <td>2016-07-28 13:23:27.0</td>
+      <td>2016-07-30 16:47:59.0</td>
+    </tr>
+    <tr>
+      <td>011448</td>
+      <td>110</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2395972</td>
+      <td>26130290</td>
+      <td>2016-07-28 13:23:32.0</td>
+      <td>2016-07-30 18:28:14.0</td>
+    </tr>
+    <tr>
+      <td>011449</td>
+      <td>013</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396013</td>
+      <td>26130331</td>
+      <td>2016-07-28 13:23:38.0</td>
+      <td>2016-07-31 19:24:19.0</td>
+    </tr>
+    <tr>
+      <td>011449</td>
+      <td>039</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396027</td>
+      <td>26130345</td>
+      <td>2016-07-28 13:23:40.0</td>
+      <td>2016-08-02 01:04:54.0</td>
+    </tr>
+    <tr>
+      <td>011450</td>
+      <td>106</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396133</td>
+      <td>26130451</td>
+      <td>2016-07-28 13:24:15.0</td>
+      <td>2016-07-28 20:38:51.0</td>
+    </tr>
+    <tr>
+      <td>011450</td>
+      <td>066</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396142</td>
+      <td>26130460</td>
+      <td>2016-07-28 13:24:17.0</td>
+      <td>2016-08-02 03:20:23.0</td>
+    </tr>
+    <tr>
+      <td>011450</td>
+      <td>046</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396156</td>
+      <td>26130474</td>
+      <td>2016-07-28 13:24:19.0</td>
+      <td>2016-08-02 14:18:35.0</td>
+    </tr>
+    <tr>
+      <td>011450</td>
+      <td>083</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396192</td>
+      <td>26130510</td>
+      <td>2016-07-28 13:24:24.0</td>
+      <td>2016-07-31 04:57:04.0</td>
+    </tr>
+    <tr>
+      <td>011450</td>
+      <td>182</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396203</td>
+      <td>26130521</td>
+      <td>2016-07-28 13:24:25.0</td>
+      <td>2016-08-02 03:21:59.0</td>
+    </tr>
+    <tr>
+      <td>011450</td>
+      <td>193</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396209</td>
+      <td>26130527</td>
+      <td>2016-07-28 13:24:26.0</td>
+      <td>2016-08-02 04:05:44.0</td>
+    </tr>
+    <tr>
+      <td>011450</td>
+      <td>192</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396227</td>
+      <td>26130545</td>
+      <td>2016-07-28 13:24:29.0</td>
+      <td>2016-08-02 14:20:00.0</td>
+    </tr>
+    <tr>
+      <td>011450</td>
+      <td>205</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396229</td>
+      <td>26130547</td>
+      <td>2016-07-28 13:24:29.0</td>
+      <td>2016-08-02 14:21:04.0</td>
+    </tr>
+    <tr>
+      <td>011450</td>
+      <td>205</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2396229</td>
+      <td>26249978</td>
+      <td>2016-08-02 17:47:12.0</td>
+      <td>2016-08-03 14:44:34.0</td>
+    </tr>
+    <tr>
+      <td>011450</td>
+      <td>168</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396230</td>
+      <td>26130548</td>
+      <td>2016-07-28 13:24:29.0</td>
+      <td>2016-08-02 14:22:40.0</td>
+    </tr>
+    <tr>
+      <td>011450</td>
+      <td>061</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2396265</td>
+      <td>26130583</td>
+      <td>2016-07-28 13:24:34.0</td>
+      <td>2016-08-01 23:06:14.0</td>
+    </tr>
+    <tr>
+      <td>011450</td>
+      <td>061</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396265</td>
+      <td>26233061</td>
+      <td>2016-08-02 10:01:08.0</td>
+      <td>2016-08-03 13:11:01.0</td>
+    </tr>
+    <tr>
+      <td>011450</td>
+      <td>214</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2396266</td>
+      <td>26130584</td>
+      <td>2016-07-28 13:24:35.0</td>
+      <td>2016-08-01 22:44:56.0</td>
+    </tr>
+    <tr>
+      <td>011450</td>
+      <td>004</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396286</td>
+      <td>26130604</td>
+      <td>2016-07-28 13:24:38.0</td>
+      <td>2016-08-03 03:17:21.0</td>
+    </tr>
+    <tr>
+      <td>011450</td>
+      <td>038</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396288</td>
+      <td>26130606</td>
+      <td>2016-07-28 13:24:38.0</td>
+      <td>2016-07-28 18:47:37.0</td>
+    </tr>
+    <tr>
+      <td>011450</td>
+      <td>149</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396299</td>
+      <td>26130617</td>
+      <td>2016-07-28 13:24:40.0</td>
+      <td>2016-07-30 16:56:57.0</td>
+    </tr>
+    <tr>
+      <td>011450</td>
+      <td>174</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396306</td>
+      <td>26130624</td>
+      <td>2016-07-28 13:24:41.0</td>
+      <td>2016-07-30 17:08:52.0</td>
+    </tr>
+    <tr>
+      <td>011452</td>
+      <td>083</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2396367</td>
+      <td>26130685</td>
+      <td>2016-07-28 13:24:49.0</td>
+      <td>2016-08-01 23:00:04.0</td>
+    </tr>
+    <tr>
+      <td>011452</td>
+      <td>040</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2396426</td>
+      <td>26130744</td>
+      <td>2016-07-28 13:24:58.0</td>
+      <td>2016-07-30 16:39:06.0</td>
+    </tr>
+    <tr>
+      <td>011453</td>
+      <td>051</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2396492</td>
+      <td>26130810</td>
+      <td>2016-07-28 13:25:07.0</td>
+      <td>2016-07-30 15:53:20.0</td>
+    </tr>
+    <tr>
+      <td>011453</td>
+      <td>084</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396514</td>
+      <td>26130832</td>
+      <td>2016-07-28 13:25:09.0</td>
+      <td>2016-08-02 14:29:25.0</td>
+    </tr>
+    <tr>
+      <td>011453</td>
+      <td>053</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2396528</td>
+      <td>26130846</td>
+      <td>2016-07-28 13:25:11.0</td>
+      <td>2016-07-30 15:47:56.0</td>
+    </tr>
+    <tr>
+      <td>011453</td>
+      <td>055</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396591</td>
+      <td>26130909</td>
+      <td>2016-07-28 13:25:57.0</td>
+      <td>2016-08-02 02:21:48.0</td>
+    </tr>
+    <tr>
+      <td>011454</td>
+      <td>093</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396631</td>
+      <td>26130950</td>
+      <td>2016-07-28 13:26:02.0</td>
+      <td>2016-08-02 15:16:18.0</td>
+    </tr>
+    <tr>
+      <td>011454</td>
+      <td>029</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2396646</td>
+      <td>26130965</td>
+      <td>2016-07-28 13:26:04.0</td>
+      <td>2016-08-02 17:51:03.0</td>
+    </tr>
+    <tr>
+      <td>011454</td>
+      <td>102</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396703</td>
+      <td>26131022</td>
+      <td>2016-07-28 13:26:12.0</td>
+      <td>2016-08-02 04:06:27.0</td>
+    </tr>
+    <tr>
+      <td>011455</td>
+      <td>150</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2396708</td>
+      <td>26131027</td>
+      <td>2016-07-28 13:26:13.0</td>
+      <td>2016-08-02 07:17:04.0</td>
+    </tr>
+    <tr>
+      <td>011455</td>
+      <td>009</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396713</td>
+      <td>26131032</td>
+      <td>2016-07-28 13:26:13.0</td>
+      <td>2016-08-02 15:20:24.0</td>
+    </tr>
+    <tr>
+      <td>011455</td>
+      <td>149</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2396764</td>
+      <td>26131083</td>
+      <td>2016-07-28 13:26:21.0</td>
+      <td>2016-07-28 19:35:08.0</td>
+    </tr>
+    <tr>
+      <td>011455</td>
+      <td>098</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396771</td>
+      <td>26131090</td>
+      <td>2016-07-28 13:26:22.0</td>
+      <td>2016-07-28 22:44:06.0</td>
+    </tr>
+    <tr>
+      <td>011455</td>
+      <td>183</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2396793</td>
+      <td>26131112</td>
+      <td>2016-07-28 13:26:26.0</td>
+      <td>2016-08-02 13:32:51.0</td>
+    </tr>
+    <tr>
+      <td>011455</td>
+      <td>018</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2396817</td>
+      <td>26131136</td>
+      <td>2016-07-28 13:26:29.0</td>
+      <td>2016-08-02 18:53:33.0</td>
+    </tr>
+    <tr>
+      <td>011455</td>
+      <td>087</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2396821</td>
+      <td>26131140</td>
+      <td>2016-07-28 13:26:30.0</td>
+      <td>2016-08-03 02:29:48.0</td>
+    </tr>
+    <tr>
+      <td>011455</td>
+      <td>037</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2396833</td>
+      <td>26131152</td>
+      <td>2016-07-28 13:26:32.0</td>
+      <td>2016-07-29 18:19:21.0</td>
+    </tr>
+    <tr>
+      <td>011455</td>
+      <td>095</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2396858</td>
+      <td>26131177</td>
+      <td>2016-07-28 13:26:36.0</td>
+      <td>2016-07-28 19:16:40.0</td>
+    </tr>
+    <tr>
+      <td>011457</td>
+      <td>072</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396912</td>
+      <td>26131231</td>
+      <td>2016-07-28 13:26:44.0</td>
+      <td>2016-07-28 20:34:00.0</td>
+    </tr>
+    <tr>
+      <td>011457</td>
+      <td>004</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396934</td>
+      <td>26131253</td>
+      <td>2016-07-28 13:26:48.0</td>
+      <td>2016-08-02 23:25:20.0</td>
+    </tr>
+    <tr>
+      <td>011457</td>
+      <td>004</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2396934</td>
+      <td>26258769</td>
+      <td>2016-08-03 10:47:41.0</td>
+      <td>2016-08-03 15:33:11.0</td>
+    </tr>
+    <tr>
+      <td>011457</td>
+      <td>151</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396935</td>
+      <td>26131254</td>
+      <td>2016-07-28 13:26:48.0</td>
+      <td>2016-08-03 03:35:05.0</td>
+    </tr>
+    <tr>
+      <td>011457</td>
+      <td>151</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2396935</td>
+      <td>26258770</td>
+      <td>2016-08-03 10:47:41.0</td>
+      <td>2016-08-03 15:33:11.0</td>
+    </tr>
+    <tr>
+      <td>011457</td>
+      <td>059</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2396967</td>
+      <td>26131286</td>
+      <td>2016-07-28 13:26:53.0</td>
+      <td>2016-07-28 18:32:15.0</td>
+    </tr>
+    <tr>
+      <td>011457</td>
+      <td>045</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2396970</td>
+      <td>26131289</td>
+      <td>2016-07-28 13:26:53.0</td>
+      <td>2016-07-28 18:14:02.0</td>
+    </tr>
+    <tr>
+      <td>011457</td>
+      <td>166</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2396976</td>
+      <td>26131295</td>
+      <td>2016-07-28 13:26:55.0</td>
+      <td>2016-07-28 18:52:03.0</td>
+    </tr>
+    <tr>
+      <td>011457</td>
+      <td>085</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396978</td>
+      <td>26131297</td>
+      <td>2016-07-28 13:26:55.0</td>
+      <td>2016-07-28 19:56:24.0</td>
+    </tr>
+    <tr>
+      <td>011457</td>
+      <td>061</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396988</td>
+      <td>26131307</td>
+      <td>2016-07-28 13:26:57.0</td>
+      <td>2016-07-30 17:31:42.0</td>
+    </tr>
+    <tr>
+      <td>011457</td>
+      <td>040</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2396998</td>
+      <td>26131317</td>
+      <td>2016-07-28 13:26:58.0</td>
+      <td>2016-07-31 05:18:56.0</td>
+    </tr>
+    <tr>
+      <td>011457</td>
+      <td>074</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397006</td>
+      <td>26131325</td>
+      <td>2016-07-28 13:26:59.0</td>
+      <td>2016-08-02 01:08:56.0</td>
+    </tr>
+    <tr>
+      <td>011457</td>
+      <td>027</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397011</td>
+      <td>26131330</td>
+      <td>2016-07-28 13:27:00.0</td>
+      <td>2016-08-02 05:02:05.0</td>
+    </tr>
+    <tr>
+      <td>011457</td>
+      <td>012</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397017</td>
+      <td>26131336</td>
+      <td>2016-07-28 13:27:01.0</td>
+      <td>2016-08-02 23:54:21.0</td>
+    </tr>
+    <tr>
+      <td>011457</td>
+      <td>012</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2397017</td>
+      <td>26258771</td>
+      <td>2016-08-03 10:47:41.0</td>
+      <td>2016-08-03 15:33:11.0</td>
+    </tr>
+    <tr>
+      <td>011457</td>
+      <td>133</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397044</td>
+      <td>26131363</td>
+      <td>2016-07-28 13:27:05.0</td>
+      <td>2016-07-30 12:12:28.0</td>
+    </tr>
+    <tr>
+      <td>011457</td>
+      <td>046</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397047</td>
+      <td>26131366</td>
+      <td>2016-07-28 13:27:29.0</td>
+      <td>2016-07-30 12:16:08.0</td>
+    </tr>
+    <tr>
+      <td>011457</td>
+      <td>116</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397048</td>
+      <td>26131367</td>
+      <td>2016-07-28 13:27:29.0</td>
+      <td>2016-07-30 12:17:38.0</td>
+    </tr>
+    <tr>
+      <td>011457</td>
+      <td>189</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397049</td>
+      <td>26131368</td>
+      <td>2016-07-28 13:27:29.0</td>
+      <td>2016-07-30 12:18:03.0</td>
+    </tr>
+    <tr>
+      <td>011457</td>
+      <td>049</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2397054</td>
+      <td>26131373</td>
+      <td>2016-07-28 13:27:30.0</td>
+      <td>2016-07-30 11:57:19.0</td>
+    </tr>
+    <tr>
+      <td>011457</td>
+      <td>181</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397057</td>
+      <td>26131376</td>
+      <td>2016-07-28 13:27:31.0</td>
+      <td>2016-07-30 17:03:21.0</td>
+    </tr>
+    <tr>
+      <td>011458</td>
+      <td>021</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2397093</td>
+      <td>26131412</td>
+      <td>2016-07-28 13:27:37.0</td>
+      <td>2016-07-28 18:21:36.0</td>
+    </tr>
+    <tr>
+      <td>011458</td>
+      <td>026</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397124</td>
+      <td>26131443</td>
+      <td>2016-07-28 13:27:42.0</td>
+      <td>2016-07-30 12:29:35.0</td>
+    </tr>
+    <tr>
+      <td>011458</td>
+      <td>043</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2397127</td>
+      <td>26131446</td>
+      <td>2016-07-28 13:27:43.0</td>
+      <td>2016-08-02 02:55:36.0</td>
+    </tr>
+    <tr>
+      <td>011473</td>
+      <td>062</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2397197</td>
+      <td>26131516</td>
+      <td>2016-07-28 13:27:55.0</td>
+      <td>2016-08-01 23:20:57.0</td>
+    </tr>
+    <tr>
+      <td>011473</td>
+      <td>026</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397199</td>
+      <td>26131518</td>
+      <td>2016-07-28 13:27:56.0</td>
+      <td>2016-08-02 15:57:57.0</td>
+    </tr>
+    <tr>
+      <td>011473</td>
+      <td>033</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2397242</td>
+      <td>26131561</td>
+      <td>2016-07-28 13:28:03.0</td>
+      <td>2016-08-02 14:59:42.0</td>
+    </tr>
+    <tr>
+      <td>011474</td>
+      <td>011</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397285</td>
+      <td>26131604</td>
+      <td>2016-07-28 13:28:11.0</td>
+      <td>2016-08-02 19:38:52.0</td>
+    </tr>
+    <tr>
+      <td>011474</td>
+      <td>011</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2397285</td>
+      <td>26258772</td>
+      <td>2016-08-03 10:47:41.0</td>
+      <td>2016-08-03 15:33:11.0</td>
+    </tr>
+    <tr>
+      <td>011474</td>
+      <td>035</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397295</td>
+      <td>26131614</td>
+      <td>2016-07-28 13:28:13.0</td>
+      <td>2016-08-02 01:04:54.0</td>
+    </tr>
+    <tr>
+      <td>011474</td>
+      <td>085</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397297</td>
+      <td>26131616</td>
+      <td>2016-07-28 13:28:13.0</td>
+      <td>2016-08-02 03:25:56.0</td>
+    </tr>
+    <tr>
+      <td>011474</td>
+      <td>098</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397312</td>
+      <td>26131631</td>
+      <td>2016-07-28 13:28:15.0</td>
+      <td>2016-07-29 20:28:56.0</td>
+    </tr>
+    <tr>
+      <td>011474</td>
+      <td>097</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397314</td>
+      <td>26131633</td>
+      <td>2016-07-28 13:28:16.0</td>
+      <td>2016-07-29 20:30:09.0</td>
+    </tr>
+    <tr>
+      <td>011474</td>
+      <td>156</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2397433</td>
+      <td>26131752</td>
+      <td>2016-07-28 13:28:34.0</td>
+      <td>2016-08-02 01:05:44.0</td>
+    </tr>
+    <tr>
+      <td>011476</td>
+      <td>009</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2397480</td>
+      <td>26131799</td>
+      <td>2016-07-28 13:28:41.0</td>
+      <td>2016-08-02 17:42:19.0</td>
+    </tr>
+    <tr>
+      <td>011476</td>
+      <td>094</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397539</td>
+      <td>26131858</td>
+      <td>2016-07-28 13:28:50.0</td>
+      <td>2016-08-02 23:38:07.0</td>
+    </tr>
+    <tr>
+      <td>011476</td>
+      <td>094</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2397539</td>
+      <td>26258773</td>
+      <td>2016-08-03 10:47:42.0</td>
+      <td>2016-08-03 15:33:11.0</td>
+    </tr>
+    <tr>
+      <td>011476</td>
+      <td>160</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2397545</td>
+      <td>26131864</td>
+      <td>2016-07-28 13:28:51.0</td>
+      <td>2016-07-28 18:14:02.0</td>
+    </tr>
+    <tr>
+      <td>011476</td>
+      <td>090</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397598</td>
+      <td>26131917</td>
+      <td>2016-07-28 13:29:28.0</td>
+      <td>2016-08-02 00:49:40.0</td>
+    </tr>
+    <tr>
+      <td>011481</td>
+      <td>054</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2397765</td>
+      <td>26132084</td>
+      <td>2016-07-28 13:29:52.0</td>
+      <td>2016-07-29 17:07:06.0</td>
+    </tr>
+    <tr>
+      <td>011481</td>
+      <td>035</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397800</td>
+      <td>26132119</td>
+      <td>2016-07-28 13:29:58.0</td>
+      <td>2016-08-02 00:58:29.0</td>
+    </tr>
+    <tr>
+      <td>011481</td>
+      <td>129</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2397809</td>
+      <td>26132128</td>
+      <td>2016-07-28 13:30:00.0</td>
+      <td>2016-08-02 15:06:36.0</td>
+    </tr>
+    <tr>
+      <td>011481</td>
+      <td>089</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397838</td>
+      <td>26132157</td>
+      <td>2016-07-28 13:30:05.0</td>
+      <td>2016-07-29 20:39:31.0</td>
+    </tr>
+    <tr>
+      <td>011482</td>
+      <td>092</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397848</td>
+      <td>26132167</td>
+      <td>2016-07-28 13:30:06.0</td>
+      <td>2016-08-02 01:13:48.0</td>
+    </tr>
+    <tr>
+      <td>011482</td>
+      <td>133</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2397849</td>
+      <td>26132168</td>
+      <td>2016-07-28 13:30:07.0</td>
+      <td>2016-08-02 00:29:26.0</td>
+    </tr>
+    <tr>
+      <td>011482</td>
+      <td>093</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397850</td>
+      <td>26132169</td>
+      <td>2016-07-28 13:30:07.0</td>
+      <td>2016-08-02 03:28:19.0</td>
+    </tr>
+    <tr>
+      <td>011482</td>
+      <td>040</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397905</td>
+      <td>26132224</td>
+      <td>2016-07-28 13:30:16.0</td>
+      <td>2016-07-29 20:43:19.0</td>
+    </tr>
+    <tr>
+      <td>011482</td>
+      <td>095</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397940</td>
+      <td>26132259</td>
+      <td>2016-07-28 13:30:21.0</td>
+      <td>2016-08-02 01:13:48.0</td>
+    </tr>
+    <tr>
+      <td>011482</td>
+      <td>106</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2397941</td>
+      <td>26132260</td>
+      <td>2016-07-28 13:30:22.0</td>
+      <td>2016-08-02 00:07:37.0</td>
+    </tr>
+    <tr>
+      <td>011482</td>
+      <td>019</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397952</td>
+      <td>26132271</td>
+      <td>2016-07-28 13:30:23.0</td>
+      <td>2016-08-02 01:17:48.0</td>
+    </tr>
+    <tr>
+      <td>011482</td>
+      <td>075</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397953</td>
+      <td>26132272</td>
+      <td>2016-07-28 13:30:24.0</td>
+      <td>2016-08-02 01:17:48.0</td>
+    </tr>
+    <tr>
+      <td>011482</td>
+      <td>078</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2397970</td>
+      <td>26132289</td>
+      <td>2016-07-28 13:30:27.0</td>
+      <td>2016-08-03 03:52:49.0</td>
+    </tr>
+    <tr>
+      <td>011482</td>
+      <td>078</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2397970</td>
+      <td>26258774</td>
+      <td>2016-08-03 10:47:42.0</td>
+      <td>2016-08-03 15:33:11.0</td>
+    </tr>
+    <tr>
+      <td>011482</td>
+      <td>061</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398003</td>
+      <td>26132322</td>
+      <td>2016-07-28 13:30:33.0</td>
+      <td>2016-07-29 20:43:56.0</td>
+    </tr>
+    <tr>
+      <td>011483</td>
+      <td>107</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398064</td>
+      <td>26132383</td>
+      <td>2016-07-28 13:31:09.0</td>
+      <td>2016-07-30 14:13:14.0</td>
+    </tr>
+    <tr>
+      <td>011483</td>
+      <td>082</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398067</td>
+      <td>26132386</td>
+      <td>2016-07-28 13:31:10.0</td>
+      <td>2016-07-30 14:18:28.0</td>
+    </tr>
+    <tr>
+      <td>011483</td>
+      <td>003</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398078</td>
+      <td>26132397</td>
+      <td>2016-07-28 13:31:12.0</td>
+      <td>2016-07-28 19:53:01.0</td>
+    </tr>
+    <tr>
+      <td>011483</td>
+      <td>015</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398125</td>
+      <td>26132444</td>
+      <td>2016-07-28 13:31:19.0</td>
+      <td>2016-08-02 01:18:37.0</td>
+    </tr>
+    <tr>
+      <td>011483</td>
+      <td>097</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398130</td>
+      <td>26132449</td>
+      <td>2016-07-28 13:31:20.0</td>
+      <td>2016-08-02 01:20:13.0</td>
+    </tr>
+    <tr>
+      <td>011483</td>
+      <td>100</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398136</td>
+      <td>26132455</td>
+      <td>2016-07-28 13:31:21.0</td>
+      <td>2016-08-02 01:21:54.0</td>
+    </tr>
+    <tr>
+      <td>011483</td>
+      <td>019</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2398143</td>
+      <td>26132462</td>
+      <td>2016-07-28 13:31:22.0</td>
+      <td>2016-08-03 03:06:02.0</td>
+    </tr>
+    <tr>
+      <td>011483</td>
+      <td>144</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398146</td>
+      <td>26132465</td>
+      <td>2016-07-28 13:31:23.0</td>
+      <td>2016-07-30 14:19:30.0</td>
+    </tr>
+    <tr>
+      <td>011484</td>
+      <td>075</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398193</td>
+      <td>26132512</td>
+      <td>2016-07-28 13:31:30.0</td>
+      <td>2016-07-31 20:32:41.0</td>
+    </tr>
+    <tr>
+      <td>011484</td>
+      <td>054</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398203</td>
+      <td>26132522</td>
+      <td>2016-07-28 13:31:32.0</td>
+      <td>2016-07-31 21:18:39.0</td>
+    </tr>
+    <tr>
+      <td>011484</td>
+      <td>007</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398223</td>
+      <td>26132542</td>
+      <td>2016-07-28 13:31:35.0</td>
+      <td>2016-08-02 03:27:31.0</td>
+    </tr>
+    <tr>
+      <td>011497</td>
+      <td>021</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398242</td>
+      <td>26132561</td>
+      <td>2016-07-28 13:31:38.0</td>
+      <td>2016-08-02 01:25:56.0</td>
+    </tr>
+    <tr>
+      <td>011497</td>
+      <td>005</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398246</td>
+      <td>26132565</td>
+      <td>2016-07-28 13:31:38.0</td>
+      <td>2016-08-02 01:29:08.0</td>
+    </tr>
+    <tr>
+      <td>011497</td>
+      <td>036</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2398247</td>
+      <td>26132566</td>
+      <td>2016-07-28 13:31:38.0</td>
+      <td>2016-08-01 23:30:13.0</td>
+    </tr>
+    <tr>
+      <td>011497</td>
+      <td>038</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398251</td>
+      <td>26132570</td>
+      <td>2016-07-28 13:31:39.0</td>
+      <td>2016-08-02 01:31:41.0</td>
+    </tr>
+    <tr>
+      <td>011497</td>
+      <td>006</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398255</td>
+      <td>26132574</td>
+      <td>2016-07-28 13:31:39.0</td>
+      <td>2016-08-02 01:32:30.0</td>
+    </tr>
+    <tr>
+      <td>011497</td>
+      <td>008</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2398259</td>
+      <td>26132578</td>
+      <td>2016-07-28 13:31:40.0</td>
+      <td>2016-08-02 00:35:06.0</td>
+    </tr>
+    <tr>
+      <td>011497</td>
+      <td>046</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398263</td>
+      <td>26132582</td>
+      <td>2016-07-28 13:31:41.0</td>
+      <td>2016-08-02 04:11:17.0</td>
+    </tr>
+    <tr>
+      <td>011508</td>
+      <td>034</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398305</td>
+      <td>26132624</td>
+      <td>2016-07-28 13:31:46.0</td>
+      <td>2016-08-02 01:34:56.0</td>
+    </tr>
+    <tr>
+      <td>011508</td>
+      <td>058</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398307</td>
+      <td>26132626</td>
+      <td>2016-07-28 13:31:46.0</td>
+      <td>2016-08-02 01:37:19.0</td>
+    </tr>
+    <tr>
+      <td>011508</td>
+      <td>033</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398315</td>
+      <td>26132634</td>
+      <td>2016-07-28 13:31:48.0</td>
+      <td>2016-08-02 01:38:56.0</td>
+    </tr>
+    <tr>
+      <td>011508</td>
+      <td>031</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398320</td>
+      <td>26132639</td>
+      <td>2016-07-28 13:31:49.0</td>
+      <td>2016-08-02 02:51:37.0</td>
+    </tr>
+    <tr>
+      <td>011508</td>
+      <td>003</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398326</td>
+      <td>26132645</td>
+      <td>2016-07-28 13:31:49.0</td>
+      <td>2016-08-02 04:17:50.0</td>
+    </tr>
+    <tr>
+      <td>011508</td>
+      <td>008</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398327</td>
+      <td>26132646</td>
+      <td>2016-07-28 13:31:50.0</td>
+      <td>2016-08-02 04:39:37.0</td>
+    </tr>
+    <tr>
+      <td>011508</td>
+      <td>032</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398343</td>
+      <td>26132662</td>
+      <td>2016-07-28 13:31:52.0</td>
+      <td>2016-08-02 16:37:18.0</td>
+    </tr>
+    <tr>
+      <td>011508</td>
+      <td>016</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2398380</td>
+      <td>26132699</td>
+      <td>2016-07-28 13:31:57.0</td>
+      <td>2016-08-03 03:02:19.0</td>
+    </tr>
+    <tr>
+      <td>011508</td>
+      <td>090</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398382</td>
+      <td>26132701</td>
+      <td>2016-07-28 13:31:57.0</td>
+      <td>2016-08-03 04:12:59.0</td>
+    </tr>
+    <tr>
+      <td>011508</td>
+      <td>064</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398383</td>
+      <td>26132702</td>
+      <td>2016-07-28 13:31:57.0</td>
+      <td>2016-08-03 04:14:54.0</td>
+    </tr>
+    <tr>
+      <td>011508</td>
+      <td>134</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398385</td>
+      <td>26132704</td>
+      <td>2016-07-28 13:31:58.0</td>
+      <td>2016-08-03 04:16:48.0</td>
+    </tr>
+    <tr>
+      <td>011508</td>
+      <td>050</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2398408</td>
+      <td>26132727</td>
+      <td>2016-07-28 13:32:01.0</td>
+      <td>2016-07-28 19:15:25.0</td>
+    </tr>
+    <tr>
+      <td>011508</td>
+      <td>072</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398422</td>
+      <td>26132741</td>
+      <td>2016-07-28 13:32:03.0</td>
+      <td>2016-07-30 14:30:44.0</td>
+    </tr>
+    <tr>
+      <td>011508</td>
+      <td>073</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2398429</td>
+      <td>26132748</td>
+      <td>2016-07-28 13:32:04.0</td>
+      <td>2016-07-30 18:08:29.0</td>
+    </tr>
+    <tr>
+      <td>011508</td>
+      <td>113</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398442</td>
+      <td>26132761</td>
+      <td>2016-07-28 13:32:06.0</td>
+      <td>2016-08-02 01:38:56.0</td>
+    </tr>
+    <tr>
+      <td>011508</td>
+      <td>098</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398443</td>
+      <td>26132762</td>
+      <td>2016-07-28 13:32:06.0</td>
+      <td>2016-08-02 01:39:45.0</td>
+    </tr>
+    <tr>
+      <td>011510</td>
+      <td>143</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2398455</td>
+      <td>26132774</td>
+      <td>2016-07-28 13:32:07.0</td>
+      <td>2016-07-30 17:06:59.0</td>
+    </tr>
+    <tr>
+      <td>011510</td>
+      <td>120</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398486</td>
+      <td>26132805</td>
+      <td>2016-07-28 13:32:12.0</td>
+      <td>2016-08-03 04:17:46.0</td>
+    </tr>
+    <tr>
+      <td>011510</td>
+      <td>119</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398487</td>
+      <td>26132806</td>
+      <td>2016-07-28 13:32:12.0</td>
+      <td>2016-08-03 04:18:38.0</td>
+    </tr>
+    <tr>
+      <td>011510</td>
+      <td>092</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2398516</td>
+      <td>26132835</td>
+      <td>2016-07-28 13:32:16.0</td>
+      <td>2016-07-28 19:27:49.0</td>
+    </tr>
+    <tr>
+      <td>011510</td>
+      <td>097</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398551</td>
+      <td>26132870</td>
+      <td>2016-07-28 13:32:27.0</td>
+      <td>2016-07-30 17:25:28.0</td>
+    </tr>
+    <tr>
+      <td>011510</td>
+      <td>025</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398572</td>
+      <td>26132891</td>
+      <td>2016-07-28 13:32:31.0</td>
+      <td>2016-07-31 20:40:06.0</td>
+    </tr>
+    <tr>
+      <td>011510</td>
+      <td>032</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2398589</td>
+      <td>26132908</td>
+      <td>2016-07-28 13:32:33.0</td>
+      <td>2016-08-02 01:07:21.0</td>
+    </tr>
+    <tr>
+      <td>011510</td>
+      <td>032</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398589</td>
+      <td>26233081</td>
+      <td>2016-08-02 10:01:10.0</td>
+      <td>2016-08-03 14:48:06.0</td>
+    </tr>
+    <tr>
+      <td>011510</td>
+      <td>045</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398590</td>
+      <td>26132909</td>
+      <td>2016-07-28 13:32:33.0</td>
+      <td>2016-08-02 01:41:22.0</td>
+    </tr>
+    <tr>
+      <td>011510</td>
+      <td>028</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398594</td>
+      <td>26132913</td>
+      <td>2016-07-28 13:32:34.0</td>
+      <td>2016-08-02 01:42:09.0</td>
+    </tr>
+    <tr>
+      <td>011510</td>
+      <td>060</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398596</td>
+      <td>26132915</td>
+      <td>2016-07-28 13:32:34.0</td>
+      <td>2016-08-02 01:42:09.0</td>
+    </tr>
+    <tr>
+      <td>011510</td>
+      <td>100</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398602</td>
+      <td>26132921</td>
+      <td>2016-07-28 13:32:35.0</td>
+      <td>2016-08-02 04:23:30.0</td>
+    </tr>
+    <tr>
+      <td>011510</td>
+      <td>016</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398603</td>
+      <td>26132922</td>
+      <td>2016-07-28 13:32:35.0</td>
+      <td>2016-08-02 04:41:59.0</td>
+    </tr>
+    <tr>
+      <td>011511</td>
+      <td>003</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398617</td>
+      <td>26132936</td>
+      <td>2016-07-28 13:32:37.0</td>
+      <td>2016-07-31 21:25:31.0</td>
+    </tr>
+    <tr>
+      <td>011512</td>
+      <td>028</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398636</td>
+      <td>26132955</td>
+      <td>2016-07-28 13:32:40.0</td>
+      <td>2016-08-03 04:18:38.0</td>
+    </tr>
+    <tr>
+      <td>011512</td>
+      <td>102</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398711</td>
+      <td>26133030</td>
+      <td>2016-07-28 13:32:50.0</td>
+      <td>2016-08-02 03:30:46.0</td>
+    </tr>
+    <tr>
+      <td>011512</td>
+      <td>118</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2398753</td>
+      <td>26133072</td>
+      <td>2016-07-28 13:32:56.0</td>
+      <td>2016-07-28 19:10:41.0</td>
+    </tr>
+    <tr>
+      <td>011512</td>
+      <td>038</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398771</td>
+      <td>26133090</td>
+      <td>2016-07-28 13:32:59.0</td>
+      <td>2016-08-02 03:04:23.0</td>
+    </tr>
+    <tr>
+      <td>011513</td>
+      <td>125</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398788</td>
+      <td>26133107</td>
+      <td>2016-07-28 13:33:01.0</td>
+      <td>2016-08-02 03:04:23.0</td>
+    </tr>
+    <tr>
+      <td>011513</td>
+      <td>121</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398792</td>
+      <td>26133111</td>
+      <td>2016-07-28 13:33:02.0</td>
+      <td>2016-08-02 03:06:48.0</td>
+    </tr>
+    <tr>
+      <td>011513</td>
+      <td>101</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398796</td>
+      <td>26133115</td>
+      <td>2016-07-28 13:33:02.0</td>
+      <td>2016-08-03 04:18:38.0</td>
+    </tr>
+    <tr>
+      <td>011513</td>
+      <td>148</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398797</td>
+      <td>26133116</td>
+      <td>2016-07-28 13:33:02.0</td>
+      <td>2016-08-03 04:19:35.0</td>
+    </tr>
+    <tr>
+      <td>011513</td>
+      <td>073</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2398799</td>
+      <td>26133118</td>
+      <td>2016-07-28 13:33:02.0</td>
+      <td>2016-07-28 19:43:09.0</td>
+    </tr>
+    <tr>
+      <td>011513</td>
+      <td>018</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398815</td>
+      <td>26133134</td>
+      <td>2016-07-28 13:33:05.0</td>
+      <td>2016-08-02 03:06:48.0</td>
+    </tr>
+    <tr>
+      <td>011513</td>
+      <td>035</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398923</td>
+      <td>26133242</td>
+      <td>2016-07-28 13:33:25.0</td>
+      <td>2016-08-02 03:06:48.0</td>
+    </tr>
+    <tr>
+      <td>011514</td>
+      <td>005</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398924</td>
+      <td>26133243</td>
+      <td>2016-07-28 13:33:25.0</td>
+      <td>2016-08-02 17:26:53.0</td>
+    </tr>
+    <tr>
+      <td>011514</td>
+      <td>014</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398925</td>
+      <td>26133244</td>
+      <td>2016-07-28 13:33:25.0</td>
+      <td>2016-08-02 17:26:54.0</td>
+    </tr>
+    <tr>
+      <td>011514</td>
+      <td>001</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398926</td>
+      <td>26133245</td>
+      <td>2016-07-28 13:33:25.0</td>
+      <td>2016-08-02 17:26:53.0</td>
+    </tr>
+    <tr>
+      <td>011514</td>
+      <td>006</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2398949</td>
+      <td>26133268</td>
+      <td>2016-07-28 13:33:29.0</td>
+      <td>2016-07-29 18:02:25.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>131</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398958</td>
+      <td>26133277</td>
+      <td>2016-07-28 13:33:31.0</td>
+      <td>2016-08-02 04:45:56.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>124</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398959</td>
+      <td>26133278</td>
+      <td>2016-07-28 13:33:31.0</td>
+      <td>2016-08-02 04:47:37.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>017</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398962</td>
+      <td>26133281</td>
+      <td>2016-07-28 13:33:31.0</td>
+      <td>2016-08-02 03:08:23.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>036</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398966</td>
+      <td>26133285</td>
+      <td>2016-07-28 13:33:32.0</td>
+      <td>2016-08-02 03:33:10.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>024</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2398979</td>
+      <td>26133298</td>
+      <td>2016-07-28 13:33:33.0</td>
+      <td>2016-08-02 17:27:43.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>024</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2398979</td>
+      <td>26249996</td>
+      <td>2016-08-02 17:47:14.0</td>
+      <td>2016-08-03 15:02:19.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>107</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399007</td>
+      <td>26133326</td>
+      <td>2016-07-28 13:33:38.0</td>
+      <td>2016-07-31 20:51:01.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>135</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399025</td>
+      <td>26133344</td>
+      <td>2016-07-28 13:33:40.0</td>
+      <td>2016-08-02 03:34:00.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>115</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399030</td>
+      <td>26133349</td>
+      <td>2016-07-28 13:33:41.0</td>
+      <td>2016-08-02 17:27:43.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>115</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2399030</td>
+      <td>26249997</td>
+      <td>2016-08-02 17:47:15.0</td>
+      <td>2016-08-03 15:02:19.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>113</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399031</td>
+      <td>26133350</td>
+      <td>2016-07-28 13:33:41.0</td>
+      <td>2016-08-02 17:30:10.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>000</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399032</td>
+      <td>26133351</td>
+      <td>2016-07-28 13:33:41.0</td>
+      <td>2016-08-02 17:30:10.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>142</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399034</td>
+      <td>26133353</td>
+      <td>2016-07-28 13:33:42.0</td>
+      <td>2016-08-02 17:31:45.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>138</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399040</td>
+      <td>26133359</td>
+      <td>2016-07-28 13:33:42.0</td>
+      <td>2016-08-02 17:34:55.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>045</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2399041</td>
+      <td>26133360</td>
+      <td>2016-07-28 13:33:43.0</td>
+      <td>2016-08-02 17:04:46.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>074</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399045</td>
+      <td>26133364</td>
+      <td>2016-07-28 13:33:43.0</td>
+      <td>2016-08-02 17:36:34.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>074</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2399045</td>
+      <td>26250006</td>
+      <td>2016-08-02 17:47:16.0</td>
+      <td>2016-08-03 15:30:37.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>125</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399055</td>
+      <td>26133374</td>
+      <td>2016-07-28 13:33:56.0</td>
+      <td>2016-08-02 19:59:52.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>137</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2399056</td>
+      <td>26133375</td>
+      <td>2016-07-28 13:33:57.0</td>
+      <td>2016-08-02 23:38:50.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>116</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399062</td>
+      <td>26133381</td>
+      <td>2016-07-28 13:33:58.0</td>
+      <td>2016-08-03 04:22:29.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>111</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399063</td>
+      <td>26133382</td>
+      <td>2016-07-28 13:33:58.0</td>
+      <td>2016-08-03 04:24:23.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>110</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399064</td>
+      <td>26133383</td>
+      <td>2016-07-28 13:33:58.0</td>
+      <td>2016-08-03 04:27:08.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>110</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2399064</td>
+      <td>26258786</td>
+      <td>2016-08-03 10:47:43.0</td>
+      <td>2016-08-03 15:35:54.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>112</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399065</td>
+      <td>26133384</td>
+      <td>2016-07-28 13:33:58.0</td>
+      <td>2016-08-03 04:27:08.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>112</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2399065</td>
+      <td>26258787</td>
+      <td>2016-08-03 10:47:43.0</td>
+      <td>2016-08-03 15:35:54.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>130</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399066</td>
+      <td>26133385</td>
+      <td>2016-07-28 13:33:59.0</td>
+      <td>2016-08-03 04:30:06.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>130</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2399066</td>
+      <td>26258788</td>
+      <td>2016-08-03 10:47:44.0</td>
+      <td>2016-08-03 15:35:54.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>143</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399067</td>
+      <td>26133386</td>
+      <td>2016-07-28 13:33:59.0</td>
+      <td>2016-08-03 04:32:08.0</td>
+    </tr>
+    <tr>
+      <td>011519</td>
+      <td>030</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399068</td>
+      <td>26133387</td>
+      <td>2016-07-28 13:33:59.0</td>
+      <td>2016-08-03 05:55:00.0</td>
+    </tr>
+    <tr>
+      <td>011520</td>
+      <td>073</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2399124</td>
+      <td>26133443</td>
+      <td>2016-07-28 13:34:07.0</td>
+      <td>2016-08-02 02:34:39.0</td>
+    </tr>
+    <tr>
+      <td>011520</td>
+      <td>123</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399126</td>
+      <td>26133445</td>
+      <td>2016-07-28 13:34:07.0</td>
+      <td>2016-08-02 03:36:25.0</td>
+    </tr>
+    <tr>
+      <td>011520</td>
+      <td>069</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399131</td>
+      <td>26133450</td>
+      <td>2016-07-28 13:34:08.0</td>
+      <td>2016-08-02 03:39:36.0</td>
+    </tr>
+    <tr>
+      <td>011520</td>
+      <td>068</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399132</td>
+      <td>26133451</td>
+      <td>2016-07-28 13:34:08.0</td>
+      <td>2016-08-02 03:40:27.0</td>
+    </tr>
+    <tr>
+      <td>011520</td>
+      <td>066</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399133</td>
+      <td>26133452</td>
+      <td>2016-07-28 13:34:08.0</td>
+      <td>2016-08-02 03:40:27.0</td>
+    </tr>
+    <tr>
+      <td>011520</td>
+      <td>162</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399137</td>
+      <td>26133456</td>
+      <td>2016-07-28 13:34:09.0</td>
+      <td>2016-08-02 03:42:51.0</td>
+    </tr>
+    <tr>
+      <td>011520</td>
+      <td>147</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2399151</td>
+      <td>26133470</td>
+      <td>2016-07-28 13:34:11.0</td>
+      <td>2016-08-02 08:02:13.0</td>
+    </tr>
+    <tr>
+      <td>011520</td>
+      <td>147</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399151</td>
+      <td>26233084</td>
+      <td>2016-08-02 10:01:11.0</td>
+      <td>2016-08-03 15:31:19.0</td>
+    </tr>
+    <tr>
+      <td>011520</td>
+      <td>037</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399153</td>
+      <td>26133472</td>
+      <td>2016-07-28 13:34:11.0</td>
+      <td>2016-08-02 04:51:37.0</td>
+    </tr>
+    <tr>
+      <td>011520</td>
+      <td>059</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399154</td>
+      <td>26133473</td>
+      <td>2016-07-28 13:34:11.0</td>
+      <td>2016-08-02 04:51:37.0</td>
+    </tr>
+    <tr>
+      <td>011520</td>
+      <td>059</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2399154</td>
+      <td>26232867</td>
+      <td>2016-08-02 09:51:39.0</td>
+      <td>2016-08-03 11:13:33.0</td>
+    </tr>
+    <tr>
+      <td>011520</td>
+      <td>075</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2399166</td>
+      <td>26133485</td>
+      <td>2016-07-28 13:34:13.0</td>
+      <td>2016-08-02 07:29:31.0</td>
+    </tr>
+    <tr>
+      <td>011520</td>
+      <td>026</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399200</td>
+      <td>26133519</td>
+      <td>2016-07-28 13:34:18.0</td>
+      <td>2016-08-02 20:01:07.0</td>
+    </tr>
+    <tr>
+      <td>011520</td>
+      <td>103</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399205</td>
+      <td>26133524</td>
+      <td>2016-07-28 13:34:19.0</td>
+      <td>2016-08-02 20:02:55.0</td>
+    </tr>
+    <tr>
+      <td>011521</td>
+      <td>072</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399276</td>
+      <td>26133595</td>
+      <td>2016-07-28 13:34:32.0</td>
+      <td>2016-08-02 05:06:06.0</td>
+    </tr>
+    <tr>
+      <td>011521</td>
+      <td>135</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399277</td>
+      <td>26133596</td>
+      <td>2016-07-28 13:34:33.0</td>
+      <td>2016-08-02 05:06:08.0</td>
+    </tr>
+    <tr>
+      <td>011521</td>
+      <td>135</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2399277</td>
+      <td>26232869</td>
+      <td>2016-08-02 09:51:39.0</td>
+      <td>2016-08-03 10:55:59.0</td>
+    </tr>
+    <tr>
+      <td>011521</td>
+      <td>133</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399281</td>
+      <td>26133600</td>
+      <td>2016-07-28 13:34:33.0</td>
+      <td>2016-08-02 05:07:43.0</td>
+    </tr>
+    <tr>
+      <td>011521</td>
+      <td>070</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399282</td>
+      <td>26133601</td>
+      <td>2016-07-28 13:34:33.0</td>
+      <td>2016-08-02 05:08:32.0</td>
+    </tr>
+    <tr>
+      <td>011521</td>
+      <td>129</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399283</td>
+      <td>26133602</td>
+      <td>2016-07-28 13:34:34.0</td>
+      <td>2016-08-02 05:09:19.0</td>
+    </tr>
+    <tr>
+      <td>011521</td>
+      <td>092</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399284</td>
+      <td>26133603</td>
+      <td>2016-07-28 13:34:34.0</td>
+      <td>2016-08-02 05:09:19.0</td>
+    </tr>
+    <tr>
+      <td>011521</td>
+      <td>060</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399287</td>
+      <td>26133606</td>
+      <td>2016-07-28 13:34:34.0</td>
+      <td>2016-08-02 05:10:09.0</td>
+    </tr>
+    <tr>
+      <td>011521</td>
+      <td>088</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399294</td>
+      <td>26133613</td>
+      <td>2016-07-28 13:34:36.0</td>
+      <td>2016-08-02 05:11:47.0</td>
+    </tr>
+    <tr>
+      <td>011521</td>
+      <td>058</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399298</td>
+      <td>26133617</td>
+      <td>2016-07-28 13:34:36.0</td>
+      <td>2016-08-02 05:11:46.0</td>
+    </tr>
+    <tr>
+      <td>011521</td>
+      <td>103</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399300</td>
+      <td>26133619</td>
+      <td>2016-07-28 13:34:37.0</td>
+      <td>2016-08-02 05:12:34.0</td>
+    </tr>
+    <tr>
+      <td>011521</td>
+      <td>048</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399304</td>
+      <td>26133623</td>
+      <td>2016-07-28 13:34:37.0</td>
+      <td>2016-08-02 05:13:23.0</td>
+    </tr>
+    <tr>
+      <td>011521</td>
+      <td>043</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2399311</td>
+      <td>26133630</td>
+      <td>2016-07-28 13:34:38.0</td>
+      <td>2016-08-02 03:17:12.0</td>
+    </tr>
+    <tr>
+      <td>011521</td>
+      <td>055</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399314</td>
+      <td>26133633</td>
+      <td>2016-07-28 13:34:39.0</td>
+      <td>2016-08-02 05:15:46.0</td>
+    </tr>
+    <tr>
+      <td>011521</td>
+      <td>036</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2399357</td>
+      <td>26133676</td>
+      <td>2016-07-28 13:34:45.0</td>
+      <td>2016-07-29 18:06:19.0</td>
+    </tr>
+    <tr>
+      <td>011529</td>
+      <td>009</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2399435</td>
+      <td>26133754</td>
+      <td>2016-07-28 13:34:57.0</td>
+      <td>2016-07-29 19:52:51.0</td>
+    </tr>
+    <tr>
+      <td>011529</td>
+      <td>083</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399451</td>
+      <td>26133770</td>
+      <td>2016-07-28 13:35:00.0</td>
+      <td>2016-07-30 17:35:38.0</td>
+    </tr>
+    <tr>
+      <td>011529</td>
+      <td>058</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399457</td>
+      <td>26133776</td>
+      <td>2016-07-28 13:35:01.0</td>
+      <td>2016-07-30 17:39:58.0</td>
+    </tr>
+    <tr>
+      <td>011529</td>
+      <td>138</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399481</td>
+      <td>26133800</td>
+      <td>2016-07-28 13:35:05.0</td>
+      <td>2016-07-30 17:56:55.0</td>
+    </tr>
+    <tr>
+      <td>011529</td>
+      <td>022</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399489</td>
+      <td>26133808</td>
+      <td>2016-07-28 13:35:06.0</td>
+      <td>2016-07-30 18:35:13.0</td>
+    </tr>
+    <tr>
+      <td>011529</td>
+      <td>089</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399513</td>
+      <td>26133832</td>
+      <td>2016-07-28 13:35:10.0</td>
+      <td>2016-07-31 05:06:03.0</td>
+    </tr>
+    <tr>
+      <td>011529</td>
+      <td>127</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399573</td>
+      <td>26133892</td>
+      <td>2016-07-28 13:35:27.0</td>
+      <td>2016-08-02 05:20:37.0</td>
+    </tr>
+    <tr>
+      <td>011553</td>
+      <td>049</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399585</td>
+      <td>26133904</td>
+      <td>2016-07-28 13:35:30.0</td>
+      <td>2016-08-02 05:21:24.0</td>
+    </tr>
+    <tr>
+      <td>011553</td>
+      <td>052</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399590</td>
+      <td>26133909</td>
+      <td>2016-07-28 13:35:30.0</td>
+      <td>2016-08-02 05:22:14.0</td>
+    </tr>
+    <tr>
+      <td>011553</td>
+      <td>020</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399591</td>
+      <td>26133910</td>
+      <td>2016-07-28 13:35:30.0</td>
+      <td>2016-08-02 05:22:14.0</td>
+    </tr>
+    <tr>
+      <td>011553</td>
+      <td>079</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399599</td>
+      <td>26133918</td>
+      <td>2016-07-28 13:35:31.0</td>
+      <td>2016-08-02 17:58:45.0</td>
+    </tr>
+    <tr>
+      <td>011553</td>
+      <td>109</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399603</td>
+      <td>26133922</td>
+      <td>2016-07-28 13:35:32.0</td>
+      <td>2016-08-02 18:00:07.0</td>
+    </tr>
+    <tr>
+      <td>011553</td>
+      <td>061</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399611</td>
+      <td>26133930</td>
+      <td>2016-07-28 13:35:33.0</td>
+      <td>2016-08-02 18:01:30.0</td>
+    </tr>
+    <tr>
+      <td>011553</td>
+      <td>124</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2399626</td>
+      <td>26133945</td>
+      <td>2016-07-28 13:35:36.0</td>
+      <td>2016-08-02 19:41:42.0</td>
+    </tr>
+    <tr>
+      <td>011553</td>
+      <td>065</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399635</td>
+      <td>26133954</td>
+      <td>2016-07-28 13:35:37.0</td>
+      <td>2016-08-03 05:56:55.0</td>
+    </tr>
+    <tr>
+      <td>011553</td>
+      <td>044</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399644</td>
+      <td>26133963</td>
+      <td>2016-07-28 13:35:38.0</td>
+      <td>2016-08-03 04:45:19.0</td>
+    </tr>
+    <tr>
+      <td>011553</td>
+      <td>129</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399675</td>
+      <td>26133994</td>
+      <td>2016-07-28 13:35:43.0</td>
+      <td>2016-07-31 09:21:06.0</td>
+    </tr>
+    <tr>
+      <td>011553</td>
+      <td>091</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2399689</td>
+      <td>26134008</td>
+      <td>2016-07-28 13:35:45.0</td>
+      <td>2016-07-31 20:47:26.0</td>
+    </tr>
+    <tr>
+      <td>011553</td>
+      <td>132</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2399711</td>
+      <td>26134030</td>
+      <td>2016-07-28 13:35:49.0</td>
+      <td>2016-08-01 16:03:54.0</td>
+    </tr>
+    <tr>
+      <td>011553</td>
+      <td>080</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399725</td>
+      <td>26134044</td>
+      <td>2016-07-28 13:35:51.0</td>
+      <td>2016-08-02 05:24:40.0</td>
+    </tr>
+    <tr>
+      <td>011554</td>
+      <td>043</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2399729</td>
+      <td>26134048</td>
+      <td>2016-07-28 13:35:51.0</td>
+      <td>2016-08-02 05:27:13.0</td>
+    </tr>
+    <tr>
+      <td>011554</td>
+      <td>035</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2399738</td>
+      <td>26134057</td>
+      <td>2016-07-28 13:35:53.0</td>
+      <td>2016-08-03 00:06:57.0</td>
+    </tr>
+    <tr>
+      <td>011569</td>
+      <td>043</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2399820</td>
+      <td>26134139</td>
+      <td>2016-07-28 13:36:07.0</td>
+      <td>2016-08-02 16:09:06.0</td>
+    </tr>
+    <tr>
+      <td>011597</td>
+      <td>115</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2399928</td>
+      <td>26134247</td>
+      <td>2016-07-28 13:36:27.0</td>
+      <td>2016-08-02 07:13:46.0</td>
+    </tr>
+    <tr>
+      <td>011597</td>
+      <td>143</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2399941</td>
+      <td>26134260</td>
+      <td>2016-07-28 13:36:30.0</td>
+      <td>2016-08-02 16:50:44.0</td>
+    </tr>
+    <tr>
+      <td>011597</td>
+      <td>143</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2399941</td>
+      <td>26250266</td>
+      <td>2016-08-02 17:49:27.0</td>
+      <td>2016-08-03 15:30:36.0</td>
+    </tr>
+    <tr>
+      <td>011597</td>
+      <td>089</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2399942</td>
+      <td>26134261</td>
+      <td>2016-07-28 13:36:30.0</td>
+      <td>2016-08-02 16:50:44.0</td>
+    </tr>
+    <tr>
+      <td>011597</td>
+      <td>088</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2399943</td>
+      <td>26134262</td>
+      <td>2016-07-28 13:36:30.0</td>
+      <td>2016-08-02 16:50:43.0</td>
+    </tr>
+    <tr>
+      <td>011597</td>
+      <td>088</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2399943</td>
+      <td>26250269</td>
+      <td>2016-08-02 17:49:28.0</td>
+      <td>2016-08-03 15:30:36.0</td>
+    </tr>
+    <tr>
+      <td>011597</td>
+      <td>105</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2399948</td>
+      <td>26134268</td>
+      <td>2016-07-28 13:36:31.0</td>
+      <td>2016-08-02 16:53:08.0</td>
+    </tr>
+    <tr>
+      <td>011597</td>
+      <td>105</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2399948</td>
+      <td>26250270</td>
+      <td>2016-08-02 17:49:28.0</td>
+      <td>2016-08-03 15:30:36.0</td>
+    </tr>
+    <tr>
+      <td>011597</td>
+      <td>064</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2399949</td>
+      <td>26134269</td>
+      <td>2016-07-28 13:36:32.0</td>
+      <td>2016-07-29 14:50:07.0</td>
+    </tr>
+    <tr>
+      <td>011597</td>
+      <td>065</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2399982</td>
+      <td>26134303</td>
+      <td>2016-07-28 13:36:37.0</td>
+      <td>2016-08-02 16:54:54.0</td>
+    </tr>
+    <tr>
+      <td>011597</td>
+      <td>041</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2399987</td>
+      <td>26134308</td>
+      <td>2016-07-28 13:36:38.0</td>
+      <td>2016-08-02 16:56:29.0</td>
+    </tr>
+    <tr>
+      <td>011597</td>
+      <td>000</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2399991</td>
+      <td>26134313</td>
+      <td>2016-07-28 13:36:39.0</td>
+      <td>2016-08-02 16:58:00.0</td>
+    </tr>
+    <tr>
+      <td>011597</td>
+      <td>019</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2399996</td>
+      <td>26134318</td>
+      <td>2016-07-28 13:36:40.0</td>
+      <td>2016-08-02 16:58:03.0</td>
+    </tr>
+    <tr>
+      <td>011598</td>
+      <td>013</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2400040</td>
+      <td>26134364</td>
+      <td>2016-07-28 13:36:49.0</td>
+      <td>2016-08-02 04:33:59.0</td>
+    </tr>
+    <tr>
+      <td>011598</td>
+      <td>097</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2400090</td>
+      <td>26134420</td>
+      <td>2016-07-28 13:37:26.0</td>
+      <td>2016-08-02 17:12:09.0</td>
+    </tr>
+    <tr>
+      <td>011598</td>
+      <td>097</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2400090</td>
+      <td>26250275</td>
+      <td>2016-08-02 17:49:29.0</td>
+      <td>2016-08-03 16:01:29.0</td>
+    </tr>
+    <tr>
+      <td>011598</td>
+      <td>075</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2400091</td>
+      <td>26134421</td>
+      <td>2016-07-28 13:37:26.0</td>
+      <td>2016-08-02 17:12:09.0</td>
+    </tr>
+    <tr>
+      <td>011598</td>
+      <td>108</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2400119</td>
+      <td>26134449</td>
+      <td>2016-07-28 13:37:32.0</td>
+      <td>2016-07-29 15:03:08.0</td>
+    </tr>
+    <tr>
+      <td>011598</td>
+      <td>119</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2400123</td>
+      <td>26134453</td>
+      <td>2016-07-28 13:37:33.0</td>
+      <td>2016-07-29 23:36:57.0</td>
+    </tr>
+    <tr>
+      <td>011598</td>
+      <td>005</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2400174</td>
+      <td>26134504</td>
+      <td>2016-07-28 13:37:40.0</td>
+      <td>2016-08-03 00:36:29.0</td>
+    </tr>
+    <tr>
+      <td>011598</td>
+      <td>005</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2400174</td>
+      <td>26258825</td>
+      <td>2016-08-03 10:50:18.0</td>
+      <td>2016-08-03 16:19:07.0</td>
+    </tr>
+    <tr>
+      <td>011599</td>
+      <td>143</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2400258</td>
+      <td>26134588</td>
+      <td>2016-07-28 13:37:54.0</td>
+      <td>2016-07-30 00:10:54.0</td>
+    </tr>
+    <tr>
+      <td>011600</td>
+      <td>017</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2400375</td>
+      <td>26134705</td>
+      <td>2016-07-28 13:38:12.0</td>
+      <td>2016-08-03 03:06:00.0</td>
+    </tr>
+    <tr>
+      <td>011601</td>
+      <td>025</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2400600</td>
+      <td>26134930</td>
+      <td>2016-07-28 13:39:18.0</td>
+      <td>2016-07-29 15:32:13.0</td>
+    </tr>
+    <tr>
+      <td>011601</td>
+      <td>040</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2400602</td>
+      <td>26134932</td>
+      <td>2016-07-28 13:39:18.0</td>
+      <td>2016-08-03 05:07:50.0</td>
+    </tr>
+    <tr>
+      <td>011617</td>
+      <td>029</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2400871</td>
+      <td>26135201</td>
+      <td>2016-07-28 13:39:57.0</td>
+      <td>2016-08-03 04:22:31.0</td>
+    </tr>
+    <tr>
+      <td>011618</td>
+      <td>014</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2400958</td>
+      <td>26135288</td>
+      <td>2016-07-28 13:40:09.0</td>
+      <td>2016-08-03 06:46:20.0</td>
+    </tr>
+    <tr>
+      <td>011618</td>
+      <td>025</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2400960</td>
+      <td>26135290</td>
+      <td>2016-07-28 13:40:10.0</td>
+      <td>2016-08-03 06:50:59.0</td>
+    </tr>
+    <tr>
+      <td>011618</td>
+      <td>022</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2400970</td>
+      <td>26135300</td>
+      <td>2016-07-28 13:40:11.0</td>
+      <td>2016-08-03 07:09:30.0</td>
+    </tr>
+    <tr>
+      <td>011618</td>
+      <td>022</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>AUGER-OUTPUT-FAIL</td>
+      <td>retry</td>
+      <td>2400970</td>
+      <td>26258802</td>
+      <td>2016-08-03 10:47:46.0</td>
+      <td>2016-08-03 15:38:29.0</td>
+    </tr>
+    <tr>
+      <td>011619</td>
+      <td>083</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2401011</td>
+      <td>26135341</td>
+      <td>2016-07-28 13:40:18.0</td>
+      <td>2016-07-31 02:29:52.0</td>
+    </tr>
+    <tr>
+      <td>011620</td>
+      <td>061</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2401159</td>
+      <td>26135489</td>
+      <td>2016-07-28 13:41:07.0</td>
+      <td>2016-07-31 05:25:18.0</td>
+    </tr>
+    <tr>
+      <td>011621</td>
+      <td>075</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-FAILED</td>
+      <td>retry</td>
+      <td>2401296</td>
+      <td>26135626</td>
+      <td>2016-07-28 13:41:32.0</td>
+      <td>2016-08-03 08:32:53.0</td>
+    </tr>
+    <tr>
+      <td>011621</td>
+      <td>110</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2401357</td>
+      <td>26135687</td>
+      <td>2016-07-28 13:41:40.0</td>
+      <td>2016-07-31 16:04:46.0</td>
+    </tr>
+    <tr>
+      <td>011623</td>
+      <td>084</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2401466</td>
+      <td>26135796</td>
+      <td>2016-07-28 13:41:56.0</td>
+      <td>2016-08-03 07:11:27.0</td>
+    </tr>
+    <tr>
+      <td>011623</td>
+      <td>067</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2401527</td>
+      <td>26135857</td>
+      <td>2016-07-28 13:42:07.0</td>
+      <td>2016-07-31 15:49:35.0</td>
+    </tr>
+    <tr>
+      <td>011649</td>
+      <td>114</td>
+      <td>20</td>
+      <td>1 / 3</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2402006</td>
+      <td>26136336</td>
+      <td>2016-07-28 13:43:42.0</td>
+      <td>2016-08-02 09:58:49.0</td>
+    </tr>
+    <tr>
+      <td>011649</td>
+      <td>114</td>
+      <td>20</td>
+      <td>2 / 3</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2402006</td>
+      <td>26258828</td>
+      <td>2016-08-03 10:50:19.0</td>
+      <td>2016-08-03 16:31:01.0</td>
+    </tr>
+    <tr>
+      <td>011650</td>
+      <td>056</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2402040</td>
+      <td>26136360</td>
+      <td>2016-07-28 13:43:45.0</td>
+      <td>2016-08-01 18:50:24.0</td>
+    </tr>
+    <tr>
+      <td>011650</td>
+      <td>021</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>SWIF-USER-NON-ZERO</td>
+      <td>retry</td>
+      <td>2402145</td>
+      <td>26136423</td>
+      <td>2016-07-28 13:44:13.0</td>
+      <td>2016-08-02 09:19:26.0</td>
+    </tr>
+    <tr>
+      <td>011658</td>
+      <td>035</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2402434</td>
+      <td>26136712</td>
+      <td>2016-07-28 13:44:56.0</td>
+      <td>2016-08-03 08:48:11.0</td>
+    </tr>
+    <tr>
+      <td>011658</td>
+      <td>038</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2402436</td>
+      <td>26136714</td>
+      <td>2016-07-28 13:44:57.0</td>
+      <td>2016-08-03 08:53:04.0</td>
+    </tr>
+    <tr>
+      <td>011659</td>
+      <td>040</td>
+      <td>20</td>
+      <td>1 / 2</td>
+      <td>AUGER-TIMEOUT</td>
+      <td>modify</td>
+      <td>2402513</td>
+      <td>26136791</td>
+      <td>2016-07-28 13:45:08.0</td>
+      <td>2016-08-03 09:11:27.0</td>
+    </tr>
+    </table>
+    <hr>
+  </body>
+</html>
