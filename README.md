@@ -28,7 +28,7 @@ crontab for gluex@jlabl5
 
 
 # Updates database.
-*/5  *  *  *  *  /group/halld/www/halldweb/html/data_monitoring/utilities/update_browser_family.py
+*/5  *  *  *  *  /group/halld/www/halldweb/html/data_monitoring/utilities/update_browser_family.py &> /dev/null
 
 # send out monitoring update plots
 MAILTO="keigo@jlab.org"
