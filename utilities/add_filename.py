@@ -12,20 +12,25 @@ dbcnx = MySQLdb.connect(host=dbhost, user=dbuser, db=dbname)
 dbcursor = dbcnx.cursor(MySQLdb.cursors.DictCursor)
 
 
+dbcursor.execute("SELECT FileName FROM PlotTypes")
+file_name_list = [x['FileName'] for x in dbcursor.fetchall()]
+dbcursor.execute("SELECT Name FROM PlotCategories")
+category_list = [x['Name'] for x in dbcursor.fetchall()]
+
 while True:
   while True:
     print('\nInput filename [*.png]:')
     filename = input()
     if not filename.endswith('.png'):
       print("\nThe filename does not end with '.png'.")
+    elif filename in file_name_list:
+      print("\nThis file is already registered in the database.")
+      exit(0)
     else:
       break
 
   print('\nInput display name [eg.) FCAL Invariant Mass]:')
   display_name = input()
-
-  dbcursor.execute("SELECT Name FROM PlotCategories")
-  category_list = [x['Name'] for x in dbcursor.fetchall()]
 
   while True:
     print('\nSelect category [' + ' '.join(category_list) + ']:')
