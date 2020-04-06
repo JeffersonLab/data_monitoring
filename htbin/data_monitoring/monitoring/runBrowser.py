@@ -545,6 +545,9 @@ def get_options():
     else:
         options.append(None)
 
+    if options[0] == None and options[1] == None and options[2] == None:
+        options[1] = 'mon_ver01'
+        options[2] = 'RunPeriod-2019-11'
     return options
 
 
@@ -582,9 +585,6 @@ def get_link_path(options):
 # main function
 # This is where the program starts
 def main():
-    # with open('/group/halld/www/halldweb/htbin/data_monitoring/monitoring/debug.txt', 'w') as f:
-    #     f.write('oyster0\n')
-
     # get options that may have been passed to this script
     options = get_options()
 
