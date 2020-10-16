@@ -370,6 +370,7 @@ function PopulateImagesSelector() {
       if (par_from_url['rcdb_query'] != "") DoQuery();  // Sets query_result.
       SetRunListOBJ();
       ShowPlots();
+      ShowRunRange();
     }
   }
   xmlhttp.open("GET", "_static/populate_images_selector.php?ID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid, true);
@@ -380,4 +381,22 @@ function removeOptions(selectbox) {
   for (var i = selectbox.options.length - 1; i >= 0; i--) {
     selectbox.remove(i);
   }
+}
+
+function ShowRunRange() {
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp = new XMLHttpRequest();
+  } else {
+    // code for IE6, IE5
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var result = JSON.parse(this.responseText);
+      document.getElementById("ShowRunRangeID").value = '(' + result[0]['MIN'] + '-' + result[0]['MAX'] + ')';
+    }
+  }
+  xmlhttp.open("GET", "_static/show_run_range.php?ID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid, true);
+  xmlhttp.send();
 }

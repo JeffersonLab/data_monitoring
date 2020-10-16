@@ -16,7 +16,7 @@
   <body role="document" onresize="ShowPlots()">
     <div>
       Run Period <select id="RunPeriod" name="RunPeriod" onChange="run_range_set_by_user=false;DoQuery();PopulateVersionSelector()"></select>
-      &#160;&#160;Version <select id="Version" name="Version" onChange="PopulateImagesSelector()"></select><br>
+      &#160;&#160;Version <select id="Version" name="Version" onChange="PopulateImagesSelector()"></select><input type="text" id="ShowRunRangeID" name="ShowRunRangeName" readonly/><br>
       Plot to Display <select id="Plot" name="Plot" onChange="SetRunListOBJ();ShowPlots()"></select>
       &#160;&#160;Toggle plot order <input type="button" onclick="SelectedRunListOBJ.reverse();ShowPlots()" />
       &#160;&#160;columns <select id="Columns" name="Columns" onChange="ShowPlots()"></select><br>
