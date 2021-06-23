@@ -155,6 +155,7 @@ function ShowPlots() {
 
   var IMGSelector = document.getElementById("Plot");
   var SelectedIMG = IMGSelector.options[IMGSelector.selectedIndex].value;
+  par_from_url['Plot'] = IMGSelector.options[IMGSelector.selectedIndex].id;
 
   var columnstoDisplay = document.getElementById("Columns").value;
 
