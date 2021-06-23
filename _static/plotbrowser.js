@@ -24,6 +24,8 @@ var par_from_url = { minRunNum: "", maxRunNum: "", RunPeriod: "", Version: "", P
 var use_url_par = false;
 var run_range_set_by_user = false;
 
+var user_link = "";
+
 $(document).ready(function() {
   SetOptionsFromURL();
   PopulateColumnsSelector();
@@ -220,7 +222,7 @@ function ShowPlots() {
     newCell.appendChild(DOM_img);
   }
 
-  FillLinkTextBox();
+  FillUserLink();
 
   if (use_url_par) ClearOptionsFromURL();
 }
@@ -424,7 +426,7 @@ function Query2UrlEncodedFormat() {
   xmlhttp.send();
 }
 
-function OpenTab() {
+function FillUserLink() {
   var RunPSelector = document.getElementById("RunPeriod");
   var RunP = RunPSelector.options[RunPSelector.selectedIndex].value;
 
@@ -440,13 +442,14 @@ function OpenTab() {
   var base = "https://halldweb.jlab.org/data_monitoring/Plot_Browser.html?";
   var base2 = base + "minRunNum=" + runmin + "&maxRunNum=" + runmax + "&RunPeriod=" + RunP + "&Version=" + Ver + "&Plot=" + Plot;
 
-  var my_url;
-
   var query = encodeURIComponent(document.getElementById('rcdb_query').value);
   if (query == "") {
-    my_url = base2;
+    user_link = base2;
   } else {
-    my_url = base2 + "&rcdb_query=" + query;
+    user_link = base2 + "&rcdb_query=" + query;
   }
-  window.open(my_url, '_blank');
+}
+
+function OpenTab() {
+  window.open(user_link, '_blank');
 }
