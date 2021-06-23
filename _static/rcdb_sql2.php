@@ -1,5 +1,5 @@
 <?php
 
-echo urlencode($_GET["query"])
+echo rawurlencode($_GET["query"])
 
 ?>
