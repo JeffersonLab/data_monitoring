@@ -424,7 +424,7 @@ function Query2UrlEncodedFormat() {
   xmlhttp.send();
 }
 
-function FillLinkTextBox() {
+function OpenTab() {
   var RunPSelector = document.getElementById("RunPeriod");
   var RunP = RunPSelector.options[RunPSelector.selectedIndex].value;
 
@@ -440,15 +440,13 @@ function FillLinkTextBox() {
   var base = "https://halldweb.jlab.org/data_monitoring/Plot_Browser.html?";
   var base2 = base + "minRunNum=" + runmin + "&maxRunNum=" + runmax + "&RunPeriod=" + RunP + "&Version=" + Ver + "&Plot=" + Plot;
 
+  var my_url;
+
   var query = encodeURIComponent(document.getElementById('rcdb_query').value);
   if (query == "") {
-    document.getElementById("user_link").value = base2;
+    my_url = base2;
   } else {
-    document.getElementById("user_link").value = base2 + "&rcdb_query=" + query;
+    my_url = base2 + "&rcdb_query=" + query;
   }
-}
-
-function OpenTab() {
-  var my_url = document.getElementById("user_link").value;
   window.open(my_url, '_blank');
 }
