@@ -15,7 +15,7 @@
   </head>
   <body role="document" onresize="ShowPlots()">
     <div>
-      <p style="text-align: right"><input type="text" id="user_link" name="user_link" size="150" readonly/></p>
+      <p style="text-align: right"><input type="button" value="Get link to this page" onclick="OpenTab()" /><input type="text" id="user_link" name="user_link" size="150" readonly/></p>
       Run Period <select id="RunPeriod" name="RunPeriod" onChange="run_range_set_by_user=false;DoQuery();PopulateVersionSelector()"></select>
       &#160;&#160;Version <select id="Version" name="Version" onChange="PopulateImagesSelector()"></select><input type="text" id="ShowRunRangeID" name="ShowRunRangeName" readonly/><br>
       Plot to Display <select id="Plot" name="Plot" onChange="SetRunListOBJ();ShowPlots()"></select>

@@ -447,3 +447,8 @@ function FillLinkTextBox() {
     document.getElementById("user_link").value = base2 + "&rcdb_query=" + query;
   }
 }
+
+function OpenTab() {
+  var my_url = document.getElementById("user_link").value;
+  window.open(my_url, '_blank');
+}
