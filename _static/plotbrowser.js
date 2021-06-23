@@ -220,6 +220,8 @@ function ShowPlots() {
     newCell.appendChild(DOM_img);
   }
 
+  FillLinkTextBox();
+
   if (use_url_par) ClearOptionsFromURL();
 }
 
@@ -420,4 +422,28 @@ function Query2UrlEncodedFormat() {
   }
   xmlhttp.open("GET", "_static/rcdb_sql2.php?query=" + document.getElementById("query_before").value, true);
   xmlhttp.send();
+}
+
+function FillLinkTextBox() {
+  var RunPSelector = document.getElementById("RunPeriod");
+  var RunP = RunPSelector.options[RunPSelector.selectedIndex].value;
+
+  var VerSelector = document.getElementById("Version");
+  var Ver = VerSelector.options[VerSelector.selectedIndex].value;
+
+  var IMGSelector = document.getElementById("Plot");
+  var Plot = IMGSelector.options[IMGSelector.selectedIndex].id;
+
+  var runmin = document.getElementById("minRunNum").value;
+  var runmax = document.getElementById("maxRunNum").value;
+
+  var base = "https://halldweb.jlab.org/data_monitoring/Plot_Browser.html?";
+  var base2 = base + "minRunNum=" + runmin + "&maxRunNum=" + runmax + "&RunPeriod=" + RunP + "&Version=" + Ver + "&Plot=" + Plot;
+
+  var query = encodeURIComponent(document.getElementById('rcdb_query').value);
+  if (query == "") {
+    document.getElementById("user_link").value = base2;
+  } else {
+    document.getElementById("user_link").value = base2 + "&rcdb_query=" + query;
+  }
 }
