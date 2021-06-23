@@ -400,3 +400,23 @@ function ShowRunRange() {
   xmlhttp.open("GET", "_static/show_run_range.php?ID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid, true);
   xmlhttp.send();
 }
+
+
+function Query2UrlEncodedFormat() {
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp = new XMLHttpRequest();
+  } else {
+    // code for IE6, IE5
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      query_result = this.responseText.trim();
+      document.getElementById("query_after").value = '&rcdb_query=' + query_result;
+    }
+  }
+  xmlhttp.open("GET", "_static/rcdb_sql2.php?query=" + document.getElementById("query_before").value, true);
+  xmlhttp.send();
+}
