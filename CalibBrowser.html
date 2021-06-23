@@ -85,6 +85,10 @@
                         
     
                     }
+                    if(selector.selectedIndex == -1)
+                    {
+                        return
+                    }
                     var text=selector.options[selector.selectedIndex].text;
     
                     if(selectorstr=="RunPeriod_selector")

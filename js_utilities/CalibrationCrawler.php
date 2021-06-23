@@ -24,6 +24,8 @@ $dirs = array_filter(glob($rootpath . '/*'), 'is_dir');
 $rootpath=$dirs[sizeof($dirs)-1] . "/" . $_GET["Pass"];
 }
 
+#echo $rootpath;
+#echo "<br>";
 
 if( $_GET["option"] != "images" && $_GET["option"] != "SubDir" && $_GET["option"] != "Runs" )
 {
