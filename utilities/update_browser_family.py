@@ -71,6 +71,7 @@ for x in glob('/work/halld2/data_monitoring/RunPeriod-*'):
         ver = y.split('/')[-1]
         ver_type = ver.split('_')[0]
         ver_num = int(ver.split('_ver')[1])
+        if ver_type == 'mc': continue  ## added to avoid crash (9-Aug-2021)
         if os.stat(y).st_mtime > time_stamp:
             sql = "INSERT IGNORE INTO Versions (RunPeriod_ID, Type, VersionNumber) VALUES (%d, '" % runpID + ver_type + "', %d)" % ver_num
             print(y, sql)
