@@ -17,12 +17,12 @@ def main():
   # date and time for 24 hours previous
   beginTime = datetime.datetime.now() - datetime.timedelta(days=1) #days=1
   beginRun = 0
-  CurrentPeriod = "RunPeriod-2019-11"
+  CurrentPeriod = "RunPeriod-2021-08"
 
   # get first and last runs for the last 24 hours
-  rcdb_query = r"daq_run=='PHYSICS_DIRC' and event_count > 500000 and solenoid_current > 100 and collimator_diameter != 'Blocking'"
+  rcdb_query = r"daq_run=='PHYSICS_PRIMEX' and event_count > 500000 and collimator_diameter != 'Blocking'"
   rcdb_query_url = urllib.parse.quote(rcdb_query)
-  runs = db.select_runs(rcdb_query, 70000, 80000)
+  runs = db.select_runs(rcdb_query, 81000, 90000)
   for run in runs:
     print(run.number)
     print(run.end_time)
