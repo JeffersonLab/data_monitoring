@@ -12,7 +12,7 @@ A symbolic link `/group/halld/www/halldweb/htbin/data_monitoring/monitoring/runB
 ### `email/montoring_update.py` for sending out monitoring update plots
 ### `utilities/update_browser_family.py` for updating database for Plot Browser
 
-crontab for gluex@jlabl5
+crontab for gluex@ifarm1901
 
 ```
 #
