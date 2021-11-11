@@ -20,7 +20,7 @@ def main():
   CurrentPeriod = "RunPeriod-2021-11"
 
   # get first and last runs for the last 24 hours
-  rcdb_query = r"daq_run=='EXPERT' and event_count > 500000 and collimator_diameter != 'Blocking'"
+  rcdb_query = r"daq_run=='PHYSICS_SRC' and event_count > 500000 and collimator_diameter != 'Blocking'"
   rcdb_query_url = urllib.parse.quote(rcdb_query)
   runs = db.select_runs(rcdb_query, 90000, 99999)
   for run in runs:
