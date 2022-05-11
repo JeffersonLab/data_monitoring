@@ -35,7 +35,7 @@ def delete_one_plot():
       else:
         break
 
-    print('\n' + filename + ' for ' + runp + 'will be deleted.')
+    print('\n' + filename + ' for ' + runp + ' will be deleted.')
     print('\nAre you sure to delete this entry from DB? [y/n]')
     answer = input()
     if answer.startswith('y'):
@@ -44,7 +44,7 @@ def delete_one_plot():
       exit(0)
 
 
-  # dbcursor.execute("DELETE FROM Plots WHERE PlotType_ID IN (SELECT ID FROM PlotTypes WHERE PlotCategory_ID IN (SELECT ID FROM PlotCategories WHERE Name='" + plot_category_name + "')) AND RUN_ID IN (SELECT ID FROM Runs WHERE Version_ID IN (SELECT ID FROM Versions WHERE RunPeriod_ID IN (SELECT ID FROM RunPeriods WHERE Name='" + runp + "')))")
+  dbcursor.execute("DELETE FROM Plots WHERE PlotType_ID IN (SELECT ID FROM PlotTypes WHERE BINARY FileName='" + filename + "') AND RUN_ID IN (SELECT ID FROM Runs WHERE Version_ID IN (SELECT ID FROM Versions WHERE RunPeriod_ID IN (SELECT ID FROM RunPeriods WHERE Name='" + runp + "')))")
 
   dbcnx.commit()
   dbcnx.close()
