@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>Plot Browser by Thomas Britton & Keigo M.</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<style>
+    .col-md-3 {
+        overflow: hidden;
+        height: 100vh;
+        position: fixed;
+    }
+
+    .col-md-9 {
+        display: flex;
+        flex-direction: column;
+        margin-left: 25%;
+    overflow: auto;    }
+
+    .col-md-4>div {
+        margin-bottom: 10px;
+    }
+
+    .card-img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .card{
+        border-radius: 5px;
+        border-color: gray;
+    }
+
+    @media (max-width: 768px) {
+        .image-grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+    }
+
+    @media (max-width: 576px) {
+        .image-grid {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+    }
+
+
+
+    #runPeriodSelect {
+        margin-bottom: 10px;
+    }
+
+    #imageTable {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1001;
+        /* Higher value to appear above the sidebar */
+    }
+
+    .card {
+        margin-bottom: 10px;
+    }
+
+    #firstRow {
+        margin-top: 80px;
+    }
+
+</style>
+
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="./img/GlueX_logo.png" style="width:90px; height:auto;"
+                    id="gluex_logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link">Plot Browser</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container-fluid">
+        <div class="row" id="firstRow">
+            <div class="col-md-2">
+                <h5>Image Options</h5>
+                <label for="RunPeriod">Run Period</label>
+                <select id="RunPeriod" class="form-control"
+                    onChange="run_range_set_by_user=false;DoQuery();PopulateVersionSelector()"></select>
+
+
+                <label for="Version">Monitoring Version</label>
+                <select id="Version" class="form-control" onChange="PopulateImagesSelector()"></select><br>
+                <label for="ShowRunRangeID">Run Range</label>
+                <input type="text" id="ShowRunRangeID" name="ShowRunRangeName" readonly /><br>
+
+                <label for="Plot">Plot to Select</label>
+                <select id="Plot" class="form-control" onChange="SetRunListOBJ();ShowPlots2()">
+                </select>
+
+                <label for="runNumSelect">Run Number</label>
+                <div class="input-group mb-3">
+                    <input type="number" class="form-control" placeholder="Min Run Number" id="minRunNum"
+                        name="minRunNum" onChange="run_range_set_by_user=true;SetRunListOBJ();ShowPlots2()">
+                    <span class="input-group-text" id="basic-addon2">-</span>
+                    <input type="number" class="form-control" placeholder="Max Run Number" id="maxRunNum"
+                        name="maxRunNum" onChange="run_range_set_by_user=true;SetRunListOBJ();ShowPlots2();" />
+                </div>
+
+                <hr>
+                <div class="form-group">
+                    <h5> Display Options</h5>
+
+                    <div class="form-check" style="padding-left:1.25rem">
+                        <input class="form-check-input" id="Toggle" type="checkbox" onclick="SelectedRunListOBJ.reverse();ShowPlots2()">
+                        <label class="form-check-label" for="Toggle" style="margin-right:25px">Toggle Order</label>
+                    </div>
+
+                    <div class="form-inline">
+                <label for="Columns" style="margin-right:30px">Columns to Display</label>
+                <select id="Columns" class="form-control" onChange="ShowPlots2()" style="width:40px"></select>
+            </div>
+
+                <div style="margin-top: 10px">
+                <label for="maxNumOfPlots">Max # plots: </label>
+                <input type="number" id="maxNumOfPlots" name="maxNumOfPlots" min="1" size="20"
+                    onChange="SetMaxNumPlots();SetRunListOBJ();ShowPlots2()" style="width:60px">
+                </div>
+                <div>
+                <input type="text" id="rcdb_query" name="rcdb_query" placeholder="Enter RCDB query.." />
+                <input type="button" value="query" onclick="DoQuery();SetRunListOBJ();ShowPlots2()" />
+                <img id="wait_icon" name="wait_icon" src="./hourglass.png">
+            </div>
+            </div>
+            </div>
+            <!-- display the images to be labeled in a grid here-->
+            <div class="col-md-10" style="overflow-y: auto; max-height: calc(100vh - 60px);">
+                <div id="imgTable" class="row flex-grid"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+<script>
+    /*
+ * plowbrowser.js
+ * --------------
+ *
+ * Functions for Plot_Browser.html.
+ *
+ */
+
+    Array.prototype.max = function () {
+        return Math.max.apply(null, this);
+    };
+
+    Array.prototype.min = function () {
+        return Math.min.apply(null, this);
+    };
+
+    // https://halldweb.jlab.org/data_monitoring/Plot_Browser.html?minRunNum=40000&maxRunNum=51000&RunPeriod=RunPeriod-2018-01&Version=rawdata_ver00&Plot=CDC_occupancy&rcdb_query=@is_2018production
+    var query_result = "";
+    var SelectedRunListOBJ = [];
+    var first_showing = true;
+    var run_num_limit = 100;
+
+    var par_from_url = { minRunNum: "", maxRunNum: "", RunPeriod: "", Version: "", Plot: "", rcdb_query: "" };
+    var use_url_par = false;
+    var run_range_set_by_user = false;
+
+    var user_link = "";
+
+    $(document).ready(function () {
+        SetOptionsFromURL();
+        PopulateColumnsSelector();
+        document.getElementById('maxNumOfPlots').value = run_num_limit;
+        PopulateRunPeriodSelector();
+    });
+
+    function SetOptionsFromURL() {
+        currentURL_split = document.URL.split("?");
+        if (currentURL_split.length == 2) {
+            use_url_par = true;
+            URL_AND_split = currentURL_split[1].split("&");
+            for (var i = 0; i < URL_AND_split.length; i++) {
+                var opt = URL_AND_split[i].split("=");
+                par_from_url[opt[0]] = opt[1];
+            }
+            if (par_from_url['minRunNum'] != "" && par_from_url['maxRunNum'] != "") {
+                run_range_set_by_user = true;
+            }
+            document.getElementById("minRunNum").value = par_from_url['minRunNum'];
+            document.getElementById("maxRunNum").value = par_from_url['maxRunNum'];
+            if (par_from_url['rcdb_query'] != "") {
+                document.getElementById('rcdb_query').value = decodeURIComponent(par_from_url['rcdb_query']);
+            }
+        }
+    }
+
+    function ClearOptionsFromURL() {
+        par_from_url['minRunNum'] = "";
+        par_from_url['maxRunNum'] = "";
+        par_from_url['RunPeriod'] = "";
+        par_from_url['Version'] = "";
+        par_from_url['Plot'] = "";
+        par_from_url['rcdb_query'] = "";
+        use_url_par = false;
+    }
+
+    function ShowWaitIcon() {
+        document.getElementById("wait_icon").style.visibility = "visible";
+    }
+
+    function HideWaitIcon() {
+        document.getElementById("wait_icon").style.visibility = "hidden";
+    }
+
+    function SetMaxNumPlots() {
+        var tmp_num = document.getElementById('maxNumOfPlots').value;
+        if (tmp_num >= 1) {
+            run_num_limit = tmp_num;
+        } else {
+            run_num_limit = 1;
+            document.getElementById('maxNumOfPlots').value = run_num_limit;
+        }
+    }
+
+    function PopulateColumnsSelector() {
+        var default_num = 3;
+        if ((navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('iPad') == -1) || navigator.userAgent.indexOf('iPod') > 0 || navigator.userAgent.indexOf('Android') > 0) {
+            default_num = 1;
+            run_num_limit = 15;
+        }
+        for (var i = 1; i <= 10; i++) {
+            var newoption = document.createElement("option");
+            newoption.text = i;
+            newoption.value = i;
+            if (i == default_num) newoption.selected = true;
+            document.getElementById("Columns").add(newoption);
+        }
+    }
+
+    function DoQuery() {
+        query_result = "";
+        if (document.getElementById('rcdb_query').value == "") return;
+        ShowWaitIcon();
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                query_result = this.responseText.trim();
+                if (query_result == "") query_result = "NaN";
+                HideWaitIcon();
+            }
+        }
+        var php_string = "_static/rcdb_sql.php?query=" + document.getElementById("rcdb_query").value + "&RunP=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].value;
+        if (run_range_set_by_user) {
+            php_string += "&minRunNum=" + document.getElementById("minRunNum").value;
+            php_string += "&maxRunNum=" + document.getElementById("maxRunNum").value;
+        }
+        xmlhttp.open("GET", php_string, false);
+        xmlhttp.send();
+    }
+
+    function sortSelect(selElem) {
+        var tmpAry = new Array();
+        for (var i = 0; i < selElem.options.length; i++) {
+            tmpAry[i] = new Array();
+            tmpAry[i][0] = selElem.options[i].text;
+            tmpAry[i][1] = selElem.options[i].value;
+            tmpAry[i][2] = selElem.options[i].id;
+            tmpAry[i][3] = selElem.options[i].dbid;
+            tmpAry[i][4] = selElem.options[i].selected;
+        }
+        tmpAry.sort();
+        while (selElem.options.length > 0) {
+            selElem.options[0] = null;
+        }
+        for (var i = 0; i < tmpAry.length; i++) {
+            var op = new Option(tmpAry[i][0], tmpAry[i][1]);
+            op.id = tmpAry[i][2];
+            op.dbid = tmpAry[i][3];
+            op.selected = tmpAry[i][4];
+            selElem.options[i] = op;
+        }
+    }
+
+    function SetRunListOBJ() {
+        SelectedRunListOBJ = [];
+        if (query_result == "NaN") return;
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var result = JSON.parse(this.responseText);
+                int_run_list = [];
+                for (var i = 0; i < result.length; i++) {
+                    SelectedRunListOBJ.push('Run' + ('000000' + result[i]['RunNumber']).slice(-6));
+                    int_run_list.push(parseInt(result[i]['RunNumber']));
+                }
+                if (!run_range_set_by_user) {
+                    document.getElementById("minRunNum").value = int_run_list.min();
+                    document.getElementById("maxRunNum").value = int_run_list.max();
+                }
+            }
+        }
+        var php_string = "_static/set_run_list_obj.php?verID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid + "&typeID=" + document.getElementById("Plot").options[document.getElementById("Plot").selectedIndex].dbid + "&runNumLimit=" + run_num_limit;
+        if (run_range_set_by_user) {
+            php_string += "&minRunNum=" + document.getElementById("minRunNum").value;
+            php_string += "&maxRunNum=" + document.getElementById("maxRunNum").value;
+        }
+        if (query_result != "") {
+            php_string += "&query=" + query_result;
+        }
+        xmlhttp.open("GET", php_string, false);
+        xmlhttp.send();
+    }
+
+    function PopulateRunPeriodSelector() {
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var result = JSON.parse(this.responseText);
+                for (var i = 0; i < result.length; i++) {
+                    var newoption = document.createElement("option");
+                    newoption.text = result[i]['Name'];
+                    newoption.value = result[i]['Name'];
+                    newoption.id = result[i]['Name'];
+                    newoption.dbid = result[i]['ID'];
+                    if (newoption.id == par_from_url['RunPeriod']) {
+                        newoption.selected = true;
+                    }
+                    if (i == result.length - 1 && par_from_url['RunPeriod'] == "") {
+                        newoption.selected = true;
+                    }
+                    document.getElementById("RunPeriod").add(newoption);
+                }
+                PopulateVersionSelector();
+            }
+        }
+        xmlhttp.open("GET", "_static/populate_runperiod_selector.php", true);
+        xmlhttp.send();
+    }
+
+    function PopulateVersionSelector() {
+        removeOptions(document.getElementById("Version"));
+
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var result = JSON.parse(this.responseText);
+                for (var i = 0; i < result.length; i++) {
+                    var newoption = document.createElement("option");
+                    var text = "";
+                    if (result[i]['Type'] == "rawdata") {
+                        text += "Rootspy ";
+                    } else if (result[i]['Type'] == "recon") {
+                        text += "Reconstruction Launch ";
+                    } else if (result[i]['Type'] == "mon" && result[i]['VersionNumber'] != 1) {
+                        text += "Monitoring Launch ";
+                    } else if (result[i]['Type'] == "mon" && result[i]['VersionNumber'] == 1) {
+                        text += "Incoming Data ";
+                    } else if (result[i]['Type'] == "mc") {
+                        text += "Monte Carlo ";
+                    } else {
+                        continue;
+                    }
+                    text += 'ver' + ('00' + result[i]['VersionNumber']).slice(-2);
+                    newoption.text = text;
+                    newoption.value = result[i]['Type'] + '_ver' + ('00' + result[i]['VersionNumber']).slice(-2);
+                    newoption.id = newoption.value;
+                    newoption.dbid = result[i]['ID'];
+                    if (newoption.id == par_from_url['Version']) {
+                        newoption.selected = true;
+                    }
+                    if (i == 0 && par_from_url['Version'] == "") {
+                        newoption.selected = true;
+                    }
+                    document.getElementById("Version").add(newoption);
+                }
+                PopulateImagesSelector();
+            }
+        }
+        xmlhttp.open("GET", "_static/populate_version_selector.php?ID=" + document.getElementById("RunPeriod").options[document.getElementById("RunPeriod").selectedIndex].dbid, true);
+        xmlhttp.send();
+    }
+
+    function PopulateImagesSelector() {
+        removeOptions(document.getElementById("Plot"));
+
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var result = JSON.parse(this.responseText);
+                for (var i = 0; i < result.length; i++) {
+                    var newoption = document.createElement("option");
+                    newoption.text = result[i]['DisplayName'];
+                    newoption.value = result[i]['FileName'];
+                    newoption.id = newoption.value.slice(0, -4);
+                    newoption.dbid = result[i]['ID'];
+                    if (newoption.id == par_from_url['Plot']) {
+                        newoption.selected = true;
+                    }
+                    document.getElementById("Plot").add(newoption);
+                }
+                sortSelect(document.getElementById("Plot"));
+                if (par_from_url['Plot'] == "") {
+                    document.getElementById("Plot").selectedIndex = 0;
+                }
+                if (par_from_url['rcdb_query'] != "") DoQuery();  // Sets query_result.
+                SetRunListOBJ();
+                ShowPlots2();
+                ShowRunRange();
+            }
+        }
+        xmlhttp.open("GET", "_static/populate_images_selector.php?ID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid, true);
+        xmlhttp.send();
+    }
+
+    function removeOptions(selectbox) {
+        for (var i = selectbox.options.length - 1; i >= 0; i--) {
+            selectbox.remove(i);
+        }
+    }
+
+    function ShowRunRange() {
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var result = JSON.parse(this.responseText);
+                document.getElementById("ShowRunRangeID").value = '(' + result[0]['MIN'] + '-' + result[0]['MAX'] + ')';
+            }
+        }
+        xmlhttp.open("GET", "_static/show_run_range.php?ID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid, true);
+        xmlhttp.send();
+    }
+
+
+    function FillUserLink() {
+        var RunPSelector = document.getElementById("RunPeriod");
+        var RunP = RunPSelector.options[RunPSelector.selectedIndex].value;
+
+        var VerSelector = document.getElementById("Version");
+        var Ver = VerSelector.options[VerSelector.selectedIndex].value;
+
+        var IMGSelector = document.getElementById("Plot");
+        var Plot = IMGSelector.options[IMGSelector.selectedIndex].id;
+
+        var runmin = document.getElementById("minRunNum").value;
+        var runmax = document.getElementById("maxRunNum").value;
+
+        var base = "https://halldweb.jlab.org/data_monitoring/Plot_Browser.html?";
+        var base2 = base + "minRunNum=" + runmin + "&maxRunNum=" + runmax + "&RunPeriod=" + RunP + "&Version=" + Ver + "&Plot=" + Plot;
+
+        var query = encodeURIComponent(document.getElementById('rcdb_query').value);
+        if (query == "") {
+            user_link = base2;
+        } else {
+            user_link = base2 + "&rcdb_query=" + query;
+        }
+    }
+
+    function OpenTab() {
+        window.open(user_link, '_blank');
+    }
+
+
+
+
+    function ShowPlots2() {
+        var gridContainer = document.getElementById('imgTable');
+        var RunPSelector = document.getElementById("RunPeriod");
+        var SelectedRunP = RunPSelector.options[RunPSelector.selectedIndex].value;
+
+        var VerSelector = document.getElementById("Version");
+        var SelectedVer = VerSelector.options[VerSelector.selectedIndex].value;
+
+        var IMGSelector = document.getElementById("Plot");
+        var SelectedIMG = IMGSelector.options[IMGSelector.selectedIndex].value;
+        par_from_url['Plot'] = IMGSelector.options[IMGSelector.selectedIndex].id;
+
+        var columnstoDisplay = document.getElementById("Columns").value;
+
+        if (first_showing) {
+            first_showing = false;
+            HideWaitIcon();
+        }
+
+        gridContainer.innerHTML = ''; // Clear previous content
+
+        var numAdded = 0;
+
+        for (var i = 0; i < SelectedRunListOBJ.length; i++) {
+            var runNum_asINT = parseInt(SelectedRunListOBJ[i].split("Run")[1]);
+            if (runNum_asINT < document.getElementById("minRunNum").value || runNum_asINT > document.getElementById("maxRunNum").value) {
+                continue;
+            }
+            const colDiv = document.createElement('div');
+            colDiv.className = 'col-md-4 mb-4';
+
+            // Create the card div
+            const cardDiv = document.createElement('div');
+            cardDiv.className = 'card';
+
+            //create the card header
+            const cardHeader = document.createElement('div');
+            cardHeader.className = 'card-header';
+            // make the run links inside the header
+            var runLinks = document.createElement("p");
+            runLinks.classList.add("card-text");
+
+            var JSRootLink = '<a href=\"/cgi-bin/data_monitoring/monitoring/runBrowser.py?run_number=' + runNum_asINT + '&ver=' + SelectedVer + '&period=' + SelectedRunP + '\" target=\"_blank\">' + SelectedRunListOBJ[i].split("Run")[1] + '</a> <a href=\"https://halldweb.jlab.org/rcdb/runs/info/' + runNum_asINT + '\" target=\"_blank\">info</a>';
+            runLinks.innerHTML = JSRootLink;
+            cardHeader.appendChild(runLinks);
+            cardDiv.appendChild(cardHeader);
+
+
+            var img = document.createElement("img");
+            var imgSrc = "https://halldweb.jlab.org/work/halld2/data_monitoring/" + SelectedRunP + "/" + SelectedVer + "/" + SelectedRunListOBJ[i] + "/" + SelectedIMG;
+            img.setAttribute("src", imgSrc);
+            img.setAttribute("alt", "Run Image");
+            img.style.width = "100%";
+            img.style.height = "auto";
+            img.className = 'card-img-top img-fluid';
+
+
+            img.addEventListener("click", function () {
+                window.open(this.getAttribute("src"), '_blank');
+            });
+
+            const cardBody = document.createElement('div');
+            cardBody.className = 'card-body';
+            cardBody.style.padding = "0px";
+            //cardBody.textContent = 'This is a test image';
+
+            cardDiv.appendChild(img);
+            // Append the card to the column div
+            colDiv.appendChild(cardDiv);
+            colDiv.appendChild(cardBody);
+            gridContainer.appendChild(colDiv);
+
+            numAdded++;
+        }
+
+        if (numAdded === 0) {
+            var noPlotsImg = document.createElement("img");
+            noPlotsImg.setAttribute("src", "https://halldweb.jlab.org/data_monitoring/_static/no_plots.png");
+            noPlotsImg.setAttribute("alt", "No Plots Available");
+            gridContainer.appendChild(noPlotsImg);
+        }
+
+        FillUserLink();
+
+        if (use_url_par) ClearOptionsFromURL();
+    }
+
+
+
+
+
+</script>
