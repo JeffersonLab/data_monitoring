@@ -290,7 +290,7 @@ function SetRunListOBJ() {
       }
   };
 
-  var php_string = "_static/set_run_list_obj2.php?verID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid + "&typeID=" + document.getElementById("Plot").options[document.getElementById("Plot").selectedIndex].dbid + "&runNumLimit=" + run_num_limit;
+  var php_string = "_static/set_run_list_obj.php?verID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid + "&typeID=" + document.getElementById("Plot").options[document.getElementById("Plot").selectedIndex].dbid + "&runNumLimit=" + run_num_limit;
 
   if (run_range_set_by_user) {
       php_string += "&minRunNum=" + document.getElementById("minRunNum").value;
