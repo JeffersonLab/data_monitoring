@@ -6,11 +6,11 @@
  *
  */
 
-Array.prototype.max = function() {
+Array.prototype.max = function () {
   return Math.max.apply(null, this);
 };
 
-Array.prototype.min = function() {
+Array.prototype.min = function () {
   return Math.min.apply(null, this);
 };
 
@@ -26,12 +26,23 @@ var run_range_set_by_user = false;
 
 var user_link = "";
 
-$(document).ready(function() {
+var isAscending = false; // plots should should in descending order by default
+console.log('initial sorting: ', isAscending);
+
+
+$(document).ready(function () {
   SetOptionsFromURL();
   PopulateColumnsSelector();
   document.getElementById('maxNumOfPlots').value = run_num_limit;
   PopulateRunPeriodSelector();
 });
+
+function TogglePlotOrder() {
+  isAscending = !isAscending;
+  console.log('sorting isAscending: ', isAscending);
+  SetRunListOBJ();
+  ShowPlots();
+}
 
 function SetOptionsFromURL() {
   currentURL_split = document.URL.split("?");
@@ -54,13 +65,13 @@ function SetOptionsFromURL() {
 }
 
 function ClearOptionsFromURL() {
-  par_from_url['minRunNum']  = "";
-  par_from_url['maxRunNum']  = "";
-  par_from_url['RunPeriod']  = "";
-  par_from_url['Version']    = "";
-  par_from_url['Plot']       = "";
+  par_from_url['minRunNum'] = "";
+  par_from_url['maxRunNum'] = "";
+  par_from_url['RunPeriod'] = "";
+  par_from_url['Version'] = "";
+  par_from_url['Plot'] = "";
   par_from_url['rcdb_query'] = "";
-  use_url_par                = false;
+  use_url_par = false;
 }
 
 function ShowWaitIcon() {
@@ -88,8 +99,8 @@ function PopulateColumnsSelector() {
     run_num_limit = 15;
   }
   for (var i = 1; i <= 10; i++) {
-    var newoption   = document.createElement("option");
-    newoption.text  = i;
+    var newoption = document.createElement("option");
+    newoption.text = i;
     newoption.value = i;
     if (i == default_num) newoption.selected = true;
     document.getElementById("Columns").add(newoption);
@@ -108,7 +119,7 @@ function DoQuery() {
     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
   }
 
-  xmlhttp.onreadystatechange = function() {
+  xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       query_result = this.responseText.trim();
       if (query_result == "") query_result = "NaN";
@@ -140,8 +151,8 @@ function sortSelect(selElem) {
   }
   for (var i = 0; i < tmpAry.length; i++) {
     var op = new Option(tmpAry[i][0], tmpAry[i][1]);
-    op.id       = tmpAry[i][2];
-    op.dbid     = tmpAry[i][3];
+    op.id = tmpAry[i][2];
+    op.dbid = tmpAry[i][3];
     op.selected = tmpAry[i][4];
     selElem.options[i] = op;
   }
@@ -188,7 +199,7 @@ function ShowPlots() {
       var newRow = tableRef.insertRow(tableRef.rows.length);
     }
     var newCellh = newRowhead.insertCell(numAdded % columnstoDisplay);
-    var newCell  = newRow.insertCell(numAdded % columnstoDisplay);
+    var newCell = newRow.insertCell(numAdded % columnstoDisplay);
 
     var JSRootLinkt = '<center><font size="5"><b><a href=\"/cgi-bin/data_monitoring/monitoring/runBrowser.py?run_number=' + runNum_asINT + '&ver=' + SelectedVer + '&period=' + SelectedRunP + '\" target=\"_blank\">' + "Run" + SelectedRunListOBJ[i].split("Run")[1] + '</a></b>  <a href=\"https://halldweb.jlab.org/rcdb/runs/info/' + runNum_asINT + '\"' + 'target=\"_blank\">' + 'info' + '</a></font></center>'
 
@@ -217,7 +228,7 @@ function ShowPlots() {
     // Insert a row in the table at the last row
     var newRowhead = tableRef.insertRow(tableRef.rows.length);
     var newRow = tableRef.insertRow(tableRef.rows.length);
-    var newCell  = newRow.insertCell(numAdded % columnstoDisplay);
+    var newCell = newRow.insertCell(numAdded % columnstoDisplay);
     DOM_img.setAttribute("src", "https://halldweb.jlab.org/data_monitoring/_static/no_plots.png");
     newCell.appendChild(DOM_img);
   }
@@ -230,38 +241,74 @@ function ShowPlots() {
 function SetRunListOBJ() {
   SelectedRunListOBJ = [];
   if (query_result == "NaN") return;
+
+  var xmlhttp;
   if (window.XMLHttpRequest) {
-    // code for IE7+, Firefox, Chrome, Opera, Safari
-    xmlhttp = new XMLHttpRequest();
+      xmlhttp = new XMLHttpRequest();
   } else {
-    // code for IE6, IE5
-    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
   }
-  xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      var result = JSON.parse(this.responseText);
-      int_run_list = [];
-      for (var i = 0; i < result.length; i++) {
-        SelectedRunListOBJ.push('Run' + ('000000' + result[i]['RunNumber']).slice(-6));
-        int_run_list.push(parseInt(result[i]['RunNumber']));
+
+  xmlhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+          var result = JSON.parse(this.responseText);
+          var int_run_list = [];
+          console.log('result: ', result);
+
+          var minRunNum = parseInt(document.getElementById("minRunNum").value);
+          console.log('minRunNum: ', minRunNum);
+          var maxRunNum = parseInt(document.getElementById("maxRunNum").value);
+          var maxNumOfPlots = parseInt(document.getElementById("maxNumOfPlots").value);
+
+          // Filter runs within the specified range
+          for (var i=0; i < result.length; i++) {
+            int_run_list.push(parseInt(result[i]['RunNumber']));
+          }
+
+
+          if (!run_range_set_by_user) {
+              document.getElementById("minRunNum").value = Math.min(...int_run_list);
+              document.getElementById("maxRunNum").value = Math.max(...int_run_list);
+          }
+
+          // Sort and limit the run list based on the toggle state (isAscending)
+          if (isAscending) {
+              console.log('sorting ascending');
+              int_run_list.sort((a, b) => a - b);
+              console.log('int_run_list: ', int_run_list);
+              int_run_list = int_run_list.slice(0, maxNumOfPlots);
+          } else {
+              console.log('sorting descending');
+              int_run_list.sort((a, b) => b - a);
+              int_run_list = int_run_list.slice(0, maxNumOfPlots);
+          }
+
+          for (var i = 0; i < int_run_list.length; i++) {
+              SelectedRunListOBJ.push('Run' + ('000000' + int_run_list[i]).slice(-6));
+          }
+
       }
-      if (!run_range_set_by_user) {
-        document.getElementById("minRunNum").value = int_run_list.min();
-        document.getElementById("maxRunNum").value = int_run_list.max();
-      }
-    }
-  }
-  var php_string = "_static/set_run_list_obj.php?verID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid + "&typeID=" + document.getElementById("Plot").options[document.getElementById("Plot").selectedIndex].dbid + "&runNumLimit=" + run_num_limit;
+  };
+
+  var php_string = "_static/set_run_list_obj2.php?verID=" + document.getElementById("Version").options[document.getElementById("Version").selectedIndex].dbid + "&typeID=" + document.getElementById("Plot").options[document.getElementById("Plot").selectedIndex].dbid + "&runNumLimit=" + run_num_limit;
+
   if (run_range_set_by_user) {
-    php_string += "&minRunNum=" + document.getElementById("minRunNum").value;
-    php_string += "&maxRunNum=" + document.getElementById("maxRunNum").value;
+      php_string += "&minRunNum=" + document.getElementById("minRunNum").value;
+      php_string += "&maxRunNum=" + document.getElementById("maxRunNum").value;
   }
+
+  // Add the ascending parameter to control sorting order on the server
+  php_string += "&order=" + (isAscending ? 'ASC' : 'DESC');
+
   if (query_result != "") {
-    php_string += "&query=" + query_result;
+      php_string += "&query=" + query_result;
   }
+
+  console.log('php_string: ', php_string);
   xmlhttp.open("GET", php_string, false);
   xmlhttp.send();
 }
+
 
 function PopulateRunPeriodSelector() {
   if (window.XMLHttpRequest) {
@@ -271,15 +318,15 @@ function PopulateRunPeriodSelector() {
     // code for IE6, IE5
     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
   }
-  xmlhttp.onreadystatechange = function() {
+  xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       var result = JSON.parse(this.responseText);
       for (var i = 0; i < result.length; i++) {
-        var newoption   = document.createElement("option");
-        newoption.text  = result[i]['Name'];
+        var newoption = document.createElement("option");
+        newoption.text = result[i]['Name'];
         newoption.value = result[i]['Name'];
-        newoption.id    = result[i]['Name'];
-        newoption.dbid  = result[i]['ID'];
+        newoption.id = result[i]['Name'];
+        newoption.dbid = result[i]['ID'];
         if (newoption.id == par_from_url['RunPeriod']) {
           newoption.selected = true;
         }
@@ -305,11 +352,11 @@ function PopulateVersionSelector() {
     // code for IE6, IE5
     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
   }
-  xmlhttp.onreadystatechange = function() {
+  xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       var result = JSON.parse(this.responseText);
       for (var i = 0; i < result.length; i++) {
-        var newoption   = document.createElement("option");
+        var newoption = document.createElement("option");
         var text = "";
         if (result[i]['Type'] == "rawdata") {
           text += "Rootspy ";
@@ -325,10 +372,10 @@ function PopulateVersionSelector() {
           continue;
         }
         text += 'ver' + ('00' + result[i]['VersionNumber']).slice(-2);
-        newoption.text  = text;
+        newoption.text = text;
         newoption.value = result[i]['Type'] + '_ver' + ('00' + result[i]['VersionNumber']).slice(-2);
-        newoption.id    = newoption.value;
-        newoption.dbid  = result[i]['ID'];
+        newoption.id = newoption.value;
+        newoption.dbid = result[i]['ID'];
         if (newoption.id == par_from_url['Version']) {
           newoption.selected = true;
         }
@@ -354,15 +401,15 @@ function PopulateImagesSelector() {
     // code for IE6, IE5
     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
   }
-  xmlhttp.onreadystatechange = function() {
+  xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       var result = JSON.parse(this.responseText);
       for (var i = 0; i < result.length; i++) {
-        var newoption   = document.createElement("option");
-        newoption.text  = result[i]['DisplayName'];
+        var newoption = document.createElement("option");
+        newoption.text = result[i]['DisplayName'];
         newoption.value = result[i]['FileName'];
-        newoption.id    = newoption.value.slice(0, -4);
-        newoption.dbid  = result[i]['ID'];
+        newoption.id = newoption.value.slice(0, -4);
+        newoption.dbid = result[i]['ID'];
         if (newoption.id == par_from_url['Plot']) {
           newoption.selected = true;
         }
@@ -396,7 +443,7 @@ function ShowRunRange() {
     // code for IE6, IE5
     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
   }
-  xmlhttp.onreadystatechange = function() {
+  xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       var result = JSON.parse(this.responseText);
       document.getElementById("ShowRunRangeID").value = '(' + result[0]['MIN'] + '-' + result[0]['MAX'] + ')';
